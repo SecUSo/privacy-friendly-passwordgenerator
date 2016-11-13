@@ -1,9 +1,18 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.support.v4.app.FragmentManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import org.secuso.privacyfriendlypasswordgenerator.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.R;
@@ -40,11 +49,11 @@ public class MainActivity extends BaseActivity {
          * CRUD Operations
          * */
         // Inserting Contacts
-        Log.d("Insert: ", "Inserting ..");
-        database.addMetaData(new MetaData(1, "google.de", 13, 0, 0, 0, 1));
-        database.addMetaData(new MetaData(1, "google.de", 14, 0, 0, 0, 1));
-        database.addMetaData(new MetaData(1, "google.de", 14, 0, 0, 0, 1));
-        database.addMetaData(new MetaData(1, "google.de", 16, 0, 0, 0, 1));
+//        Log.d("Insert: ", "Inserting ..");
+//        database.addMetaData(new MetaData(1, "google.de", 13, 0, 0, 0, 1));
+//        database.addMetaData(new MetaData(1, "google.de", 14, 0, 0, 0, 1));
+//        database.addMetaData(new MetaData(1, "google.de", 14, 0, 0, 0, 1));
+//        database.addMetaData(new MetaData(1, "google.de", 16, 0, 0, 0, 1));
 
         // Reading all contacts
         Log.d("Reading: ", "Reading all data..");
@@ -58,6 +67,21 @@ public class MainActivity extends BaseActivity {
         adapter = new MetaDataAdapter(metadatalist);
 
         recyclerView.setAdapter(adapter);
+
+        FloatingActionButton addFab = (FloatingActionButton) findViewById(R.id.add_fab);
+        if (addFab != null) {
+
+
+            addFab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    AddMetaDataDialog addMetaDataDialog = new AddMetaDataDialog();
+                    addMetaDataDialog.show(fragmentManager, "AddMetaDataDialog");
+                }
+            });
+
+        }
 
         overridePendingTransition(0, 0);
     }
@@ -95,5 +119,34 @@ public class MainActivity extends BaseActivity {
 //        }
 //    }
 
+    public static class AddMetaDataDialog extends DialogFragment {
+
+        Activity activity;
+
+        @Override
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
+            this.activity = activity;
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            LayoutInflater i = getActivity().getLayoutInflater();
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setView(i.inflate(R.layout.dialog_add_metadata, null));
+            builder.setIcon(R.mipmap.ic_drawer);
+            builder.setTitle(getActivity().getString(R.string.add_metadata_heading));
+            builder.setPositiveButton(getActivity().getString(R.string.add), null);
+            builder.setNegativeButton(getActivity().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ((MainActivity) getActivity()).goToNavigationItem(R.id.nav_help);
+                }
+            });
+
+            return builder.create();
+        }
+    }
 
 }
