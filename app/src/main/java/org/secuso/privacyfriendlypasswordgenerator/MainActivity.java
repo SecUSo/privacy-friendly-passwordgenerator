@@ -1,17 +1,37 @@
 package org.secuso.privacyfriendlypasswordgenerator;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
+import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
+
+import java.util.List;
 
 /**
- * Created by karo on 13.11.16.
+ * Code for displaying cards according to the tutorial from https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465
  */
 
 public class MainActivity extends BaseActivity {
+
+    private RecyclerView recyclerView;
+    private MetaDataAdapter adapter;
+    private List<MetaData> metadatalist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        adapter = new MetaDataAdapter(metadatalist);
+
+        recyclerView.setAdapter(adapter);
 
         overridePendingTransition(0, 0);
     }

@@ -20,6 +20,7 @@ public class PasswordGenerator {
     }
 
     public void hash(int iterations) {
+        //TODO Add interations
         try {
             MessageDigest hasher = MessageDigest.getInstance("SHA-256");
             hasher.update(hashValue);
