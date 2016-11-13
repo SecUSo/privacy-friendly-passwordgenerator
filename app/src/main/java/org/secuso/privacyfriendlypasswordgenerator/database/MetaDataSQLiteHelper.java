@@ -1,13 +1,18 @@
 package org.secuso.privacyfriendlypasswordgenerator.database;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by yonjuni on 17.06.16.
+ * Structure based on http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/
+ * accessed at 16th June 2016
  */
 
 public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
@@ -51,24 +56,88 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-//    public void addMetaData(MetaData metaData) {
-//
-//    }
-//
-//    public List<MetaData> getAllmetaData() {
-//
-//    }
-//
-//    public int updateMetaData (MetaData metaData) {
-//
-//    }
-//
-//    public void deleteMetaData (MetaData metaData) {
-//
-//    }
-//
-//    public MetaData getMetaData(int id) {
-//
-//    }
+    public void addMetaData(MetaData metaData) {
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_DOMAIN, metaData.getDOMAIN());
+        values.put(KEY_LENGTH, metaData.getLENGTH());
+        values.put(KEY_HAS_NUMBERS, metaData.getHAS_NUMBERS());
+        values.put(KEY_HAS_SYMBOLS, metaData.getHAS_SYMBOLS());
+        values.put(KEY_HAS_LETTERS, metaData.getHAS_LETTERS());
+        values.put(ITERATION, metaData.getITERATION());
+
+        database.insert(DATABASE_NAME, null, values);
+        database.close();
+    }
+
+    public List<MetaData> getAllmetaData() {
+        List<MetaData> metaDataList = new ArrayList<MetaData>();
+
+        String selectQuery = "SELECT  * FROM " + DATABASE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                MetaData metaData = new MetaData();
+                metaData.setID(Integer.parseInt(cursor.getString(0)));
+                metaData.setDOMAIN(cursor.getString(1));
+                metaData.setLENGTH(Integer.parseInt(cursor.getString(2)));
+                metaData.setHAS_NUMBERS(Integer.parseInt(cursor.getString(3)));
+                metaData.setHAS_SYMBOLS(Integer.parseInt(cursor.getString(4)));
+                metaData.setHAS_LETTERS(Integer.parseInt(cursor.getString(5)));
+                metaData.setITERATION(Integer.parseInt(cursor.getString(6)));
+
+
+                metaDataList.add(metaData);
+            } while (cursor.moveToNext());
+        }
+
+        return metaDataList;
+    }
+
+    public int updateMetaData(MetaData metaData) {
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_DOMAIN, metaData.getDOMAIN());
+        values.put(KEY_LENGTH, metaData.getLENGTH());
+        values.put(KEY_HAS_NUMBERS, metaData.getHAS_NUMBERS());
+        values.put(KEY_HAS_SYMBOLS, metaData.getHAS_SYMBOLS());
+        values.put(KEY_HAS_LETTERS, metaData.getHAS_LETTERS());
+        values.put(ITERATION, metaData.getITERATION());
+
+        return database.update(DATABASE_NAME, values, KEY_ID + " = ?",
+                new String[] { String.valueOf(metaData.getID()) });
+    }
+
+    public void deleteMetaData(MetaData metaData) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.delete(DATABASE_NAME, KEY_ID + " = ?",
+                new String[] { String.valueOf(metaData.getID()) });
+        database.close();
+    }
+
+    public MetaData getMetaData(int id) {
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        Cursor cursor = database.query(DATABASE_NAME, new String[]{KEY_ID,
+                        KEY_DOMAIN, KEY_LENGTH, KEY_HAS_NUMBERS, KEY_HAS_SYMBOLS, KEY_HAS_LETTERS, ITERATION}, KEY_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        MetaData metaData = new MetaData(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1),
+                Integer.parseInt(cursor.getString(2)),
+                Integer.parseInt(cursor.getString(3)),
+                Integer.parseInt(cursor.getString(4)),
+                Integer.parseInt(cursor.getString(5)),
+                Integer.parseInt(cursor.getString(6)));
+
+        return metaData;
+    }
 
 }
