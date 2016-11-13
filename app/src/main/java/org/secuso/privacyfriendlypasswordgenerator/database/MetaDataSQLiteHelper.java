@@ -92,7 +92,6 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
                 metaData.setHAS_LETTERS(Integer.parseInt(cursor.getString(5)));
                 metaData.setITERATION(Integer.parseInt(cursor.getString(6)));
 
-
                 metaDataList.add(metaData);
             } while (cursor.moveToNext());
         }
@@ -128,18 +127,22 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         Cursor cursor = database.query(TABLE_METADATA, new String[]{KEY_ID,
                         KEY_DOMAIN, KEY_LENGTH, KEY_HAS_NUMBERS, KEY_HAS_SYMBOLS, KEY_HAS_LETTERS, ITERATION}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
 
-        MetaData metaData = new MetaData(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1),
-                Integer.parseInt(cursor.getString(2)),
-                Integer.parseInt(cursor.getString(3)),
-                Integer.parseInt(cursor.getString(4)),
-                Integer.parseInt(cursor.getString(5)),
-                Integer.parseInt(cursor.getString(6)));
+        MetaData metaData = new MetaData();
+
+        if( cursor != null && cursor.moveToFirst() ){
+            metaData.setID(Integer.parseInt(cursor.getString(0)));
+            metaData.setDOMAIN(cursor.getString(1));
+            metaData.setLENGTH(Integer.parseInt(cursor.getString(2)));
+            metaData.setHAS_NUMBERS(Integer.parseInt(cursor.getString(3)));
+            metaData.setHAS_SYMBOLS(Integer.parseInt(cursor.getString(4)));
+            metaData.setHAS_LETTERS(Integer.parseInt(cursor.getString(5)));
+            metaData.setITERATION(Integer.parseInt(cursor.getString(6)));
+            cursor.close();
+        }
 
         return metaData;
+
     }
 
 }

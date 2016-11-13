@@ -26,6 +26,7 @@
     <string name="generate_heading">Generate Password</string>
     <string name="generate">Generate</string>
     <string name="master_password_heading">Master password:</string>
+    <string name="enter_masterpassword">Please, enter a master password.</string>
     <string name="password">Your password:</string>
     <string name="init_password"></string>
     <string name="done">Done</string>

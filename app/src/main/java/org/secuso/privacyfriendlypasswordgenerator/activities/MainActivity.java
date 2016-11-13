@@ -43,8 +43,13 @@ public class MainActivity extends BaseActivity {
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getBaseContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
+
+                        Log.d("Main Activity", Integer.toString(position));
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("position", position);
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
+                        generatePasswordDialog.setArguments(bundle);
                         generatePasswordDialog.show(fragmentManager, "GeneratePasswordDialog");
                     }
 
@@ -57,10 +62,10 @@ public class MainActivity extends BaseActivity {
         MetaDataSQLiteHelper database = new MetaDataSQLiteHelper(this);
 
 //        Log.d("Insert: ", "Inserting ..");
-//        database.addMetaData(new MetaData(1, "google.de", 13, 0, 0, 0, 1));
-//        database.addMetaData(new MetaData(1, "google.de", 14, 0, 0, 0, 1));
-//        database.addMetaData(new MetaData(1, "google.de", 14, 0, 0, 0, 1));
-//        database.addMetaData(new MetaData(1, "google.de", 16, 0, 0, 0, 1));
+//        database.addMetaData(new MetaData(1, "first.de", 13, 1, 1, 1, 1));
+//        database.addMetaData(new MetaData(1, "second.de", 14, 1, 1, 1, 1));
+//        database.addMetaData(new MetaData(1, "third.de", 14, 1, 1, 1, 1));
+//        database.addMetaData(new MetaData(1, "fourth.de", 16, 1, 1, 1, 1));
 
         Log.d("Reading: ", "Reading all data..");
         List<MetaData> metadatalist = database.getAllmetaData();
