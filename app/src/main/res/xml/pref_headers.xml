@@ -3,7 +3,7 @@
     <!-- These settings headers are only used on tablets. -->
 
     <header
-        android:fragment="org.secuso.privacyfriendlypasswordgenerator.SettingsActivity$GeneralPreferenceFragment"
+        android:fragment="org.secuso.privacyfriendlypasswordgenerator.activities.SettingsActivity$GeneralPreferenceFragment"
        />
 
 </preference-headers>

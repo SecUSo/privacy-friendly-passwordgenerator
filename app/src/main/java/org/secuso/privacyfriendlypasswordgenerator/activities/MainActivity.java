@@ -1,15 +1,20 @@
-package org.secuso.privacyfriendlypasswordgenerator;
+package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import org.secuso.privacyfriendlypasswordgenerator.MetaDataAdapter;
+import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
+import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 
 import java.util.List;
 
 /**
  * Code for displaying cards according to the tutorial from https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465
+ * accessed on 20th June 2016
  */
 
 public class MainActivity extends BaseActivity {
@@ -28,6 +33,27 @@ public class MainActivity extends BaseActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
+
+        MetaDataSQLiteHelper database = new MetaDataSQLiteHelper(this);
+
+        /**
+         * CRUD Operations
+         * */
+        // Inserting Contacts
+        Log.d("Insert: ", "Inserting ..");
+        database.addMetaData(new MetaData(1, "google.de", 13, 0, 0, 0, 1));
+        database.addMetaData(new MetaData(1, "google.de", 14, 0, 0, 0, 1));
+        database.addMetaData(new MetaData(1, "google.de", 14, 0, 0, 0, 1));
+        database.addMetaData(new MetaData(1, "google.de", 16, 0, 0, 0, 1));
+
+        // Reading all contacts
+        Log.d("Reading: ", "Reading all data..");
+        List<MetaData> metadatalist = database.getAllmetaData();
+
+//        for (MetaData cn : contacts) {
+//            String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Phone: " + cn.getPhoneNumber();
+//            // Writing Contacts to log
+//            Log.d("Name: ", log);
 
         adapter = new MetaDataAdapter(metadatalist);
 

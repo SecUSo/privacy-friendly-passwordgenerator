@@ -1,8 +1,9 @@
-package org.secuso.privacyfriendlypasswordgenerator;
+package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
-import android.view.View;
+
+import org.secuso.privacyfriendlypasswordgenerator.R;
 
 /**
  * Created by yonjuni on 17.06.16.

@@ -1,4 +1,4 @@
-package org.secuso.privacyfriendlypasswordgenerator;
+package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
+
+import org.secuso.privacyfriendlypasswordgenerator.R;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On

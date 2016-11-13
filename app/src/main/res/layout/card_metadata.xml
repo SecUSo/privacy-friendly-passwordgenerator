@@ -62,19 +62,22 @@
                     android:id="@+id/hasNumbersImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@mipmap/ic_drawer" />
-
-                <ImageView
-                    android:id="@+id/hasLettersImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@mipmap/ic_drawer" />
+                    android:background="@mipmap/ic_drawer"
+                    android:visibility="invisible"/>
 
                 <ImageView
                     android:id="@+id/hasSymbolsImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@mipmap/ic_drawer" />
+                    android:background="@mipmap/ic_drawer"
+                    android:visibility="invisible"/>
+
+                <ImageView
+                    android:id="@+id/hasLettersImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/ic_drawer"
+                    android:visibility="invisible"/>
 
             </LinearLayout>
 

@@ -67,21 +67,23 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         values.put(KEY_HAS_LETTERS, metaData.getHAS_LETTERS());
         values.put(ITERATION, metaData.getITERATION());
 
-        database.insert(DATABASE_NAME, null, values);
+        database.insert(TABLE_METADATA, null, values);
         database.close();
     }
 
     public List<MetaData> getAllmetaData() {
         List<MetaData> metaDataList = new ArrayList<MetaData>();
 
-        String selectQuery = "SELECT  * FROM " + DATABASE_NAME;
+        String selectQuery = "SELECT  * FROM " + TABLE_METADATA;
 
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery(selectQuery, null);
+
+        MetaData metaData = null;
 
         if (cursor.moveToFirst()) {
             do {
-                MetaData metaData = new MetaData();
+                metaData = new MetaData();
                 metaData.setID(Integer.parseInt(cursor.getString(0)));
                 metaData.setDOMAIN(cursor.getString(1));
                 metaData.setLENGTH(Integer.parseInt(cursor.getString(2)));
@@ -109,13 +111,13 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         values.put(KEY_HAS_LETTERS, metaData.getHAS_LETTERS());
         values.put(ITERATION, metaData.getITERATION());
 
-        return database.update(DATABASE_NAME, values, KEY_ID + " = ?",
+        return database.update(TABLE_METADATA, values, KEY_ID + " = ?",
                 new String[] { String.valueOf(metaData.getID()) });
     }
 
     public void deleteMetaData(MetaData metaData) {
         SQLiteDatabase database = this.getWritableDatabase();
-        database.delete(DATABASE_NAME, KEY_ID + " = ?",
+        database.delete(TABLE_METADATA, KEY_ID + " = ?",
                 new String[] { String.valueOf(metaData.getID()) });
         database.close();
     }
@@ -123,7 +125,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
     public MetaData getMetaData(int id) {
         SQLiteDatabase database = this.getWritableDatabase();
 
-        Cursor cursor = database.query(DATABASE_NAME, new String[]{KEY_ID,
+        Cursor cursor = database.query(TABLE_METADATA, new String[]{KEY_ID,
                         KEY_DOMAIN, KEY_LENGTH, KEY_HAS_NUMBERS, KEY_HAS_SYMBOLS, KEY_HAS_LETTERS, ITERATION}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)

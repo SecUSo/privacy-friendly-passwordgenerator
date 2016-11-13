@@ -1,4 +1,4 @@
-package org.secuso.privacyfriendlypasswordgenerator;
+package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
