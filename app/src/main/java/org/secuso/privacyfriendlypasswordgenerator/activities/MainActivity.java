@@ -13,6 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import org.secuso.privacyfriendlypasswordgenerator.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.R;
@@ -45,17 +47,12 @@ public class MainActivity extends BaseActivity {
 
         MetaDataSQLiteHelper database = new MetaDataSQLiteHelper(this);
 
-        /**
-         * CRUD Operations
-         * */
-        // Inserting Contacts
 //        Log.d("Insert: ", "Inserting ..");
 //        database.addMetaData(new MetaData(1, "google.de", 13, 0, 0, 0, 1));
 //        database.addMetaData(new MetaData(1, "google.de", 14, 0, 0, 0, 1));
 //        database.addMetaData(new MetaData(1, "google.de", 14, 0, 0, 0, 1));
 //        database.addMetaData(new MetaData(1, "google.de", 16, 0, 0, 0, 1));
 
-        // Reading all contacts
         Log.d("Reading: ", "Reading all data..");
         List<MetaData> metadatalist = database.getAllmetaData();
 
@@ -121,29 +118,45 @@ public class MainActivity extends BaseActivity {
 
     public static class AddMetaDataDialog extends DialogFragment {
 
-        Activity activity;
-
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            this.activity = activity;
         }
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-            LayoutInflater i = getActivity().getLayoutInflater();
+            LayoutInflater inflater = getActivity().getLayoutInflater();
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setView(i.inflate(R.layout.dialog_add_metadata, null));
+            View view = inflater.inflate(R.layout.dialog_add_metadata, null);
+            builder.setView(view);
             builder.setIcon(R.mipmap.ic_drawer);
             builder.setTitle(getActivity().getString(R.string.add_metadata_heading));
-            builder.setPositiveButton(getActivity().getString(R.string.add), null);
-            builder.setNegativeButton(getActivity().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    ((MainActivity) getActivity()).goToNavigationItem(R.id.nav_help);
+
+            //Seekbar
+            SeekBar seekBarLength = (SeekBar) view.findViewById(R.id.seekBarLength);
+            final TextView textViewLengthDisplayFinal = (TextView) view.findViewById(R.id.textViewLengthDisplay);
+            seekBarLength.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    textViewLengthDisplayFinal.setText(Integer.toString(progress + 4));
+                }
+
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+
+                public void onStopTrackingTouch(SeekBar seekBar) {
                 }
             });
+
+            builder.setPositiveButton(getActivity().getString(R.string.add), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+
+                }
+            });
+
+            builder.setNegativeButton(getActivity().getString(R.string.cancel), null);
 
             return builder.create();
         }
