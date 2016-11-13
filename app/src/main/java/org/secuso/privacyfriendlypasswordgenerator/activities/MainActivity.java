@@ -8,11 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import org.secuso.privacyfriendlypasswordgenerator.AddMetaDataDialog;
+import org.secuso.privacyfriendlypasswordgenerator.RecyclerItemClickListener;
+import org.secuso.privacyfriendlypasswordgenerator.dialogs.AddMetaDataDialog;
 import org.secuso.privacyfriendlypasswordgenerator.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
+import org.secuso.privacyfriendlypasswordgenerator.dialogs.GeneratePasswordDialog;
 
 import java.util.List;
 
@@ -37,6 +39,20 @@ public class MainActivity extends BaseActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getBaseContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
+                        generatePasswordDialog.show(fragmentManager, "GeneratePasswordDialog");
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
 
         MetaDataSQLiteHelper database = new MetaDataSQLiteHelper(this);
 
@@ -76,6 +92,11 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     protected int getNavigationDrawerID() {
         return R.id.nav_example;
     }
@@ -107,51 +128,4 @@ public class MainActivity extends BaseActivity {
 //            return builder.create();
 //        }
 //    }
-
-//    public static class AddMetaDataDialog extends DialogFragment {
-//
-//        @Override
-//        public void onAttach(Activity activity) {
-//            super.onAttach(activity);
-//        }
-//
-//        @Override
-//        public Dialog onCreateDialog(Bundle savedInstanceState) {
-//
-//            LayoutInflater inflater = getActivity().getLayoutInflater();
-//            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//            View view = inflater.inflate(R.layout.dialog_add_metadata, null);
-//            builder.setView(view);
-//            builder.setIcon(R.mipmap.ic_drawer);
-//            builder.setTitle(getActivity().getString(R.string.add_metadata_heading));
-//
-//            //Seekbar
-//            SeekBar seekBarLength = (SeekBar) view.findViewById(R.id.seekBarLength);
-//            final TextView textViewLengthDisplayFinal = (TextView) view.findViewById(R.id.textViewLengthDisplay);
-//            seekBarLength.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                    textViewLengthDisplayFinal.setText(Integer.toString(progress + 4));
-//                }
-//
-//                public void onStartTrackingTouch(SeekBar seekBar) {
-//                }
-//
-//                public void onStopTrackingTouch(SeekBar seekBar) {
-//                }
-//            });
-//
-//            builder.setPositiveButton(getActivity().getString(R.string.add), new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//
-//
-//                }
-//            });
-//
-//            builder.setNegativeButton(getActivity().getString(R.string.cancel), null);
-//
-//            return builder.create();
-//        }
-//    }
-
 }

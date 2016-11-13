@@ -30,17 +30,17 @@ public class PasswordGenerator {
         }
     }
 
-    public String getPassword(boolean specialCharacters, boolean letters,
-                              boolean numbers, int length) {
+    public String getPassword(int specialCharacters, int letters,
+                              int numbers, int length) {
         BigInteger hashNumber = BigInteger.valueOf(0);
         for (int i = 0; i < hashValue.length; i++) {
             hashNumber = hashNumber.multiply(BigInteger.valueOf(8)).
                     add(BigInteger.valueOf(hashValue[i] & 0xFF));
         }
         String password = "";
-        if (specialCharacters || letters || numbers) {
+        if (specialCharacters == 1 || letters  == 1|| numbers == 1) {
             List<String> characterSet = new ArrayList<String>();
-            if (specialCharacters) {
+            if (specialCharacters == 1) {
                 characterSet.add("#");
                 characterSet.add("$");
                 characterSet.add("|");
@@ -63,7 +63,7 @@ public class PasswordGenerator {
                 characterSet.add("%");
                 characterSet.add("+");
             }
-            if (letters) {
+            if (letters == 1) {
                 characterSet.add("a"); characterSet.add("A");
                 characterSet.add("b"); characterSet.add("B");
                 characterSet.add("c"); characterSet.add("C");
@@ -91,7 +91,7 @@ public class PasswordGenerator {
                 characterSet.add("y"); characterSet.add("Y");
                 characterSet.add("z"); characterSet.add("Z");
             }
-            if (numbers) {
+            if (numbers == 1) {
                 characterSet.add("0");
                 characterSet.add("1");
                 characterSet.add("2");
