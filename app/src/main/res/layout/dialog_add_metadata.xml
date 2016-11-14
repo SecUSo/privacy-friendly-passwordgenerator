@@ -57,11 +57,12 @@
             android:id="@+id/textViewLengthDisplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
             android:layout_toEndOf="@+id/textViewLengthHeading"
             android:text="10"
             android:textAppearance="?android:attr/textAppearanceSmall" />
+
     </RelativeLayout>
 
     <SeekBar
@@ -70,5 +71,26 @@
         android:layout_height="wrap_content"
         android:max="12"
         android:progress="6" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textViewIterationHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/iteration" />
+
+    <EditText
+        android:id="@+id/EditTextIteration"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:maxLength="4"
+        android:layout_toEndOf="@+id/textViewIterationHeading"/>
+
+    </RelativeLayout>
 
 </LinearLayout>

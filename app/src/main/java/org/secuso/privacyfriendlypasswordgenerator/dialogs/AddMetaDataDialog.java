@@ -87,6 +87,7 @@ public class AddMetaDataDialog extends DialogFragment {
         CheckBox hasSymbolsCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxSpecialCharacter);
         CheckBox hasLettersCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxLetters);
         EditText domain = (EditText) rootView.findViewById(R.id.editTextDomain);
+        EditText iterations = (EditText) rootView.findViewById(R.id.EditTextIteration);
 
         database.addMetaData(
         new MetaData(1,
@@ -95,7 +96,7 @@ public class AddMetaDataDialog extends DialogFragment {
                 boolToInt(hasNumbersCheckBox.isChecked()),
                 boolToInt(hasSymbolsCheckBox.isChecked()),
                 boolToInt(hasLettersCheckBox.isChecked()),
-                15));
+                Integer.parseInt(iterations.getText().toString())));
 
         activity.recreate();
 

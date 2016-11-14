@@ -34,14 +34,6 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
     public MetaDataViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_metadata, parent, false);
 
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                //TODO opens generator dialog
-//            }
-//        });
-
         return new MetaDataViewHolder(view);
     }
 
