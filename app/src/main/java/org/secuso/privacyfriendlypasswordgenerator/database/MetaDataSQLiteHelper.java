@@ -24,6 +24,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
     private static final String TABLE_METADATA = "metadata";
 
     private static final String KEY_ID = "id";
+    private static final String KEY_POSITION_ID = "positionId";
     private static final String KEY_DOMAIN = "domain";
     private static final String KEY_LENGTH = "length";
     private static final String KEY_HAS_NUMBERS = "hasNumbers";
@@ -41,6 +42,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         String CREATE_METADATA_TABLE = "CREATE TABLE " + TABLE_METADATA +
                 "(" +
                 KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                KEY_POSITION_ID + " INTEGER," +
                 KEY_DOMAIN + " TEXT NOT NULL," +
                 KEY_LENGTH + " INTEGER," +
                 KEY_HAS_NUMBERS + " INTEGER," +
@@ -62,6 +64,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(KEY_POSITION_ID, metaData.getPOSITIONID());
         values.put(KEY_DOMAIN, metaData.getDOMAIN());
         values.put(KEY_LENGTH, metaData.getLENGTH());
         values.put(KEY_HAS_NUMBERS, metaData.getHAS_NUMBERS());
@@ -87,12 +90,13 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
             do {
                 metaData = new MetaData();
                 metaData.setID(Integer.parseInt(cursor.getString(0)));
-                metaData.setDOMAIN(cursor.getString(1));
-                metaData.setLENGTH(Integer.parseInt(cursor.getString(2)));
-                metaData.setHAS_NUMBERS(Integer.parseInt(cursor.getString(3)));
-                metaData.setHAS_SYMBOLS(Integer.parseInt(cursor.getString(4)));
-                metaData.setHAS_LETTERS(Integer.parseInt(cursor.getString(5)));
-                metaData.setITERATION(Integer.parseInt(cursor.getString(6)));
+                metaData.setPOSITIONID(Integer.parseInt(cursor.getString(1)));
+                metaData.setDOMAIN(cursor.getString(2));
+                metaData.setLENGTH(Integer.parseInt(cursor.getString(3)));
+                metaData.setHAS_NUMBERS(Integer.parseInt(cursor.getString(4)));
+                metaData.setHAS_SYMBOLS(Integer.parseInt(cursor.getString(5)));
+                metaData.setHAS_LETTERS(Integer.parseInt(cursor.getString(6)));
+                metaData.setITERATION(Integer.parseInt(cursor.getString(7)));
 
                 metaDataList.add(metaData);
             } while (cursor.moveToNext());
@@ -105,6 +109,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(KEY_POSITION_ID, metaData.getPOSITIONID());
         values.put(KEY_DOMAIN, metaData.getDOMAIN());
         values.put(KEY_LENGTH, metaData.getLENGTH());
         values.put(KEY_HAS_NUMBERS, metaData.getHAS_NUMBERS());
@@ -116,17 +121,17 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
                 new String[] { String.valueOf(metaData.getID()) });
     }
 
-    public void deleteMetaData(int id) {
+    public void deleteMetaData(MetaData metaData) {
         SQLiteDatabase database = this.getWritableDatabase();
         database.delete(TABLE_METADATA, KEY_ID + " = ?",
-                new String[] { Integer.toString(id) });
+                new String[] { Integer.toString(metaData.getID()) });
         database.close();
     }
 
     public MetaData getMetaData(int id) {
         SQLiteDatabase database = this.getWritableDatabase();
 
-        Cursor cursor = database.query(TABLE_METADATA, new String[]{KEY_ID,
+        Cursor cursor = database.query(TABLE_METADATA, new String[]{KEY_ID, KEY_POSITION_ID,
                         KEY_DOMAIN, KEY_LENGTH, KEY_HAS_NUMBERS, KEY_HAS_SYMBOLS, KEY_HAS_LETTERS, ITERATION}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
@@ -134,12 +139,13 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
 
         if( cursor != null && cursor.moveToFirst() ){
             metaData.setID(Integer.parseInt(cursor.getString(0)));
-            metaData.setDOMAIN(cursor.getString(1));
-            metaData.setLENGTH(Integer.parseInt(cursor.getString(2)));
-            metaData.setHAS_NUMBERS(Integer.parseInt(cursor.getString(3)));
-            metaData.setHAS_SYMBOLS(Integer.parseInt(cursor.getString(4)));
-            metaData.setHAS_LETTERS(Integer.parseInt(cursor.getString(5)));
-            metaData.setITERATION(Integer.parseInt(cursor.getString(6)));
+            metaData.setPOSITIONID(Integer.parseInt(cursor.getString(1)));
+            metaData.setDOMAIN(cursor.getString(2));
+            metaData.setLENGTH(Integer.parseInt(cursor.getString(3)));
+            metaData.setHAS_NUMBERS(Integer.parseInt(cursor.getString(4)));
+            metaData.setHAS_SYMBOLS(Integer.parseInt(cursor.getString(5)));
+            metaData.setHAS_LETTERS(Integer.parseInt(cursor.getString(6)));
+            metaData.setITERATION(Integer.parseInt(cursor.getString(7)));
             cursor.close();
         }
 

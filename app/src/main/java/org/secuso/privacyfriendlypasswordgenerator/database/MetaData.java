@@ -7,6 +7,7 @@ package org.secuso.privacyfriendlypasswordgenerator.database;
 public class MetaData {
 
     private int ID;
+    private int POSITIONID;
     private String DOMAIN;
     private int LENGTH;
     private int HAS_NUMBERS;
@@ -16,9 +17,10 @@ public class MetaData {
 
     public MetaData() {    }
 
-    public MetaData(int ID, String DOMAIN, int LENGTH, int HAS_NUMBERS, int HAS_SYMBOLS, int HAS_LETTERS, int ITERATION) {
+    public MetaData(int ID, int POSITIONID, String DOMAIN, int LENGTH, int HAS_NUMBERS, int HAS_SYMBOLS, int HAS_LETTERS, int ITERATION) {
 
         this.ID=ID;
+        this.POSITIONID = POSITIONID;
         this.DOMAIN=DOMAIN;
         this.LENGTH=LENGTH;
         this.HAS_NUMBERS=HAS_NUMBERS;
@@ -73,6 +75,14 @@ public class MetaData {
 
     public void setDOMAIN(String DOMAIN) {
         this.DOMAIN = DOMAIN;
+    }
+
+    public int getPOSITIONID() {
+        return POSITIONID;
+    }
+
+    public void setPOSITIONID(int POSITIONID) {
+        this.POSITIONID = POSITIONID;
     }
 
     public int getID() {
