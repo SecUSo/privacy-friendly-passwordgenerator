@@ -39,8 +39,7 @@
 
     <string name="add_new_metadata_heading">1. New meta data</string>
     <string name="passwords_heading">2. Your passwords</string>
-
-
+    
     <!--###GENERATOR###-->
     <string name="generate_heading">Generate Password</string>
     <string name="generate">Generate</string>
@@ -67,6 +66,7 @@
 
     <!-- ###SETTINGS### -->
     <string name="title_activity_settings">Settings</string>
+
 
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>

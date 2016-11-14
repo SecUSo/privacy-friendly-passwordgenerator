@@ -119,20 +119,16 @@ public class AddMetaDataDialog extends DialogFragment {
     }
 
     @Override
-    public void onStart()
-    {
-        super.onStart();    //super.onStart() is where dialog.show() is actually called on the underlying dialog, so we have to do it after this point
-        AlertDialog d = (AlertDialog)getDialog();
-        if(d != null)
-        {
+    public void onStart() {
+        super.onStart();
+        AlertDialog d = (AlertDialog) getDialog();
+        if (d != null) {
             Button positiveButton = (Button) d.getButton(Dialog.BUTTON_POSITIVE);
-            positiveButton.setOnClickListener(new View.OnClickListener()
-            {
+            positiveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v)
-                {
+                public void onClick(View v) {
                     addMetaData();
-                    if(closeDialog) {
+                    if (closeDialog) {
                         dismiss();
                     }
 

@@ -2,6 +2,9 @@ package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -19,6 +22,8 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
 
+import static android.content.Context.*;
+
 /**
  * Created by karo on 13.11.16.
  */
@@ -30,6 +35,8 @@ public class GeneratePasswordDialog extends DialogFragment {
     MetaDataSQLiteHelper database;
     int position;
     MetaData metaData;
+    Boolean binding;
+    Boolean clipboardSet;
 
     @Override
     public void onAttach(Activity activity) {
@@ -48,8 +55,13 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         if (bundle != null) {
             position = bundle.getInt("position");
+            binding = bundle.getBoolean("bind");
+            clipboardSet = bundle.getBoolean("clipboard");
+
         } else {
             position = -1;
+            binding = false;
+            clipboardSet = false;
         }
 
         this.database = new MetaDataSQLiteHelper(getActivity());
@@ -85,32 +97,41 @@ public class GeneratePasswordDialog extends DialogFragment {
             Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
             toast.show();
         } else {
-            Log.d("Generator"," Generator Button pressed");
+//            Log.d("Generator"," Generator Button pressed");
 
             if (position < 0) {
                 Toast toast = Toast.makeText(activity.getBaseContext(), "PROBLEM", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
                 metaData = database.getMetaData(position);
-                Log.d("Generator", "Position: " + Integer.toString(position));
+//                Log.d("Generator", "Position: " + Integer.toString(position));
+
+
 
                 PasswordGenerator generator = new PasswordGenerator();
                 generator.initialize(
                         metaData.getDOMAIN(), editTextMasterpassword.getText().toString(), metaData.getLENGTH());
 
-                Log.d("Generator", "initialized");
-                Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
-                Log.d("Generator", "Domain: " + metaData.getDOMAIN());
+//                Log.d("Generator", "initialized");
+//                Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
+//                Log.d("Generator", "Domain: " + metaData.getDOMAIN());
 
                 String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
 
-                Log.d("Generator", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
-                Log.d("Generator", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
-                Log.d("Generator", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
+//                Log.d("Generator", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
+//                Log.d("Generator", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
+//                Log.d("Generator", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
 
+                //Copy password to clipboard
+                if (clipboardSet) {
+                    ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
+                    ClipData clip = ClipData.newPlainText("Password", password);
+                    clipboard.setPrimaryClip(clip);
+                }
                 TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
                 textViewPassword.setText(password);
-                Log.d("Generator", password);
+                //Log.d("Generator", password);
+
             }
 
         }

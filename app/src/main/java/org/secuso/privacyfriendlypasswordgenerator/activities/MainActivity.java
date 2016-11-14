@@ -1,6 +1,8 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -33,6 +35,8 @@ public class MainActivity extends BaseActivity {
     private MetaDataAdapter adapter;
     private List<MetaData> metadatalist;
     MetaDataSQLiteHelper database;
+    SharedPreferences sharedPreferences;
+    boolean clipboard_enabled, bindToDevice_enabled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,9 @@ public class MainActivity extends BaseActivity {
 
         adapter = new MetaDataAdapter(metadatalist);
         recyclerView.setAdapter(adapter);
+
+        //Preferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
         int current = 0;
         for (MetaData data : metadatalist) {
@@ -73,6 +80,8 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
+                        bundle.putBoolean("clipboard", clipboard_enabled);
+                        bundle.putBoolean("bind", bindToDevice_enabled);
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
                         generatePasswordDialog.setArguments(bundle);
@@ -88,6 +97,7 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
+                        bundle.putBoolean("bind", bindToDevice_enabled);
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
                         updateMetadataDialog.setArguments(bundle);
@@ -181,6 +191,17 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    public void applySettings() {
+        clipboard_enabled = sharedPreferences.getBoolean("", true);
+        bindToDevice_enabled = sharedPreferences.getBoolean("", true);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        applySettings();
+
+    }
 
 //    public static class WelcomeDialog extends DialogFragment {
 //
