@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity {
 
                         Log.d("Main Activity", Integer.toString(position));
                         Bundle bundle = new Bundle();
-                         
+
                         //Gets ID for look up in DB
                         MetaData temp = metadatalist.get(position);
 
