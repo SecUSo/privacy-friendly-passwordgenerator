@@ -2,6 +2,7 @@ package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -64,6 +65,16 @@ public class GeneratePasswordDialog extends DialogFragment {
         builder.setTitle(getActivity().getString(R.string.generate_heading));
         builder.setPositiveButton(getActivity().getString(R.string.done), null);
 
+        builder.setNegativeButton(getActivity().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                cancelUpdate();
+            }
+        });
+
+
+
         Button generateButton = (Button) rootView.findViewById(R.id.generatorButton);
         generateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +130,9 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         }
 
+    }
+    public void cancelUpdate() {
+        this.dismiss();
     }
 
 }
