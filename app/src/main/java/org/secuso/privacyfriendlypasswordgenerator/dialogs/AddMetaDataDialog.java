@@ -24,7 +24,8 @@ public class AddMetaDataDialog extends DialogFragment {
     Activity activity;
     View rootView;
     MetaDataSQLiteHelper database;
-    
+    boolean closeDialog;
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -97,6 +98,7 @@ public class AddMetaDataDialog extends DialogFragment {
         if (domain.getText().toString().length() == 0) {
             Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_domain_message), Toast.LENGTH_SHORT);
             toast.show();
+            closeDialog = false;
         } else {
 
             MetaData metaDataToAdd = new MetaData(0, 0,
@@ -111,10 +113,32 @@ public class AddMetaDataDialog extends DialogFragment {
 
             activity.recreate();
 
-            this.dismiss();
+            closeDialog = true;
         }
 
+    }
 
+    @Override
+    public void onStart()
+    {
+        super.onStart();    //super.onStart() is where dialog.show() is actually called on the underlying dialog, so we have to do it after this point
+        AlertDialog d = (AlertDialog)getDialog();
+        if(d != null)
+        {
+            Button positiveButton = (Button) d.getButton(Dialog.BUTTON_POSITIVE);
+            positiveButton.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    addMetaData();
+                    if(closeDialog) {
+                        dismiss();
+                    }
+
+                }
+            });
+        }
     }
 
 }
