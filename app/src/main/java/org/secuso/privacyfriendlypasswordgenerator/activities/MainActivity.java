@@ -1,30 +1,23 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
-import org.secuso.privacyfriendlypasswordgenerator.dialogs.AddMetaDataDialog;
-import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
+import org.secuso.privacyfriendlypasswordgenerator.dialogs.AddMetaDataDialog;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.GeneratePasswordDialog;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.UpdateMetadataDialog;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.SwipeableRecyclerViewTouchListener;
 
 import java.util.List;
@@ -115,9 +108,6 @@ public class MainActivity extends BaseActivity {
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     deleteItem(position);
-                                    Toast toast = Toast.makeText(getBaseContext(), "Swipe left detected", Toast.LENGTH_SHORT);
-                                    toast.show();
-                                    adapter.notifyItemRemoved(position);
                                 }
                                 adapter.notifyDataSetChanged();
                             }
@@ -126,8 +116,6 @@ public class MainActivity extends BaseActivity {
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     deleteItem(position);
-                                    Toast toast = Toast.makeText(getBaseContext(), "Swipe right detected", Toast.LENGTH_SHORT);
-                                    toast.show();
                                     adapter.notifyItemRemoved(position);
                                 }
                                 adapter.notifyDataSetChanged();
@@ -172,8 +160,8 @@ public class MainActivity extends BaseActivity {
 
         final int finalPosition = position;
 
-        Snackbar.make(findViewById(android.R.id.content), "Had a snack at Snackbar", Snackbar.LENGTH_LONG)
-                .setAction("Undo", new View.OnClickListener() {
+        Snackbar.make(findViewById(android.R.id.content), "", Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.undo), new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         database.addMetaData(toDeleteMetaDataFinal);
@@ -183,6 +171,9 @@ public class MainActivity extends BaseActivity {
                         adapter.notifyDataSetChanged();
                     }
                 }).show();
+
+        adapter.notifyItemRemoved(position);
+
     }
 
 

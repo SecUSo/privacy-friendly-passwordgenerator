@@ -160,12 +160,7 @@ public class UpdateMetadataDialog extends DialogFragment {
                         boolToInt(hasLettersCheckBox.isChecked()),
                         Integer.parseInt(iterations.getText().toString())));
 
-        //TODO Make dynamic
-        Toast.makeText(activity, "ADDED", Toast.LENGTH_SHORT).show();
-        //TODO Recreate activity onDismiss
-        //activity.recreate();
-
-        //this.dismiss();
+        Toast.makeText(activity, getString(R.string.added_message), Toast.LENGTH_SHORT).show();
 
         Bundle bundle = new Bundle();
         bundle.putInt("position", position);
@@ -190,8 +185,8 @@ public class UpdateMetadataDialog extends DialogFragment {
     }
 
     public void cancelUpdate() {
-        //TODO Make dynamic
-        Toast.makeText(activity, "Update canceled", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(activity, getString(R.string.canceled_message), Toast.LENGTH_SHORT).show();
         this.dismiss();
     }
 
