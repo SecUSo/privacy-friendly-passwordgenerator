@@ -20,13 +20,14 @@ public class PasswordGenerator {
     }
 
     public void hash(int iterations) {
-        //TODO Add interations
-        try {
-            MessageDigest hasher = MessageDigest.getInstance("SHA-256");
-            hasher.update(hashValue);
-            hashValue = hasher.digest();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+        for (int i = 0; i < iterations; i++) {
+            try {
+                MessageDigest hasher = MessageDigest.getInstance("SHA-256");
+                hasher.update(hashValue);
+                hashValue = hasher.digest();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
         }
     }
 
