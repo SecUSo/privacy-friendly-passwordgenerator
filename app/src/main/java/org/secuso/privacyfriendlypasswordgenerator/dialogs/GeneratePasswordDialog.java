@@ -64,17 +64,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         builder.setView(rootView);
         builder.setIcon(R.mipmap.ic_drawer);
         builder.setTitle(getActivity().getString(R.string.generate_heading));
-        builder.setPositiveButton(getActivity().getString(R.string.done), null);
-
-        builder.setNegativeButton(getActivity().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                cancelUpdate();
-            }
-        });
-
-
+        builder.setPositiveButton(getActivity().getString(R.string.cancel), null);
 
         Button generateButton = (Button) rootView.findViewById(R.id.generatorButton);
         generateButton.setOnClickListener(new View.OnClickListener() {
@@ -126,9 +116,6 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         }
 
-    }
-    public void cancelUpdate() {
-        this.dismiss();
     }
 
 }

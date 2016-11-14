@@ -52,8 +52,10 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_METADATA);
 
+        onCreate(sqLiteDatabase);
     }
 
     public void addMetaData(MetaData metaData) {
@@ -114,10 +116,10 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
                 new String[] { String.valueOf(metaData.getID()) });
     }
 
-    public void deleteMetaData(MetaData metaData) {
+    public void deleteMetaData(int id) {
         SQLiteDatabase database = this.getWritableDatabase();
         database.delete(TABLE_METADATA, KEY_ID + " = ?",
-                new String[] { String.valueOf(metaData.getID()) });
+                new String[] { Integer.toString(id) });
         database.close();
     }
 

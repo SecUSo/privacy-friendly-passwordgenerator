@@ -23,6 +23,7 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.GeneratePasswordDialog;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.UpdateMetadataDialog;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.SwipeableRecyclerViewTouchListener;
 
 import java.util.List;
 
@@ -43,11 +44,17 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        database = new MetaDataSQLiteHelper(this);
+        metadatalist = database.getAllmetaData();
+
+        adapter = new MetaDataAdapter(metadatalist);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setAdapter(adapter);
+
         //No screenshot
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
                 WindowManager.LayoutParams.FLAG_SECURE);
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -79,7 +86,46 @@ public class MainActivity extends BaseActivity {
                 })
         );
 
-        database = new MetaDataSQLiteHelper(this);
+        SwipeableRecyclerViewTouchListener swipeTouchListener =
+                new SwipeableRecyclerViewTouchListener(recyclerView,
+                        new SwipeableRecyclerViewTouchListener.SwipeListener() {
+                            @Override
+                            public boolean canSwipeLeft(int position) {
+                                return true;
+                            }
+
+                            @Override
+                            public boolean canSwipeRight(int position) {
+                                return true;
+                            }
+                            @Override
+                            public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    metadatalist.remove(position);
+                                    //MetaData tempData = database.getMetaData(position + 1 );
+                                    //Log.d("DELETE IT",  tempData.getDOMAIN());
+                                    database.deleteMetaData(position + 1);
+                                    Toast toast = Toast.makeText(getBaseContext(), "Swipe left detected", Toast.LENGTH_SHORT);
+                                    toast.show();
+                                    adapter.notifyItemRemoved(position);
+                                }
+                                adapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    Toast toast = Toast.makeText(getBaseContext(), "Swipe right detected", Toast.LENGTH_SHORT);
+                                    toast.show();
+                                    adapter.notifyItemRemoved(position);
+                                }
+                                adapter.notifyDataSetChanged();
+                            }
+                        });
+
+        recyclerView.addOnItemTouchListener(swipeTouchListener);
+
+
 
 //        Log.d("Insert: ", "Inserting ..");
 //        database.addMetaData(new MetaData(1, "first.de", 13, 1, 1, 1, 1));
@@ -88,16 +134,13 @@ public class MainActivity extends BaseActivity {
 //        database.addMetaData(new MetaData(1, "fourth.de", 16, 1, 1, 1, 1));
 
         Log.d("Reading: ", "Reading all data..");
-        List<MetaData> metadatalist = database.getAllmetaData();
 
 //        for (MetaData cn : contacts) {
 //            String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Phone: " + cn.getPhoneNumber();
 //            // Writing Contacts to log
 //            Log.d("Name: ", log);
 
-        adapter = new MetaDataAdapter(metadatalist);
 
-        recyclerView.setAdapter(adapter);
 
         FloatingActionButton addFab = (FloatingActionButton) findViewById(R.id.add_fab);
         if (addFab != null) {
