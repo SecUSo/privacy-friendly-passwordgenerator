@@ -39,7 +39,7 @@
 
     <string name="add_new_metadata_heading">1. New meta data</string>
     <string name="passwords_heading">2. Your passwords</string>
-    
+
     <!--###GENERATOR###-->
     <string name="generate_heading">Generate Password</string>
     <string name="generate">Generate</string>
@@ -66,7 +66,11 @@
 
     <!-- ###SETTINGS### -->
     <string name="title_activity_settings">Settings</string>
-
+    <string name="title_password_settings">Password settings</string>
+    <string name="title_bind_password">Bind passwords to device</string>
+    <string name="summary_bind_password">Create unique passwords per device.</string>
+    <string name="title_clipboard">Copy passwords to clipboard</string>
+    <string name="summary_clipboard">Passwords will automatically copied after generation.</string>
 
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>

@@ -2,18 +2,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        android:title="Password Settings">
+        android:title="@string/title_password_settings">
         <SwitchPreference
-            android:title="Bind passwords to device"
+            android:title="@string/title_bind_password"
             android:id="@+id/pref_binding_switch"
             android:key="bindToDevice_enabled"
-            android:summary="Create unique passwords per device."
+            android:summary="@string/summary_bind_password"
             android:defaultValue="false"/>
         <SwitchPreference
-            android:title="Copy passwords to clipboard"
+            android:title="@string/title_clipboard"
             android:id="@+id/pref_clipboard_switch"
             android:key="clipboard_enabled"
-            android:summary="Passwords will automatically copied after generation"
+            android:summary="@string/summary_clipboard"
             android:defaultValue="false"/>
     </PreferenceCategory>
 
