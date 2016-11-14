@@ -21,12 +21,14 @@ public class AddMetaDataDialog extends DialogFragment {
 
     //TODO: Iteration
 
+    Activity activity;
     View rootView;
     MetaDataSQLiteHelper database;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        this.activity = activity;
     }
 
     @Override
@@ -94,6 +96,8 @@ public class AddMetaDataDialog extends DialogFragment {
                 boolToInt(hasSymbolsCheckBox.isChecked()),
                 boolToInt(hasLettersCheckBox.isChecked()),
                 15));
+
+        activity.recreate();
 
         this.dismiss();
     }
