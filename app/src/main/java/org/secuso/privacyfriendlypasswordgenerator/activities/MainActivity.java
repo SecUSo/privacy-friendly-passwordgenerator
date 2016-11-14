@@ -1,7 +1,9 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
@@ -47,6 +49,13 @@ public class MainActivity extends BaseActivity {
         database = new MetaDataSQLiteHelper(this);
         metadatalist = database.getAllmetaData();
 
+        int current = 0;
+        for (MetaData data : metadatalist) {
+            data.setPOSITIONID(current);
+            current++;
+        }
+
+
         adapter = new MetaDataAdapter(metadatalist);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -66,7 +75,11 @@ public class MainActivity extends BaseActivity {
 
                         Log.d("Main Activity", Integer.toString(position));
                         Bundle bundle = new Bundle();
-                        bundle.putInt("position", position);
+                         
+                        //Gets ID for look up in DB
+                        MetaData temp = metadatalist.get(position);
+
+                        bundle.putInt("position", temp.getID());
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
                         generatePasswordDialog.setArguments(bundle);
@@ -98,13 +111,11 @@ public class MainActivity extends BaseActivity {
                             public boolean canSwipeRight(int position) {
                                 return true;
                             }
+
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    metadatalist.remove(position);
-                                    //MetaData tempData = database.getMetaData(position + 1 );
-                                    //Log.d("DELETE IT",  tempData.getDOMAIN());
-                                    database.deleteMetaData(position + 1);
+                                    deleteItem(position);
                                     Toast toast = Toast.makeText(getBaseContext(), "Swipe left detected", Toast.LENGTH_SHORT);
                                     toast.show();
                                     adapter.notifyItemRemoved(position);
@@ -115,6 +126,7 @@ public class MainActivity extends BaseActivity {
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
+                                    deleteItem(position);
                                     Toast toast = Toast.makeText(getBaseContext(), "Swipe right detected", Toast.LENGTH_SHORT);
                                     toast.show();
                                     adapter.notifyItemRemoved(position);
@@ -124,22 +136,6 @@ public class MainActivity extends BaseActivity {
                         });
 
         recyclerView.addOnItemTouchListener(swipeTouchListener);
-
-
-
-//        Log.d("Insert: ", "Inserting ..");
-//        database.addMetaData(new MetaData(1, "first.de", 13, 1, 1, 1, 1));
-//        database.addMetaData(new MetaData(1, "second.de", 14, 1, 1, 1, 1));
-//        database.addMetaData(new MetaData(1, "third.de", 14, 1, 1, 1, 1));
-//        database.addMetaData(new MetaData(1, "fourth.de", 16, 1, 1, 1, 1));
-
-        Log.d("Reading: ", "Reading all data..");
-
-//        for (MetaData cn : contacts) {
-//            String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Phone: " + cn.getPhoneNumber();
-//            // Writing Contacts to log
-//            Log.d("Name: ", log);
-
 
 
         FloatingActionButton addFab = (FloatingActionButton) findViewById(R.id.add_fab);
@@ -162,6 +158,28 @@ public class MainActivity extends BaseActivity {
     @Override
     protected int getNavigationDrawerID() {
         return R.id.nav_example;
+    }
+
+    public void deleteItem(int position) {
+
+        MetaData toDeleteMetaData = metadatalist.get(position);
+
+        //Removes MetaData from DB
+        database.deleteMetaData(toDeleteMetaData);
+
+        //Removes MetaData from List in View
+        metadatalist.remove(position);
+
+        Toast toast = Toast.makeText(getBaseContext(), "Swipe left detected", Toast.LENGTH_SHORT);
+        toast.show();
+
+        Snackbar.make(findViewById(android.R.id.content), "Had a snack at Snackbar", Snackbar.LENGTH_LONG)
+                .setAction("Undo", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                }).show();
     }
 
 

@@ -103,10 +103,8 @@ public class UpdatePasswordDialog extends DialogFragment {
             //generate old password
             PasswordGenerator generatorOld = new PasswordGenerator();
             generatorOld.initialize(
-                    oldMetaData.getDOMAIN(), masterpassword);
-            generatorOld.hash(oldMetaData.getLENGTH());
+                    oldMetaData.getDOMAIN(), masterpassword, oldMetaData.getLENGTH());
 
-            //TODO integrate iteration
             String passwordOld = generatorOld.getPassword(oldMetaData.getHAS_SYMBOLS(), oldMetaData.getHAS_LETTERS(), oldMetaData.getHAS_NUMBERS(), oldMetaData.getLENGTH());
             textViewOldPassword.setText(passwordOld);
 
@@ -115,8 +113,7 @@ public class UpdatePasswordDialog extends DialogFragment {
 
             PasswordGenerator generator = new PasswordGenerator();
             generator.initialize(
-                    metaData.getDOMAIN(), masterpassword);
-            generator.hash(metaData.getLENGTH());
+                    metaData.getDOMAIN(), masterpassword, metaData.getLENGTH());
 
             //TODO integrate iteration
             String passwordNew = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
@@ -126,7 +123,7 @@ public class UpdatePasswordDialog extends DialogFragment {
     }
 
     public void setOldMetaData(Bundle bundle) {
-        oldMetaData = new MetaData(1,
+        oldMetaData = new MetaData(0, 0,
                 bundle.getString("olddomain"),
                 bundle.getInt("oldlength"),
                 bundle.getInt("oldnumbers"),

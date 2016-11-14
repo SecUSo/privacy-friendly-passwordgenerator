@@ -42,7 +42,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         String CREATE_METADATA_TABLE = "CREATE TABLE " + TABLE_METADATA +
                 "(" +
                 KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                KEY_POSITION_ID + " INTEGER," +
+                //KEY_POSITION_ID + " INTEGER," +
                 KEY_DOMAIN + " TEXT NOT NULL," +
                 KEY_LENGTH + " INTEGER," +
                 KEY_HAS_NUMBERS + " INTEGER," +
@@ -64,7 +64,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_POSITION_ID, metaData.getPOSITIONID());
+        //values.put(KEY_POSITION_ID, metaData.getPOSITIONID());
         values.put(KEY_DOMAIN, metaData.getDOMAIN());
         values.put(KEY_LENGTH, metaData.getLENGTH());
         values.put(KEY_HAS_NUMBERS, metaData.getHAS_NUMBERS());
@@ -90,13 +90,13 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
             do {
                 metaData = new MetaData();
                 metaData.setID(Integer.parseInt(cursor.getString(0)));
-                metaData.setPOSITIONID(Integer.parseInt(cursor.getString(1)));
-                metaData.setDOMAIN(cursor.getString(2));
-                metaData.setLENGTH(Integer.parseInt(cursor.getString(3)));
-                metaData.setHAS_NUMBERS(Integer.parseInt(cursor.getString(4)));
-                metaData.setHAS_SYMBOLS(Integer.parseInt(cursor.getString(5)));
-                metaData.setHAS_LETTERS(Integer.parseInt(cursor.getString(6)));
-                metaData.setITERATION(Integer.parseInt(cursor.getString(7)));
+                //metaData.setPOSITIONID(Integer.parseInt(cursor.getString(1)));
+                metaData.setDOMAIN(cursor.getString(1));
+                metaData.setLENGTH(Integer.parseInt(cursor.getString(2)));
+                metaData.setHAS_NUMBERS(Integer.parseInt(cursor.getString(3)));
+                metaData.setHAS_SYMBOLS(Integer.parseInt(cursor.getString(4)));
+                metaData.setHAS_LETTERS(Integer.parseInt(cursor.getString(5)));
+                metaData.setITERATION(Integer.parseInt(cursor.getString(6)));
 
                 metaDataList.add(metaData);
             } while (cursor.moveToNext());
@@ -109,7 +109,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_POSITION_ID, metaData.getPOSITIONID());
+        //values.put(KEY_POSITION_ID, metaData.getPOSITIONID());
         values.put(KEY_DOMAIN, metaData.getDOMAIN());
         values.put(KEY_LENGTH, metaData.getLENGTH());
         values.put(KEY_HAS_NUMBERS, metaData.getHAS_NUMBERS());
@@ -131,7 +131,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
     public MetaData getMetaData(int id) {
         SQLiteDatabase database = this.getWritableDatabase();
 
-        Cursor cursor = database.query(TABLE_METADATA, new String[]{KEY_ID, KEY_POSITION_ID,
+        Cursor cursor = database.query(TABLE_METADATA, new String[]{KEY_ID,
                         KEY_DOMAIN, KEY_LENGTH, KEY_HAS_NUMBERS, KEY_HAS_SYMBOLS, KEY_HAS_LETTERS, ITERATION}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
@@ -139,13 +139,13 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
 
         if( cursor != null && cursor.moveToFirst() ){
             metaData.setID(Integer.parseInt(cursor.getString(0)));
-            metaData.setPOSITIONID(Integer.parseInt(cursor.getString(1)));
-            metaData.setDOMAIN(cursor.getString(2));
-            metaData.setLENGTH(Integer.parseInt(cursor.getString(3)));
-            metaData.setHAS_NUMBERS(Integer.parseInt(cursor.getString(4)));
-            metaData.setHAS_SYMBOLS(Integer.parseInt(cursor.getString(5)));
-            metaData.setHAS_LETTERS(Integer.parseInt(cursor.getString(6)));
-            metaData.setITERATION(Integer.parseInt(cursor.getString(7)));
+            //metaData.setPOSITIONID(Integer.parseInt(cursor.getString(1)));
+            metaData.setDOMAIN(cursor.getString(1));
+            metaData.setLENGTH(Integer.parseInt(cursor.getString(2)));
+            metaData.setHAS_NUMBERS(Integer.parseInt(cursor.getString(3)));
+            metaData.setHAS_SYMBOLS(Integer.parseInt(cursor.getString(4)));
+            metaData.setHAS_LETTERS(Integer.parseInt(cursor.getString(5)));
+            metaData.setITERATION(Integer.parseInt(cursor.getString(6)));
             cursor.close();
         }
 

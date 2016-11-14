@@ -11,9 +11,10 @@ public class PasswordGenerator {
 
     private byte[] hashValue;
 
-    public void initialize(String domain, String masterPassword) {
+    public void initialize(String domain, String masterPassword, int length) {
         try {
             hashValue = (domain + masterPassword + "secuso ist toll").getBytes("UTF-8");
+            hash(length);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

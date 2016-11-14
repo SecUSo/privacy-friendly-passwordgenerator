@@ -152,7 +152,7 @@ public class UpdateMetadataDialog extends DialogFragment {
         EditText iterations = (EditText) rootView.findViewById(R.id.EditTextIterationUpdate);
 
         database.updateMetaData(
-                new MetaData(position,
+                new MetaData(position, position,
                         domain.getText().toString(),
                         seekBarLength.getProgress() + 4,
                         boolToInt(hasNumbersCheckBox.isChecked()),

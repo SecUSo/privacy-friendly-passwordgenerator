@@ -26,7 +26,6 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
     public MetaDataAdapter(List<MetaData> metaData) {
 
         this.metaDataList = metaData;
-        //initialMetaData();
     }
 
 
@@ -56,24 +55,6 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
     public int getItemCount() {
         return metaDataList.size();
     }
-
-//    private void initialMetaData() {
-//
-//        metaDataList = new ArrayList<>();
-//
-//        MetaData a = new MetaData(1, "google.de", 13, 0, 0, 0, 1);
-//        metaDataList.add(a);
-//
-//        MetaData b = new MetaData(1, "amazon.de", 14, 1, 1, 1, 2);
-//        metaDataList.add(b);
-//
-//        MetaData c = new MetaData(1, "gmx.de", 15, 1, 1, 1, 5);
-//        metaDataList.add(c);
-//
-//        MetaData d = new MetaData(1, "web.de", 16, 1, 1, 1, 11);
-//        metaDataList.add(d);
-//    }
-
 
     public class MetaDataViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;

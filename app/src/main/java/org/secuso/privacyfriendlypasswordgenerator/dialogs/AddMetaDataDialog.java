@@ -19,8 +19,6 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper
 
 public class AddMetaDataDialog extends DialogFragment {
 
-    //TODO: Iteration
-
     Activity activity;
     View rootView;
     MetaDataSQLiteHelper database;
@@ -89,14 +87,15 @@ public class AddMetaDataDialog extends DialogFragment {
         EditText domain = (EditText) rootView.findViewById(R.id.editTextDomain);
         EditText iterations = (EditText) rootView.findViewById(R.id.EditTextIteration);
 
-        database.addMetaData(
-        new MetaData(1,
+        MetaData metaDataToAdd = new MetaData(0, 0,
                 domain.getText().toString(),
                 seekBarLength.getProgress() + 4 ,
                 boolToInt(hasNumbersCheckBox.isChecked()),
                 boolToInt(hasSymbolsCheckBox.isChecked()),
                 boolToInt(hasLettersCheckBox.isChecked()),
-                Integer.parseInt(iterations.getText().toString())));
+                Integer.parseInt(iterations.getText().toString()));
+
+        database.addMetaData(metaDataToAdd);
 
         activity.recreate();
 

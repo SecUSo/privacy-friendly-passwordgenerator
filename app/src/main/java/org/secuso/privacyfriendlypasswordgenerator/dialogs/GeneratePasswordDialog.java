@@ -47,7 +47,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         Bundle bundle = getArguments();
 
         if (bundle != null) {
-            position = bundle.getInt("position") + 1;
+            position = bundle.getInt("position");
         } else {
             position = -1;
         }
@@ -96,8 +96,7 @@ public class GeneratePasswordDialog extends DialogFragment {
 
                 PasswordGenerator generator = new PasswordGenerator();
                 generator.initialize(
-                        metaData.getDOMAIN(), editTextMasterpassword.getText().toString());
-                generator.hash(metaData.getLENGTH());
+                        metaData.getDOMAIN(), editTextMasterpassword.getText().toString(), metaData.getLENGTH());
 
                 Log.d("Generator", "initialized");
                 Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
