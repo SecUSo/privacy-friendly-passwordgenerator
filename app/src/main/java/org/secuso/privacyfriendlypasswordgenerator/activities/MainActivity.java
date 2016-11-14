@@ -47,19 +47,18 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         database = new MetaDataSQLiteHelper(this);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
         metadatalist = database.getAllmetaData();
+
+        adapter = new MetaDataAdapter(metadatalist);
+        recyclerView.setAdapter(adapter);
 
         int current = 0;
         for (MetaData data : metadatalist) {
             data.setPOSITIONID(current);
             current++;
         }
-
-
-        adapter = new MetaDataAdapter(metadatalist);
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        recyclerView.setAdapter(adapter);
 
         //No screenshot
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
@@ -163,6 +162,7 @@ public class MainActivity extends BaseActivity {
     public void deleteItem(int position) {
 
         MetaData toDeleteMetaData = metadatalist.get(position);
+        final MetaData toDeleteMetaDataFinal = toDeleteMetaData;
 
         //Removes MetaData from DB
         database.deleteMetaData(toDeleteMetaData);
@@ -170,14 +170,17 @@ public class MainActivity extends BaseActivity {
         //Removes MetaData from List in View
         metadatalist.remove(position);
 
-        Toast toast = Toast.makeText(getBaseContext(), "Swipe left detected", Toast.LENGTH_SHORT);
-        toast.show();
+        final int finalPosition = position;
 
         Snackbar.make(findViewById(android.R.id.content), "Had a snack at Snackbar", Snackbar.LENGTH_LONG)
                 .setAction("Undo", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        database.addMetaData(toDeleteMetaDataFinal);
+                        metadatalist.add(finalPosition, toDeleteMetaDataFinal);
 
+                        adapter.notifyItemInserted(finalPosition);
+                        adapter.notifyDataSetChanged();
                     }
                 }).show();
     }
