@@ -1,4 +1,4 @@
-package org.secuso.privacyfriendlypasswordgenerator;
+package org.secuso.privacyfriendlypasswordgenerator.helpers;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -42,7 +42,7 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        View view = inflater.inflate(R.layout.dialog_generate_password, null);
+        rootView = inflater.inflate(R.layout.dialog_generate_password, null);
 
         Bundle bundle = getArguments();
 
@@ -54,13 +54,14 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         this.database = new MetaDataSQLiteHelper(getActivity());
         metaData = database.getMetaData(position);
-        TextView domain = (TextView) view.findViewById(R.id.domainHeadingTextView);
+        TextView domain = (TextView) rootView.findViewById(R.id.domainHeadingTextView);
 
         domain.setText(metaData.getDOMAIN());
 
-        rootView = view;
+        TextView iteration = (TextView) rootView.findViewById(R.id.textViewIteration);
+        iteration.setText(Integer.toString(metaData.getITERATION()));
 
-        builder.setView(view);
+        builder.setView(rootView);
         builder.setIcon(R.mipmap.ic_drawer);
         builder.setTitle(getActivity().getString(R.string.generate_heading));
         builder.setPositiveButton(getActivity().getString(R.string.done), null);
@@ -112,16 +113,11 @@ public class GeneratePasswordDialog extends DialogFragment {
                 Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
                 Log.d("Generator", "Domain: " + metaData.getDOMAIN());
 
-                //TODO integrate iteration
                 String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
 
                 Log.d("Generator", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
                 Log.d("Generator", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
                 Log.d("Generator", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
-
-                //TODO integrate iteration
-                TextView iteration = (TextView) rootView.findViewById(R.id.textViewIteration);
-                //iteration.setText(metaData.getITERATION());
 
                 TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
                 textViewPassword.setText(password);

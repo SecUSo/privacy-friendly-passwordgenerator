@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import org.secuso.privacyfriendlypasswordgenerator.RecyclerItemClickListener;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.AddMetaDataDialog;
-import org.secuso.privacyfriendlypasswordgenerator.MetaDataAdapter;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
