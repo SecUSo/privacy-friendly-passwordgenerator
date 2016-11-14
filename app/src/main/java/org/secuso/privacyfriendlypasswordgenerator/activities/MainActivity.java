@@ -62,6 +62,7 @@ public class MainActivity extends BaseActivity {
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getBaseContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+
                     @Override
                     public void onItemClick(View view, int position) {
 
@@ -82,7 +83,11 @@ public class MainActivity extends BaseActivity {
                     public void onLongItemClick(View view, int position) {
                         Log.d("Main Activity", Integer.toString(position));
                         Bundle bundle = new Bundle();
-                        bundle.putInt("position", position);
+
+                        //Gets ID for look up in DB
+                        MetaData temp = metadatalist.get(position);
+
+                        bundle.putInt("position", temp.getID());
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
                         updateMetadataDialog.setArguments(bundle);

@@ -70,26 +70,4 @@
         android:max="12"
         android:progress="6" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/textViewIterationHeadingUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/iteration" />
-
-        <EditText
-            android:id="@+id/EditTextIterationUpdate"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:maxLength="4"
-            android:inputType="number"
-            android:layout_toEndOf="@+id/textViewIterationHeadingUpdate"/>
-
-    </RelativeLayout>
-
 </LinearLayout>

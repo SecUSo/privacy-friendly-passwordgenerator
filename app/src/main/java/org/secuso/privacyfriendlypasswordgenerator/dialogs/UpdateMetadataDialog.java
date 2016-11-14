@@ -53,7 +53,7 @@ public class UpdateMetadataDialog extends DialogFragment {
         Bundle bundle = getArguments();
 
         if (bundle != null) {
-            position = bundle.getInt("position") + 1;
+            position = bundle.getInt("position");
         } else {
             position = -1;
         }
@@ -76,7 +76,7 @@ public class UpdateMetadataDialog extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                updateMetadata();
+                updateMetadata(oldMetaData.getITERATION());
 
             }
         });
@@ -119,9 +119,6 @@ public class UpdateMetadataDialog extends DialogFragment {
         TextView textViewLengthDisplayUpdate = (TextView) rootView.findViewById(R.id.textViewLengthDisplayUpdate);
         textViewLengthDisplayUpdate.setText(Integer.toString(metaData.getLENGTH()));
 
-        EditText iterations = (EditText) rootView.findViewById(R.id.EditTextIterationUpdate);
-        iterations.setText(Integer.toString(metaData.getITERATION()));
-
         final TextView finalTextViewLengthDisplayUpdate = textViewLengthDisplayUpdate;
 
         SeekBar seekBarLength = (SeekBar) rootView.findViewById(R.id.seekBarLengthUpdate);
@@ -142,14 +139,13 @@ public class UpdateMetadataDialog extends DialogFragment {
     }
 
     //TODO Find out best point of time to update metadata
-    public void updateMetadata() {
+    public void updateMetadata(int oldIteration) {
 
         SeekBar seekBarLength = (SeekBar) rootView.findViewById(R.id.seekBarLengthUpdate);
         CheckBox hasNumbersCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxNumbersUpdate);
         CheckBox hasSymbolsCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxSpecialCharacterUpdate);
         CheckBox hasLettersCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxLettersUpdate);
         EditText domain = (EditText) rootView.findViewById(R.id.editTextDomainUpdate);
-        EditText iterations = (EditText) rootView.findViewById(R.id.EditTextIterationUpdate);
 
         database.updateMetaData(
                 new MetaData(position, position,
@@ -158,7 +154,7 @@ public class UpdateMetadataDialog extends DialogFragment {
                         boolToInt(hasNumbersCheckBox.isChecked()),
                         boolToInt(hasSymbolsCheckBox.isChecked()),
                         boolToInt(hasLettersCheckBox.isChecked()),
-                        Integer.parseInt(iterations.getText().toString())));
+                        oldIteration + 1));
 
         Toast.makeText(activity, getString(R.string.added_message), Toast.LENGTH_SHORT).show();
 
