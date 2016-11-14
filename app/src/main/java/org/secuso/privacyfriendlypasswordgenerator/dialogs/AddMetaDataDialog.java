@@ -87,13 +87,19 @@ public class AddMetaDataDialog extends DialogFragment {
         EditText domain = (EditText) rootView.findViewById(R.id.editTextDomain);
         EditText iterations = (EditText) rootView.findViewById(R.id.EditTextIteration);
 
+        int iterationToAdd = 1;
+
+        if (iterations.getText().toString().length() > 0) {
+            iterationToAdd = Integer.parseInt(iterations.getText().toString());
+        }
+
         MetaData metaDataToAdd = new MetaData(0, 0,
                 domain.getText().toString(),
                 seekBarLength.getProgress() + 4 ,
                 boolToInt(hasNumbersCheckBox.isChecked()),
                 boolToInt(hasSymbolsCheckBox.isChecked()),
                 boolToInt(hasLettersCheckBox.isChecked()),
-                Integer.parseInt(iterations.getText().toString()));
+                iterationToAdd);
 
         database.addMetaData(metaDataToAdd);
 

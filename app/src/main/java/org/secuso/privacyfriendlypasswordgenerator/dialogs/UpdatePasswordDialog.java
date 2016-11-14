@@ -114,7 +114,7 @@ public class UpdatePasswordDialog extends DialogFragment {
             PasswordGenerator generator = new PasswordGenerator();
             generator.initialize(
                     metaData.getDOMAIN(), masterpassword, metaData.getLENGTH());
-            
+
             String passwordNew = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
             textViewNewPassword.setText(passwordNew);
 
