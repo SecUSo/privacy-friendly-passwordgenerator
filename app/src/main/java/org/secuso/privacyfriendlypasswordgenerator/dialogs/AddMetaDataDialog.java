@@ -8,10 +8,12 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
@@ -22,7 +24,7 @@ public class AddMetaDataDialog extends DialogFragment {
     Activity activity;
     View rootView;
     MetaDataSQLiteHelper database;
-
+    
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -92,20 +94,27 @@ public class AddMetaDataDialog extends DialogFragment {
         if (iterations.getText().toString().length() > 0) {
             iterationToAdd = Integer.parseInt(iterations.getText().toString());
         }
+        if (domain.getText().toString().length() == 0) {
+            Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_domain_message), Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
 
-        MetaData metaDataToAdd = new MetaData(0, 0,
-                domain.getText().toString(),
-                seekBarLength.getProgress() + 4 ,
-                boolToInt(hasNumbersCheckBox.isChecked()),
-                boolToInt(hasSymbolsCheckBox.isChecked()),
-                boolToInt(hasLettersCheckBox.isChecked()),
-                iterationToAdd);
+            MetaData metaDataToAdd = new MetaData(0, 0,
+                    domain.getText().toString(),
+                    seekBarLength.getProgress() + 4,
+                    boolToInt(hasNumbersCheckBox.isChecked()),
+                    boolToInt(hasSymbolsCheckBox.isChecked()),
+                    boolToInt(hasLettersCheckBox.isChecked()),
+                    iterationToAdd);
 
-        database.addMetaData(metaDataToAdd);
+            database.addMetaData(metaDataToAdd);
 
-        activity.recreate();
+            activity.recreate();
 
-        this.dismiss();
+            this.dismiss();
+        }
+
+
     }
 
 }
