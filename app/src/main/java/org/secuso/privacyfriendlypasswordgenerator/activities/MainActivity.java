@@ -22,6 +22,7 @@ import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.GeneratePasswordDialog;
+import org.secuso.privacyfriendlypasswordgenerator.dialogs.UpdateMetadataDialog;
 
 import java.util.List;
 
@@ -67,7 +68,13 @@ public class MainActivity extends BaseActivity {
 
                     @Override
                     public void onLongItemClick(View view, int position) {
-
+                        Log.d("Main Activity", Integer.toString(position));
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("position", position);
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
+                        updateMetadataDialog.setArguments(bundle);
+                        updateMetadataDialog.show(fragmentManager, "UpdateMetadataDialog");
                     }
                 })
         );

@@ -28,6 +28,7 @@
     <string name="old_password">Old password:</string>
     <string name="new_password">New password:</string>
     <string name="master_password_description">The master password is required to generate the old and new password.</string>
+    <string name="next">Next</string>
 
 
     <!--###GENERATOR###-->
