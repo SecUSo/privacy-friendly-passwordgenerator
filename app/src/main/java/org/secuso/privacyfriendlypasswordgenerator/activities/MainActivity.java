@@ -3,10 +3,17 @@ package org.secuso.privacyfriendlypasswordgenerator.activities;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import org.secuso.privacyfriendlypasswordgenerator.RecyclerItemClickListener;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.AddMetaDataDialog;
@@ -28,21 +35,26 @@ public class MainActivity extends BaseActivity {
     private RecyclerView recyclerView;
     private MetaDataAdapter adapter;
     private List<MetaData> metadatalist;
+    MetaDataSQLiteHelper database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //No screenshot
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE);
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
         recyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(getBaseContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
+                new RecyclerItemClickListener(getBaseContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
 
                         Log.d("Main Activity", Integer.toString(position));
                         Bundle bundle = new Bundle();
@@ -53,13 +65,14 @@ public class MainActivity extends BaseActivity {
                         generatePasswordDialog.show(fragmentManager, "GeneratePasswordDialog");
                     }
 
-                    @Override public void onLongItemClick(View view, int position) {
-                        // do whatever
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
                     }
                 })
         );
 
-        MetaDataSQLiteHelper database = new MetaDataSQLiteHelper(this);
+        database = new MetaDataSQLiteHelper(this);
 
 //        Log.d("Insert: ", "Inserting ..");
 //        database.addMetaData(new MetaData(1, "first.de", 13, 1, 1, 1, 1));
@@ -94,11 +107,6 @@ public class MainActivity extends BaseActivity {
         }
 
         overridePendingTransition(0, 0);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 
     @Override
