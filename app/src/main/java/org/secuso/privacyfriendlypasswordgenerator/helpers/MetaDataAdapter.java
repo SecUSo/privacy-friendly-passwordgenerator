@@ -41,9 +41,18 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
         holder.domain.setText(metaDataList.get(position).getDOMAIN());
         holder.length.setText(Integer.toString(metaDataList.get(position).getLENGTH()));
         holder.iteration.setText(Integer.toString(metaDataList.get(position).getITERATION()));
-        holder.numbers = metaDataList.get(position).getHAS_NUMBERS();
-        holder.symbols = metaDataList.get(position).getHAS_SYMBOLS();
-        holder.letters = metaDataList.get(position).getHAS_LETTERS();
+
+        if (metaDataList.get(position).getHAS_LETTERS() == 1) {
+            holder.hasLetters.setText("Letters");
+        }
+
+        if (metaDataList.get(position).getHAS_SYMBOLS() == 1) {
+            holder.hasSymbols.setText("Special Characters");
+        }
+
+        if (metaDataList.get(position).getHAS_NUMBERS() == 1) {
+            holder.hasNumbers.setText("Numbers");
+        }
     }
 
     @Override
@@ -61,12 +70,9 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
         TextView domain;
         TextView length;
         TextView iteration;
-        ImageView numbersImageView = (ImageView) itemView.findViewById(R.id.hasNumbersImageView);
-        ImageView symbolsImageView = (ImageView) itemView.findViewById(R.id.hasSymbolsImageView);
-        ImageView lettersImageView = (ImageView) itemView.findViewById(R.id.hasLettersImageView);
-        int numbers;
-        int symbols;
-        int letters;
+        TextView hasNumbers;
+        TextView hasSymbols;
+        TextView hasLetters;
 
         public MetaDataViewHolder(View itemView) {
             super(itemView);
@@ -74,18 +80,9 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
             domain = (TextView) itemView.findViewById(R.id.domainTextView);
             length = (TextView) itemView.findViewById(R.id.length);
             iteration = (TextView) itemView.findViewById(R.id.iteration);
-
-            //TODO: Display letters, symbols, numbers
-            if (numbers == 1) {
-                numbersImageView.setVisibility(View.VISIBLE);
-            }
-            if (symbols == 1) {
-                symbolsImageView.setVisibility(View.VISIBLE);
-            }
-            if (letters == 1) {
-                lettersImageView.setVisibility(View.VISIBLE);
-            }
-
+            hasLetters = (TextView) itemView.findViewById(R.id.hasLettersTextView);
+            hasNumbers = (TextView) itemView.findViewById(R.id.hasNumbersTextView);
+            hasSymbols = (TextView) itemView.findViewById(R.id.hasSymbolsTextView);
         }
     }
 

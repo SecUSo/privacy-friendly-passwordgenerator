@@ -58,8 +58,6 @@ public class UpdateMetadataDialog extends DialogFragment {
             position = -1;
         }
 
-
-
         this.database = new MetaDataSQLiteHelper(getActivity());
         metaData = database.getMetaData(position);
         oldMetaData = database.getMetaData(position);
