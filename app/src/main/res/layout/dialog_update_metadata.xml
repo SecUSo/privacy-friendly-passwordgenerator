@@ -15,13 +15,13 @@
         android:text="@string/domain" />
 
     <EditText
-        android:id="@+id/editTextDomain"
+        android:id="@+id/editTextDomainUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLength="42" />
 
     <CheckBox
-        android:id="@+id/checkBoxSpecialCharacter"
+        android:id="@+id/checkBoxSpecialCharacterUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -29,14 +29,14 @@
         android:text="@string/special_characters" />
 
     <CheckBox
-        android:id="@+id/checkBoxLetters"
+        android:id="@+id/checkBoxLettersUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="@string/letters" />
 
     <CheckBox
-        android:id="@+id/checkBoxNumbers"
+        android:id="@+id/checkBoxNumbersUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
@@ -54,7 +54,7 @@
             android:text="@string/length" />
 
         <TextView
-            android:id="@+id/textViewLengthDisplay"
+            android:id="@+id/textViewLengthDisplayUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -64,7 +64,7 @@
     </RelativeLayout>
 
     <SeekBar
-        android:id="@+id/seekBarLength"
+        android:id="@+id/seekBarLengthUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="12"
@@ -74,25 +74,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/nextUpdateMetadataButton"
+        <TextView
+            android:id="@+id/textViewIterationHeadingUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/next"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_marginTop="16dp"
+            android:text="@string/iteration" />
 
-        <Button
-            android:id="@+id/cancelUpdateMetadataButton"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/EditTextIterationUpdate"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
-            android:text="@string/cancel"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_alignParentTop="true"
-            />
+            android:layout_marginStart="4dp"
+            android:maxLength="4"
+            android:layout_toEndOf="@+id/textViewIterationHeadingUpdate"/>
 
     </RelativeLayout>
 

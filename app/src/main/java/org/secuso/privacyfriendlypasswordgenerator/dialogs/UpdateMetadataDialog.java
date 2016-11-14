@@ -6,6 +6,7 @@ package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -82,6 +83,9 @@ public class UpdateMetadataDialog extends DialogFragment {
         TextView textViewLengthDisplayUpdate = (TextView) rootView.findViewById(R.id.textViewLengthDisplayUpdate);
         textViewLengthDisplayUpdate.setText(Integer.toString(metaData.getLENGTH()));
 
+        EditText iterations = (EditText) rootView.findViewById(R.id.EditTextIterationUpdate);
+        iterations.setText(Integer.toString(metaData.getITERATION()));
+
         final TextView finalTextViewLengthDisplayUpdate = textViewLengthDisplayUpdate;
 
         SeekBar seekBarLength = (SeekBar) rootView.findViewById(R.id.seekBarLengthUpdate);
@@ -99,7 +103,25 @@ public class UpdateMetadataDialog extends DialogFragment {
             }
         });
 
-        //builder.setPositiveButton(getActivity().getString(R.string.done), null);
+        builder.setPositiveButton(getActivity().getString(R.string.next), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                updateMetadata();
+
+            }
+        });
+
+        builder.setNegativeButton(getActivity().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                cancelUpdate();
+
+            }
+        });
 
         return builder.create();
     }
@@ -110,9 +132,41 @@ public class UpdateMetadataDialog extends DialogFragment {
         }
     }
 
+    public void updateMetadata() {
 
+        SeekBar seekBarLength = (SeekBar) rootView.findViewById(R.id.seekBarLengthUpdate);
+        CheckBox hasNumbersCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxNumbersUpdate);
+        CheckBox hasSymbolsCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxSpecialCharacterUpdate);
+        CheckBox hasLettersCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxLettersUpdate);
+        EditText domain = (EditText) rootView.findViewById(R.id.editTextDomainUpdate);
+        EditText iterations = (EditText) rootView.findViewById(R.id.EditTextIterationUpdate);
 
+        database.updateMetaData (
+                new MetaData(position,
+                        domain.getText().toString(),
+                        seekBarLength.getProgress() + 4 ,
+                        boolToInt(hasNumbersCheckBox.isChecked()),
+                        boolToInt(hasSymbolsCheckBox.isChecked()),
+                        boolToInt(hasLettersCheckBox.isChecked()),
+                        Integer.parseInt(iterations.getText().toString())));
 
+        //TODO Make dynamic
+        Toast.makeText(activity, "ADDED", Toast.LENGTH_SHORT).show();
+        //TODO Recreate activity onDismiss
+        //activity.recreate();
+
+        //this.dismiss();
+    }
+
+    public void cancelUpdate() {
+        //TODO Make dynamic
+        Toast.makeText(activity, "Update canceled", Toast.LENGTH_SHORT).show();
+        this.dismiss();
+    }
+
+    public int boolToInt(boolean b) {
+        return b ? 1 : 0;
+    }
 
 }
 
