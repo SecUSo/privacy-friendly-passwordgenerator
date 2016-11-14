@@ -165,7 +165,7 @@ public class MainActivity extends BaseActivity {
 
         final int finalPosition = position;
 
-        Snackbar.make(findViewById(android.R.id.content), "", Snackbar.LENGTH_LONG)
+        Snackbar.make(findViewById(android.R.id.content), getString(R.string.domain) + " " + toDeleteMetaData.getDOMAIN() + " " + getString(R.string.item_deleted), Snackbar.LENGTH_LONG)
                 .setAction(getString(R.string.undo), new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

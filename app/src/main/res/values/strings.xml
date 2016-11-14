@@ -13,6 +13,7 @@
 
     <!--###METADATA_LIST###-->
     <string name="undo">Undo</string>
+    <string name="item_deleted">deleted.</string>
 
     <!--###ADD_METADATA###-->
     <string name="add_metadata_heading">Add new meta data</string>
