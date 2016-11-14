@@ -20,6 +20,8 @@
     <string name="length">Length:</string>
     <string name="iteration">Iteration:</string>
 
+
+
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
 
@@ -29,6 +31,10 @@
     <string name="new_password">New password:</string>
     <string name="master_password_description">The master password is required to generate the old and new password.</string>
     <string name="next">Next</string>
+
+    <string name="add_new_metadata_heading">1. New meta data</string>
+
+    <string name="passwords_heading">2. Your passwords</string>
 
 
     <!--###GENERATOR###-->
