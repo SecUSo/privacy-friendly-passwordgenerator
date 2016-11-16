@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -22,7 +21,6 @@ import android.widget.Toast;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
-import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneration;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
 import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
 
@@ -112,9 +110,6 @@ public class GeneratePasswordDialog extends DialogFragment {
                 toast.show();
             } else {
                 metaData = database.getMetaData(position);
-//                Log.d("Generator", "Position: " + Integer.toString(position));
-
-                //               PasswordGenerator generator = new PasswordGenerator();
 
                 if (binding) {
                     deviceID = Settings.Secure.getString(getContext().getContentResolver(),
@@ -125,7 +120,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                     deviceID = "SECUSO";
                 }
                 //TODO add username
-                PasswordGeneration generation = new PasswordGeneration(metaData.getDOMAIN(),
+                PasswordGenerator generator = new PasswordGenerator(metaData.getDOMAIN(),
                         "TESTUSER",
                         editTextMasterpassword.getText().toString(),
                         deviceID,
@@ -133,28 +128,14 @@ public class GeneratePasswordDialog extends DialogFragment {
                         metaData.getITERATION());
 
                 //TODO integrate letters low/up
-                String password = generation.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
+                String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
+                Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
+                Log.d("Generator", "Domain: " + metaData.getDOMAIN());
 
-//                if (binding) {
-//                    generator.setDeviceID(Settings.Secure.getString(getContext().getContentResolver(),
-//                            Settings.Secure.ANDROID_ID));
-//                    Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
-//                            Settings.Secure.ANDROID_ID));
-//                } else {
-//                    generator.resetDeviceID();
-//                }
-//                generator.initialize(
-//                        metaData.getDOMAIN(), editTextMasterpassword.getText().toString(), metaData.getLENGTH());
-
-//                Log.d("Generator", "initialized");
-//                Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
-//                Log.d("Generator", "Domain: " + metaData.getDOMAIN());
-
-//                String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
-
-//                Log.d("Generator", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
-//                Log.d("Generator", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
-//                Log.d("Generator", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
+                Log.d("Generator", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
+                Log.d("Generator", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
+                Log.d("Generator", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
+                Log.d("Generator", "Iterations: " + Integer.toString(metaData.getITERATION()));
 
                 //Copy password to clipboard
                 if (clipboardSet) {
@@ -164,7 +145,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                 }
                 TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
                 textViewPassword.setText(password);
-                //Log.d("Generator", password);
+                Log.d("Generator", password);
 
             }
 

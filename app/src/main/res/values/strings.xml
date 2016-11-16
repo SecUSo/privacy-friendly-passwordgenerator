@@ -72,6 +72,12 @@
     <string name="title_clipboard">Copy passwords to clipboard</string>
     <string name="summary_clipboard">Passwords will automatically copied after generation.</string>
 
+    <string-array name="pref_hash_algorithms">
+        <item>SHA256</item>
+        <item>SHA384</item>
+        <item>SHA512</item>
+    </string-array>
+
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>
 

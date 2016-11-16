@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -18,6 +19,7 @@ import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
+import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
 
 /**
  * Created by karo on 14.11.16.
@@ -32,6 +34,9 @@ public class UpdatePasswordDialog extends DialogFragment {
     int position;
     MetaData metaData;
     MetaData oldMetaData;
+
+    String deviceID;
+    boolean binding;
 
     @Override
     public void onAttach(Activity activity) {
@@ -50,9 +55,11 @@ public class UpdatePasswordDialog extends DialogFragment {
 
         if (bundle != null) {
             position = bundle.getInt("position");
+            binding = bundle.getBoolean("bindToDevice_enabled");
             setOldMetaData(bundle);
         } else {
             position = -1;
+            binding = false;
         }
 
         this.database = new MetaDataSQLiteHelper(getActivity());
@@ -100,22 +107,72 @@ public class UpdatePasswordDialog extends DialogFragment {
 
             String masterpassword = editTextUpdateMasterpassword.getText().toString();
 
-            //generate old password
-            PasswordGenerator generatorOld = new PasswordGenerator();
-            generatorOld.initialize(
-                    oldMetaData.getDOMAIN(), masterpassword, oldMetaData.getLENGTH());
+            if (binding) {
+                deviceID = Settings.Secure.getString(getContext().getContentResolver(),
+                        Settings.Secure.ANDROID_ID);
+                Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
+                        Settings.Secure.ANDROID_ID));
+            } else {
+                deviceID = "SECUSO";
+            }
 
-            String passwordOld = generatorOld.getPassword(oldMetaData.getHAS_SYMBOLS(), oldMetaData.getHAS_LETTERS(), oldMetaData.getHAS_NUMBERS(), oldMetaData.getLENGTH());
+            //TODO USERNAME
+            //generate old password
+            PasswordGenerator generatorOld = new PasswordGenerator(
+                    oldMetaData.getDOMAIN(),
+                    "TESTUSER",
+                    masterpassword,
+                    deviceID,
+                    UTF8.encode(oldMetaData.getDOMAIN()),
+                    oldMetaData.getITERATION());
+
+            Log.d("Generator Update Old", "Length: " + Integer.toString(oldMetaData.getLENGTH()));
+            Log.d("Generator Update Old", "Domain: " + oldMetaData.getDOMAIN());
+
+            Log.d("Generator Update Old", "Symbols: " + Integer.toString(oldMetaData.getHAS_SYMBOLS()));
+            Log.d("Generator Update Old", "Letters: " + Integer.toString(oldMetaData.getHAS_LETTERS()));
+            Log.d("Generator Update Old", "Numbers: " + Integer.toString(oldMetaData.getHAS_NUMBERS()));
+            Log.d("Generator Update Old", "Iterations: " + Integer.toString(oldMetaData.getITERATION()));
+
+            //TODO Add up/low
+            String passwordOld = generatorOld.getPassword(
+                    oldMetaData.getHAS_SYMBOLS(),
+                    oldMetaData.getHAS_LETTERS(),
+                    oldMetaData.getHAS_NUMBERS(),
+                    oldMetaData.getHAS_NUMBERS(),
+                    oldMetaData.getLENGTH());
+
             textViewOldPassword.setText(passwordOld);
 
+            //TODO USERNAME
             //generate new password
             metaData = database.getMetaData(position);
 
-            PasswordGenerator generator = new PasswordGenerator();
-            generator.initialize(
-                    metaData.getDOMAIN(), masterpassword, metaData.getLENGTH());
+            PasswordGenerator generator = new PasswordGenerator(
+                    metaData.getDOMAIN(),
+                    "TESTUSER",
+                    masterpassword,
+                    deviceID,
+                    UTF8.encode(metaData.getDOMAIN()),
+                    metaData.getITERATION()
+            );
 
-            String passwordNew = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
+            Log.d("Generator Update", "Length: " + Integer.toString(metaData.getLENGTH()));
+            Log.d("Generator Update", "Domain: " + metaData.getDOMAIN());
+
+            Log.d("Generator Update", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
+            Log.d("Generator Update", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
+            Log.d("Generator Update", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
+            Log.d("Generator Update", "Iterations: " + Integer.toString(metaData.getITERATION()));
+
+            //TODO Add up/low
+            String passwordNew = generator.getPassword(
+                    metaData.getHAS_SYMBOLS(),
+                    metaData.getHAS_LETTERS(),
+                    metaData.getHAS_LETTERS(),
+                    metaData.getHAS_NUMBERS(),
+                    metaData.getLENGTH());
+
             textViewNewPassword.setText(passwordNew);
 
         }

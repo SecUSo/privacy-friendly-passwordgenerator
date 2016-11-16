@@ -97,7 +97,7 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
-//                        bundle.putBoolean("bind", bindToDevice_enabled);
+                        bundle.putBoolean("bind", bindToDevice_enabled);
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
                         updateMetadataDialog.setArguments(bundle);

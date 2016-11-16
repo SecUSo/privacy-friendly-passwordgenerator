@@ -21,6 +21,15 @@
         android:title="Metadata">
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="Experte Mode">
+        <ListPreference
+            android:title="Choose Hash Algorithm"
+            android:entries="@array/pref_hash_algorithms">
+        </ListPreference>
+    </PreferenceCategory>
+
+
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
     <!-- <EditTextPreference
