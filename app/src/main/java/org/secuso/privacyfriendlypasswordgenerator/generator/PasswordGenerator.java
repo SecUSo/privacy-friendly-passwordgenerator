@@ -30,7 +30,7 @@ public class PasswordGenerator {
                              int iterations) {
 
         //TODO add username
-        byte[] startValue = UTF8.encode(domain + "TESTUSER" + "123" + "123");
+        byte[] startValue = UTF8.encode(domain + username + masterpassword + deviceID);
 
         this.hashValue = PBKDF2.hmac("SHA512", startValue, salt, iterations);
         Clearer.zero(startValue);

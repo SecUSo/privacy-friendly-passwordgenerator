@@ -167,6 +167,7 @@ public class UpdateMetadataDialog extends DialogFragment {
         Bundle bundle = new Bundle();
         bundle.putInt("position", position);
         bundle.putString("olddomain", oldMetaData.getDOMAIN());
+        bundle.putString("oldusername", oldMetaData.getUSERNAME());
 
 //        Log.d("Update Metadata", "olddomain: " + oldMetaData.getDOMAIN());
 //        Log.d("Update Metadata", "oldlength: " + oldMetaData.getLENGTH());

@@ -39,6 +39,7 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
     @Override
     public void onBindViewHolder(MetaDataViewHolder holder, int position) {
         holder.domain.setText(metaDataList.get(position).getDOMAIN());
+        holder.username.setText(metaDataList.get(position).getUSERNAME());
         holder.length.setText(Integer.toString(metaDataList.get(position).getLENGTH()));
         holder.iteration.setText(Integer.toString(metaDataList.get(position).getITERATION()));
 
@@ -73,6 +74,7 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
     public class MetaDataViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
         TextView domain;
+        TextView username;
         TextView length;
         TextView iteration;
         TextView hasNumbers;
@@ -84,6 +86,7 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.card_view);
             domain = (TextView) itemView.findViewById(R.id.domainTextView);
+            username = (TextView) itemView.findViewById(R.id.username);
             length = (TextView) itemView.findViewById(R.id.length);
             iteration = (TextView) itemView.findViewById(R.id.iteration);
             hasLettersLow = (TextView) itemView.findViewById(R.id.hasLettersLowTextView);

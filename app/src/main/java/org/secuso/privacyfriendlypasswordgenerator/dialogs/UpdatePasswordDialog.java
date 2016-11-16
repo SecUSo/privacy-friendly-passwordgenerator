@@ -116,11 +116,10 @@ public class UpdatePasswordDialog extends DialogFragment {
                 deviceID = "SECUSO";
             }
 
-            //TODO USERNAME
             //generate old password
             PasswordGenerator generatorOld = new PasswordGenerator(
                     oldMetaData.getDOMAIN(),
-                    "TESTUSER",
+                    oldMetaData.getUSERNAME(),
                     masterpassword,
                     deviceID,
                     UTF8.encode(oldMetaData.getDOMAIN()),
@@ -128,13 +127,13 @@ public class UpdatePasswordDialog extends DialogFragment {
 
             Log.d("Generator Update Old", "Length: " + Integer.toString(oldMetaData.getLENGTH()));
             Log.d("Generator Update Old", "Domain: " + oldMetaData.getDOMAIN());
-
+            Log.d("Generator Update Old", "Username: " + oldMetaData.getUSERNAME());
             Log.d("Generator Update Old", "Symbols: " + Integer.toString(oldMetaData.getHAS_SYMBOLS()));
-            //Log.d("Generator Update Old", "Letters: " + Integer.toString(oldMetaData.getHAS_LETTERS()));
+            Log.d("Generator Update Old", "Lower: " + Integer.toString(oldMetaData.getHAS_LETTERS_LOW()));
+            Log.d("Generator Update Old", "Upper: " + Integer.toString(oldMetaData.getHAS_LETTERS_UP()));
             Log.d("Generator Update Old", "Numbers: " + Integer.toString(oldMetaData.getHAS_NUMBERS()));
             Log.d("Generator Update Old", "Iterations: " + Integer.toString(oldMetaData.getITERATION()));
 
-            //TODO Add up/low
             String passwordOld = generatorOld.getPassword(
                     oldMetaData.getHAS_SYMBOLS(),
                     oldMetaData.getHAS_LETTERS_LOW(),
@@ -144,13 +143,12 @@ public class UpdatePasswordDialog extends DialogFragment {
 
             textViewOldPassword.setText(passwordOld);
 
-            //TODO USERNAME
             //generate new password
             metaData = database.getMetaData(position);
 
             PasswordGenerator generator = new PasswordGenerator(
                     metaData.getDOMAIN(),
-                    "TESTUSER",
+                    metaData.getUSERNAME(),
                     masterpassword,
                     deviceID,
                     UTF8.encode(metaData.getDOMAIN()),
@@ -159,13 +157,13 @@ public class UpdatePasswordDialog extends DialogFragment {
 
             Log.d("Generator Update", "Length: " + Integer.toString(metaData.getLENGTH()));
             Log.d("Generator Update", "Domain: " + metaData.getDOMAIN());
-
+            Log.d("Generator Update", "Username: " + metaData.getUSERNAME());
             Log.d("Generator Update", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
-            //Log.d("Generator Update", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
             Log.d("Generator Update", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
+            Log.d("Generator Update", "Lower: " + Integer.toString(metaData.getHAS_LETTERS_LOW()));
+            Log.d("Generator Update", "Upper: " + Integer.toString(metaData.getHAS_LETTERS_UP()));
             Log.d("Generator Update", "Iterations: " + Integer.toString(metaData.getITERATION()));
 
-            //TODO Add up/low
             String passwordNew = generator.getPassword(
                     metaData.getHAS_SYMBOLS(),
                     metaData.getHAS_LETTERS_LOW(),
