@@ -7,6 +7,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -20,7 +21,9 @@ import android.widget.Toast;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
+import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneration;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
+import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
 
 import static android.content.Context.*;
 
@@ -37,6 +40,7 @@ public class GeneratePasswordDialog extends DialogFragment {
     MetaData metaData;
     Boolean binding;
     Boolean clipboardSet;
+    private byte[] salt;
 
     @Override
     public void onAttach(Activity activity) {
@@ -106,17 +110,42 @@ public class GeneratePasswordDialog extends DialogFragment {
                 metaData = database.getMetaData(position);
 //                Log.d("Generator", "Position: " + Integer.toString(position));
 
+                //               PasswordGenerator generator = new PasswordGenerator();
 
+                if (binding) {
+                    salt = UTF8.encode(Settings.Secure.getString(getContext().getContentResolver(),
+                            Settings.Secure.ANDROID_ID));
+                    Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
+                            Settings.Secure.ANDROID_ID));
+                } else {
+                    salt = UTF8.encode(metaData.getDOMAIN());
+                }
+                //TODO add username
+                PasswordGeneration generation = new PasswordGeneration(metaData.getDOMAIN(),
+                        "TESTUSER",
+                        editTextMasterpassword.getText().toString(),
+                        salt,
+                        metaData.getITERATION());
 
-                PasswordGenerator generator = new PasswordGenerator();
-                generator.initialize(
-                        metaData.getDOMAIN(), editTextMasterpassword.getText().toString(), metaData.getLENGTH());
+                //TODO integrate letters low/up
+                String password = generation.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
+
+//                if (binding) {
+//                    generator.setDeviceID(Settings.Secure.getString(getContext().getContentResolver(),
+//                            Settings.Secure.ANDROID_ID));
+//                    Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
+//                            Settings.Secure.ANDROID_ID));
+//                } else {
+//                    generator.resetDeviceID();
+//                }
+//                generator.initialize(
+//                        metaData.getDOMAIN(), editTextMasterpassword.getText().toString(), metaData.getLENGTH());
 
 //                Log.d("Generator", "initialized");
 //                Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
 //                Log.d("Generator", "Domain: " + metaData.getDOMAIN());
 
-                String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
+//                String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
 
 //                Log.d("Generator", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
 //                Log.d("Generator", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));

@@ -1,5 +1,7 @@
 package org.secuso.privacyfriendlypasswordgenerator.generator;
 
+        import android.util.Log;
+
         import java.io.UnsupportedEncodingException;
         import java.math.BigInteger;
         import java.security.MessageDigest;
@@ -11,16 +13,22 @@ public class PasswordGenerator {
 
     private byte[] hashValue;
 
-    public void setRandom(String random) {
-        this.random = random;
+    private String deviceID = "secuso";
+
+    public void setDeviceID(String deviceID) {
+        this.deviceID = deviceID;
     }
 
-    private String random = "secuso ist toll";
+    public void resetDeviceID() {
+        this.deviceID = "secuso";
+    }
 
     public void initialize(String domain, String masterPassword, int length) {
         try {
-            hashValue = (domain + masterPassword + random).getBytes("UTF-8");
+            hashValue = (domain + masterPassword + deviceID).getBytes("UTF-8");
             hash(length);
+            Log.d("DEVICE ID Generator", deviceID);
+            Log.d("DEVICE hasvalue", hashValue.toString());
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
