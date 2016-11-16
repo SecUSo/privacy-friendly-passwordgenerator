@@ -10,28 +10,27 @@ import java.util.List;
  * random. It is safe to hash often because an attacker has to hash as often as you did for
  * every try of a brute-force attack. getPassword creates a password string out of the hash
  * digest.
- * <p>
+ *
  * Class structure and idea taken from https://github.com/pinae/ctSESAM-android/
  * last access 1st November 2016
  */
 public class PasswordGenerator {
 
     private byte[] hashValue;
-    private final String defaultCharacterSetDigits = "0123456789";
-    private final String defaultCharacterSetLowerCase = "abcdefghijklmnopqrstuvwxyz";
-    private final String defaultCharacterSetUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private final String defaultCharacterSetExtra = "#!\"~|@^°$%&/()[]{}=-_+*<>;:.";
 
     public PasswordGenerator(String domain,
                              String username,
                              String masterpassword,
                              String deviceID,
                              byte[] salt,
-                             int iterations) {
-        
-        byte[] startValue = UTF8.encode(domain + username + masterpassword + deviceID);
+                             int iterations,
+                             String hashAlgorithm) {
 
-        this.hashValue = PBKDF2.hmac("SHA512", startValue, salt, iterations);
+        byte[] startValue = UTF8.encode(domain + username + masterpassword + deviceID + iterations);
+
+        hashAlgorithm = "SHA512";
+
+        this.hashValue = PBKDF2.hmac(hashAlgorithm, startValue, salt, 4096);
         Clearer.zero(startValue);
     }
 
@@ -47,21 +46,21 @@ public class PasswordGenerator {
         List<String> characterSet = new ArrayList<>();
 
         if (specialCharacters == 1) {
-            String characters = this.defaultCharacterSetExtra;
+            String characters = "#!\"~|@^°$%&/()[]{}=-_+*<>;:.";
             for (int i = 0; i < characters.length(); i++) {
                 characterSet.add(Character.toString(characters.charAt(i)));
             }
         }
 
         if (lowerCaseLetters == 1) {
-            String characters = this.defaultCharacterSetLowerCase;
+            String characters = "abcdefghijklmnopqrstuvwxyz";
             for (int i = 0; i < characters.length(); i++) {
                 characterSet.add(Character.toString(characters.charAt(i)));
             }
         }
 
         if (upperCaseLetters == 1) {
-            String characters = this.defaultCharacterSetUpperCase;
+            String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             for (int i = 0; i < characters.length(); i++) {
                 characterSet.add(Character.toString(characters.charAt(i)));
             }
@@ -69,7 +68,7 @@ public class PasswordGenerator {
         }
 
         if (numbers == 1) {
-            String characters = this.defaultCharacterSetDigits;
+            String characters = "0123456789";
             for (int i = 0; i < characters.length(); i++) {
                 characterSet.add(Character.toString(characters.charAt(i)));
             }

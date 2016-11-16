@@ -24,7 +24,7 @@ import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
 import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
 
 /**
- * Created by karo on 14.11.16.
+ * Created by yonjuni on 14.11.16.
  */
 
 public class UpdatePasswordDialog extends DialogFragment {
@@ -37,8 +37,8 @@ public class UpdatePasswordDialog extends DialogFragment {
     MetaData metaData;
     MetaData oldMetaData;
 
-    String deviceID;
     boolean bindToDevice_enabled;
+    String hashAlgorithm;
 
     @Override
     public void onAttach(Activity activity) {
@@ -48,8 +48,7 @@ public class UpdatePasswordDialog extends DialogFragment {
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        bindToDevice_enabled = sharedPreferences.getBoolean("pref_binding_switch", false);
+        loadSettings();
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -60,11 +59,9 @@ public class UpdatePasswordDialog extends DialogFragment {
 
         if (bundle != null) {
             position = bundle.getInt("position");
-            //binding = bundle.getBoolean("bindToDevice_enabled");
             setOldMetaData(bundle);
         } else {
             position = -1;
-            //binding = false;
         }
 
         this.database = new MetaDataSQLiteHelper(getActivity());
@@ -112,6 +109,7 @@ public class UpdatePasswordDialog extends DialogFragment {
 
             String masterpassword = editTextUpdateMasterpassword.getText().toString();
 
+            String deviceID;
             if (bindToDevice_enabled) {
                 deviceID = Settings.Secure.getString(getContext().getContentResolver(),
                         Settings.Secure.ANDROID_ID);
@@ -128,7 +126,8 @@ public class UpdatePasswordDialog extends DialogFragment {
                     masterpassword,
                     deviceID,
                     UTF8.encode(oldMetaData.getDOMAIN()),
-                    oldMetaData.getITERATION());
+                    oldMetaData.getITERATION(),
+                    hashAlgorithm);
 
             Log.d("Generator Update Old", "Length: " + Integer.toString(oldMetaData.getLENGTH()));
             Log.d("Generator Update Old", "Domain: " + oldMetaData.getDOMAIN());
@@ -159,8 +158,8 @@ public class UpdatePasswordDialog extends DialogFragment {
                     masterpassword,
                     deviceID,
                     UTF8.encode(metaData.getDOMAIN()),
-                    metaData.getITERATION()
-            );
+                    metaData.getITERATION(),
+                    hashAlgorithm);
 
             Log.d("Generator Update", "Length: " + Integer.toString(metaData.getLENGTH()));
             Log.d("Generator Update", "Domain: " + metaData.getDOMAIN());
@@ -195,7 +194,7 @@ public class UpdatePasswordDialog extends DialogFragment {
                 bundle.getInt("oldlettersup"),
                 bundle.getInt("oldletterslow"),
                 bundle.getInt("olditeration")
-                );
+        );
 
 //        Log.d("Update Passwords", "olddomain: " + oldMetaData.getDOMAIN());
 //        Log.d("Update Passwords", "oldlength: " + oldMetaData.getLENGTH());
@@ -205,4 +204,11 @@ public class UpdatePasswordDialog extends DialogFragment {
 //        Log.d("Update Passwords", "olditeration: " + oldMetaData.getITERATION());
 
     }
+
+    public void loadSettings() {
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        bindToDevice_enabled = sharedPreferences.getBoolean("pref_binding_switch", false);
+        hashAlgorithm = sharedPreferences.getString("hash_algorithm", "SHA512");
+    }
+
 }

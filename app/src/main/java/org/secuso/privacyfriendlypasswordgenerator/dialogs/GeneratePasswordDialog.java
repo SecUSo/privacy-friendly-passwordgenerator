@@ -39,7 +39,7 @@ public class GeneratePasswordDialog extends DialogFragment {
     MetaData metaData;
     Boolean bindToDevice_enabled;
     Boolean clipboard_enabled;
-    private String deviceID;
+    String hashAlgorithm;
 
     @Override
     public void onAttach(Activity activity) {
@@ -50,10 +50,7 @@ public class GeneratePasswordDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        clipboard_enabled = sharedPreferences.getBoolean("pref_clipboard_switch", false);
-        bindToDevice_enabled = sharedPreferences.getBoolean("pref_binding_switch", false);
-
+        loadSettings();
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -63,13 +60,8 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         if (bundle != null) {
             position = bundle.getInt("position");
-//            binding = bundle.getBoolean("bind");
-//            clipboardSet = bundle.getBoolean("clipboard");
-
         } else {
             position = -1;
-//            binding = false;
-//            clipboardSet = false;
         }
 
         this.database = new MetaDataSQLiteHelper(getActivity());
@@ -79,7 +71,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         domain.setText(metaData.getDOMAIN());
 
         TextView iteration = (TextView) rootView.findViewById(R.id.textViewIteration);
-        iteration.setText(Integer.toString(metaData.getITERATION()));
+        iteration.setText(String.valueOf(metaData.getITERATION()));
 
         builder.setView(rootView);
         builder.setIcon(R.mipmap.ic_drawer);
@@ -105,14 +97,13 @@ public class GeneratePasswordDialog extends DialogFragment {
             Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
             toast.show();
         } else {
-//            Log.d("Generator"," Generator Button pressed");
-
             if (position < 0) {
                 Toast toast = Toast.makeText(activity.getBaseContext(), "PROBLEM", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
                 metaData = database.getMetaData(position);
 
+                String deviceID;
                 if (bindToDevice_enabled) {
                     deviceID = Settings.Secure.getString(getContext().getContentResolver(),
                             Settings.Secure.ANDROID_ID);
@@ -127,16 +118,17 @@ public class GeneratePasswordDialog extends DialogFragment {
                         editTextMasterpassword.getText().toString(),
                         deviceID,
                         UTF8.encode(metaData.getDOMAIN()),
-                        metaData.getITERATION());
+                        metaData.getITERATION(),
+                        hashAlgorithm);
 
                 String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS_LOW(), metaData.getHAS_LETTERS_UP(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
-                Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
-                Log.d("Generator", "Domain: " + metaData.getDOMAIN());
-
-                Log.d("Generator", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
-                //Log.d("Generator", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
-                Log.d("Generator", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
-                Log.d("Generator", "Iterations: " + Integer.toString(metaData.getITERATION()));
+//                Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
+//                Log.d("Generator", "Domain: " + metaData.getDOMAIN());
+//
+//                Log.d("Generator", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
+//                //Log.d("Generator", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
+//                Log.d("Generator", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
+//                Log.d("Generator", "Iterations: " + Integer.toString(metaData.getITERATION()));
 
                 //Copy password to clipboard
                 if (clipboard_enabled) {
@@ -152,6 +144,13 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         }
 
+    }
+
+    public void loadSettings() {
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        clipboard_enabled = sharedPreferences.getBoolean("pref_clipboard_switch", false);
+        bindToDevice_enabled = sharedPreferences.getBoolean("pref_binding_switch", false);
+        hashAlgorithm = sharedPreferences.getString("hash_algorithm", "SHA512");
     }
 
 }

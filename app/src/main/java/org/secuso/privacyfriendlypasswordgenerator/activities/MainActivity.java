@@ -31,12 +31,10 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
-    private RecyclerView recyclerView;
     private MetaDataAdapter adapter;
     private List<MetaData> metadatalist;
     MetaDataSQLiteHelper database;
     SharedPreferences sharedPreferences;
-  //  boolean clipboard_enabled, bindToDevice_enabled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +42,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         database = new MetaDataSQLiteHelper(this);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         metadatalist = database.getAllmetaData();
 
@@ -80,8 +78,6 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
-                        //bundle.putBoolean("clipboard", clipboard_enabled);
-                        //bundle.putBoolean("bind", bindToDevice_enabled);
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
                         generatePasswordDialog.setArguments(bundle);
@@ -97,7 +93,6 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
-                        //bundle.putBoolean("bind", bindToDevice_enabled);
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
                         updateMetadataDialog.setArguments(bundle);
@@ -191,15 +186,9 @@ public class MainActivity extends BaseActivity {
 
     }
 
-//    public void applySettings() {
-//        clipboard_enabled = sharedPreferences.getBoolean("pref_clipboard_switch", false);
-//        bindToDevice_enabled = sharedPreferences.getBoolean("pref_binding_switch", false);
-//    }
-
     @Override
     public void onResume() {
         super.onResume();
-        //applySettings();
 
     }
 
