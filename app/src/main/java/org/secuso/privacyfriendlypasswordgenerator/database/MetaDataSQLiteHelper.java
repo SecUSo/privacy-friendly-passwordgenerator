@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
     private static final String KEY_HAS_LETTERS_UP = "hasLettersUp";
     private static final String KEY_HAS_LETTERS_LOW = "hasLettersLow";
 
-    private static final String ITERATION = "interation";
+    private static final String ITERATION = "iteration";
 
     public MetaDataSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -66,6 +67,24 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(KEY_DOMAIN, metaData.getDOMAIN());
+        values.put(KEY_USERNAME, metaData.getUSERNAME());
+        values.put(KEY_LENGTH, metaData.getLENGTH());
+        values.put(KEY_HAS_NUMBERS, metaData.getHAS_NUMBERS());
+        values.put(KEY_HAS_SYMBOLS, metaData.getHAS_SYMBOLS());
+        values.put(KEY_HAS_LETTERS_UP, metaData.getHAS_LETTERS_UP());
+        values.put(KEY_HAS_LETTERS_LOW, metaData.getHAS_LETTERS_LOW());
+        values.put(ITERATION, metaData.getITERATION());
+
+        database.insert(TABLE_METADATA, null, values);
+        database.close();
+    }
+
+    public void addMetaDataWithID(MetaData metaData) {
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, metaData.getID());
         values.put(KEY_DOMAIN, metaData.getDOMAIN());
         values.put(KEY_USERNAME, metaData.getUSERNAME());
         values.put(KEY_LENGTH, metaData.getLENGTH());
@@ -141,6 +160,8 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
     public MetaData getMetaData(int id) {
         SQLiteDatabase database = this.getWritableDatabase();
 
+        Log.d("DATABASE", Integer.toString(id));
+
         Cursor cursor = database.query(TABLE_METADATA, new String[]{KEY_ID,
                         KEY_DOMAIN, KEY_USERNAME, KEY_LENGTH, KEY_HAS_NUMBERS, KEY_HAS_SYMBOLS, KEY_HAS_LETTERS_UP, KEY_HAS_LETTERS_LOW, ITERATION}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
@@ -157,6 +178,9 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
             metaData.setHAS_LETTERS_UP(Integer.parseInt(cursor.getString(6)));
             metaData.setHAS_LETTERS_LOW(Integer.parseInt(cursor.getString(6)));
             metaData.setITERATION(Integer.parseInt(cursor.getString(8)));
+
+            Log.d("DATABASE", "Read " + cursor.getString(1) + " from DB");
+
             cursor.close();
         }
 

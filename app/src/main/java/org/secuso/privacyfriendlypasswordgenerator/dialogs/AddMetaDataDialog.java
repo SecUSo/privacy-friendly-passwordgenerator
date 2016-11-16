@@ -125,9 +125,9 @@ public class AddMetaDataDialog extends DialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        AlertDialog d = (AlertDialog) getDialog();
-        if (d != null) {
-            Button positiveButton = (Button) d.getButton(Dialog.BUTTON_POSITIVE);
+        AlertDialog dialog = (AlertDialog) getDialog();
+        if (dialog != null) {
+            Button positiveButton = dialog.getButton(Dialog.BUTTON_POSITIVE);
             positiveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

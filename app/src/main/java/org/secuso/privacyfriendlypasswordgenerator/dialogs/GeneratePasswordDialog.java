@@ -106,31 +106,27 @@ public class GeneratePasswordDialog extends DialogFragment {
             Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
             toast.show();
         } else {
-            if (position < 0) {
-                Toast toast = Toast.makeText(activity.getBaseContext(), "PROBLEM", Toast.LENGTH_SHORT);
-                toast.show();
+            metaData = database.getMetaData(position);
+
+            String deviceID;
+            if (bindToDevice_enabled) {
+                deviceID = Settings.Secure.getString(getContext().getContentResolver(),
+                        Settings.Secure.ANDROID_ID);
+                Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
+                        Settings.Secure.ANDROID_ID));
             } else {
-                metaData = database.getMetaData(position);
+                deviceID = "SECUSO";
+            }
 
-                String deviceID;
-                if (bindToDevice_enabled) {
-                    deviceID = Settings.Secure.getString(getContext().getContentResolver(),
-                            Settings.Secure.ANDROID_ID);
-                    Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
-                            Settings.Secure.ANDROID_ID));
-                } else {
-                    deviceID = "SECUSO";
-                }
+            PasswordGenerator generator = new PasswordGenerator(metaData.getDOMAIN(),
+                    metaData.getUSERNAME(),
+                    editTextMasterpassword.getText().toString(),
+                    deviceID,
+                    UTF8.encode(metaData.getDOMAIN()),
+                    metaData.getITERATION(),
+                    hashAlgorithm);
 
-                PasswordGenerator generator = new PasswordGenerator(metaData.getDOMAIN(),
-                        metaData.getUSERNAME(),
-                        editTextMasterpassword.getText().toString(),
-                        deviceID,
-                        UTF8.encode(metaData.getDOMAIN()),
-                        metaData.getITERATION(),
-                        hashAlgorithm);
-
-                String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS_LOW(), metaData.getHAS_LETTERS_UP(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
+            String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS_LOW(), metaData.getHAS_LETTERS_UP(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
 //                Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
 //                Log.d("Generator", "Domain: " + metaData.getDOMAIN());
 //
@@ -139,17 +135,15 @@ public class GeneratePasswordDialog extends DialogFragment {
 //                Log.d("Generator", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
 //                Log.d("Generator", "Iterations: " + Integer.toString(metaData.getITERATION()));
 
-                //Copy password to clipboard
-                if (clipboard_enabled) {
-                    ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
-                    ClipData clip = ClipData.newPlainText("Password", password);
-                    clipboard.setPrimaryClip(clip);
-                }
-                TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
-                textViewPassword.setText(password);
-                Log.d("Generator", password);
-
+            //Copy password to clipboard
+            if (clipboard_enabled) {
+                ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("Password", password);
+                clipboard.setPrimaryClip(clip);
             }
+            TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
+            textViewPassword.setText(password);
+            Log.d("Generator", password);
 
         }
 

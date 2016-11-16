@@ -77,12 +77,16 @@ public class MainActivity extends BaseActivity {
                     public void onItemClick(View view, int position) {
 
                         Log.d("Main Activity", Integer.toString(position));
+                        Log.d("Main Activity", metadatalist.get(position).getDOMAIN());
                         Bundle bundle = new Bundle();
 
                         //Gets ID for look up in DB
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
+
+                        Log.d("Main Activity", Integer.toString(temp.getID()));
+
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
                         generatePasswordDialog.setArguments(bundle);
@@ -174,9 +178,8 @@ public class MainActivity extends BaseActivity {
                 .setAction(getString(R.string.undo), new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        database.addMetaData(toDeleteMetaDataFinal);
+                        database.addMetaDataWithID(toDeleteMetaDataFinal);
                         metadatalist.add(finalPosition, toDeleteMetaDataFinal);
-
                         adapter.notifyItemInserted(finalPosition);
                         adapter.notifyDataSetChanged();
                     }
@@ -228,7 +231,6 @@ public class MainActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public void onResume() {
