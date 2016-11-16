@@ -18,19 +18,13 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="Metadata">
-        <Preference
-            android:title="Delete all data">
-        </Preference>
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="Expert Mode">
+        android:title="@string/title_expert_mode">
         <ListPreference
-            android:title="Choose Hash Algorithm"
+            android:title="@string/title_hash_algorithms"
             android:key="hash_algorithm"
             android:entries="@array/pref_hash_algorithms"
-            android:entryValues="@array/pref_hash_algorithms">
+            android:entryValues="@array/pref_hash_algorithms"
+            android:defaultValue="@string/default_hash_algorithm">
         </ListPreference>
     </PreferenceCategory>
 

@@ -1,16 +1,21 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
@@ -152,11 +157,6 @@ public class MainActivity extends BaseActivity {
         overridePendingTransition(0, 0);
     }
 
-    @Override
-    protected int getNavigationDrawerID() {
-        return R.id.nav_example;
-    }
-
     public void deleteItem(int position) {
 
         MetaData toDeleteMetaData = metadatalist.get(position);
@@ -185,6 +185,50 @@ public class MainActivity extends BaseActivity {
         adapter.notifyItemRemoved(position);
 
     }
+
+    @Override
+    protected int getNavigationDrawerID() {
+        return R.id.nav_example;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        if (database.getAllmetaData().size() > 0) {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id == R.id.menu_delete) {
+
+            new AlertDialog.Builder(this)
+                    //.setTitle("Title")
+                    .setMessage(getString(R.string.delete_dialog))
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            database.deleteAllMetaData();
+                            Toast.makeText(MainActivity.this, getString(R.string.delete_dialog_success), Toast.LENGTH_SHORT).show();
+                            MainActivity.this.recreate();
+                        }})
+                    .setNegativeButton(R.string.okay, null).show();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public void onResume() {

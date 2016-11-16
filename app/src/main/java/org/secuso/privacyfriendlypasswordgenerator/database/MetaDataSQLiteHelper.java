@@ -133,6 +133,11 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         database.close();
     }
 
+    public void deleteAllMetaData() {
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.execSQL("delete from "+ TABLE_METADATA);
+    }
+
     public MetaData getMetaData(int id) {
         SQLiteDatabase database = this.getWritableDatabase();
 

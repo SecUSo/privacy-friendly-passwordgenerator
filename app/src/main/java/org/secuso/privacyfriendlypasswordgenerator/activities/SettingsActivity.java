@@ -180,6 +180,7 @@ public class SettingsActivity extends BaseActivity {
             // guidelines.
             //bindPreferenceSummaryToValue(findPreference("example_text"));
             //bindPreferenceSummaryToValue(findPreference("example_list"));
+
         }
 
         @Override
@@ -192,6 +193,8 @@ public class SettingsActivity extends BaseActivity {
             }
             return super.onOptionsItemSelected(item);
         }
+
+
     }
 }
 
