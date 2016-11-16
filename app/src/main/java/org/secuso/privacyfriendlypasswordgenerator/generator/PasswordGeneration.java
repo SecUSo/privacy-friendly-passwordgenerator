@@ -26,12 +26,12 @@ public class PasswordGeneration {
     public PasswordGeneration(String domain,
                               String username,
                               String masterpassword,
-                              //byte[] kgk,
+                              String deviceID,
                               byte[] salt,
                               int iterations) {
 
         //TODO add username
-        byte[] startValue = UTF8.encode(domain + username + masterpassword);
+        byte[] startValue = UTF8.encode(domain + username + masterpassword + deviceID);
 //
 //        byte[] startValue = new byte[domain.length + username.length + masterpassword.length];
 ////        byte[] startValue = new byte[domain.length + username.length + kgk.length];

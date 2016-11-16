@@ -97,7 +97,7 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
-                        bundle.putBoolean("bind", bindToDevice_enabled);
+//                        bundle.putBoolean("bind", bindToDevice_enabled);
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
                         updateMetadataDialog.setArguments(bundle);
@@ -192,8 +192,8 @@ public class MainActivity extends BaseActivity {
     }
 
     public void applySettings() {
-        clipboard_enabled = sharedPreferences.getBoolean("", true);
-        bindToDevice_enabled = sharedPreferences.getBoolean("", true);
+        clipboard_enabled = sharedPreferences.getBoolean("pref_clipboard_switch", true);
+        bindToDevice_enabled = sharedPreferences.getBoolean("pref_binding_switch", true);
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
@@ -40,7 +41,7 @@ public class GeneratePasswordDialog extends DialogFragment {
     MetaData metaData;
     Boolean binding;
     Boolean clipboardSet;
-    private byte[] salt;
+    private String deviceID;
 
     @Override
     public void onAttach(Activity activity) {
@@ -50,6 +51,9 @@ public class GeneratePasswordDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -113,18 +117,19 @@ public class GeneratePasswordDialog extends DialogFragment {
                 //               PasswordGenerator generator = new PasswordGenerator();
 
                 if (binding) {
-                    salt = UTF8.encode(Settings.Secure.getString(getContext().getContentResolver(),
-                            Settings.Secure.ANDROID_ID));
+                    deviceID = Settings.Secure.getString(getContext().getContentResolver(),
+                            Settings.Secure.ANDROID_ID);
                     Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
                             Settings.Secure.ANDROID_ID));
                 } else {
-                    salt = UTF8.encode(metaData.getDOMAIN());
+                    deviceID = "SECUSO";
                 }
                 //TODO add username
                 PasswordGeneration generation = new PasswordGeneration(metaData.getDOMAIN(),
                         "TESTUSER",
                         editTextMasterpassword.getText().toString(),
-                        salt,
+                        deviceID,
+                        UTF8.encode(metaData.getDOMAIN()),
                         metaData.getITERATION());
 
                 //TODO integrate letters low/up
