@@ -37,8 +37,8 @@ public class GeneratePasswordDialog extends DialogFragment {
     MetaDataSQLiteHelper database;
     int position;
     MetaData metaData;
-    Boolean binding;
-    Boolean clipboardSet;
+    Boolean bindToDevice_enabled;
+    Boolean clipboard_enabled;
     private String deviceID;
 
     @Override
@@ -50,7 +50,9 @@ public class GeneratePasswordDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        clipboard_enabled = sharedPreferences.getBoolean("pref_clipboard_switch", false);
+        bindToDevice_enabled = sharedPreferences.getBoolean("pref_binding_switch", false);
 
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -61,13 +63,13 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         if (bundle != null) {
             position = bundle.getInt("position");
-            binding = bundle.getBoolean("bind");
-            clipboardSet = bundle.getBoolean("clipboard");
+//            binding = bundle.getBoolean("bind");
+//            clipboardSet = bundle.getBoolean("clipboard");
 
         } else {
             position = -1;
-            binding = false;
-            clipboardSet = false;
+//            binding = false;
+//            clipboardSet = false;
         }
 
         this.database = new MetaDataSQLiteHelper(getActivity());
@@ -111,7 +113,7 @@ public class GeneratePasswordDialog extends DialogFragment {
             } else {
                 metaData = database.getMetaData(position);
 
-                if (binding) {
+                if (bindToDevice_enabled) {
                     deviceID = Settings.Secure.getString(getContext().getContentResolver(),
                             Settings.Secure.ANDROID_ID);
                     Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
@@ -137,7 +139,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                 Log.d("Generator", "Iterations: " + Integer.toString(metaData.getITERATION()));
 
                 //Copy password to clipboard
-                if (clipboardSet) {
+                if (clipboard_enabled) {
                     ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newPlainText("Password", password);
                     clipboard.setPrimaryClip(clip);

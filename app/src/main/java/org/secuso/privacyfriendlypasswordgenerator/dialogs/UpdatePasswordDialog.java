@@ -2,7 +2,9 @@ package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
@@ -36,7 +38,7 @@ public class UpdatePasswordDialog extends DialogFragment {
     MetaData oldMetaData;
 
     String deviceID;
-    boolean binding;
+    boolean bindToDevice_enabled;
 
     @Override
     public void onAttach(Activity activity) {
@@ -45,6 +47,9 @@ public class UpdatePasswordDialog extends DialogFragment {
     }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        bindToDevice_enabled = sharedPreferences.getBoolean("pref_binding_switch", false);
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -55,11 +60,11 @@ public class UpdatePasswordDialog extends DialogFragment {
 
         if (bundle != null) {
             position = bundle.getInt("position");
-            binding = bundle.getBoolean("bindToDevice_enabled");
+            //binding = bundle.getBoolean("bindToDevice_enabled");
             setOldMetaData(bundle);
         } else {
             position = -1;
-            binding = false;
+            //binding = false;
         }
 
         this.database = new MetaDataSQLiteHelper(getActivity());
@@ -107,7 +112,7 @@ public class UpdatePasswordDialog extends DialogFragment {
 
             String masterpassword = editTextUpdateMasterpassword.getText().toString();
 
-            if (binding) {
+            if (bindToDevice_enabled) {
                 deviceID = Settings.Secure.getString(getContext().getContentResolver(),
                         Settings.Secure.ANDROID_ID);
                 Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
@@ -143,6 +148,8 @@ public class UpdatePasswordDialog extends DialogFragment {
 
             textViewOldPassword.setText(passwordOld);
 
+            Log.d("Generator Update Old", "Password: " + passwordOld);
+
             //generate new password
             metaData = database.getMetaData(position);
 
@@ -172,6 +179,8 @@ public class UpdatePasswordDialog extends DialogFragment {
                     metaData.getLENGTH());
 
             textViewNewPassword.setText(passwordNew);
+
+            Log.d("Generator Update", "Password: " + passwordNew);
 
         }
     }

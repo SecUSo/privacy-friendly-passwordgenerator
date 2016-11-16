@@ -28,8 +28,7 @@ public class PasswordGenerator {
                              String deviceID,
                              byte[] salt,
                              int iterations) {
-
-        //TODO add username
+        
         byte[] startValue = UTF8.encode(domain + username + masterpassword + deviceID);
 
         this.hashValue = PBKDF2.hmac("SHA512", startValue, salt, iterations);
