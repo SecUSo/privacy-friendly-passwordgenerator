@@ -19,6 +19,14 @@
     <string name="undo">Undo</string>
     <string name="item_deleted">deleted.</string>
 
+    <!--###METADATA_CARD###-->
+    <string name="numbers_123">123</string>
+    <string name="letters_lower_abc">abc</string>
+    <string name="letters_upper_abc">ABC</string>
+    <string name="Symbols">!+#</string>
+    <string name="checked">✔</string>
+    <string name="not_checked">✘</string>
+
     <!--###ADD_METADATA###-->
     <string name="placeholder_no_data">-</string>
     <string name="add_metadata_heading">Add new meta data</string>

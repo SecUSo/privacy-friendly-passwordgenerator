@@ -45,19 +45,19 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
 
         //TODO make dynamic Text
         if (metaDataList.get(position).getHAS_LETTERS_LOW() == 1) {
-            holder.hasLettersLow.setText("Lowercase");
+            holder.hasLettersLow.setText("✔");
         }
 
         if (metaDataList.get(position).getHAS_LETTERS_UP() == 1) {
-            holder.hasLettersUp.setText("Uppercase");
+            holder.hasLettersUp.setText("✔");
         }
 
         if (metaDataList.get(position).getHAS_SYMBOLS() == 1) {
-            holder.hasSymbols.setText("Special Characters");
+            holder.hasSymbols.setText("✔");
         }
 
         if (metaDataList.get(position).getHAS_NUMBERS() == 1) {
-            holder.hasNumbers.setText("Numbers");
+            holder.hasNumbers.setText("✔");
         }
     }
 
