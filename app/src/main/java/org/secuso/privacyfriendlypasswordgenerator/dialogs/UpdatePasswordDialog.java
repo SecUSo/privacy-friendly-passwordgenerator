@@ -49,8 +49,6 @@ public class UpdatePasswordDialog extends DialogFragment {
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        loadSettings();
-
         LayoutInflater inflater = getActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -60,9 +58,13 @@ public class UpdatePasswordDialog extends DialogFragment {
 
         if (bundle != null) {
             position = bundle.getInt("position");
+            bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
+            hashAlgorithm = bundle.getString("hashAlgorithm");
             setOldMetaData(bundle);
         } else {
             position = -1;
+            bindToDevice_enabled = false;
+            hashAlgorithm = "SHA512";
         }
 
         this.database = new MetaDataSQLiteHelper(getActivity());
@@ -117,6 +119,9 @@ public class UpdatePasswordDialog extends DialogFragment {
             String masterpassword = editTextUpdateMasterpassword.getText().toString();
 
             String deviceID;
+
+            Log.d("BINDING", Boolean.toString(bindToDevice_enabled));
+
             if (bindToDevice_enabled) {
                 deviceID = Settings.Secure.getString(getContext().getContentResolver(),
                         Settings.Secure.ANDROID_ID);
@@ -210,12 +215,6 @@ public class UpdatePasswordDialog extends DialogFragment {
 //        Log.d("Update Passwords", "oldnumbers: " + oldMetaData.getHAS_NUMBERS());
 //        Log.d("Update Passwords", "olditeration: " + oldMetaData.getITERATION());
 
-    }
-
-    public void loadSettings() {
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        bindToDevice_enabled = sharedPreferences.getBoolean("pref_binding_switch", false);
-        hashAlgorithm = sharedPreferences.getString("hash_algorithm", "SHA512");
     }
 
 }

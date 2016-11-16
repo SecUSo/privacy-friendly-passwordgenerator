@@ -39,7 +39,11 @@ public class MainActivity extends BaseActivity {
     private MetaDataAdapter adapter;
     private List<MetaData> metadatalist;
     MetaDataSQLiteHelper database;
-    SharedPreferences sharedPreferences;
+    //SharedPreferences sharedPreferences;
+
+    boolean clipboard_enabled;
+    boolean bindToDevice_enabled;
+    String hashAlgorithm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,8 @@ public class MainActivity extends BaseActivity {
         recyclerView.setAdapter(adapter);
 
         //Preferences
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        //sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        loadPreferences();
 
         int current = 0;
         for (MetaData data : metadatalist) {
@@ -84,6 +89,9 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
+                        bundle.putString("hashAlgorithm", hashAlgorithm);
+                        bundle.putBoolean("clipboard_enabled", clipboard_enabled);
+                        bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
 
                         Log.d("Main Activity", Integer.toString(temp.getID()));
 
@@ -102,6 +110,9 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
+                        bundle.putInt("position", temp.getID());
+                        bundle.putString("hashAlgorithm", hashAlgorithm);
+                        bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
                         updateMetadataDialog.setArguments(bundle);
@@ -235,7 +246,16 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
+        loadPreferences();
+    }
 
+    public void loadPreferences() {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        clipboard_enabled = sharedPreferences.getBoolean("clipboard_enabled", false);
+        bindToDevice_enabled = sharedPreferences.getBoolean("bindToDevice_enabled", false);
+        hashAlgorithm = sharedPreferences.getString("hash_algorithm", "SHA512");
     }
 
 //    public static class WelcomeDialog extends DialogFragment {

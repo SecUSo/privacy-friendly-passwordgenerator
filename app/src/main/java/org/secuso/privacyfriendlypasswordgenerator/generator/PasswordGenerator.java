@@ -28,8 +28,6 @@ public class PasswordGenerator {
 
         byte[] startValue = UTF8.encode(domain + username + masterpassword + deviceID + iterations);
 
-        hashAlgorithm = "SHA512";
-
         this.hashValue = PBKDF2.hmac(hashAlgorithm, startValue, salt, 4096);
         Clearer.zero(startValue);
     }

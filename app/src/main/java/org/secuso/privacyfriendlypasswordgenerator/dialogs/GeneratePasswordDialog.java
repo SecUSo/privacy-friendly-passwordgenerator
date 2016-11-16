@@ -51,19 +51,17 @@ public class GeneratePasswordDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        loadSettings();
-
         LayoutInflater inflater = getActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         rootView = inflater.inflate(R.layout.dialog_generate_password, null);
 
         Bundle bundle = getArguments();
 
-        if (bundle != null) {
-            position = bundle.getInt("position");
-        } else {
-            position = -1;
-        }
+        position = bundle.getInt("position");
+        clipboard_enabled = bundle.getBoolean("clipboard_enabled");
+        bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
+        hashAlgorithm = bundle.getString("hashAlgorithm");
+
 
         this.database = new MetaDataSQLiteHelper(getActivity());
         metaData = database.getMetaData(position);
@@ -108,6 +106,8 @@ public class GeneratePasswordDialog extends DialogFragment {
         } else {
             metaData = database.getMetaData(position);
 
+            Log.d("BINDING", Boolean.toString(bindToDevice_enabled));
+
             String deviceID;
             if (bindToDevice_enabled) {
                 deviceID = Settings.Secure.getString(getContext().getContentResolver(),
@@ -147,13 +147,6 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         }
 
-    }
-
-    public void loadSettings() {
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        clipboard_enabled = sharedPreferences.getBoolean("pref_clipboard_switch", false);
-        bindToDevice_enabled = sharedPreferences.getBoolean("pref_binding_switch", false);
-        hashAlgorithm = sharedPreferences.getString("hash_algorithm", "SHA512");
     }
 
 }
