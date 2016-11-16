@@ -65,9 +65,13 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         this.database = new MetaDataSQLiteHelper(getActivity());
         metaData = database.getMetaData(position);
-        TextView domain = (TextView) rootView.findViewById(R.id.domainHeadingTextView);
 
+        TextView domain = (TextView) rootView.findViewById(R.id.domainHeadingTextView);
         domain.setText(metaData.getDOMAIN());
+
+        TextView username = (TextView) rootView.findViewById(R.id.domainUsernameTextView);
+
+        username.setText(metaData.getUSERNAME());
 
         TextView iteration = (TextView) rootView.findViewById(R.id.textViewIteration);
         iteration.setText(String.valueOf(metaData.getITERATION()));

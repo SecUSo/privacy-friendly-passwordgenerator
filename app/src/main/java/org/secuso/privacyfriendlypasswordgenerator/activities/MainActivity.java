@@ -59,7 +59,6 @@ public class MainActivity extends BaseActivity {
         recyclerView.setAdapter(adapter);
 
         //Preferences
-        //sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         loadPreferences();
 
         int current = 0;
@@ -139,16 +138,13 @@ public class MainActivity extends BaseActivity {
                                 for (int position : reverseSortedPositions) {
                                     deleteItem(position);
                                 }
-                                adapter.notifyDataSetChanged();
                             }
 
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     deleteItem(position);
-                                    adapter.notifyItemRemoved(position);
                                 }
-                                adapter.notifyDataSetChanged();
                             }
                         });
 

@@ -21,7 +21,6 @@
                 style="@style/Base.DialogWindowTitle.AppCompat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DOMAIN"
                 android:textStyle="bold" />
 
             <TextView
@@ -38,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/domainTextView"
                 android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/usernameTextView" />
+                android:layout_toEndOf="@+id/usernameTextView"
+                android:text="@string/placeholder_no_data" />
 
             <TextView
                 android:id="@+id/lengthTextView"

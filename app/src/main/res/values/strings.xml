@@ -20,6 +20,7 @@
     <string name="item_deleted">deleted.</string>
 
     <!--###ADD_METADATA###-->
+    <string name="placeholder_no_data">-</string>
     <string name="add_metadata_heading">Add new meta data</string>
     <string name="domain">Domain:</string>
     <string name="username">Username:</string>
