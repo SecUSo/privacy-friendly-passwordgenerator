@@ -29,11 +29,18 @@
         android:text="@string/special_characters" />
 
     <CheckBox
-        android:id="@+id/checkBoxLetters"
+        android:id="@+id/checkBoxLettersLow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="@string/letters" />
+        android:text="@string/letters_lower" />
+
+    <CheckBox
+        android:id="@+id/checkBoxLettersUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/letters_upper" />
 
     <CheckBox
         android:id="@+id/checkBoxNumbers"

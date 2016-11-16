@@ -128,12 +128,12 @@ public class GeneratePasswordDialog extends DialogFragment {
                         metaData.getITERATION());
 
                 //TODO integrate letters low/up
-                String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS(), metaData.getHAS_LETTERS(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
+                String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS_LOW(), metaData.getHAS_LETTERS_UP(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
                 Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
                 Log.d("Generator", "Domain: " + metaData.getDOMAIN());
 
                 Log.d("Generator", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
-                Log.d("Generator", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
+                //Log.d("Generator", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
                 Log.d("Generator", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
                 Log.d("Generator", "Iterations: " + Integer.toString(metaData.getITERATION()));
 
