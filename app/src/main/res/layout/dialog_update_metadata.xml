@@ -20,6 +20,19 @@
         android:layout_height="wrap_content"
         android:maxLength="42" />
 
+    <TextView
+        android:id="@+id/textViewUsernameHeadingUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/username" />
+
+    <EditText
+        android:id="@+id/editTextUsernameUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="42" />
+
+
     <CheckBox
         android:id="@+id/checkBoxSpecialCharacterUpdate"
         android:layout_width="wrap_content"
@@ -29,11 +42,18 @@
         android:text="@string/special_characters" />
 
     <CheckBox
-        android:id="@+id/checkBoxLettersUpdate"
+        android:id="@+id/checkBoxLettersLowUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="@string/letters" />
+        android:text="@string/letters_lower" />
+
+    <CheckBox
+        android:id="@+id/checkBoxLettersUpUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/letters_upper" />
 
     <CheckBox
         android:id="@+id/checkBoxNumbersUpdate"

@@ -20,6 +20,18 @@
         android:layout_height="wrap_content"
         android:maxLength="42" />
 
+    <TextView
+        android:id="@+id/textViewUsernameHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/username" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="42" />
+
     <CheckBox
         android:id="@+id/checkBoxSpecialCharacter"
         android:layout_width="wrap_content"
