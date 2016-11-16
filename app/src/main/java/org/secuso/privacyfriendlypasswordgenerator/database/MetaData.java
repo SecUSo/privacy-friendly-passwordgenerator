@@ -14,7 +14,7 @@ public class MetaData {
     private int HAS_NUMBERS;
     private int HAS_SYMBOLS;
     private int HAS_LETTERS_UP;
-    private int HAS_LETTER_LOW;
+    private int HAS_LETTERS_LOW;
     private int ITERATION;
 
     public MetaData() {    }
@@ -24,11 +24,12 @@ public class MetaData {
         this.ID=ID;
         this.POSITIONID = POSITIONID;
         this.DOMAIN=DOMAIN;
+        this.USERNAME=USERNAME;
         this.LENGTH=LENGTH;
         this.HAS_NUMBERS=HAS_NUMBERS;
         this.HAS_SYMBOLS=HAS_SYMBOLS;
         this.HAS_LETTERS_UP=HAS_LETTERS_UP;
-        this.HAS_LETTER_LOW=HAS_LETTER_LOW;
+        this.HAS_LETTERS_LOW=HAS_LETTER_LOW;
         this.ITERATION=ITERATION;
     }
 
@@ -40,12 +41,12 @@ public class MetaData {
         this.ITERATION = ITERATION;
     }
 
-    public int getHAS_LETTER_LOW() {
-        return HAS_LETTER_LOW;
+    public int getHAS_LETTERS_LOW() {
+        return HAS_LETTERS_LOW;
     }
 
-    public void setHAS_LETTER_LOW(int HAS_LETTER_LOW) {
-        this.HAS_LETTER_LOW = HAS_LETTER_LOW;
+    public void setHAS_LETTERS_LOW(int HAS_LETTER_LOW) {
+        this.HAS_LETTERS_LOW = HAS_LETTER_LOW;
     }
 
     public int getHAS_LETTERS_UP() {

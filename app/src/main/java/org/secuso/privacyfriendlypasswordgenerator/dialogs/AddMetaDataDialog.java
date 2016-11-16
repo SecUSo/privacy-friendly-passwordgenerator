@@ -86,8 +86,10 @@ public class AddMetaDataDialog extends DialogFragment {
         SeekBar seekBarLength = (SeekBar) rootView.findViewById(R.id.seekBarLength);
         CheckBox hasNumbersCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxNumbers);
         CheckBox hasSymbolsCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxSpecialCharacter);
-        CheckBox hasLettersCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxLetters);
+        CheckBox hasLettersUpCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxLettersUp);
+        CheckBox hasLettersLowCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxLettersLow);
         EditText domain = (EditText) rootView.findViewById(R.id.editTextDomain);
+        EditText username = (EditText) rootView.findViewById(R.id.editTextUsername);
         EditText iterations = (EditText) rootView.findViewById(R.id.EditTextIteration);
 
         int iterationToAdd = 1;
@@ -103,10 +105,12 @@ public class AddMetaDataDialog extends DialogFragment {
 
             MetaData metaDataToAdd = new MetaData(0, 0,
                     domain.getText().toString(),
+                    username.getText().toString(),
                     seekBarLength.getProgress() + 4,
                     boolToInt(hasNumbersCheckBox.isChecked()),
                     boolToInt(hasSymbolsCheckBox.isChecked()),
-                    boolToInt(hasLettersCheckBox.isChecked()),
+                    boolToInt(hasLettersUpCheckBox.isChecked()),
+                    boolToInt(hasLettersLowCheckBox.isChecked()),
                     iterationToAdd);
 
             database.addMetaData(metaDataToAdd);

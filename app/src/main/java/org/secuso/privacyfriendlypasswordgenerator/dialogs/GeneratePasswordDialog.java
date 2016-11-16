@@ -119,15 +119,14 @@ public class GeneratePasswordDialog extends DialogFragment {
                 } else {
                     deviceID = "SECUSO";
                 }
-                //TODO add username
+
                 PasswordGenerator generator = new PasswordGenerator(metaData.getDOMAIN(),
-                        "TESTUSER",
+                        metaData.getUSERNAME(),
                         editTextMasterpassword.getText().toString(),
                         deviceID,
                         UTF8.encode(metaData.getDOMAIN()),
                         metaData.getITERATION());
 
-                //TODO integrate letters low/up
                 String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS_LOW(), metaData.getHAS_LETTERS_UP(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
                 Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
                 Log.d("Generator", "Domain: " + metaData.getDOMAIN());

@@ -103,16 +103,20 @@ public class UpdateMetadataDialog extends DialogFragment {
      */
     public void setUpData() {
         EditText domain = (EditText) rootView.findViewById(R.id.editTextDomainUpdate);
+        EditText username = (EditText) rootView.findViewById(R.id.editTextUsernameUpdate);
 
         CheckBox checkBoxSpecialCharacterUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxSpecialCharacterUpdate);
-        CheckBox checkBoxLettersUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxLettersUpdate);
+        CheckBox checkBoxLettersLowUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxLettersLowUpdate);
+        CheckBox checkBoxLettersUpUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxLettersUpUpdate);
         CheckBox checkBoxNumbersUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxNumbersUpdate);
 
         setCheckBox(checkBoxSpecialCharacterUpdate, metaData.getHAS_SYMBOLS());
-        setCheckBox(checkBoxLettersUpdate, metaData.getHAS_LETTERS());
+        setCheckBox(checkBoxLettersLowUpdate, metaData.getHAS_LETTERS_LOW());
+        setCheckBox(checkBoxLettersUpUpdate, metaData.getHAS_LETTERS_UP());
         setCheckBox(checkBoxNumbersUpdate, metaData.getHAS_NUMBERS());
 
         domain.setText(metaData.getDOMAIN());
+        username.setText(metaData.getUSERNAME());
 
         TextView textViewLengthDisplayUpdate = (TextView) rootView.findViewById(R.id.textViewLengthDisplayUpdate);
         textViewLengthDisplayUpdate.setText(Integer.toString(metaData.getLENGTH()));
@@ -142,16 +146,20 @@ public class UpdateMetadataDialog extends DialogFragment {
         SeekBar seekBarLength = (SeekBar) rootView.findViewById(R.id.seekBarLengthUpdate);
         CheckBox hasNumbersCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxNumbersUpdate);
         CheckBox hasSymbolsCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxSpecialCharacterUpdate);
-        CheckBox hasLettersCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxLettersUpdate);
+        CheckBox checkBoxLettersLowUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxLettersLowUpdate);
+        CheckBox checkBoxLettersUpUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxLettersUpUpdate);
         EditText domain = (EditText) rootView.findViewById(R.id.editTextDomainUpdate);
+        EditText username = (EditText) rootView.findViewById(R.id.editTextUsernameUpdate);
 
         database.updateMetaData(
                 new MetaData(position, position,
                         domain.getText().toString(),
+                        username.getText().toString(),
                         seekBarLength.getProgress() + 4,
                         boolToInt(hasNumbersCheckBox.isChecked()),
                         boolToInt(hasSymbolsCheckBox.isChecked()),
-                        boolToInt(hasLettersCheckBox.isChecked()),
+                        boolToInt(checkBoxLettersUpUpdate.isChecked()),
+                        boolToInt(checkBoxLettersLowUpdate.isChecked()),
                         oldIteration + 1));
 
         Toast.makeText(activity, getString(R.string.added_message), Toast.LENGTH_SHORT).show();
@@ -168,7 +176,8 @@ public class UpdateMetadataDialog extends DialogFragment {
 //        Log.d("Update Metadata", "olditeration: " + oldMetaData.getITERATION());
 
         bundle.putInt("oldlength", oldMetaData.getLENGTH());
-        bundle.putInt("oldletters", oldMetaData.getHAS_LETTERS());
+        bundle.putInt("oldlettersup", oldMetaData.getHAS_LETTERS_UP());
+        bundle.putInt("oldletterslow", oldMetaData.getHAS_LETTERS_LOW());
         bundle.putInt("oldsymbols", oldMetaData.getHAS_SYMBOLS());
         bundle.putInt("oldnumbers", oldMetaData.getHAS_NUMBERS());
         bundle.putInt("olditeration", oldMetaData.getITERATION());

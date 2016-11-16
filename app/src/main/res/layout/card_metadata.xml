@@ -1,84 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/card_view"
-        android:elevation="3dp"
-        android:layout_margin="@dimen/card_margin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/card_margin"
+        android:elevation="3dp">
 
         <RelativeLayout
-            android:layout_margin="@dimen/card_margin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/card_margin">
 
             <TextView
                 android:id="@+id/domainTextView"
+                style="@style/Base.DialogWindowTitle.AppCompat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DOMAIN"
-                android:textStyle="bold"
-                style="@style/Base.DialogWindowTitle.AppCompat"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/lengthTextView"
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/domainTextView"
+                android:layout_marginTop="5dp"
                 android:text="@string/length" />
 
             <TextView
                 android:id="@+id/length"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_below="@+id/domainTextView"
-                android:layout_toEndOf="@+id/lengthTextView"/>
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/lengthTextView" />
 
             <TextView
                 android:id="@+id/iterationTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_below="@+id/lengthTextView"
+                android:layout_marginTop="5dp"
                 android:text="@string/iteration" />
 
             <TextView
                 android:id="@+id/iteration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_below="@+id/lengthTextView"
-                android:layout_toEndOf="@+id/iterationTextView"/>
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/iterationTextView" />
 
-                <LinearLayout
+            <LinearLayout
+                android:id="@+id/linearLayout2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                    android:orientation="vertical"
-                    android:id="@+id/linearLayout2">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/hasNumbersTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/hasSymbolsTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+                    android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/hasLettersTextView"
+                    android:id="@+id/hasLettersLowTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/hasLettersUpTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 

@@ -42,8 +42,13 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
         holder.length.setText(Integer.toString(metaDataList.get(position).getLENGTH()));
         holder.iteration.setText(Integer.toString(metaDataList.get(position).getITERATION()));
 
-        if (metaDataList.get(position).getHAS_LETTERS() == 1) {
-            holder.hasLetters.setText("Letters");
+        //TODO make dynamic Text
+        if (metaDataList.get(position).getHAS_LETTERS_LOW() == 1) {
+            holder.hasLettersLow.setText("Lowercase");
+        }
+
+        if (metaDataList.get(position).getHAS_LETTERS_UP() == 1) {
+            holder.hasLettersUp.setText("Uppercase");
         }
 
         if (metaDataList.get(position).getHAS_SYMBOLS() == 1) {
@@ -72,7 +77,8 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
         TextView iteration;
         TextView hasNumbers;
         TextView hasSymbols;
-        TextView hasLetters;
+        TextView hasLettersLow;
+        TextView hasLettersUp;
 
         public MetaDataViewHolder(View itemView) {
             super(itemView);
@@ -80,7 +86,8 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
             domain = (TextView) itemView.findViewById(R.id.domainTextView);
             length = (TextView) itemView.findViewById(R.id.length);
             iteration = (TextView) itemView.findViewById(R.id.iteration);
-            hasLetters = (TextView) itemView.findViewById(R.id.hasLettersTextView);
+            hasLettersLow = (TextView) itemView.findViewById(R.id.hasLettersLowTextView);
+            hasLettersUp = (TextView) itemView.findViewById(R.id.hasLettersUpTextView);
             hasNumbers = (TextView) itemView.findViewById(R.id.hasNumbersTextView);
             hasSymbols = (TextView) itemView.findViewById(R.id.hasSymbolsTextView);
         }

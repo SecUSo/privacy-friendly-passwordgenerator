@@ -130,15 +130,15 @@ public class UpdatePasswordDialog extends DialogFragment {
             Log.d("Generator Update Old", "Domain: " + oldMetaData.getDOMAIN());
 
             Log.d("Generator Update Old", "Symbols: " + Integer.toString(oldMetaData.getHAS_SYMBOLS()));
-            Log.d("Generator Update Old", "Letters: " + Integer.toString(oldMetaData.getHAS_LETTERS()));
+            //Log.d("Generator Update Old", "Letters: " + Integer.toString(oldMetaData.getHAS_LETTERS()));
             Log.d("Generator Update Old", "Numbers: " + Integer.toString(oldMetaData.getHAS_NUMBERS()));
             Log.d("Generator Update Old", "Iterations: " + Integer.toString(oldMetaData.getITERATION()));
 
             //TODO Add up/low
             String passwordOld = generatorOld.getPassword(
                     oldMetaData.getHAS_SYMBOLS(),
-                    oldMetaData.getHAS_LETTERS(),
-                    oldMetaData.getHAS_NUMBERS(),
+                    oldMetaData.getHAS_LETTERS_LOW(),
+                    oldMetaData.getHAS_LETTERS_UP(),
                     oldMetaData.getHAS_NUMBERS(),
                     oldMetaData.getLENGTH());
 
@@ -161,15 +161,15 @@ public class UpdatePasswordDialog extends DialogFragment {
             Log.d("Generator Update", "Domain: " + metaData.getDOMAIN());
 
             Log.d("Generator Update", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
-            Log.d("Generator Update", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
+            //Log.d("Generator Update", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
             Log.d("Generator Update", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
             Log.d("Generator Update", "Iterations: " + Integer.toString(metaData.getITERATION()));
 
             //TODO Add up/low
             String passwordNew = generator.getPassword(
                     metaData.getHAS_SYMBOLS(),
-                    metaData.getHAS_LETTERS(),
-                    metaData.getHAS_LETTERS(),
+                    metaData.getHAS_LETTERS_LOW(),
+                    metaData.getHAS_LETTERS_UP(),
                     metaData.getHAS_NUMBERS(),
                     metaData.getLENGTH());
 
@@ -181,10 +181,12 @@ public class UpdatePasswordDialog extends DialogFragment {
     public void setOldMetaData(Bundle bundle) {
         oldMetaData = new MetaData(0, 0,
                 bundle.getString("olddomain"),
+                bundle.getString("oldusername"),
                 bundle.getInt("oldlength"),
                 bundle.getInt("oldnumbers"),
                 bundle.getInt("oldsymbols"),
-                bundle.getInt("oldletters"),
+                bundle.getInt("oldlettersup"),
+                bundle.getInt("oldletterslow"),
                 bundle.getInt("olditeration")
                 );
 
