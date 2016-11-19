@@ -32,6 +32,7 @@
     <string name="add_metadata_heading">Add new parameters</string>
     <string name="domain">Domain:</string>
     <string name="username">Username:</string>
+    <string name="username_optional">Username (optional):</string>
     <string name="characterset">Character set:</string>
     <string name="special_characters">Special (+!#)</string>
     <string name="letters_upper">Uppercase (ABC)</string>
