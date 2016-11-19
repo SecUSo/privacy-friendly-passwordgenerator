@@ -1,7 +1,7 @@
 ## Privacy Friendly Password Generator
 
 Privacy Friendly Password Generator is an Android application that generates passwords based on pre-chosen parameters.
-This app belongs to the group of Privacy Friendly Apps developed by the Technische Universität Darmstadt. <br />
+This app belongs to the group of Privacy Friendly Apps developed by the Technische Universität Darmstadt. Further information can be found on secuso.org/pfa<br />
 
 Users can save the following parameters: domain, username (optional), character set (uppercase, lowercase, special, numbers), length and iteration. The iteration is used to create different passwords if an update with the same parameters is intended.  <br />
 
@@ -14,7 +14,8 @@ The passwords as well as the master password is never stored in the device. The 
 
 ## Motivation
 
-This application has been developed to be used as a basis for a Privacy Friendly App. Privacy Friendly Apps are group of Android applications which are optimized regarding privacy. Further information can be found on secuso.org/pfa
+Nowadays users need many different passwords for all kinds of services and also websites. Remembering strong passwords can be a tough task.  <br />
+Privacy Friendly Password Generator should support users to create strong passwords without having to trust a program to store them securely and safely for them. The complexity of remembering the passwords is reduced to a single master password. 
 
 ## Download and more Information
 
