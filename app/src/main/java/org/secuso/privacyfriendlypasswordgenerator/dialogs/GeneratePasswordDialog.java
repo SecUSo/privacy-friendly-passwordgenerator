@@ -79,7 +79,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         builder.setView(rootView);
         builder.setIcon(R.mipmap.ic_drawer);
         builder.setTitle(getActivity().getString(R.string.generate_heading));
-        builder.setPositiveButton(getActivity().getString(R.string.cancel), null);
+        builder.setPositiveButton(getActivity().getString(R.string.done), null);
 
         Button generateButton = (Button) rootView.findViewById(R.id.generatorButton);
         generateButton.setOnClickListener(new View.OnClickListener() {
