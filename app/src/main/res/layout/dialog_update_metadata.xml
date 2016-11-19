@@ -18,6 +18,7 @@
         android:id="@+id/editTextDomainUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:maxLength="42" />
 
     <TextView
@@ -30,6 +31,7 @@
         android:id="@+id/editTextUsernameUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:maxLength="42" />
 
 

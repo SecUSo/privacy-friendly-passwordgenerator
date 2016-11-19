@@ -18,6 +18,7 @@
         android:id="@+id/editTextDomain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:maxLength="42" />
 
     <TextView
@@ -30,6 +31,7 @@
         android:id="@+id/editTextUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:maxLength="42" />
 
     <CheckBox

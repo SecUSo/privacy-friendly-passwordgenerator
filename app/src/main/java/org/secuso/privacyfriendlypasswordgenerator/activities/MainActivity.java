@@ -68,8 +68,8 @@ public class MainActivity extends BaseActivity {
         }
 
         //No screenshot
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-                WindowManager.LayoutParams.FLAG_SECURE);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+        //        WindowManager.LayoutParams.FLAG_SECURE);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);

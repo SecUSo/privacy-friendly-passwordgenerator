@@ -8,5 +8,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="card_margin">5dp</dimen>
+
+    <dimen name="card_margin_left_right">5dp</dimen>
     <dimen name="card_margin_grid">3dp</dimen>
 </resources>
