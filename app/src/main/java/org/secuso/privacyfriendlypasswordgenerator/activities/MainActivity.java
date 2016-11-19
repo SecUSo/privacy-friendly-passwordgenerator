@@ -1,16 +1,20 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -55,6 +59,8 @@ public class MainActivity extends BaseActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         metadatalist = database.getAllmetaData();
+
+        doFirstRun();
 
         adapter = new MetaDataAdapter(metadatalist);
         recyclerView.setAdapter(adapter);
@@ -260,30 +266,45 @@ public class MainActivity extends BaseActivity {
         number_iterations = Integer.parseInt(tempIterations);
     }
 
-//    public static class WelcomeDialog extends DialogFragment {
-//
-//        @Override
-//        public void onAttach(Activity activity) {
-//            super.onAttach(activity);
-//        }
-//
-//        @Override
-//        public Dialog onCreateDialog(Bundle savedInstanceState) {
-//
-//            LayoutInflater i = getActivity().getLayoutInflater();
-//            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//            builder.setView(i.inflate(R.layout.welcome_dialog, null));
-//            builder.setIcon(R.mipmap.icon);
-//            builder.setTitle(getActivity().getString(R.string.welcome));
-//            builder.setPositiveButton(getActivity().getString(R.string.okay), null);
-//            builder.setNegativeButton(getActivity().getString(R.string.viewhelp), new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    ((MainActivity)getActivity()).goToNavigationItem(R.id.nav_help);
-//                }
-//            });
-//
-//            return builder.create();
-//        }
-//    }
+    private void doFirstRun() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences.edit().putString("firstShow", "").apply();
+        SharedPreferences settings = getSharedPreferences("firstShow", getBaseContext().MODE_PRIVATE);
+        if (settings.getBoolean("isFirstRun", true)) {
+            WelcomeDialog welcomeDialog = new WelcomeDialog();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            welcomeDialog.show(fragmentManager, "WelcomeDialog");
+
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("isFirstRun", false);
+            editor.apply();
+        }
+    }
+
+    public static class WelcomeDialog extends DialogFragment {
+
+        @Override
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            LayoutInflater i = getActivity().getLayoutInflater();
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setView(i.inflate(R.layout.dialog_welcome, null));
+            builder.setIcon(R.mipmap.ic_drawer);
+            builder.setTitle(getActivity().getString(R.string.dialog_welcome_heading));
+            builder.setPositiveButton(getActivity().getString(R.string.okay), null);
+            builder.setNegativeButton(getActivity().getString(R.string.viewhelp), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ((MainActivity)getActivity()).goToNavigationItem(R.id.nav_help);
+                }
+            });
+
+            return builder.create();
+        }
+    }
 }

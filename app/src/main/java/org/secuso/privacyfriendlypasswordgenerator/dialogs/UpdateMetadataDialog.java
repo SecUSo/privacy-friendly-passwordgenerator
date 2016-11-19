@@ -75,7 +75,7 @@ public class UpdateMetadataDialog extends DialogFragment {
 
         builder.setTitle(getActivity().getString(R.string.add_new_metadata_heading));
 
-        builder.setPositiveButton(getActivity().getString(R.string.next), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getActivity().getString(R.string.save), new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
