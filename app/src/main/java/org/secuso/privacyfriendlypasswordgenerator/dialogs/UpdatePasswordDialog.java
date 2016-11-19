@@ -64,12 +64,14 @@ public class UpdatePasswordDialog extends DialogFragment {
         if (bundle != null) {
             position = bundle.getInt("position");
             bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
-            hashAlgorithm = bundle.getString("hashAlgorithm");
+            Log.d("UPDATER BIND", Boolean.toString(bindToDevice_enabled));
+            hashAlgorithm = bundle.getString("hash_algorithm");
+            Log.d("UPDATER HASH", hashAlgorithm);
             setOldMetaData(bundle);
         } else {
             position = -1;
             bindToDevice_enabled = false;
-            hashAlgorithm = "SHA512";
+            hashAlgorithm = "SHA256";
         }
 
         this.database = new MetaDataSQLiteHelper(getActivity());

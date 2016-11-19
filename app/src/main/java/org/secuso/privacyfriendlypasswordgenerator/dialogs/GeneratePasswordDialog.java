@@ -60,7 +60,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         position = bundle.getInt("position");
         clipboard_enabled = bundle.getBoolean("clipboard_enabled");
         bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
-        hashAlgorithm = bundle.getString("hashAlgorithm");
+        hashAlgorithm = bundle.getString("hash_algorithm");
 
 
         this.database = new MetaDataSQLiteHelper(getActivity());
@@ -129,6 +129,8 @@ public class GeneratePasswordDialog extends DialogFragment {
                     UTF8.encode(metaData.getDOMAIN()),
                     metaData.getITERATION(),
                     hashAlgorithm);
+
+            Log.d("GENERATOR Hash", hashAlgorithm);
 
             String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS_LOW(), metaData.getHAS_LETTERS_UP(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
 //                Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));

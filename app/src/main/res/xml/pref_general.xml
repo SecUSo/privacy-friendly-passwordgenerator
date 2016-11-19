@@ -15,10 +15,15 @@
             android:key="clipboard_enabled"
             android:summary="@string/summary_clipboard"
             android:defaultValue="false"/>
+        <SwitchPreference
+            android:title="Enable Expert Mode"
+            android:id="@+id/pref_enable_expert"
+            android:key="pref_enable_expert"/>
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/title_expert_mode">
+        android:title="@string/title_expert_mode"
+        android:dependency="pref_enable_expert">
         <ListPreference
             android:title="@string/title_hash_algorithms"
             android:key="hash_algorithm"
@@ -26,6 +31,10 @@
             android:entryValues="@array/pref_hash_algorithms"
             android:defaultValue="@string/default_hash_algorithm">
         </ListPreference>
+        <EditTextPreference
+            android:title="@string/title_hash_iterations"
+            android:inputType="number"
+            />
     </PreferenceCategory>
 
 

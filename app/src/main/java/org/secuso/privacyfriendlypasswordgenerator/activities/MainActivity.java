@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity {
 
     boolean clipboard_enabled;
     boolean bindToDevice_enabled;
-    String hashAlgorithm;
+    String hash_algorithm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
-                        bundle.putString("hashAlgorithm", hashAlgorithm);
+                        bundle.putString("hash_algorithm", hash_algorithm);
                         bundle.putBoolean("clipboard_enabled", clipboard_enabled);
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
 
@@ -110,7 +110,8 @@ public class MainActivity extends BaseActivity {
 
                         bundle.putInt("position", temp.getID());
                         bundle.putInt("position", temp.getID());
-                        bundle.putString("hashAlgorithm", hashAlgorithm);
+                        bundle.putString("hash_algorithm", hash_algorithm);
+                        Log.d("MAINACTIVITY HASH", hash_algorithm);
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
@@ -251,7 +252,7 @@ public class MainActivity extends BaseActivity {
 
         clipboard_enabled = sharedPreferences.getBoolean("clipboard_enabled", false);
         bindToDevice_enabled = sharedPreferences.getBoolean("bindToDevice_enabled", false);
-        hashAlgorithm = sharedPreferences.getString("hash_algorithm", "SHA512");
+        hash_algorithm = sharedPreferences.getString("hash_algorithm", "SHA256");
     }
 
 //    public static class WelcomeDialog extends DialogFragment {

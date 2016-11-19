@@ -94,6 +94,7 @@
     <string name="title_delete_metadata">Delete all meta data.</string>
 
     <string name="title_expert_mode">Expert mode</string>
+    <string name="title_hash_iterations">Choose number of hash iterations</string>
 
     <string name="title_hash_algorithms">Choose Hash Algorithm</string>
     <string-array name="pref_hash_algorithms">
@@ -101,7 +102,7 @@
         <item>SHA384</item>
         <item>SHA512</item>
     </string-array>
-    <string name="default_hash_algorithm">SHA512</string>
+    <string name="default_hash_algorithm">SHA256</string>
 
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>
