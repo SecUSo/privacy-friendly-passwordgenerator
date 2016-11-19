@@ -55,6 +55,9 @@
     <string name="add_new_metadata_heading">1. New meta data</string>
     <string name="passwords_heading">2. Your passwords</string>
 
+    <string name="copy_clipboar_old">Old password copied.</string>
+    <string name="copy_clipboar_new">New password copied.</string>
+
     <!--###GENERATOR###-->
     <string name="generate_heading">Generate Password</string>
     <string name="generate">Generate</string>

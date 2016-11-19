@@ -84,13 +84,12 @@ public class UpdatePasswordDialog extends DialogFragment {
         displayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                displayPasswords();
                 InputMethodManager inputManager = (InputMethodManager)
                         activity.getSystemService(Context.INPUT_METHOD_SERVICE);
 
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(),
                         InputMethodManager.RESULT_UNCHANGED_SHOWN);
-
+                displayPasswords();
             }
         });
 
@@ -104,7 +103,7 @@ public class UpdatePasswordDialog extends DialogFragment {
                 ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("", oldPassword.getText());
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(activity, "Old password copied to clipboard", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, activity.getString(R.string.copy_clipboar_old), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -115,7 +114,7 @@ public class UpdatePasswordDialog extends DialogFragment {
                 ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("", newPassword.getText());
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(activity, "New password copied to clipboard", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, activity.getString(R.string.copy_clipboar_new), Toast.LENGTH_SHORT).show();
             }
         });
 
