@@ -1,7 +1,16 @@
 ## Privacy Friendly Password Generator
 
-TODO
-This app belongs to the group of Privacy Friendly Apps developed by the Technische Universität Darmstadt. 
+Privacy Friendly Password Generator is an Android application that generates passwords based on pre-chosen parameters.
+This app belongs to the group of Privacy Friendly Apps developed by the Technische Universität Darmstadt. <br />
+
+Users can save the following parameters: domain, username (optional), character set (uppercase, lowercase, special, numbers), length and iteration. The iteration is used to create different passwords if an update with the same parameters is intended.  <br />
+
+### Password Generation
+
+The password generation is based on the algorithm PBKDF2 and can be executed with three different hash algorithms (SHA256, SHA384, SHA512). <br />
+Domain, username, master password, device ID (optional) and iternation is concatenated to a string which serves as a seed for the hashing algorithm. <br />
+
+The passwords as well as the master password is never stored in the device. The master password has to be entered by the user and password is always created on the fly out of the parameters. 
 
 ## Motivation
 
@@ -13,7 +22,7 @@ Further development requires Android Studio, we recommend to use at least versio
  
 ### API Reference
 
-Mininum SDK: 21
+Mininum SDK: 17
 Target SDK: 25 
 
 ## License
