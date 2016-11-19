@@ -3,6 +3,7 @@ package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 /**
  * Created by karo on 14.11.16.
  */
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -37,6 +38,7 @@ public class UpdateMetadataDialog extends DialogFragment {
     MetaData oldMetaData;
     String hash_algorithm;
     boolean bindToDevice_enabled;
+    int number_iterations;
 
     @Override
     public void onAttach(Activity activity) {
@@ -54,15 +56,15 @@ public class UpdateMetadataDialog extends DialogFragment {
 
         Bundle bundle = getArguments();
 
-        if (bundle != null) {
-            position = bundle.getInt("position");
-            hash_algorithm = bundle.getString("hash_algorithm");
-            bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
-        }
+        position = bundle.getInt("position");
+        hash_algorithm = bundle.getString("hash_algorithm");
+        bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
+
 
         this.database = new MetaDataSQLiteHelper(getActivity());
         metaData = database.getMetaData(position);
         oldMetaData = database.getMetaData(position);
+        number_iterations = bundle.getInt("number_iterations");
 
         builder.setView(rootView);
         setUpData();
@@ -169,6 +171,8 @@ public class UpdateMetadataDialog extends DialogFragment {
         Bundle bundle = new Bundle();
         bundle.putInt("position", position);
         bundle.putString("hash_algorithm", hash_algorithm);
+        bundle.putInt("number_iterations", number_iterations);
+        bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
         bundle.putString("olddomain", oldMetaData.getDOMAIN());
         bundle.putString("oldusername", oldMetaData.getUSERNAME());
 

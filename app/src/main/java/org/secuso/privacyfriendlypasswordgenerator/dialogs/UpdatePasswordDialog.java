@@ -45,6 +45,7 @@ public class UpdatePasswordDialog extends DialogFragment {
 
     boolean bindToDevice_enabled;
     String hashAlgorithm;
+    int number_iterations;
 
     @Override
     public void onAttach(Activity activity) {
@@ -61,18 +62,13 @@ public class UpdatePasswordDialog extends DialogFragment {
 
         Bundle bundle = getArguments();
 
-        if (bundle != null) {
-            position = bundle.getInt("position");
-            bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
-            Log.d("UPDATER BIND", Boolean.toString(bindToDevice_enabled));
-            hashAlgorithm = bundle.getString("hash_algorithm");
-            Log.d("UPDATER HASH", hashAlgorithm);
-            setOldMetaData(bundle);
-        } else {
-            position = -1;
-            bindToDevice_enabled = false;
-            hashAlgorithm = "SHA256";
-        }
+        position = bundle.getInt("position");
+        bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
+        Log.d("UPDATER BIND", Boolean.toString(bindToDevice_enabled));
+        hashAlgorithm = bundle.getString("hash_algorithm");
+        Log.d("UPDATER HASH", hashAlgorithm);
+        setOldMetaData(bundle);
+        number_iterations = bundle.getInt("number_iterations");
 
         this.database = new MetaDataSQLiteHelper(getActivity());
 
@@ -170,6 +166,7 @@ public class UpdatePasswordDialog extends DialogFragment {
                     deviceID,
                     UTF8.encode(oldMetaData.getDOMAIN()),
                     oldMetaData.getITERATION(),
+                    number_iterations,
                     hashAlgorithm);
 
 //            Log.d("Generator Update Old", "Length: " + Integer.toString(oldMetaData.getLENGTH()));
@@ -202,6 +199,7 @@ public class UpdatePasswordDialog extends DialogFragment {
                     deviceID,
                     UTF8.encode(metaData.getDOMAIN()),
                     metaData.getITERATION(),
+                    number_iterations,
                     hashAlgorithm);
 
 //            Log.d("Generator Update", "Length: " + Integer.toString(metaData.getLENGTH()));

@@ -24,11 +24,12 @@ public class PasswordGenerator {
                              String deviceID,
                              byte[] salt,
                              int iterations,
+                             int hashIterations,
                              String hashAlgorithm) {
 
         byte[] startValue = UTF8.encode(domain + username + masterpassword + deviceID + iterations);
 
-        this.hashValue = PBKDF2.hmac(hashAlgorithm, startValue, salt, 4096);
+        this.hashValue = PBKDF2.hmac(hashAlgorithm, startValue, salt, hashIterations);
         Clearer.zero(startValue);
     }
 

@@ -24,16 +24,24 @@
     <PreferenceCategory
         android:title="@string/title_expert_mode"
         android:dependency="pref_enable_expert">
+        <Preference
+            android:summary="The hash algorithms and number of iterations have a high influence on the time needed for generating the password."/>
+
         <ListPreference
             android:title="@string/title_hash_algorithms"
             android:key="hash_algorithm"
             android:entries="@array/pref_hash_algorithms"
             android:entryValues="@array/pref_hash_algorithms"
-            android:defaultValue="@string/default_hash_algorithm">
+            android:defaultValue="@string/default_hash_algorithm"
+            android:summary="@string/default_hash_algorithm">
         </ListPreference>
         <EditTextPreference
             android:title="@string/title_hash_iterations"
+            android:key="hash_iterations"
             android:inputType="number"
+            android:defaultValue="1000"
+            android:summary="1000"
+            android:maxLength="5"
             />
     </PreferenceCategory>
 

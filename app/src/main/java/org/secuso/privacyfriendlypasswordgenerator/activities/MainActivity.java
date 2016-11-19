@@ -44,6 +44,7 @@ public class MainActivity extends BaseActivity {
     boolean clipboard_enabled;
     boolean bindToDevice_enabled;
     String hash_algorithm;
+    int number_iterations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,7 @@ public class MainActivity extends BaseActivity {
                         bundle.putString("hash_algorithm", hash_algorithm);
                         bundle.putBoolean("clipboard_enabled", clipboard_enabled);
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
+                        bundle.putInt("number_iterations", number_iterations);
 
                         Log.d("Main Activity", Integer.toString(temp.getID()));
 
@@ -109,8 +111,8 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
-                        bundle.putInt("position", temp.getID());
                         bundle.putString("hash_algorithm", hash_algorithm);
+                        bundle.putInt("number_iterations", number_iterations);
                         Log.d("MAINACTIVITY HASH", hash_algorithm);
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
                         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -231,7 +233,8 @@ public class MainActivity extends BaseActivity {
                             database.deleteAllMetaData();
                             Toast.makeText(MainActivity.this, getString(R.string.delete_dialog_success), Toast.LENGTH_SHORT).show();
                             MainActivity.this.recreate();
-                        }})
+                        }
+                    })
                     .setNegativeButton(R.string.okay, null).show();
 
             return true;
@@ -253,6 +256,8 @@ public class MainActivity extends BaseActivity {
         clipboard_enabled = sharedPreferences.getBoolean("clipboard_enabled", false);
         bindToDevice_enabled = sharedPreferences.getBoolean("bindToDevice_enabled", false);
         hash_algorithm = sharedPreferences.getString("hash_algorithm", "SHA256");
+        String tempIterations = sharedPreferences.getString("hash_iterations", "1000");
+        number_iterations = Integer.parseInt(tempIterations);
     }
 
 //    public static class WelcomeDialog extends DialogFragment {

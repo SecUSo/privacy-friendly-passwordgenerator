@@ -41,6 +41,7 @@ public class GeneratePasswordDialog extends DialogFragment {
     Boolean bindToDevice_enabled;
     Boolean clipboard_enabled;
     String hashAlgorithm;
+    int number_iterations;
 
     @Override
     public void onAttach(Activity activity) {
@@ -61,6 +62,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         clipboard_enabled = bundle.getBoolean("clipboard_enabled");
         bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
         hashAlgorithm = bundle.getString("hash_algorithm");
+        number_iterations = bundle.getInt("number_iterations");
 
 
         this.database = new MetaDataSQLiteHelper(getActivity());
@@ -128,6 +130,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                     deviceID,
                     UTF8.encode(metaData.getDOMAIN()),
                     metaData.getITERATION(),
+                    number_iterations,
                     hashAlgorithm);
 
             Log.d("GENERATOR Hash", hashAlgorithm);
