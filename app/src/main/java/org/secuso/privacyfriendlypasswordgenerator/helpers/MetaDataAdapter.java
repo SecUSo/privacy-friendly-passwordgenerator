@@ -39,26 +39,53 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
     @Override
     public void onBindViewHolder(MetaDataViewHolder holder, int position) {
         holder.domain.setText(metaDataList.get(position).getDOMAIN());
-        holder.username.setText(metaDataList.get(position).getUSERNAME());
         holder.length.setText(Integer.toString(metaDataList.get(position).getLENGTH()));
         holder.iteration.setText(Integer.toString(metaDataList.get(position).getITERATION()));
 
-        //TODO make dynamic Text
+        if (metaDataList.get(position).getUSERNAME().length() == 0) {
+            holder.username.setText("-");
+        } else {
+            holder.username.setText(metaDataList.get(position).getUSERNAME());
+        }
+
+        String characterset = "";
+
         if (metaDataList.get(position).getHAS_LETTERS_LOW() == 1) {
-            holder.hasLettersLow.setText("✔");
+            characterset += "abc";
         }
 
         if (metaDataList.get(position).getHAS_LETTERS_UP() == 1) {
-            holder.hasLettersUp.setText("✔");
-        }
-
-        if (metaDataList.get(position).getHAS_SYMBOLS() == 1) {
-            holder.hasSymbols.setText("✔");
+            characterset += " ABC";
         }
 
         if (metaDataList.get(position).getHAS_NUMBERS() == 1) {
-            holder.hasNumbers.setText("✔");
+            characterset += " 123";
         }
+
+        if (metaDataList.get(position).getHAS_SYMBOLS() == 1) {
+            characterset += " +!#";
+        }
+
+        holder.characterset.setText(characterset);
+
+
+        //TODO make dynamic Text
+
+//        if (metaDataList.get(position).getHAS_LETTERS_LOW() == 1) {
+//            holder.hasLettersLow.setText("✔");
+//        }
+//
+//        if (metaDataList.get(position).getHAS_LETTERS_UP() == 1) {
+//            holder.hasLettersUp.setText("✔");
+//        }
+//
+//        if (metaDataList.get(position).getHAS_SYMBOLS() == 1) {
+//            holder.hasSymbols.setText("✔");
+//        }
+//
+//        if (metaDataList.get(position).getHAS_NUMBERS() == 1) {
+//            holder.hasNumbers.setText("✔");
+//        }
     }
 
     @Override
@@ -77,10 +104,11 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
         TextView username;
         TextView length;
         TextView iteration;
-        TextView hasNumbers;
-        TextView hasSymbols;
-        TextView hasLettersLow;
-        TextView hasLettersUp;
+        TextView characterset ;
+//        TextView hasNumbers;
+//        TextView hasSymbols;
+//        TextView hasLettersLow;
+//        TextView hasLettersUp;
 
         public MetaDataViewHolder(View itemView) {
             super(itemView);
@@ -89,10 +117,11 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
             username = (TextView) itemView.findViewById(R.id.username);
             length = (TextView) itemView.findViewById(R.id.length);
             iteration = (TextView) itemView.findViewById(R.id.iteration);
-            hasLettersLow = (TextView) itemView.findViewById(R.id.hasLettersLowTextView);
-            hasLettersUp = (TextView) itemView.findViewById(R.id.hasLettersUpTextView);
-            hasNumbers = (TextView) itemView.findViewById(R.id.hasNumbersTextView);
-            hasSymbols = (TextView) itemView.findViewById(R.id.hasSymbolsTextView);
+            characterset = (TextView) itemView.findViewById(R.id.characterSet);
+//            hasLettersLow = (TextView) itemView.findViewById(R.id.hasLettersLowTextView);
+//            hasLettersUp = (TextView) itemView.findViewById(R.id.hasLettersUpTextView);
+//            hasNumbers = (TextView) itemView.findViewById(R.id.hasNumbersTextView);
+//            hasSymbols = (TextView) itemView.findViewById(R.id.hasSymbolsTextView);
         }
     }
 
