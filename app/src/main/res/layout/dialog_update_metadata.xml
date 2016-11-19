@@ -100,7 +100,7 @@
         android:id="@+id/seekBarLengthUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="12"
+        android:max="16"
         android:progress="6" />
 
     <TextView
