@@ -98,7 +98,7 @@ public class UpdateMetadataDialog extends DialogFragment {
 
     public void setCheckBox(CheckBox checkbox, int value) {
         if (value == 1) {
-            checkbox.isChecked();
+            checkbox.setChecked(true);
         }
     }
 
