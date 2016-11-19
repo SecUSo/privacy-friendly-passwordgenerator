@@ -120,9 +120,9 @@
     <!-- ###SETTINGS### -->
     <string name="title_activity_settings">Settings</string>
     <string name="title_password_settings">Password settings</string>
-    <string name="title_bind_password">Bind passwords to device</string>
+    <string name="title_bind_password">Bind to device</string>
     <string name="summary_bind_password">Create unique passwords per device.</string>
-    <string name="title_clipboard">Copy passwords to clipboard</string>
+    <string name="title_clipboard">Copy to clipboard</string>
     <string name="summary_clipboard">Passwords will automatically copied after generation.</string>
 
     <string name="title_metadata">Parameter</string>
