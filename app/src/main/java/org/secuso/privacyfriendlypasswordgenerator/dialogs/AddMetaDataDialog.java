@@ -101,6 +101,9 @@ public class AddMetaDataDialog extends DialogFragment {
             Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_domain_message), Toast.LENGTH_SHORT);
             toast.show();
             closeDialog = false;
+        } else if ((hasNumbersCheckBox.isChecked() || hasSymbolsCheckBox.isChecked() || hasLettersUpCheckBox.isChecked() || hasLettersLowCheckBox.isChecked()) == false) {
+            Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_character_message), Toast.LENGTH_SHORT);
+            toast.show();
         } else {
 
             MetaData metaDataToAdd = new MetaData(0, 0,
@@ -118,7 +121,9 @@ public class AddMetaDataDialog extends DialogFragment {
             activity.recreate();
 
             closeDialog = true;
+
         }
+
 
     }
 

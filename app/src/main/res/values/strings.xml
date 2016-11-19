@@ -33,13 +33,14 @@
     <string name="domain">Domain:</string>
     <string name="username">Username:</string>
     <string name="characterset">Character set:</string>
-    <string name="special_characters">Special +!#</string>
-    <string name="letters_upper">Uppercase ABC</string>
-    <string name="letters_lower">Lowercase abc</string>
-    <string name="numbers">Numbers 123</string>
+    <string name="special_characters">Special (+!#)</string>
+    <string name="letters_upper">Uppercase (ABC)</string>
+    <string name="letters_lower">Lowercase (abc)</string>
+    <string name="numbers">Numbers (123)</string>
     <string name="length">Length: </string>
     <string name="iteration">Iteration: </string>
     <string name="add_domain_message">Please add a domain.</string>
+    <string name="add_character_message">Please choose at least one character type.</string>
 
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>

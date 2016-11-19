@@ -14,6 +14,7 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
@@ -39,6 +40,7 @@ public class UpdateMetadataDialog extends DialogFragment {
     String hash_algorithm;
     boolean bindToDevice_enabled;
     int number_iterations;
+    boolean closeDialog;
 
     @Override
     public void onAttach(Activity activity) {
@@ -155,26 +157,34 @@ public class UpdateMetadataDialog extends DialogFragment {
         EditText domain = (EditText) rootView.findViewById(R.id.editTextDomainUpdate);
         EditText username = (EditText) rootView.findViewById(R.id.editTextUsernameUpdate);
 
-        database.updateMetaData(
-                new MetaData(position, position,
-                        domain.getText().toString(),
-                        username.getText().toString(),
-                        seekBarLength.getProgress() + 4,
-                        boolToInt(hasNumbersCheckBox.isChecked()),
-                        boolToInt(hasSymbolsCheckBox.isChecked()),
-                        boolToInt(checkBoxLettersUpUpdate.isChecked()),
-                        boolToInt(checkBoxLettersLowUpdate.isChecked()),
-                        oldIteration + 1));
+        if (domain.getText().toString().length() == 0) {
+            Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_domain_message), Toast.LENGTH_SHORT);
+            toast.show();
+            closeDialog = false;
+        } else if ((hasNumbersCheckBox.isChecked() || hasSymbolsCheckBox.isChecked() || checkBoxLettersUpUpdate.isChecked() || checkBoxLettersLowUpdate.isChecked()) == false) {
+            Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_character_message), Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
+            database.updateMetaData(
+                    new MetaData(position, position,
+                            domain.getText().toString(),
+                            username.getText().toString(),
+                            seekBarLength.getProgress() + 4,
+                            boolToInt(hasNumbersCheckBox.isChecked()),
+                            boolToInt(hasSymbolsCheckBox.isChecked()),
+                            boolToInt(checkBoxLettersUpUpdate.isChecked()),
+                            boolToInt(checkBoxLettersLowUpdate.isChecked()),
+                            oldIteration + 1));
 
-        Toast.makeText(activity, getString(R.string.added_message), Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, getString(R.string.added_message), Toast.LENGTH_SHORT).show();
 
-        Bundle bundle = new Bundle();
-        bundle.putInt("position", position);
-        bundle.putString("hash_algorithm", hash_algorithm);
-        bundle.putInt("number_iterations", number_iterations);
-        bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
-        bundle.putString("olddomain", oldMetaData.getDOMAIN());
-        bundle.putString("oldusername", oldMetaData.getUSERNAME());
+            Bundle bundle = new Bundle();
+            bundle.putInt("position", position);
+            bundle.putString("hash_algorithm", hash_algorithm);
+            bundle.putInt("number_iterations", number_iterations);
+            bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
+            bundle.putString("olddomain", oldMetaData.getDOMAIN());
+            bundle.putString("oldusername", oldMetaData.getUSERNAME());
 
 //        Log.d("Update Metadata", "olddomain: " + oldMetaData.getDOMAIN());
 //        Log.d("Update Metadata", "oldlength: " + oldMetaData.getLENGTH());
@@ -183,16 +193,19 @@ public class UpdateMetadataDialog extends DialogFragment {
 //        Log.d("Update Metadata", "oldnumbers: " + oldMetaData.getHAS_NUMBERS());
 //        Log.d("Update Metadata", "olditeration: " + oldMetaData.getITERATION());
 
-        bundle.putInt("oldlength", oldMetaData.getLENGTH());
-        bundle.putInt("oldlettersup", oldMetaData.getHAS_LETTERS_UP());
-        bundle.putInt("oldletterslow", oldMetaData.getHAS_LETTERS_LOW());
-        bundle.putInt("oldsymbols", oldMetaData.getHAS_SYMBOLS());
-        bundle.putInt("oldnumbers", oldMetaData.getHAS_NUMBERS());
-        bundle.putInt("olditeration", oldMetaData.getITERATION());
-        FragmentManager fragmentManager = getFragmentManager();
-        UpdatePasswordDialog updatePasswordDialog = new UpdatePasswordDialog();
-        updatePasswordDialog.setArguments(bundle);
-        updatePasswordDialog.show(fragmentManager, "UpdatePasswordDialog");
+            bundle.putInt("oldlength", oldMetaData.getLENGTH());
+            bundle.putInt("oldlettersup", oldMetaData.getHAS_LETTERS_UP());
+            bundle.putInt("oldletterslow", oldMetaData.getHAS_LETTERS_LOW());
+            bundle.putInt("oldsymbols", oldMetaData.getHAS_SYMBOLS());
+            bundle.putInt("oldnumbers", oldMetaData.getHAS_NUMBERS());
+            bundle.putInt("olditeration", oldMetaData.getITERATION());
+            FragmentManager fragmentManager = getFragmentManager();
+            UpdatePasswordDialog updatePasswordDialog = new UpdatePasswordDialog();
+            updatePasswordDialog.setArguments(bundle);
+            updatePasswordDialog.show(fragmentManager, "UpdatePasswordDialog");
+
+            closeDialog = true;
+        }
     }
 
     public void cancelUpdate() {
@@ -203,6 +216,25 @@ public class UpdateMetadataDialog extends DialogFragment {
 
     public int boolToInt(boolean b) {
         return b ? 1 : 0;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        AlertDialog dialog = (AlertDialog) getDialog();
+        if (dialog != null) {
+            Button positiveButton = dialog.getButton(Dialog.BUTTON_POSITIVE);
+            positiveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    updateMetadata(oldMetaData.getITERATION());
+                    if (closeDialog) {
+                        dismiss();
+                    }
+
+                }
+            });
+        }
     }
 
 }
