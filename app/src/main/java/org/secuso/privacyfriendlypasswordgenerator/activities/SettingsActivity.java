@@ -1,11 +1,14 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -64,7 +67,6 @@ public class SettingsActivity extends BaseActivity {
         return (context.getResources().getConfiguration().screenLayout
                 & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE;
     }
-
     /**
      * Binds a preference's summary to its value. More specifically, when the
      * preference's value is changed, its summary (line of text below the
@@ -91,12 +93,6 @@ public class SettingsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_settings);
-
-
-
-
-        //setupActionBar();
-
 
         overridePendingTransition(0, 0);
     }
@@ -167,21 +163,32 @@ public class SettingsActivity extends BaseActivity {
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class GeneralPreferenceFragment extends PreferenceFragment {
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
 
-            //setHasOptionsMenu(true);
+            getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
+                @Override
+                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-            //bindPreferenceSummaryToValue(findPreference("example_text"));
-            //bindPreferenceSummaryToValue(findPreference("example_list"));
+                    Preference pref = findPreference(key);
 
+                    if (pref instanceof ListPreference) {
+                        ListPreference listPreference = (ListPreference) pref;
+                        pref.setSummary(listPreference.getEntry());
+                    }
+
+                    if (pref instanceof EditTextPreference) {
+                        EditTextPreference editTextPreference = (EditTextPreference) pref;
+                        pref.setSummary(editTextPreference.getText());
+                    }
+
+                }
+            });
         }
+
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
@@ -193,7 +200,6 @@ public class SettingsActivity extends BaseActivity {
             }
             return super.onOptionsItemSelected(item);
         }
-
 
     }
 
