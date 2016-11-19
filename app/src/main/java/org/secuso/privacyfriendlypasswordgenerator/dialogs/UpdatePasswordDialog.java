@@ -2,6 +2,8 @@ package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,8 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
 import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
+
+import static android.content.Context.CLIPBOARD_SERVICE;
 
 /**
  * Created by yonjuni on 14.11.16.
@@ -86,6 +91,31 @@ public class UpdatePasswordDialog extends DialogFragment {
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(),
                         InputMethodManager.RESULT_UNCHANGED_SHOWN);
 
+            }
+        });
+
+        ImageButton copyOldButton = (ImageButton) rootView.findViewById(R.id.copyOldButton);
+        ImageButton copyNewButton = (ImageButton) rootView.findViewById(R.id.copyNewButton);
+
+        copyOldButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView oldPassword = (TextView) rootView.findViewById(R.id.textViewOldPassword);
+                ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("", oldPassword.getText());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(activity, "Old password copied to clipboard", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        copyNewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView newPassword = (TextView) rootView.findViewById(R.id.textViewNewPassword);
+                ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("", newPassword.getText());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(activity, "New password copied to clipboard", Toast.LENGTH_SHORT).show();
             }
         });
 
