@@ -149,6 +149,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                 ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("Password", password);
                 clipboard.setPrimaryClip(clip);
+                Toast.makeText(activity, activity.getString(R.string.password_copied), Toast.LENGTH_SHORT).show();
             }
             TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
             textViewPassword.setText(password);

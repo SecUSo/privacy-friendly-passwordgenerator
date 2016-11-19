@@ -32,10 +32,11 @@
     <string name="add_metadata_heading">Add new meta data</string>
     <string name="domain">Domain:</string>
     <string name="username">Username:</string>
-    <string name="special_characters">Special Characters</string>
-    <string name="letters_upper">Uppercase</string>
-    <string name="letters_lower">Lowercase</string>
-    <string name="numbers">Numbers</string>
+    <string name="characterset">Character set:</string>
+    <string name="special_characters">Special +!#</string>
+    <string name="letters_upper">Uppercase ABC</string>
+    <string name="letters_lower">Lowercase abc</string>
+    <string name="numbers">Numbers 123</string>
     <string name="length">Length: </string>
     <string name="iteration">Iteration: </string>
     <string name="add_domain_message">Please add a domain.</string>
@@ -66,6 +67,7 @@
     <string name="password">Your password:</string>
     <string name="init_password"></string>
     <string name="done">Done</string>
+    <string name="password_copied">Password copied.</string>
 
     <!--###ABOUT###-->
     <string name="about">About</string>

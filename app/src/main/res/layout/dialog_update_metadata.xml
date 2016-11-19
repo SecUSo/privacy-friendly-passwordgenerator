@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    >
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
         android:id="@+id/textViewDomainHeading"
@@ -18,9 +18,9 @@
         android:id="@+id/editTextDomainUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="1"
         android:inputType="text"
-        android:maxLength="42" />
+        android:maxLength="42"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/textViewUsernameHeadingUpdate"
@@ -32,39 +32,48 @@
         android:id="@+id/editTextUsernameUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="1"
         android:inputType="text"
-        android:maxLength="42" />
+        android:maxLength="42"
+        android:maxLines="1" />
 
-
-    <CheckBox
-        android:id="@+id/checkBoxSpecialCharacterUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/textViewSetHeading"
         android:layout_marginTop="16dp"
-        android:checked="true"
-        android:text="@string/special_characters" />
-
-    <CheckBox
-        android:id="@+id/checkBoxLettersLowUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/letters_lower" />
+        android:text="@string/characterset" />
 
-    <CheckBox
-        android:id="@+id/checkBoxLettersUpUpdate"
-        android:layout_width="wrap_content"
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/letters_upper" />
+        android:layout_gravity="center"
+        android:columnCount="2"
+        android:rowCount="2">
 
-    <CheckBox
-        android:id="@+id/checkBoxNumbersUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/numbers" />
+        <CheckBox
+            android:id="@+id/checkBoxSpecialCharacterUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/special_characters" />
+
+        <CheckBox
+            android:id="@+id/checkBoxLettersLowUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/letters_lower" />
+
+        <CheckBox
+            android:id="@+id/checkBoxLettersUpUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/letters_upper" />
+
+        <CheckBox
+            android:id="@+id/checkBoxNumbersUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/numbers" />
+    </GridLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -93,5 +102,12 @@
         android:layout_height="wrap_content"
         android:max="12"
         android:progress="6" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Iteration incremented by 1 automatically"
+        android:textSize="12sp"
+        android:layout_marginTop="16dp"/>
 
 </LinearLayout>
