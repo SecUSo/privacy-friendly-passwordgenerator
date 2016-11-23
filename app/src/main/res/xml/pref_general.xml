@@ -25,7 +25,7 @@
         android:title="@string/title_expert_mode">
         <!--android:dependency="pref_enable_expert">-->
         <Preference
-            android:summary="The hash algorithms and number of iterations have a high influence on the time needed for generating the password."/>
+            android:summary="@string/expert_mode_summary"/>
 
         <ListPreference
             android:title="@string/title_hash_algorithms"
@@ -43,6 +43,10 @@
             android:summary="1000"
             android:maxLength="5"
             />
+        <Preference
+            android:key="benchmark"
+            android:title="@string/title_benchmark"
+            android:summary="@string/summary_benchmark"/>
     </PreferenceCategory>
 
 

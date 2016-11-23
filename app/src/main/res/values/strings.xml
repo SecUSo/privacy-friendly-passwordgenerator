@@ -129,7 +129,16 @@
     <string name="title_delete_metadata">Delete all parameters.</string>
 
     <string name="title_expert_mode">Expert mode</string>
+    <string name="expert_mode_summary">The hash algorithms and number of iterations have a high influence on the time needed for generating the password.</string>
     <string name="title_hash_iterations">Number of hash iterations</string>
+
+    <string name="title_benchmark">Benchmark: generation</string>
+    <string name="summary_benchmark">Test the duration of generating the password on the given algorithm and iteration.</string>
+    <string name="toast_benchmark_started">Benchmark started.</string>
+
+    <string name="dialog_benchmark_title">Benchmark</string>
+    <string name="dialog_benchmark_seconds">seconds</string>
+    <string name="dialog_benchmark_time">Execution about</string>
 
     <string name="title_hash_algorithms">Hash algorithm</string>
     <string-array name="pref_hash_algorithms">

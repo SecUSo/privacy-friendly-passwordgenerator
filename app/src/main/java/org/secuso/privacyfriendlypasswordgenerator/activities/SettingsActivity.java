@@ -2,7 +2,10 @@ package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -13,10 +16,18 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
+import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
+import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -67,6 +78,7 @@ public class SettingsActivity extends BaseActivity {
         return (context.getResources().getConfiguration().screenLayout
                 & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE;
     }
+
     /**
      * Binds a preference's summary to its value. More specifically, when the
      * preference's value is changed, its summary (line of text below the
@@ -164,10 +176,20 @@ public class SettingsActivity extends BaseActivity {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class GeneralPreferenceFragment extends PreferenceFragment {
 
+        Activity activity;
+
+        @Override
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
+            this.activity = activity;
+        }
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
+
+            initSummary(getPreferenceScreen());
 
             getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
                 @Override
@@ -187,8 +209,72 @@ public class SettingsActivity extends BaseActivity {
 
                 }
             });
+
+            Preference benchmark = findPreference("benchmark");
+            benchmark.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+
+                    Toast.makeText(activity, getString(R.string.toast_benchmark_started), Toast.LENGTH_SHORT).show();
+
+                    double startTime = System.currentTimeMillis();
+                    SharedPreferences preferences = getPreferenceScreen().getSharedPreferences();
+                    PasswordGenerator generator =
+                            new PasswordGenerator(
+                                    "abc.com",
+                                    "user",
+                                    "masterpassword",
+                                    "deviceID",
+                                    UTF8.encode("Salt"),
+                                    10,
+                                    Integer.parseInt(preferences.getString("hash_iterations", "1000")),
+                                    preferences.getString("hash_algorithm", "SHA256"));
+                    generator.getPassword(1, 1, 1, 1, 20);
+
+                    double stopTime = System.currentTimeMillis();
+                    double elapsedTime = stopTime - startTime;
+                    double elapsedTimeSeconds = elapsedTime / 1000;
+                    Log.d("SETTINGS TIME", String.valueOf(elapsedTimeSeconds));
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage(getString(R.string.dialog_benchmark_time) + " " + String.valueOf(elapsedTimeSeconds) + " " + getString(R.string.dialog_benchmark_seconds))
+                            .setTitle(getString(R.string.dialog_benchmark_title))
+                            .setPositiveButton(getString(R.string.okay), new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                }
+                            })
+                            .show();
+
+                    return true;
+                }
+            });
         }
 
+
+        private void initSummary(Preference p) {
+            if (p instanceof PreferenceGroup) {
+                PreferenceGroup pGrp = (PreferenceGroup) p;
+                for (int i = 0; i < pGrp.getPreferenceCount(); i++) {
+                    initSummary(pGrp.getPreference(i));
+                }
+            } else {
+                updatePrefSummary(p);
+            }
+        }
+
+
+        private void updatePrefSummary(Preference p) {
+            if (p instanceof ListPreference) {
+                ListPreference listPref = (ListPreference) p;
+                p.setSummary(listPref.getEntry());
+            }
+            if (p instanceof EditTextPreference) {
+                EditTextPreference editTextPref = (EditTextPreference) p;
+                p.setSummary(editTextPref.getText());
+            }
+        }
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
@@ -201,7 +287,7 @@ public class SettingsActivity extends BaseActivity {
             return super.onOptionsItemSelected(item);
         }
 
-    }
 
+    }
 }
 
