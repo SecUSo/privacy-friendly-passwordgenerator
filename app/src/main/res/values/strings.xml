@@ -42,6 +42,7 @@
     <string name="iteration">Iteration: </string>
     <string name="add_domain_message">Please add a domain.</string>
     <string name="add_character_message">Please choose at least one character type.</string>
+    <string name="hint_iteration">(1 if left blank)</string>
 
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>

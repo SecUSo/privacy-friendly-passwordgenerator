@@ -133,7 +133,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="(1 if left blank)"
+            android:text="@string/hint_iteration"
             android:textSize="12sp"
             android:layout_toEndOf="@+id/EditTextIteration"
             android:layout_marginTop="16dp"/>

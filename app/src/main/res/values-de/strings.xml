@@ -41,6 +41,7 @@
     <string name="iteration">Iteration: </string>
     <string name="add_domain_message">Bitte geben Sie eine Domain an.</string>
     <string name="add_character_message">Bitte suchen Sie mindestens einen Zeichensatz aus.</string>
+    <string name="hint_iteration">(1 falls leer)</string>
 
     <string name="add">Hinzufügen</string>
     <string name="cancel">Abbrechen</string>
