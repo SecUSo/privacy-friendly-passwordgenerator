@@ -17,6 +17,7 @@ import java.util.List;
 public class PasswordGenerator {
 
     private byte[] hashValue;
+//    private byte[] hashValueBCrypt;
 
     public PasswordGenerator(String domain,
                              String username,
@@ -31,6 +32,17 @@ public class PasswordGenerator {
 
         this.hashValue = PBKDF2.hmac(hashAlgorithm, startValue, salt, hashIterations);
         Clearer.zero(startValue);
+
+//        try {
+//            String value = new String(hashValue, "UTF-8");
+//            String bcryptPassword = BCrypt.hashpw(value, BCrypt.gensalt());
+//            String bcryptPasswordHashed = BCrypt.hashpw(bcryptPassword, BCrypt.gensalt(10));
+//            hashValueBCrypt = UTF8.encode(bcryptPasswordHashed);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+
     }
 
     public String getPassword(int specialCharacters, int lowerCaseLetters, int upperCaseLetters,

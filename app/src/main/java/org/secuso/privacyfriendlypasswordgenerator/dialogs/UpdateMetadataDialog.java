@@ -145,7 +145,6 @@ public class UpdateMetadataDialog extends DialogFragment {
 
     }
 
-    //TODO Find out best point of time to update metadata
     public void updateMetadata(int oldIteration) {
 
         SeekBar seekBarLength = (SeekBar) rootView.findViewById(R.id.seekBarLengthUpdate);
