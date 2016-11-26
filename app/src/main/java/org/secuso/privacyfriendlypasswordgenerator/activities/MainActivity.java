@@ -43,7 +43,6 @@ public class MainActivity extends BaseActivity {
     private MetaDataAdapter adapter;
     private List<MetaData> metadatalist;
     MetaDataSQLiteHelper database;
-    //SharedPreferences sharedPreferences;
 
     boolean clipboard_enabled;
     boolean bindToDevice_enabled;

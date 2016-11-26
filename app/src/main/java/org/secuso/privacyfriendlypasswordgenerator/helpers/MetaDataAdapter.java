@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
+
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 
@@ -38,9 +41,12 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
 
     @Override
     public void onBindViewHolder(MetaDataViewHolder holder, int position) {
+
+        ColorGenerator generator = ColorGenerator.MATERIAL;
+
         holder.domain.setText(metaDataList.get(position).getDOMAIN());
-        holder.length.setText(Integer.toString(metaDataList.get(position).getLENGTH()));
-        holder.iteration.setText(Integer.toString(metaDataList.get(position).getITERATION()));
+        holder.length.setText(String.valueOf(metaDataList.get(position).getLENGTH()));
+        holder.iteration.setText(String.valueOf(metaDataList.get(position).getITERATION()));
 
         if (metaDataList.get(position).getUSERNAME().length() == 0) {
             holder.username.setText("-");
@@ -68,24 +74,10 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
 
         holder.characterset.setText(characterset);
 
-
-        //TODO make dynamic Text
-
-//        if (metaDataList.get(position).getHAS_LETTERS_LOW() == 1) {
-//            holder.hasLettersLow.setText("✔");
-//        }
-//
-//        if (metaDataList.get(position).getHAS_LETTERS_UP() == 1) {
-//            holder.hasLettersUp.setText("✔");
-//        }
-//
-//        if (metaDataList.get(position).getHAS_SYMBOLS() == 1) {
-//            holder.hasSymbols.setText("✔");
-//        }
-//
-//        if (metaDataList.get(position).getHAS_NUMBERS() == 1) {
-//            holder.hasNumbers.setText("✔");
-//        }
+        int color = generator.getColor(metaDataList.get(position).getDOMAIN());
+        TextDrawable textDrawable = TextDrawable.builder()
+                .buildRound(String.valueOf(metaDataList.get(position).getDOMAIN().charAt(0)), color);
+        holder.imageView.setImageDrawable(textDrawable);
     }
 
     @Override
@@ -104,11 +96,8 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
         TextView username;
         TextView length;
         TextView iteration;
-        TextView characterset ;
-//        TextView hasNumbers;
-//        TextView hasSymbols;
-//        TextView hasLettersLow;
-//        TextView hasLettersUp;
+        TextView characterset;
+        ImageView imageView;
 
         public MetaDataViewHolder(View itemView) {
             super(itemView);
@@ -118,10 +107,8 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
             length = (TextView) itemView.findViewById(R.id.length);
             iteration = (TextView) itemView.findViewById(R.id.iteration);
             characterset = (TextView) itemView.findViewById(R.id.characterSet);
-//            hasLettersLow = (TextView) itemView.findViewById(R.id.hasLettersLowTextView);
-//            hasLettersUp = (TextView) itemView.findViewById(R.id.hasLettersUpTextView);
-//            hasNumbers = (TextView) itemView.findViewById(R.id.hasNumbersTextView);
-//            hasSymbols = (TextView) itemView.findViewById(R.id.hasSymbolsTextView);
+            imageView = (ImageView) itemView.findViewById(R.id.image_view);
+
         }
     }
 
