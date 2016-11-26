@@ -76,7 +76,7 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
 
         int color = generator.getColor(metaDataList.get(position).getDOMAIN());
         TextDrawable textDrawable = TextDrawable.builder()
-                .buildRound(String.valueOf(metaDataList.get(position).getDOMAIN().charAt(0)), color);
+                .buildRound(String.valueOf(metaDataList.get(position).getDOMAIN().toUpperCase().charAt(0)), color);
         holder.imageView.setImageDrawable(textDrawable);
     }
 
