@@ -136,10 +136,6 @@
     <string name="summary_benchmark">Test the duration of generating the password on the given algorithm and iteration.</string>
     <string name="toast_benchmark_started">Benchmark started.</string>
 
-    <string name="dialog_benchmark_title">Benchmark</string>
-    <string name="dialog_benchmark_seconds">seconds</string>
-    <string name="dialog_benchmark_time">Execution about</string>
-
     <string name="title_hash_algorithms">Hash algorithm</string>
     <string-array name="pref_hash_algorithms">
         <item>SHA256</item>
@@ -156,6 +152,12 @@
     <string name="dialog_add_description">Choose the parameters for your password.</string>
     <string name="dialog_generate_heading">2. Generate passwords</string>
     <string name="dialog_generate_description">Choose one item in the list and open the generator by a click. Enter a masterpasswort and generate your password.</string>
+
+    <!-- ###BENCHMARK### -->
+    <string name="dialog_start_benchmark">Start benchmark</string>
+    <string name="dialog_benchmark_title">Benchmark</string>
+    <string name="dialog_benchmark_seconds">seconds</string>
+    <string name="dialog_benchmark_time">Execution about</string>
 
     <!-- ##WELCOME### -->
     <string name="viewhelp">View help</string>

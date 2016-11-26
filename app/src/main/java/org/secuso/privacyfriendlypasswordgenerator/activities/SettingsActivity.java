@@ -2,10 +2,8 @@ package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.FragmentManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -18,16 +16,10 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
-import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
-import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
+import org.secuso.privacyfriendlypasswordgenerator.dialogs.BenchmarkDialog;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -210,43 +202,56 @@ public class SettingsActivity extends BaseActivity {
                 }
             });
 
+            Bundle bundle = new Bundle();
+
+            SharedPreferences preferences = getPreferenceScreen().getSharedPreferences();
+
+            bundle.putInt("number_iterations", Integer.parseInt(preferences.getString("hash_iterations", "1000")));
+            bundle.putString("hash_algorithm", preferences.getString("hash_iterations", "1000"));
+
+            final Bundle finalBundle = bundle;
+
             Preference benchmark = findPreference("benchmark");
             benchmark.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
 
-                    Toast.makeText(activity, getString(R.string.toast_benchmark_started), Toast.LENGTH_SHORT).show();
-
+                    //Toast.makeText(activity, getString(R.string.toast_benchmark_started), Toast.LENGTH_SHORT).show();
                     double startTime = System.currentTimeMillis();
-                    SharedPreferences preferences = getPreferenceScreen().getSharedPreferences();
-                    PasswordGenerator generator =
-                            new PasswordGenerator(
-                                    "abc.com",
-                                    "user",
-                                    "masterpassword",
-                                    "deviceID",
-                                    UTF8.encode("Salt"),
-                                    10,
-                                    Integer.parseInt(preferences.getString("hash_iterations", "1000")),
-                                    preferences.getString("hash_algorithm", "SHA256"));
-                    generator.getPassword(1, 1, 1, 1, 20);
 
-                    double stopTime = System.currentTimeMillis();
-                    double elapsedTime = stopTime - startTime;
-                    double elapsedTimeSeconds = elapsedTime / 1000;
-                    Log.d("SETTINGS TIME", String.valueOf(elapsedTimeSeconds));
+                    FragmentManager fragmentManager = getActivity().getFragmentManager();
+                    BenchmarkDialog benchmarkDialog = new BenchmarkDialog();
+                    benchmarkDialog.setArguments(finalBundle);
+                    benchmarkDialog.show(fragmentManager, "BenchmarkDialog");
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setMessage(getString(R.string.dialog_benchmark_time) + " " + String.valueOf(elapsedTimeSeconds) + " " + getString(R.string.dialog_benchmark_seconds))
-                            .setTitle(getString(R.string.dialog_benchmark_title))
-                            .setPositiveButton(getString(R.string.okay), new DialogInterface.OnClickListener() {
-
-                                public void onClick(DialogInterface dialog, int id) {
-
-                                }
-                            })
-                            .show();
-
+//                    PasswordGenerator generator =
+//                            new PasswordGenerator(
+//                                    "abc.com",
+//                                    "user",
+//                                    "masterpassword",
+//                                    "deviceID",
+//                                    UTF8.encode("Salt"),
+//                                    10,
+//                                    Integer.parseInt(preferences.getString("hash_iterations", "1000")),
+//                                    preferences.getString("hash_algorithm", "SHA256"));
+//                    generator.getPassword(1, 1, 1, 1, 20);
+//
+//
+//                    double stopTime = System.currentTimeMillis();
+//                    double elapsedTime = stopTime - startTime;
+//                    double elapsedTimeSeconds = (elapsedTime / 1000);
+//                    Log.d("SETTINGS TIME", String.valueOf(elapsedTimeSeconds));
+//
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                    builder.setMessage(getString(R.string.dialog_benchmark_time) + " " + String.valueOf(elapsedTimeSeconds) + " " + getString(R.string.dialog_benchmark_seconds))
+//                            .setTitle(getString(R.string.dialog_benchmark_title))
+//                            .setPositiveButton(getString(R.string.okay), new DialogInterface.OnClickListener() {
+//
+//                                public void onClick(DialogInterface dialog, int id) {
+//
+//                                }
+//                            })
+//                            .show();
                     return true;
                 }
             });
