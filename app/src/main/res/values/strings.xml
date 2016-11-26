@@ -154,10 +154,11 @@
     <string name="dialog_generate_description">Choose one item in the list and open the generator by a click. Enter a masterpasswort and generate your password.</string>
 
     <!-- ###BENCHMARK### -->
-    <string name="dialog_start_benchmark">Start benchmark</string>
+    <string name="dialog_start_benchmark">Start</string>
+    <string name="dialog_start_benchmark_hint">Please start the benchmark.</string>
     <string name="dialog_benchmark_title">Benchmark</string>
     <string name="dialog_benchmark_seconds">seconds</string>
-    <string name="dialog_benchmark_time">Execution about</string>
+    <string name="dialog_benchmark_time">The generation will take approximately</string>
 
     <!-- ##WELCOME### -->
     <string name="viewhelp">View help</string>

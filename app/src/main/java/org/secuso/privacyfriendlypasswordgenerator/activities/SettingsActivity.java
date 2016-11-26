@@ -9,12 +9,10 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
-import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
@@ -107,52 +105,6 @@ public class SettingsActivity extends BaseActivity {
     }
 
     /**
-     * Set up the {@link android.app.ActionBar}, if the API is available.
-     */
-    /*private void setupActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            // Show the Up button in the action bar.
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-    }*/
-
-    /*@Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            //finish();
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-            return true;
-            // (!super.onMenuItemSelected(featureId, item)) {
-            //    NavUtils.navigateUpFromSameTask(this);
-            //}
-            //return true;
-        }
-        return super.onMenuItemSelected(featureId, item);
-    }*/
-
-    /**
-     * {@inheritDoc}
-     */
-    /*@Override
-    public boolean onIsMultiPane() {
-        return isXLargeTablet(this);
-    }*/
-
-    /**
-     * {@inheritDoc}
-     */
-    /*@Override
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void onBuildHeaders(List<Header> target) {
-        loadHeadersFromResource(R.xml.pref_headers, target);
-    }*/
-
-    /**
      * This method stops fragment injection in malicious applications.
      * Make sure to deny any unknown fragments here.
      */
@@ -181,73 +133,29 @@ public class SettingsActivity extends BaseActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
 
-            initSummary(getPreferenceScreen());
-
-            getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
-                @Override
-                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-
-                    Preference pref = findPreference(key);
-
-                    if (pref instanceof ListPreference) {
-                        ListPreference listPreference = (ListPreference) pref;
-                        pref.setSummary(listPreference.getEntry());
-                    }
-
-                    if (pref instanceof EditTextPreference) {
-                        EditTextPreference editTextPreference = (EditTextPreference) pref;
-                        pref.setSummary(editTextPreference.getText());
-                    }
-
-                }
-            });
-
-            Bundle bundle = new Bundle();
-
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-            bundle.putInt("number_iterations", Integer.parseInt(preferences.getString("hash_iterations", "1000")));
-            bundle.putString("hash_algorithm", preferences.getString("hash_algorithm", "SHA256"));
-
-            final Bundle finalBundle = bundle;
+            bindPreferenceSummaryToValue(findPreference("hash_iterations"));
+            bindPreferenceSummaryToValue(findPreference("hash_algorithm"));
 
             Preference benchmark = findPreference("benchmark");
             benchmark.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
 
+                    Bundle bundle = new Bundle();
+
+                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+                    bundle.putInt("number_iterations", Integer.parseInt(preferences.getString("hash_iterations", "1000")));
+                    bundle.putString("hash_algorithm", preferences.getString("hash_algorithm", "SHA256"));
+
                     FragmentManager fragmentManager = getActivity().getFragmentManager();
                     BenchmarkDialog benchmarkDialog = new BenchmarkDialog();
-                    benchmarkDialog.setArguments(finalBundle);
+                    benchmarkDialog.setArguments(bundle);
                     benchmarkDialog.show(fragmentManager, "BenchmarkDialog");
 
                     return true;
                 }
             });
-        }
-
-
-        private void initSummary(Preference p) {
-            if (p instanceof PreferenceGroup) {
-                PreferenceGroup pGrp = (PreferenceGroup) p;
-                for (int i = 0; i < pGrp.getPreferenceCount(); i++) {
-                    initSummary(pGrp.getPreference(i));
-                }
-            } else {
-                updatePrefSummary(p);
-            }
-        }
-
-
-        private void updatePrefSummary(Preference p) {
-            if (p instanceof ListPreference) {
-                ListPreference listPref = (ListPreference) p;
-                p.setSummary(listPref.getEntry());
-            }
-            if (p instanceof EditTextPreference) {
-                EditTextPreference editTextPref = (EditTextPreference) p;
-                p.setSummary(editTextPref.getText());
-            }
         }
 
         @Override

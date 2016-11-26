@@ -35,8 +35,4 @@ public class AboutActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.githubURL)).setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    //@Override
-    //protected int getNavigationDrawerID() {
-    //    return R.id.nav_about;
-    //}
 }
