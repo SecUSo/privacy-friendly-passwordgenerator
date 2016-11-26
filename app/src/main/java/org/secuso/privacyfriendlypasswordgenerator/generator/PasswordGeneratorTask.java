@@ -1,4 +1,4 @@
-package org.secuso.privacyfriendlypasswordgenerator.dialogs;
+package org.secuso.privacyfriendlypasswordgenerator.generator;
 
 import android.os.AsyncTask;
 
@@ -22,8 +22,6 @@ public class PasswordGeneratorTask extends AsyncTask<String, Void, String>{
                 Integer.parseInt(strings[5]),
                 strings[6]);
 
-        generator.getPassword(Integer.parseInt(strings[7]), Integer.parseInt(strings[8]), Integer.parseInt(strings[9]), Integer.parseInt(strings[10]), Integer.parseInt(strings[11]));
-
-        return null;
+        return generator.getPassword(Integer.parseInt(strings[7]), Integer.parseInt(strings[8]), Integer.parseInt(strings[9]), Integer.parseInt(strings[10]), Integer.parseInt(strings[11]));
     }
 }

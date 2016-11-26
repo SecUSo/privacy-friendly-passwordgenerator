@@ -18,6 +18,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
+import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTask;
 import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
@@ -47,6 +49,9 @@ public class UpdatePasswordDialog extends DialogFragment {
     String hashAlgorithm;
     int number_iterations;
 
+    ProgressBar spinnerOld;
+    ProgressBar spinnerNew;
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -59,6 +64,13 @@ public class UpdatePasswordDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         rootView = inflater.inflate(R.layout.dialog_update_passwords, null);
+
+
+        spinnerOld = (ProgressBar) rootView.findViewById(R.id.oldProgressBar);
+        spinnerOld.setVisibility(View.GONE);
+
+        spinnerNew = (ProgressBar) rootView.findViewById(R.id.newProgressBar);
+        spinnerNew.setVisibility(View.GONE);
 
         Bundle bundle = getArguments();
 
@@ -87,6 +99,10 @@ public class UpdatePasswordDialog extends DialogFragment {
 
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(),
                         InputMethodManager.RESULT_UNCHANGED_SHOWN);
+
+                spinnerOld.setVisibility(View.VISIBLE);
+                spinnerNew.setVisibility(View.VISIBLE);
+
                 displayPasswords();
             }
         });
@@ -140,8 +156,8 @@ public class UpdatePasswordDialog extends DialogFragment {
             toast.show();
         } else {
 
-            TextView textViewOldPassword = (TextView) rootView.findViewById(R.id.textViewOldPassword);
-            TextView textViewNewPassword = (TextView) rootView.findViewById(R.id.textViewNewPassword);
+            final TextView textViewOldPassword = (TextView) rootView.findViewById(R.id.textViewOldPassword);
+            final TextView textViewNewPassword = (TextView) rootView.findViewById(R.id.textViewNewPassword);
 
             String masterpassword = editTextUpdateMasterpassword.getText().toString();
 
@@ -159,15 +175,39 @@ public class UpdatePasswordDialog extends DialogFragment {
             }
 
             //generate old password
-            PasswordGenerator generatorOld = new PasswordGenerator(
-                    oldMetaData.getDOMAIN(),
-                    oldMetaData.getUSERNAME(),
-                    masterpassword,
-                    deviceID,
-                    UTF8.encode(oldMetaData.getDOMAIN()),
-                    oldMetaData.getITERATION(),
-                    number_iterations,
-                    hashAlgorithm);
+//            PasswordGenerator generatorOld = new PasswordGenerator(
+//                    oldMetaData.getDOMAIN(),
+//                    oldMetaData.getUSERNAME(),
+//                    masterpassword,
+//                    deviceID,
+//                    UTF8.encode(oldMetaData.getDOMAIN()),
+//                    oldMetaData.getITERATION(),
+//                    number_iterations,
+//                    hashAlgorithm);
+
+
+            //pack old parameters to String-Array
+            String[] paramsOld = new String[12];
+            paramsOld[0] = oldMetaData.getDOMAIN();
+            paramsOld[1] = oldMetaData.getUSERNAME();
+            paramsOld[2] = masterpassword;
+            paramsOld[3] = deviceID;
+            paramsOld[4] = String.valueOf(oldMetaData.getITERATION());
+            paramsOld[5] = String.valueOf(number_iterations);
+            paramsOld[6] = hashAlgorithm;
+            paramsOld[7] = String.valueOf(oldMetaData.getHAS_SYMBOLS());
+            paramsOld[8] = String.valueOf(oldMetaData.getHAS_LETTERS_LOW());
+            paramsOld[9] = String.valueOf(oldMetaData.getHAS_LETTERS_UP());
+            paramsOld[10] = String.valueOf(oldMetaData.getHAS_NUMBERS());
+            paramsOld[11] = String.valueOf(oldMetaData.getLENGTH());
+
+            new PasswordGeneratorTask() {
+                @Override
+                protected void onPostExecute(String result) {
+                    textViewOldPassword.setText(result);
+                    spinnerOld.setVisibility(View.GONE);
+                }
+            }.execute(paramsOld);
 
 //            Log.d("Generator Update Old", "Length: " + Integer.toString(oldMetaData.getLENGTH()));
 //            Log.d("Generator Update Old", "Domain: " + oldMetaData.getDOMAIN());
@@ -178,29 +218,52 @@ public class UpdatePasswordDialog extends DialogFragment {
 //            Log.d("Generator Update Old", "Numbers: " + Integer.toString(oldMetaData.getHAS_NUMBERS()));
 //            Log.d("Generator Update Old", "Iterations: " + Integer.toString(oldMetaData.getITERATION()));
 
-            String passwordOld = generatorOld.getPassword(
-                    oldMetaData.getHAS_SYMBOLS(),
-                    oldMetaData.getHAS_LETTERS_LOW(),
-                    oldMetaData.getHAS_LETTERS_UP(),
-                    oldMetaData.getHAS_NUMBERS(),
-                    oldMetaData.getLENGTH());
+//            String passwordOld = generatorOld.getPassword(
+//                    oldMetaData.getHAS_SYMBOLS(),
+//                    oldMetaData.getHAS_LETTERS_LOW(),
+//                    oldMetaData.getHAS_LETTERS_UP(),
+//                    oldMetaData.getHAS_NUMBERS(),
+//                    oldMetaData.getLENGTH());
 
-            textViewOldPassword.setText(passwordOld);
-
-            Log.d("Generator Update Old", "Password: " + passwordOld);
+//            textViewOldPassword.setText(passwordOld);
+//
+//            Log.d("Generator Update Old", "Password: " + passwordOld);
 
             //generate new password
             metaData = database.getMetaData(position);
 
-            PasswordGenerator generator = new PasswordGenerator(
-                    metaData.getDOMAIN(),
-                    metaData.getUSERNAME(),
-                    masterpassword,
-                    deviceID,
-                    UTF8.encode(metaData.getDOMAIN()),
-                    metaData.getITERATION(),
-                    number_iterations,
-                    hashAlgorithm);
+            //pack new parameters to String-Array
+            String[] paramsNew = new String[12];
+            paramsNew[0] = metaData.getDOMAIN();
+            paramsNew[1] = metaData.getUSERNAME();
+            paramsNew[2] = masterpassword;
+            paramsNew[3] = deviceID;
+            paramsNew[4] = String.valueOf(metaData.getITERATION());
+            paramsNew[5] = String.valueOf(number_iterations);
+            paramsNew[6] = hashAlgorithm;
+            paramsNew[7] = String.valueOf(metaData.getHAS_SYMBOLS());
+            paramsNew[8] = String.valueOf(metaData.getHAS_LETTERS_LOW());
+            paramsNew[9] = String.valueOf(metaData.getHAS_LETTERS_UP());
+            paramsNew[10] = String.valueOf(metaData.getHAS_NUMBERS());
+            paramsNew[11] = String.valueOf(metaData.getLENGTH());
+
+            new PasswordGeneratorTask() {
+                @Override
+                protected void onPostExecute(String result) {
+                    textViewNewPassword.setText(result);
+                    spinnerNew.setVisibility(View.GONE);
+                }
+            }.execute(paramsNew);
+
+//            PasswordGenerator generator = new PasswordGenerator(
+//                    metaData.getDOMAIN(),
+//                    metaData.getUSERNAME(),
+//                    masterpassword,
+//                    deviceID,
+//                    UTF8.encode(metaData.getDOMAIN()),
+//                    metaData.getITERATION(),
+//                    number_iterations,
+//                    hashAlgorithm);
 
 //            Log.d("Generator Update", "Length: " + Integer.toString(metaData.getLENGTH()));
 //            Log.d("Generator Update", "Domain: " + metaData.getDOMAIN());
@@ -211,16 +274,16 @@ public class UpdatePasswordDialog extends DialogFragment {
 //            Log.d("Generator Update", "Upper: " + Integer.toString(metaData.getHAS_LETTERS_UP()));
 //            Log.d("Generator Update", "Iterations: " + Integer.toString(metaData.getITERATION()));
 
-            String passwordNew = generator.getPassword(
-                    metaData.getHAS_SYMBOLS(),
-                    metaData.getHAS_LETTERS_LOW(),
-                    metaData.getHAS_LETTERS_UP(),
-                    metaData.getHAS_NUMBERS(),
-                    metaData.getLENGTH());
+//            String passwordNew = generator.getPassword(
+//                    metaData.getHAS_SYMBOLS(),
+//                    metaData.getHAS_LETTERS_LOW(),
+//                    metaData.getHAS_LETTERS_UP(),
+//                    metaData.getHAS_NUMBERS(),
+//                    metaData.getLENGTH());
 
-            textViewNewPassword.setText(passwordNew);
-
-            Log.d("Generator Update", "Password: " + passwordNew);
+//            textViewNewPassword.setText(passwordNew);
+//
+//            Log.d("Generator Update", "Password: " + passwordNew);
 
         }
     }

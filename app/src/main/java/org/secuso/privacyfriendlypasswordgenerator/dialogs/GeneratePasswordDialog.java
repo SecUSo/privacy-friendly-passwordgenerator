@@ -113,11 +113,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                     spinner.setVisibility(View.VISIBLE);
 
                     generatePassword();
-
-
                 }
-
-
             }
         });
 
