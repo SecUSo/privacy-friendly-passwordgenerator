@@ -45,6 +45,7 @@
                         style="@style/Base.DialogWindowTitle.AppCompat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/card_margin"
                         android:text="DOMAIN"
                         android:textStyle="bold" />
 
