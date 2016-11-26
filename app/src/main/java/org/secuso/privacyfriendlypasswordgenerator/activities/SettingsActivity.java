@@ -204,10 +204,10 @@ public class SettingsActivity extends BaseActivity {
 
             Bundle bundle = new Bundle();
 
-            SharedPreferences preferences = getPreferenceScreen().getSharedPreferences();
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
             bundle.putInt("number_iterations", Integer.parseInt(preferences.getString("hash_iterations", "1000")));
-            bundle.putString("hash_algorithm", preferences.getString("hash_iterations", "1000"));
+            bundle.putString("hash_algorithm", preferences.getString("hash_algorithm", "SHA256"));
 
             final Bundle finalBundle = bundle;
 
@@ -216,42 +216,11 @@ public class SettingsActivity extends BaseActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
 
-                    //Toast.makeText(activity, getString(R.string.toast_benchmark_started), Toast.LENGTH_SHORT).show();
-                    double startTime = System.currentTimeMillis();
-
                     FragmentManager fragmentManager = getActivity().getFragmentManager();
                     BenchmarkDialog benchmarkDialog = new BenchmarkDialog();
                     benchmarkDialog.setArguments(finalBundle);
                     benchmarkDialog.show(fragmentManager, "BenchmarkDialog");
 
-//                    PasswordGenerator generator =
-//                            new PasswordGenerator(
-//                                    "abc.com",
-//                                    "user",
-//                                    "masterpassword",
-//                                    "deviceID",
-//                                    UTF8.encode("Salt"),
-//                                    10,
-//                                    Integer.parseInt(preferences.getString("hash_iterations", "1000")),
-//                                    preferences.getString("hash_algorithm", "SHA256"));
-//                    generator.getPassword(1, 1, 1, 1, 20);
-//
-//
-//                    double stopTime = System.currentTimeMillis();
-//                    double elapsedTime = stopTime - startTime;
-//                    double elapsedTimeSeconds = (elapsedTime / 1000);
-//                    Log.d("SETTINGS TIME", String.valueOf(elapsedTimeSeconds));
-//
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//                    builder.setMessage(getString(R.string.dialog_benchmark_time) + " " + String.valueOf(elapsedTimeSeconds) + " " + getString(R.string.dialog_benchmark_seconds))
-//                            .setTitle(getString(R.string.dialog_benchmark_title))
-//                            .setPositiveButton(getString(R.string.okay), new DialogInterface.OnClickListener() {
-//
-//                                public void onClick(DialogInterface dialog, int id) {
-//
-//                                }
-//                            })
-//                            .show();
                     return true;
                 }
             });

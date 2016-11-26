@@ -7,16 +7,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <Button
-        android:id="@+id/benchmarkButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_normal"
-        android:text="@string/dialog_start_benchmark"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -42,5 +32,15 @@
         android:layout_toEndOf="@+id/benchmarkTextView"/>
 
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/benchmarkButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_normal"
+        android:text="@string/dialog_start_benchmark"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
 </LinearLayout>

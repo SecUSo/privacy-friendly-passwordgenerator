@@ -1,11 +1,12 @@
 package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +27,7 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
 import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
 
-import static android.content.Context.*;
+import static android.content.Context.CLIPBOARD_SERVICE;
 
 /**
  * Created by karo on 13.11.16.
@@ -42,6 +44,8 @@ public class GeneratePasswordDialog extends DialogFragment {
     Boolean clipboard_enabled;
     String hashAlgorithm;
     int number_iterations;
+
+    ProgressBar spinner;
 
     @Override
     public void onAttach(Activity activity) {
@@ -64,6 +68,8 @@ public class GeneratePasswordDialog extends DialogFragment {
         hashAlgorithm = bundle.getString("hash_algorithm");
         number_iterations = bundle.getInt("number_iterations");
 
+        spinner = (ProgressBar) rootView.findViewById(R.id.progressBar);
+        spinner.setVisibility(View.GONE);
 
         this.database = new MetaDataSQLiteHelper(getActivity());
         metaData = database.getMetaData(position);
@@ -88,13 +94,29 @@ public class GeneratePasswordDialog extends DialogFragment {
             @Override
             public void onClick(View view) {
 
+                TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
+                textViewPassword.setText("");
+
                 InputMethodManager inputManager = (InputMethodManager)
                         activity.getSystemService(Context.INPUT_METHOD_SERVICE);
 
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(),
                         InputMethodManager.RESULT_UNCHANGED_SHOWN);
 
-                generatePassword();
+                EditText editTextMasterpassword = (EditText) rootView.findViewById(R.id.editTextMasterpassword);
+
+                if (editTextMasterpassword.getText().toString().length() == 0) {
+                    Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+
+                    spinner.setVisibility(View.VISIBLE);
+
+                    generatePassword();
+
+
+                }
+
 
             }
         });
@@ -106,55 +128,73 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         EditText editTextMasterpassword = (EditText) rootView.findViewById(R.id.editTextMasterpassword);
 
-        if (editTextMasterpassword.getText().toString().length() == 0) {
-            Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
-            toast.show();
+        metaData = database.getMetaData(position);
+
+        Log.d("BINDING", Boolean.toString(bindToDevice_enabled));
+
+        String deviceID;
+        if (bindToDevice_enabled) {
+            deviceID = Settings.Secure.getString(getContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+            Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID));
         } else {
-            metaData = database.getMetaData(position);
+            deviceID = "SECUSO";
+        }
 
-            Log.d("BINDING", Boolean.toString(bindToDevice_enabled));
+        //pack parameters to String-Array
+        String[] params = new String[12];
+        params[0] = metaData.getDOMAIN();
+        params[1] = metaData.getUSERNAME();
+        params[2] = editTextMasterpassword.getText().toString();
+        params[3] = deviceID;
+        params[4] = String.valueOf(metaData.getITERATION());
+        params[5] = String.valueOf(number_iterations);
+        params[6] = hashAlgorithm;
+        params[7] = String.valueOf(metaData.getHAS_SYMBOLS());
+        params[8] = String.valueOf(metaData.getHAS_LETTERS_LOW());
+        params[9] = String.valueOf(metaData.getHAS_LETTERS_UP());
+        params[10] = String.valueOf(metaData.getHAS_NUMBERS());
+        params[11] = String.valueOf(metaData.getLENGTH());
 
-            String deviceID;
-            if (bindToDevice_enabled) {
-                deviceID = Settings.Secure.getString(getContext().getContentResolver(),
-                        Settings.Secure.ANDROID_ID);
-                Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
-                        Settings.Secure.ANDROID_ID));
-            } else {
-                deviceID = "SECUSO";
-            }
+        PasswortGeneratorTask passwortGeneratorTask = new PasswortGeneratorTask();
+        passwortGeneratorTask.execute(params);
+    }
 
-            PasswordGenerator generator = new PasswordGenerator(metaData.getDOMAIN(),
-                    metaData.getUSERNAME(),
-                    editTextMasterpassword.getText().toString(),
-                    deviceID,
-                    UTF8.encode(metaData.getDOMAIN()),
-                    metaData.getITERATION(),
-                    number_iterations,
-                    hashAlgorithm);
+    public void passwordToClipboard(boolean clipboardEnabled, String password) {
+        if (clipboardEnabled) {
+            ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("Password", password);
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(activity, activity.getString(R.string.password_copied), Toast.LENGTH_SHORT).show();
+        }
+    }
 
-            Log.d("GENERATOR Hash", hashAlgorithm);
+    public class PasswortGeneratorTask extends AsyncTask<String, Void, String> {
 
-            String password = generator.getPassword(metaData.getHAS_SYMBOLS(), metaData.getHAS_LETTERS_LOW(), metaData.getHAS_LETTERS_UP(), metaData.getHAS_NUMBERS(), metaData.getLENGTH());
-//                Log.d("Generator", "Length: " + Integer.toString(metaData.getLENGTH()));
-//                Log.d("Generator", "Domain: " + metaData.getDOMAIN());
-//
-//                Log.d("Generator", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
-//                //Log.d("Generator", "Letters: " + Integer.toString(metaData.getHAS_LETTERS()));
-//                Log.d("Generator", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
-//                Log.d("Generator", "Iterations: " + Integer.toString(metaData.getITERATION()));
+        @Override
+        protected String doInBackground(String[] strings) {
 
-            //Copy password to clipboard
-            if (clipboard_enabled) {
-                ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("Password", password);
-                clipboard.setPrimaryClip(clip);
-                Toast.makeText(activity, activity.getString(R.string.password_copied), Toast.LENGTH_SHORT).show();
-            }
+            PasswordGenerator generator = new PasswordGenerator(strings[0],
+                    strings[1],
+                    strings[2],
+                    strings[3],
+                    UTF8.encode(String.valueOf(strings[0])),
+                    Integer.valueOf(strings[4]),
+                    Integer.parseInt(strings[5]),
+                    strings[6]);
+
+            return generator.getPassword(Integer.parseInt(strings[7]), Integer.parseInt(strings[8]), Integer.parseInt(strings[9]), Integer.parseInt(strings[10]), Integer.parseInt(strings[11]));
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
             TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
-            textViewPassword.setText(password);
-            Log.d("Generator", password);
+            textViewPassword.setText(result);
 
+            passwordToClipboard(clipboard_enabled, result);
+
+            spinner.setVisibility(View.GONE);
         }
 
     }

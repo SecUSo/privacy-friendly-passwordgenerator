@@ -3,6 +3,7 @@ package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -53,34 +54,69 @@ public class BenchmarkDialog extends DialogFragment {
         benchmarkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //generatePassword(iterations, hashAlgorithm);
-                TextView benchmarkTextView = (TextView) rootView.findViewById(R.id.benchmarkTextView);
-                benchmarkTextView.setText(String.valueOf(generatePassword(iterations, hashAlgorithm)));
+                generatePassword(iterations, hashAlgorithm);
             }
         });
 
         return builder.create();
     }
 
-    public double generatePassword(int iterations, String hash) {
+    public void generatePassword(int iterations, String hashFunction) {
 
         double startTime = System.currentTimeMillis();
 
-        PasswordGenerator generator =
-                new PasswordGenerator(
-                        "abc.com",
-                        "user",
-                        "masterpassword",
-                        "deviceID",
-                        UTF8.encode("Salt"),
-                        10,
-                        iterations,
-                        hash);
-        generator.getPassword(1, 1, 1, 1, 20);
+        //pack parameters to String-Array
+        String[] params = new String[13];
+        params[0] = "abc.com";
+        params[1] = "user";
+        params[2] = "masterpassword";
+        params[3] = "deviceID";
+        params[4] = "4242";
+        params[5] = String.valueOf(iterations);
+        params[6] = hashFunction;
+        params[7] = String.valueOf(1);
+        params[8] = String.valueOf(1);
+        params[9] = String.valueOf(1);
+        params[10] = String.valueOf(1);
+        params[11] = String.valueOf(20);
+        params[12] = String.valueOf(startTime) ;
 
-        double stopTime = System.currentTimeMillis();
+        PasswortGeneratorTask passwortGeneratorTask = new PasswortGeneratorTask();
 
-        return (stopTime - startTime) / 1000;
+        try{
+            passwortGeneratorTask.execute(params).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public class PasswortGeneratorTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String[] strings) {
+
+            PasswordGenerator generator = new PasswordGenerator(strings[0],
+                    strings[1],
+                    strings[2],
+                    strings[3],
+                    UTF8.encode(String.valueOf(strings[0])),
+                    Integer.valueOf(strings[4]),
+                    Integer.parseInt(strings[5]),
+                    strings[6]);
+
+            generator.getPassword(Integer.parseInt(strings[7]), Integer.parseInt(strings[8]), Integer.parseInt(strings[9]), Integer.parseInt(strings[10]), Integer.parseInt(strings[11]));
+            return strings[12];
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+            TextView benchmarkTextView = (TextView) rootView.findViewById(R.id.benchmarkTextView);
+            double stopTime = System.currentTimeMillis();
+            benchmarkTextView.setText(String.valueOf((stopTime - Double.parseDouble(result)) / 1000));
+        }
+
     }
 
 
