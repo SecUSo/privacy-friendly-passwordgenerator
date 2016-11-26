@@ -28,7 +28,7 @@
     <string name="not_checked">✘</string>
 
     <!--###ADD_METADATA###-->
-    <string name="placeholder_no_data">-</string>
+    <string name="placeholder_no_data" translatable="false">-</string>
     <string name="add_metadata_heading">Add new parameters</string>
     <string name="domain">Domain:</string>
     <string name="username">Username:</string>
@@ -87,7 +87,7 @@
     <!--###HELP###-->
     <string name="help">Help</string>
     <string name="help_overview_heading">Overview</string>
-    <string name="help_overview">Privacy Friendly Password Generator deterministically generates password out of pre-chosen parameters and a master password. </string>
+    <string name="help_overview">Privacy Friendly Password Generator deterministically generates passwords out of pre-chosen parameters and a master password. </string>
     <string name="help_parameters_heading">Explanation of parameters</string>
     <string name="help_parameters_domain_heading">Domain</string>
     <string name="help_parameters_domain_description">The domain is reference to the website or item the password is used for.</string>
@@ -137,12 +137,12 @@
     <string name="toast_benchmark_started">Benchmark started.</string>
 
     <string name="title_hash_algorithms">Hash algorithm</string>
-    <string-array name="pref_hash_algorithms">
+    <string-array name="pref_hash_algorithms" translatable="false">
         <item>SHA256</item>
         <item>SHA384</item>
         <item>SHA512</item>
     </string-array>
-    <string name="default_hash_algorithm">SHA256</string>
+    <string name="default_hash_algorithm" translatable="false">SHA256</string>
 
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>
@@ -170,7 +170,6 @@
 
     <string name="slide_1_title">Welcome!</string>
     <string name="slide_1_desc">With Privacy Friendly Password Generator you can generate passwords based on previously saved parameters.</string>
-    <string name="slide_1_message">Let\'s start!</string>
 
     <string name="slide_2_title">Add Parameters</string>
     <string name="slide_2_desc">Add parameters that describe properties of your password.</string>
@@ -185,8 +184,5 @@
     <string name="slide_4_action_one_desc">Start updating by a long press.</string>
     <string name="slide_4_action_two">Delete</string>
     <string name="slide_4_action_two_desc">Delete by swiping to left or right.</string>
-
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
-    <string name="play_again">Play Again</string>
 
 </resources>
