@@ -163,4 +163,30 @@
     <!-- ##WELCOME### -->
     <string name="viewhelp">View help</string>
 
+    <!-- ##TUTORIAL_DIALOG-->
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Welcome!</string>
+    <string name="slide_1_desc">With Privacy Friendly Password Generator you can generate passwords based on previously saved parameters.</string>
+    <string name="slide_1_message">Let\'s start!</string>
+
+    <string name="slide_2_title">1. Add Parameters</string>
+    <string name="slide_2_desc">Add parameters that describe properties of your password.</string>
+
+    <string name="slide_3_title">2. Generate Passwords</string>
+    <string name="slide_3_desc_one">Tap on the parameters</string>
+    <string name="slide_3_desc_two">Enter a master password</string>
+    <string name="slide_3_desc_three">Generate</string>
+
+    <string name="slide_4_title">3. Manage Parameters</string>
+    <string name="slide_4_action_one">Update Parameters</string>
+    <string name="slide_4_action_one_desc">Start updating by a long press.</string>
+    <string name="slide_4_action_two">Delete Parameters</string>
+    <string name="slide_4_action_two_desc">Delete by swiping to left or right.</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+
 </resources>

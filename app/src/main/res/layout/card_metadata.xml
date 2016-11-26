@@ -55,7 +55,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/domainTextView"
                         android:layout_marginStart="@dimen/card_margin"
-                        android:layout_marginTop="5dp"
                         android:text="@string/username" />
 
                     <TextView
@@ -64,7 +63,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/domainTextView"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
                         android:layout_toEndOf="@+id/usernameTextView"
                         android:text="@string/placeholder_no_data"
                         android:textStyle="bold" />
