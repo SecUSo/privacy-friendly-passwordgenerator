@@ -14,6 +14,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
@@ -44,6 +48,8 @@ public class MainActivity extends BaseActivity {
     String hash_algorithm;
     int number_iterations;
 
+    LinearLayout initialAlert;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +59,15 @@ public class MainActivity extends BaseActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         metadatalist = database.getAllmetaData();
+
+        initialAlert = (LinearLayout) findViewById(R.id.insert_alert);
+        hints(metadatalist.size(), initialAlert);
+        if (metadatalist.size() == 0 ) {
+            initialAlert.setVisibility(View.VISIBLE);
+
+        } else {
+            initialAlert.setVisibility(View.GONE);
+        }
 
         //doFirstRun();
 
@@ -184,6 +199,9 @@ public class MainActivity extends BaseActivity {
 
         final int finalPosition = position;
 
+        initialAlert.setVisibility(View.VISIBLE);
+        hints(metadatalist.size(), initialAlert);
+
         Snackbar.make(findViewById(android.R.id.content), getString(R.string.domain) + " " + toDeleteMetaData.getDOMAIN() + " " + getString(R.string.item_deleted), Snackbar.LENGTH_LONG)
                 .setAction(getString(R.string.undo), new View.OnClickListener() {
                     @Override
@@ -192,6 +210,8 @@ public class MainActivity extends BaseActivity {
                         metadatalist.add(finalPosition, toDeleteMetaDataFinal);
                         adapter.notifyItemInserted(finalPosition);
                         adapter.notifyDataSetChanged();
+                        initialAlert.setVisibility(View.GONE);
+                        hints(metadatalist.size(), initialAlert);
                     }
                 }).show();
 
@@ -258,6 +278,24 @@ public class MainActivity extends BaseActivity {
         hash_algorithm = sharedPreferences.getString("hash_algorithm", "SHA256");
         String tempIterations = sharedPreferences.getString("hash_iterations", "1000");
         number_iterations = Integer.parseInt(tempIterations);
+    }
+
+    public void hints(int position, LinearLayout linearLayout) {
+
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+
+        if (position==0) {
+
+            anim.setDuration(1500);
+            anim.setStartOffset(20);
+            anim.setRepeatMode(Animation.REVERSE);
+            anim.setRepeatCount(Animation.INFINITE);
+            linearLayout.startAnimation(anim);
+
+        } else {
+            linearLayout.clearAnimation();
+        }
+
     }
 
     //private void doFirstRun() {
