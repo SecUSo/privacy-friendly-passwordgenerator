@@ -232,7 +232,7 @@ public class MainActivity extends BaseActivity {
                     //.setTitle("Title")
                     .setMessage(getString(R.string.delete_dialog))
                     .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int whichButton) {
                             database.deleteAllMetaData();
@@ -240,7 +240,7 @@ public class MainActivity extends BaseActivity {
                             MainActivity.this.recreate();
                         }
                     })
-                    .setNegativeButton(R.string.okay, null).show();
+                    .setNegativeButton(R.string.cancel, null).show();
 
             return true;
         }
