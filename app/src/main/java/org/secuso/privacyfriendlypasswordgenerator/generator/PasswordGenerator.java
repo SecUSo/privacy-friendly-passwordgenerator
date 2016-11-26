@@ -41,8 +41,6 @@ public class PasswordGenerator {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-
-
     }
 
     public String getPassword(int specialCharacters, int lowerCaseLetters, int upperCaseLetters,
