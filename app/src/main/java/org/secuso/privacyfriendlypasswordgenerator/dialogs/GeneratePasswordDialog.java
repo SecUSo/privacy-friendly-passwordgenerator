@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
@@ -24,8 +23,7 @@ import android.widget.Toast;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
-import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
-import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
+import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTask;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
 
@@ -153,8 +151,17 @@ public class GeneratePasswordDialog extends DialogFragment {
         params[10] = String.valueOf(metaData.getHAS_NUMBERS());
         params[11] = String.valueOf(metaData.getLENGTH());
 
-        PasswortGeneratorTask passwortGeneratorTask = new PasswortGeneratorTask();
-        passwortGeneratorTask.execute(params);
+        new PasswordGeneratorTask() {
+            @Override
+            protected void onPostExecute(String result) {
+                TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
+                textViewPassword.setText(result);
+
+                passwordToClipboard(clipboard_enabled, result);
+
+                spinner.setVisibility(View.GONE);
+            }
+        }.execute(params);
     }
 
     public void passwordToClipboard(boolean clipboardEnabled, String password) {
@@ -164,35 +171,6 @@ public class GeneratePasswordDialog extends DialogFragment {
             clipboard.setPrimaryClip(clip);
             Toast.makeText(activity, activity.getString(R.string.password_copied), Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public class PasswortGeneratorTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String[] strings) {
-
-            PasswordGenerator generator = new PasswordGenerator(strings[0],
-                    strings[1],
-                    strings[2],
-                    strings[3],
-                    UTF8.encode(String.valueOf(strings[0])),
-                    Integer.valueOf(strings[4]),
-                    Integer.parseInt(strings[5]),
-                    strings[6]);
-
-            return generator.getPassword(Integer.parseInt(strings[7]), Integer.parseInt(strings[8]), Integer.parseInt(strings[9]), Integer.parseInt(strings[10]), Integer.parseInt(strings[11]));
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
-            textViewPassword.setText(result);
-
-            passwordToClipboard(clipboard_enabled, result);
-
-            spinner.setVisibility(View.GONE);
-        }
-
     }
 
 }

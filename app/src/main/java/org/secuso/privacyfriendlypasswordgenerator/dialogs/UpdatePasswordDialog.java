@@ -6,7 +6,6 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
@@ -25,9 +24,7 @@ import android.widget.Toast;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
-import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTask;
-import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
 
@@ -174,18 +171,6 @@ public class UpdatePasswordDialog extends DialogFragment {
                 deviceID = "SECUSO";
             }
 
-            //generate old password
-//            PasswordGenerator generatorOld = new PasswordGenerator(
-//                    oldMetaData.getDOMAIN(),
-//                    oldMetaData.getUSERNAME(),
-//                    masterpassword,
-//                    deviceID,
-//                    UTF8.encode(oldMetaData.getDOMAIN()),
-//                    oldMetaData.getITERATION(),
-//                    number_iterations,
-//                    hashAlgorithm);
-
-
             //pack old parameters to String-Array
             String[] paramsOld = new String[12];
             paramsOld[0] = oldMetaData.getDOMAIN();
@@ -218,17 +203,6 @@ public class UpdatePasswordDialog extends DialogFragment {
 //            Log.d("Generator Update Old", "Numbers: " + Integer.toString(oldMetaData.getHAS_NUMBERS()));
 //            Log.d("Generator Update Old", "Iterations: " + Integer.toString(oldMetaData.getITERATION()));
 
-//            String passwordOld = generatorOld.getPassword(
-//                    oldMetaData.getHAS_SYMBOLS(),
-//                    oldMetaData.getHAS_LETTERS_LOW(),
-//                    oldMetaData.getHAS_LETTERS_UP(),
-//                    oldMetaData.getHAS_NUMBERS(),
-//                    oldMetaData.getLENGTH());
-
-//            textViewOldPassword.setText(passwordOld);
-//
-//            Log.d("Generator Update Old", "Password: " + passwordOld);
-
             //generate new password
             metaData = database.getMetaData(position);
 
@@ -255,16 +229,6 @@ public class UpdatePasswordDialog extends DialogFragment {
                 }
             }.execute(paramsNew);
 
-//            PasswordGenerator generator = new PasswordGenerator(
-//                    metaData.getDOMAIN(),
-//                    metaData.getUSERNAME(),
-//                    masterpassword,
-//                    deviceID,
-//                    UTF8.encode(metaData.getDOMAIN()),
-//                    metaData.getITERATION(),
-//                    number_iterations,
-//                    hashAlgorithm);
-
 //            Log.d("Generator Update", "Length: " + Integer.toString(metaData.getLENGTH()));
 //            Log.d("Generator Update", "Domain: " + metaData.getDOMAIN());
 //            Log.d("Generator Update", "Username: " + metaData.getUSERNAME());
@@ -273,17 +237,6 @@ public class UpdatePasswordDialog extends DialogFragment {
 //            Log.d("Generator Update", "Lower: " + Integer.toString(metaData.getHAS_LETTERS_LOW()));
 //            Log.d("Generator Update", "Upper: " + Integer.toString(metaData.getHAS_LETTERS_UP()));
 //            Log.d("Generator Update", "Iterations: " + Integer.toString(metaData.getITERATION()));
-
-//            String passwordNew = generator.getPassword(
-//                    metaData.getHAS_SYMBOLS(),
-//                    metaData.getHAS_LETTERS_LOW(),
-//                    metaData.getHAS_LETTERS_UP(),
-//                    metaData.getHAS_NUMBERS(),
-//                    metaData.getLENGTH());
-
-//            textViewNewPassword.setText(passwordNew);
-//
-//            Log.d("Generator Update", "Password: " + passwordNew);
 
         }
     }

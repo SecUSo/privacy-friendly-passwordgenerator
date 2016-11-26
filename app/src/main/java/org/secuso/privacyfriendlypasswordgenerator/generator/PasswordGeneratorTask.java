@@ -2,9 +2,6 @@ package org.secuso.privacyfriendlypasswordgenerator.generator;
 
 import android.os.AsyncTask;
 
-import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
-import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
-
 /**
  * Created by karo on 26.11.16.
  */
