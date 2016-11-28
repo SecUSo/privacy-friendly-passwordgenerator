@@ -33,7 +33,7 @@ public class UTF8 {
         return output;
     }
 
-    public static char[] decode(byte[] input) {
+    public static String decode(byte[] input) {
         String temp = null;
 
         if (!Charset.isSupported("UTF-8")) {
@@ -46,7 +46,7 @@ public class UTF8 {
             e.printStackTrace();
         }
 
-        return temp.toCharArray();
+        return temp;
     }
 
 
