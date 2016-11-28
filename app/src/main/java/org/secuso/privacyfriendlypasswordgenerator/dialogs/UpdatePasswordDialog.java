@@ -26,8 +26,6 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTask;
 
-import java.util.concurrent.ExecutionException;
-
 import static android.content.Context.CLIPBOARD_SERVICE;
 
 /**

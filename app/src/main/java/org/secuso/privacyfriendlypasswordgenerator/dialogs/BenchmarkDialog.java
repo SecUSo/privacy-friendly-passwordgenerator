@@ -14,7 +14,6 @@ import android.widget.TextView;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTask;
-import org.secuso.privacyfriendlypasswordgenerator.generator.UTF8;
 
 /**
  * Created by karo on 23.11.16.

@@ -1,8 +1,5 @@
 package org.secuso.privacyfriendlypasswordgenerator.generator;
 
-import org.secuso.privacyfriendlypasswordgenerator.generator.Base64;
-import android.util.Log;
-
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +27,7 @@ public class PasswordGenerator {
                              String hashAlgorithm) {
 
         String salt = String.valueOf(iteration*100) + domain + username + deviceID;
-        
+
         String temp = Base64.encode_base64(PBKDF2.hmac(hashAlgorithm, UTF8.encode(masterpassword), UTF8.encode(salt), hashIterations), 22);
         //Log.d("SEED", temp);
         //Log.d("SEED_SHORT", temp.substring(0,21));
@@ -42,13 +39,13 @@ public class PasswordGenerator {
         byte[] passwordChar = UTF8.encode(password);
         byte[] transformedPassword = new byte[31];
 
-        Log.d("GENERATOR", "Password after bcrypt " + password);
+        //Log.d("GENERATOR", "Password after bcrypt " + password);
 
         for (int i=29; i<passwordChar.length; i++) {
             transformedPassword[i-29] = passwordChar[i];
         }
 
-        Log.d("GENERATOR", "Password after bcrypt short " + new String(transformedPassword));
+        //Log.d("GENERATOR", "Password after bcrypt short " + new String(transformedPassword));
 
         return transformedPassword;
 
