@@ -102,7 +102,6 @@ public class BenchmarkDialog extends DialogFragment {
                         strings[1],
                         strings[2],
                         strings[3],
-                        UTF8.encode(String.valueOf(strings[0])),
                         Integer.valueOf(strings[4]),
                         Integer.parseInt(strings[5]),
                         strings[6]);

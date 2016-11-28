@@ -1,5 +1,8 @@
 package org.secuso.privacyfriendlypasswordgenerator.generator;
 
+import org.secuso.privacyfriendlypasswordgenerator.generator.Base64;
+import android.util.Log;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,34 +20,46 @@ import java.util.List;
 public class PasswordGenerator {
 
     private byte[] hashValue;
-//    private byte[] hashValueBCrypt;
 
     public PasswordGenerator(String domain,
                              String username,
                              String masterpassword,
                              String deviceID,
-                             byte[] salt,
-                             int iterations,
+                             int iteration,
                              int hashIterations,
                              String hashAlgorithm) {
 
-        byte[] startValue = UTF8.encode(domain + username + masterpassword + deviceID + iterations);
+        String salt = String.valueOf(iteration*100) + domain + username + deviceID;
 
-        this.hashValue = PBKDF2.hmac(hashAlgorithm, startValue, salt, hashIterations);
+        byte[] startValue = UTF8.encode(salt);
         Clearer.zero(startValue);
 
-//        try {
-//            String value = new String(hashValue, "UTF-8");
-//            String bcryptPassword = BCrypt.hashpw(value, BCrypt.gensalt());
-//            String bcryptPasswordHashed = BCrypt.hashpw(bcryptPassword, BCrypt.gensalt(10));
-//            hashValueBCrypt = UTF8.encode(bcryptPasswordHashed);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        String temp = Base64.encode_base64(PBKDF2.hmac(hashAlgorithm, UTF8.encode(masterpassword), startValue, hashIterations), 22);
+        //Log.d("SEED", temp);
+        //Log.d("SEED_SHORT", temp.substring(0,21));
+        this.hashValue = transformPassword(BCrypt.hashpw(masterpassword, "$2a$10$" + temp));
+    }
+
+    //cuts the salt from the password
+    public byte[] transformPassword (String password) {
+        byte[] passwordChar = UTF8.encode(password);
+        byte[] transformedPassword = new byte[31];
+
+        Log.d("GENERATOR", "Password after bcrypt " + password);
+
+        for (int i=29; i<passwordChar.length; i++) {
+            transformedPassword[i-29] = passwordChar[i];
+        }
+
+        Log.d("GENERATOR", "Password after bcrypt short " + new String(transformedPassword));
+
+        return transformedPassword;
+
     }
 
     public String getPassword(int specialCharacters, int lowerCaseLetters, int upperCaseLetters,
                               int numbers, int length) {
+
         byte[] positiveHashValue = new byte[hashValue.length + 1];
         positiveHashValue[0] = 0;
         System.arraycopy(hashValue, 0, positiveHashValue, 1, hashValue.length);
@@ -97,8 +112,7 @@ public class PasswordGenerator {
         return password;
     }
 
-
-    protected void finalize() throws Throwable {
+    protected void deleteFinalize() throws Throwable {
         Clearer.zero(this.hashValue);
         super.finalize();
     }
