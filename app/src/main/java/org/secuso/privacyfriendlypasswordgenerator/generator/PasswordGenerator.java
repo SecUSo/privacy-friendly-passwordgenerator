@@ -30,11 +30,8 @@ public class PasswordGenerator {
                              String hashAlgorithm) {
 
         String salt = String.valueOf(iteration*100) + domain + username + deviceID;
-
-        byte[] startValue = UTF8.encode(salt);
-        Clearer.zero(startValue);
-
-        String temp = Base64.encode_base64(PBKDF2.hmac(hashAlgorithm, UTF8.encode(masterpassword), startValue, hashIterations), 22);
+        
+        String temp = Base64.encode_base64(PBKDF2.hmac(hashAlgorithm, UTF8.encode(masterpassword), UTF8.encode(salt), hashIterations), 22);
         //Log.d("SEED", temp);
         //Log.d("SEED_SHORT", temp.substring(0,21));
         this.hashValue = transformPassword(BCrypt.hashpw(masterpassword, "$2a$10$" + temp));
