@@ -64,7 +64,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         clipboard_enabled = bundle.getBoolean("clipboard_enabled");
         bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
         hashAlgorithm = bundle.getString("hash_algorithm");
-        number_iterations = bundle.getInt("number_iterations");
+        //number_iterations = bundle.getInt("number_iterations");
 
         spinner = (ProgressBar) rootView.findViewById(R.id.progressBar);
         spinner.setVisibility(View.GONE);
@@ -143,7 +143,8 @@ public class GeneratePasswordDialog extends DialogFragment {
         params[2] = editTextMasterpassword.getText().toString();
         params[3] = deviceID;
         params[4] = String.valueOf(metaData.getITERATION());
-        params[5] = String.valueOf(number_iterations);
+        params[5] = String.valueOf(4000);
+        //params[5] = String.valueOf(number_iterations);
         params[6] = hashAlgorithm;
         params[7] = String.valueOf(metaData.getHAS_SYMBOLS());
         params[8] = String.valueOf(metaData.getHAS_LETTERS_LOW());
