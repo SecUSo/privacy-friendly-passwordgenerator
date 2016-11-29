@@ -1,16 +1,28 @@
 ## Privacy Friendly Password Generator
 
-Privacy Friendly Password Generator is an Android application that generates passwords based on pre-chosen parameters.
-This app belongs to the group of Privacy Friendly Apps developed by the Technische Universität Darmstadt. Further information can be found on secuso.org/pfa<br />
+Privacy Friendly Password Generator is an Android application that generates passwords based on pre-chosen parameters and a master password.
+This app belongs to the Privacy Friendly Apps group developed by the SECUSO research group at the Technische Universität Darmstadt, Germany. Further information can be found on secuso.org/pfa<br />
 
-Users can save the following parameters: domain, username (optional), character set (uppercase, lowercase, special, numbers), length and iteration. The iteration is used to create different passwords if an update with the same parameters is intended.  <br />
+Users can save the following parameters: <br />
+* Domain: e.g. a website or account name 
+* Username (optional) 
+* Character set: at least one of uppercase, lowercase, special, numbers
+* Password length
+* Iteration: used to create different passwords if an update with the same parameters and no change of master password is intended.  <br />
 
 ### Password Generation
 
-The password generation is based on the algorithm PBKDF2 and can be executed with three different hash algorithms (SHA256, SHA384, SHA512). <br />
-Domain, username, master password, device ID (optional) and iternation is concatenated to a string which serves as a seed for the hashing algorithm. <br />
+The password generation is based on the combination of two password hashing algorithms: PBKDF2 and BCrypt. PBKDF2 and can be executed with three different hash algorithms (SHA256, SHA384, SHA512). <br />
+* The master password serves as a seed for the PBKDF2 algorithm.
+* Iteration, domain, username and device ID (optional) are concatenated to a string and form the salt of PBKDF2. 
+* The result of the PBKDF2 hashing is encoded into a special version of Base64 which is compatible with BCrypt and not longer than 22 characters.
+* The master password serves as a seed for the BCrypt algorithm.
+* Result of the PBKDF2 hashing combined with the string "$2a$10$" the beginning forms the salt for BCrypt.
+* The prefix and the salt is cut from the resulting byte-array.
+* The byte-array is used to choose characters out of the character set from the user's parameters. 
+<br />
 
-The passwords as well as the master password is never stored in the device. The master password has to be entered by the user and password is always created on the fly out of the parameters. 
+The passwords as well as the master password are never stored in the device. The master password has to be entered by the user and password is always created on the fly out of the parameters. 
 
 ## Motivation
 
