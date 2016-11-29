@@ -77,7 +77,7 @@ public class UpdatePasswordDialog extends DialogFragment {
         hashAlgorithm = bundle.getString("hash_algorithm");
         Log.d("UPDATER HASH", hashAlgorithm);
         setOldMetaData(bundle);
-        number_iterations = bundle.getInt("number_iterations");
+        //number_iterations = bundle.getInt("number_iterations");
 
         this.database = new MetaDataSQLiteHelper(getActivity());
 
@@ -179,7 +179,8 @@ public class UpdatePasswordDialog extends DialogFragment {
             paramsOld[2] = masterpassword;
             paramsOld[3] = deviceID;
             paramsOld[4] = String.valueOf(oldMetaData.getITERATION());
-            paramsOld[5] = String.valueOf(number_iterations);
+            paramsOld[5] = String.valueOf(4000);
+            //paramsOld[5] = String.valueOf(number_iterations);
             paramsOld[6] = hashAlgorithm;
             paramsOld[7] = String.valueOf(oldMetaData.getHAS_SYMBOLS());
             paramsOld[8] = String.valueOf(oldMetaData.getHAS_LETTERS_LOW());
@@ -195,14 +196,14 @@ public class UpdatePasswordDialog extends DialogFragment {
                 }
             }.execute(paramsOld);
 
-            Log.d("Generator Update Old", "Length: " + Integer.toString(oldMetaData.getLENGTH()));
-            Log.d("Generator Update Old", "Domain: " + oldMetaData.getDOMAIN());
-            Log.d("Generator Update Old", "Username: " + oldMetaData.getUSERNAME());
-            Log.d("Generator Update Old", "Symbols: " + Integer.toString(oldMetaData.getHAS_SYMBOLS()));
-            Log.d("Generator Update Old", "Lower: " + Integer.toString(oldMetaData.getHAS_LETTERS_LOW()));
-            Log.d("Generator Update Old", "Upper: " + Integer.toString(oldMetaData.getHAS_LETTERS_UP()));
-            Log.d("Generator Update Old", "Numbers: " + Integer.toString(oldMetaData.getHAS_NUMBERS()));
-            Log.d("Generator Update Old", "Iterations: " + Integer.toString(oldMetaData.getITERATION()));
+//            Log.d("Generator Update Old", "Length: " + Integer.toString(oldMetaData.getLENGTH()));
+//            Log.d("Generator Update Old", "Domain: " + oldMetaData.getDOMAIN());
+//            Log.d("Generator Update Old", "Username: " + oldMetaData.getUSERNAME());
+//            Log.d("Generator Update Old", "Symbols: " + Integer.toString(oldMetaData.getHAS_SYMBOLS()));
+//            Log.d("Generator Update Old", "Lower: " + Integer.toString(oldMetaData.getHAS_LETTERS_LOW()));
+//            Log.d("Generator Update Old", "Upper: " + Integer.toString(oldMetaData.getHAS_LETTERS_UP()));
+//            Log.d("Generator Update Old", "Numbers: " + Integer.toString(oldMetaData.getHAS_NUMBERS()));
+//            Log.d("Generator Update Old", "Iterations: " + Integer.toString(oldMetaData.getITERATION()));
 
             //generate new password
             metaData = database.getMetaData(position);
@@ -214,7 +215,8 @@ public class UpdatePasswordDialog extends DialogFragment {
             paramsNew[2] = masterpassword;
             paramsNew[3] = deviceID;
             paramsNew[4] = String.valueOf(metaData.getITERATION());
-            paramsNew[5] = String.valueOf(number_iterations);
+            paramsNew[5] = String.valueOf(4000);
+            //paramsNew[5] = String.valueOf(number_iterations);
             paramsNew[6] = hashAlgorithm;
             paramsNew[7] = String.valueOf(metaData.getHAS_SYMBOLS());
             paramsNew[8] = String.valueOf(metaData.getHAS_LETTERS_LOW());
@@ -230,14 +232,14 @@ public class UpdatePasswordDialog extends DialogFragment {
                 }
             }.execute(paramsNew);
 
-            Log.d("Generator Update", "Length: " + Integer.toString(metaData.getLENGTH()));
-            Log.d("Generator Update", "Domain: " + metaData.getDOMAIN());
-            Log.d("Generator Update", "Username: " + metaData.getUSERNAME());
-            Log.d("Generator Update", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
-            Log.d("Generator Update", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
-            Log.d("Generator Update", "Lower: " + Integer.toString(metaData.getHAS_LETTERS_LOW()));
-            Log.d("Generator Update", "Upper: " + Integer.toString(metaData.getHAS_LETTERS_UP()));
-            Log.d("Generator Update", "Iterations: " + Integer.toString(metaData.getITERATION()));
+//            Log.d("Generator Update", "Length: " + Integer.toString(metaData.getLENGTH()));
+//            Log.d("Generator Update", "Domain: " + metaData.getDOMAIN());
+//            Log.d("Generator Update", "Username: " + metaData.getUSERNAME());
+//            Log.d("Generator Update", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
+//            Log.d("Generator Update", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
+//            Log.d("Generator Update", "Lower: " + Integer.toString(metaData.getHAS_LETTERS_LOW()));
+//            Log.d("Generator Update", "Upper: " + Integer.toString(metaData.getHAS_LETTERS_UP()));
+//            Log.d("Generator Update", "Iterations: " + Integer.toString(metaData.getITERATION()));
 
         }
     }

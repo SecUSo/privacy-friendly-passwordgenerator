@@ -106,7 +106,7 @@ public class MainActivity extends BaseActivity {
                         bundle.putString("hash_algorithm", hash_algorithm);
                         bundle.putBoolean("clipboard_enabled", clipboard_enabled);
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
-                        bundle.putInt("number_iterations", number_iterations);
+                        //bundle.putInt("number_iterations", number_iterations);
 
                         Log.d("Main Activity", Integer.toString(temp.getID()));
 
@@ -126,7 +126,7 @@ public class MainActivity extends BaseActivity {
 
                         bundle.putInt("position", temp.getID());
                         bundle.putString("hash_algorithm", hash_algorithm);
-                        bundle.putInt("number_iterations", number_iterations);
+                        //bundle.putInt("number_iterations", number_iterations);
                         Log.d("MAINACTIVITY HASH", hash_algorithm);
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
                         FragmentManager fragmentManager = getSupportFragmentManager();

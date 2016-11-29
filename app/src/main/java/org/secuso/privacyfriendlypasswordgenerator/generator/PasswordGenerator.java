@@ -6,13 +6,15 @@ import java.util.List;
 
 /**
  * This class handles the hashing and the creation of passwords. Please initialize first.
- * Do not forget to hash at least once because otherwise the password might look not very
+ * Do not forget to hash at least once with PBKDF2 because otherwise the password might look not very
  * random. It is safe to hash often because an attacker has to hash as often as you did for
  * every try of a brute-force attack. getPassword creates a password string out of the hash
  * digest.
  *
- * Class structure and idea taken from https://github.com/pinae/ctSESAM-android/
+ * Basic class structure and idea taken from https://github.com/pinae/ctSESAM-android/
  * last access 1st November 2016
+ * Added the BCrypt component
+ *
  */
 public class PasswordGenerator {
 
@@ -26,9 +28,14 @@ public class PasswordGenerator {
                              int hashIterations,
                              String hashAlgorithm) {
 
-        String salt = String.valueOf(iteration*100) + domain + username + deviceID;
+        String temp = Base64.encode_base64(
+                PBKDF2.hmac(
+                        hashAlgorithm,
+                        UTF8.encode(masterpassword),
+                        UTF8.encode(String.valueOf(iteration*100) + domain + username + deviceID),
+                        hashIterations),
+                22);
 
-        String temp = Base64.encode_base64(PBKDF2.hmac(hashAlgorithm, UTF8.encode(masterpassword), UTF8.encode(salt), hashIterations), 22);
         //Log.d("SEED", temp);
         //Log.d("SEED_SHORT", temp.substring(0,21));
         this.hashValue = transformPassword(BCrypt.hashpw(masterpassword, "$2a$10$" + temp));

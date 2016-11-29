@@ -1,5 +1,6 @@
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="main_preferences">
 
     <PreferenceCategory
         android:title="@string/title_password_settings">
@@ -15,15 +16,10 @@
             android:key="clipboard_enabled"
             android:summary="@string/summary_clipboard"
             android:defaultValue="false"/>
-        <!--<SwitchPreference-->
-            <!--android:title="Enable Expert Mode"-->
-            <!--android:id="@+id/pref_enable_expert"-->
-            <!--android:key="pref_enable_expert"/>-->
     </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/title_expert_mode">
-        <!--android:dependency="pref_enable_expert">-->
         <Preference
             android:summary="@string/expert_mode_summary"/>
 
@@ -35,14 +31,11 @@
             android:defaultValue="@string/default_hash_algorithm"
             android:summary="@string/default_hash_algorithm">
         </ListPreference>
-        <EditTextPreference
-            android:title="@string/title_hash_iterations"
-            android:key="hash_iterations"
-            android:inputType="number"
-            android:defaultValue="1000"
-            android:summary="1000"
-            android:maxLength="5"
-            />
+        <!--<EditTextPreference-->
+            <!--android:title="@string/title_hash_iterations"-->
+            <!--android:key="hash_iterations"-->
+            <!--android:defaultValue="1000"-->
+            <!--android:summary="1000"/>-->
         <Preference
             android:key="benchmark"
             android:title="@string/title_benchmark"
