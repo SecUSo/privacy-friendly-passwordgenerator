@@ -1,7 +1,7 @@
 ## Privacy Friendly Password Generator
 
 Privacy Friendly Password Generator is an Android application that generates passwords based on pre-chosen parameters and a master password.
-This app belongs to the Privacy Friendly Apps group developed by the SECUSO research group at the Technische Universität Darmstadt, Germany. Further information can be found on secuso.org/pfa<br />
+This app belongs to the Privacy Friendly Apps group developed by the SECUSO research group at the Technische Universität Darmstadt, Germany. Further information can be found on [secuso.org/pfa](https://secuso.org/pfa)<br />
 
 Users can save the following parameters: <br />
 * Domain: e.g. a website or account name 
@@ -56,7 +56,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-The icons used in the nagivation drawer are licensed under the [CC BY 2.5] (http://creativecommons.org/licenses/by/2.5/). In addition to them the app uses icons from [Google Design Material Icons](https://design.google.com/icons/index.html) licensed under Apache License Version 2.0. All other images (the logo of Privacy Friendly Apps, the SECUSO logo, the icon in the splash screen and the header in the navigation drawer) copyright [Technische Universtität Darmstadt] (www.tu-darmstadt.de) (2016).
+The icons used in the nagivation drawer are licensed under the [CC BY 2.5] (http://creativecommons.org/licenses/by/2.5/). In addition to them the app uses icons from [Google Design Material Icons](https://design.google.com/icons/index.html) licensed under Apache License Version 2.0. All other images (the logo of Privacy Friendly Apps, the SECUSO logo, the icon in the splash screen and the header in the navigation drawer) copyright [Technische Universtität Darmstadt] (https://www.tu-darmstadt.de/) (2016).
 
 ## Contributors
 
