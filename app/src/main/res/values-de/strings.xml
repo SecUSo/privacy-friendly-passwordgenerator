@@ -39,7 +39,7 @@
     <string name="letters_lower">Klein (abc)</string>
     <string name="numbers">Zahlen (123)</string>
     <string name="length">Länge: </string>
-    <string name="iteration">Iteration: </string>
+    <string name="iteration">Passwortzähler: </string>
     <string name="add_domain_message">Bitte geben Sie eine Domain an.</string>
     <string name="add_character_message">Bitte suchen Sie mindestens einen Zeichensatz aus.</string>
     <string name="hint_iteration">(1 falls leer)</string>
@@ -95,8 +95,8 @@
     <string name="help_parameters_characterset_description">Der Zeichensatz beschreibt welche Arten von Zeichen das Passwort haben soll. Manche Webseiten empfehlen bestimmte Kombinationen.</string>
     <string name="help_parameters_length_heading">Länge</string>
     <string name="help_parameters_length_description">Länge des Passworts.</string>
-    <string name="help_parameters_iteration_heading">Iteration</string>
-    <string name="help_parameters_iteration_description">Dieser Wert wird verwendet, um im Falle eines Update verschiedene Passworte mit denselbe Parametern zu generieren. Der Standardwert ist 1. Die Iteration wird bei jedem Update um 1 erhöht.</string>
+    <string name="help_parameters_iteration_heading">Passwortzähler</string>
+    <string name="help_parameters_iteration_description">Dieser Wert wird verwendet, um im Falle eines Update verschiedene Passworte mit denselbe Parametern zu generieren. Der Standardwert ist 1. Der Passwortzähler wird bei jedem Update um 1 erhöht.</string>
     <string name="help_manage_heading">Parameter verwalten</string>
     <string name="help_manage_add_heading">Hinzufügen</string>
     <string name="help_manage_add_description">Neue Parameter können über den Plus-Button hinzugefügt werden.</string>
@@ -106,7 +106,7 @@
     <string name="help_manage_update_description">Parameter können durch ein längeres Drücken geupdated werden.</string>
 
     <string name="help_generation_heading">Passwortgenerierung</string>
-    <string name="help_generation_description">Passwörter werden über den PBKDF2-Algorithmus generiert. Domain, Benutzername, Master-Passwort, Gerätenummer (optional) und Iteration sind dabei Startwert für den Hash-Algorithm.</string>
+    <string name="help_generation_description">Passwörter werden über den PBKDF2-Algorithmus generiert. Domain, Benutzername, Master-Passwort, Gerätenummer (optional) und Passwortzähler sind dabei Startwert für den Hash-Algorithm.</string>
 
     <string name="help_privacy_heading">Datenschutzinfo</string>
     <string name="help_pin_storage_heading">Speicherung von Passworten</string>
