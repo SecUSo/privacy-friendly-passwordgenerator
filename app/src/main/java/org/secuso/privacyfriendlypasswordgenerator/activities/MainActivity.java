@@ -60,13 +60,13 @@ public class MainActivity extends BaseActivity {
         metadatalist = database.getAllmetaData();
 
         initialAlert = (LinearLayout) findViewById(R.id.insert_alert);
-        hints(metadatalist.size(), initialAlert);
-        if (metadatalist.size() == 0 ) {
-            initialAlert.setVisibility(View.VISIBLE);
-
-        } else {
-            initialAlert.setVisibility(View.GONE);
-        }
+        hints(metadatalist.size());
+//        if (metadatalist.size() == 0 ) {
+//            initialAlert.setVisibility(View.VISIBLE);
+//
+//        } else {
+//            initialAlert.setVisibility(View.GONE);
+//        }
 
         //doFirstRun();
 
@@ -95,7 +95,7 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public void onItemClick(View view, int position) {
 
-                        Log.d("Main Activity", Integer.toString(position));
+                        Log.d("Main Activity position", Integer.toString(position));
                         Log.d("Main Activity", metadatalist.get(position).getDOMAIN());
                         Bundle bundle = new Bundle();
 
@@ -108,7 +108,7 @@ public class MainActivity extends BaseActivity {
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
                         //bundle.putInt("number_iterations", number_iterations);
 
-                        Log.d("Main Activity", Integer.toString(temp.getID()));
+                        Log.d("Main Activity ID", Integer.toString(temp.getID()));
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
@@ -199,7 +199,7 @@ public class MainActivity extends BaseActivity {
         final int finalPosition = position;
 
         initialAlert.setVisibility(View.VISIBLE);
-        hints(metadatalist.size(), initialAlert);
+        hints(position);
 
         Snackbar.make(findViewById(android.R.id.content), getString(R.string.domain) + " " + toDeleteMetaData.getDOMAIN() + " " + getString(R.string.item_deleted), Snackbar.LENGTH_LONG)
                 .setAction(getString(R.string.undo), new View.OnClickListener() {
@@ -210,7 +210,7 @@ public class MainActivity extends BaseActivity {
                         adapter.notifyItemInserted(finalPosition);
                         adapter.notifyDataSetChanged();
                         initialAlert.setVisibility(View.GONE);
-                        hints(metadatalist.size(), initialAlert);
+                        hints(1);
                     }
                 }).show();
 
@@ -279,20 +279,24 @@ public class MainActivity extends BaseActivity {
         number_iterations = Integer.parseInt(tempIterations);
     }
 
-    public void hints(int position, LinearLayout linearLayout) {
+    public void hints(int position) {
 
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
 
-        if (position==0) {
+        Log.d("LIST SIZE", String.valueOf(metadatalist.size()));
 
+        if (metadatalist.size() == 0 || position == 0) {
+
+            initialAlert.setVisibility(View.VISIBLE);
             anim.setDuration(1500);
             anim.setStartOffset(20);
             anim.setRepeatMode(Animation.REVERSE);
             anim.setRepeatCount(Animation.INFINITE);
-            linearLayout.startAnimation(anim);
+            initialAlert.startAnimation(anim);
 
         } else {
-            linearLayout.clearAnimation();
+            initialAlert.setVisibility(View.GONE);
+            initialAlert.clearAnimation();
         }
 
     }
