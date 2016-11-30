@@ -61,12 +61,6 @@ public class MainActivity extends BaseActivity {
 
         initialAlert = (LinearLayout) findViewById(R.id.insert_alert);
         hints(metadatalist.size());
-//        if (metadatalist.size() == 0 ) {
-//            initialAlert.setVisibility(View.VISIBLE);
-//
-//        } else {
-//            initialAlert.setVisibility(View.GONE);
-//        }
 
         //doFirstRun();
 

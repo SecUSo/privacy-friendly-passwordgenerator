@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -112,6 +113,23 @@ public class GeneratePasswordDialog extends DialogFragment {
 
                     generatePassword();
                 }
+            }
+        });
+
+        ImageButton copyButton = (ImageButton) rootView.findViewById(R.id.copyButton);
+
+        copyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView password = (TextView) rootView.findViewById(R.id.textViewPassword);
+
+                if (password.getText().toString().length() > 0) {
+                    ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
+                    ClipData clip = ClipData.newPlainText("", password.getText());
+                    clipboard.setPrimaryClip(clip);
+                    Toast.makeText(activity, activity.getString(R.string.password_copied), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
