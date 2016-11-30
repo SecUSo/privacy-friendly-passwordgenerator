@@ -8,13 +8,13 @@ Users can save the following parameters: <br />
 * Username (optional) 
 * Character set: at least one of uppercase, lowercase, special, numbers
 * Password length
-* Iteration: used to create different passwords if an update with the same parameters and no change of master password is intended.  <br />
+* Password Counter: used to create different passwords if an update with the same parameters and no change of master password is intended.  <br />
 
 ### Password Generation
 
 The password generation is based on the combination of two password hashing algorithms: PBKDF2 and BCrypt. PBKDF2 and can be executed with three different hash algorithms (SHA256, SHA384, SHA512). <br />
 * The master password serves as a seed for the PBKDF2 algorithm.
-* Iteration, domain, username and device ID (optional) are concatenated to a string and form the salt of PBKDF2. 
+* Password counter, domain, username and device ID (optional) are concatenated to a string and form the salt of PBKDF2. 
 * The result of the PBKDF2 hashing is encoded into a special version of Base64 which is compatible with BCrypt and not longer than 22 characters.
 * The master password serves as a seed for the BCrypt algorithm.
 * Result of the PBKDF2 hashing combined with the string "$2a$10$" the beginning forms the salt for BCrypt.
@@ -22,7 +22,7 @@ The password generation is based on the combination of two password hashing algo
 * The byte-array is used to choose characters out of the character set from the user's parameters. 
 <br />
 
-The passwords as well as the master password are never stored in the device. The master password has to be entered by the user and password is always created on the fly out of the parameters. 
+The passwords as well as the master password are never stored on the device. The master password has to be entered by the user and password is always created on the fly using of the parameters. 
 
 ## Motivation
 
