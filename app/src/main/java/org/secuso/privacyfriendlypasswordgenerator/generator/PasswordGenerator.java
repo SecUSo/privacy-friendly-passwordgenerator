@@ -153,7 +153,7 @@ public class PasswordGenerator {
     }
 
 
-    private String shuffleTemplate(String s){
+    public String shuffleTemplate(String s){
 
         BigInteger bigInt = new BigInteger(hashValue);
 
