@@ -2,8 +2,12 @@ package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -14,11 +18,14 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.NumberPicker;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.BenchmarkDialog;
-import org.secuso.privacyfriendlypasswordgenerator.dialogs.IterationDialog;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -36,6 +43,7 @@ public class SettingsActivity extends BaseActivity {
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
      */
+
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
@@ -96,9 +104,9 @@ public class SettingsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_settings);
-
         overridePendingTransition(0, 0);
     }
+
 
     @Override
     protected int getNavigationDrawerID() {
@@ -134,7 +142,7 @@ public class SettingsActivity extends BaseActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
 
-            //bindPreferenceSummaryToValue(findPreference("hash_iterations"));
+            bindPreferenceSummaryToValue(findPreference("hash_iterations"));
             bindPreferenceSummaryToValue(findPreference("hash_algorithm"));
 
             Preference benchmark = findPreference("benchmark");
@@ -146,7 +154,7 @@ public class SettingsActivity extends BaseActivity {
 
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-                    //bundle.putInt("number_iterations", Integer.parseInt(preferences.getString("hash_iterations", "1000")));
+                    bundle.putInt("number_iterations", Integer.parseInt(preferences.getString("hash_iterations", "1000")));
                     bundle.putString("hash_algorithm", preferences.getString("hash_algorithm", "SHA256"));
 
                     FragmentManager fragmentManager = getActivity().getFragmentManager();
@@ -157,25 +165,6 @@ public class SettingsActivity extends BaseActivity {
                     return true;
                 }
             });
-
-//            Preference iterations = findPreference("hash_iterations");
-//            iterations.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-//                @Override
-//                public boolean onPreferenceClick(Preference preference) {
-//
-//                    Bundle bundle = new Bundle();
-//
-//                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-//                    bundle.putInt("number_iterations_invisible", Integer.parseInt(preferences.getString("number_iterations_invisible", "1000")));
-//
-//                    FragmentManager fragmentManager = getActivity().getFragmentManager();
-//                    IterationDialog iterationDialog = new IterationDialog();
-//                    iterationDialog.setArguments(bundle);
-//                    iterationDialog.show(fragmentManager, "IterationDialog");
-//
-//                    return true;
-//                }
-//            });
         }
 
         @Override
@@ -188,14 +177,6 @@ public class SettingsActivity extends BaseActivity {
             }
             return super.onOptionsItemSelected(item);
         }
-
-        public void saveIterations(int iterations) {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("number_iterations", String.valueOf(iterations));
-            editor.commit();
-        }
-
 
     }
 }
