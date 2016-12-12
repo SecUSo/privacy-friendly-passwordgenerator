@@ -176,7 +176,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
             metaData.setHAS_NUMBERS(Integer.parseInt(cursor.getString(4)));
             metaData.setHAS_SYMBOLS(Integer.parseInt(cursor.getString(5)));
             metaData.setHAS_LETTERS_UP(Integer.parseInt(cursor.getString(6)));
-            metaData.setHAS_LETTERS_LOW(Integer.parseInt(cursor.getString(6)));
+            metaData.setHAS_LETTERS_LOW(Integer.parseInt(cursor.getString(7)));
             metaData.setITERATION(Integer.parseInt(cursor.getString(8)));
 
             Log.d("DATABASE", "Read " + cursor.getString(1) + " from DB");

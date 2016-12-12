@@ -113,6 +113,10 @@ public class PasswordGenerator {
         return password;
     }
 
+    public void mixTemplate() {
+
+    }
+
     protected void deleteFinalize() throws Throwable {
         Clearer.zero(this.hashValue);
         super.finalize();

@@ -159,7 +159,7 @@ public class UpdateMetadataDialog extends DialogFragment {
             Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_domain_message), Toast.LENGTH_SHORT);
             toast.show();
             closeDialog = false;
-        } else if ((hasNumbersCheckBox.isChecked() || hasSymbolsCheckBox.isChecked() || checkBoxLettersUpUpdate.isChecked() || checkBoxLettersLowUpdate.isChecked()) == false) {
+        } else if (!(hasNumbersCheckBox.isChecked() || hasSymbolsCheckBox.isChecked() || checkBoxLettersUpUpdate.isChecked() || checkBoxLettersLowUpdate.isChecked())) {
             Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_character_message), Toast.LENGTH_SHORT);
             toast.show();
         } else {
