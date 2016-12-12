@@ -177,4 +177,11 @@
     <string name="slide_4_action_two">Löschen</string>
     <string name="slide_4_action_two_desc">Löschen durch eine Wischgeste nach rechts oder links.</string>
 
+    <string name="slide_master_password_heading">Master-Password</string>
+    <string name="slide_master_password_secret">Das Master-Passwort ist ihr Geheimnis.</string>
+    <string name="slide_master_password_generation">Aus ihm werden alle Passworte generiert.</string>
+    <string name="slide_master_password_tips">Verwenden Sie ein starkes Master-Passwort:</string>
+    <string name="slide_master_password_characters">- Verschiedene Zeichen/Symbole</string>
+    <string name="slide_master_password_chain">- Wortketten</string>
+    <string name="slide_master_password_eight">- mindestens Zeichen</string>
 </resources>

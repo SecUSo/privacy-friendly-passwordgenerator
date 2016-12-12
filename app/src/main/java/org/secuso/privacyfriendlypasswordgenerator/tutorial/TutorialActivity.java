@@ -63,8 +63,8 @@ public class TutorialActivity extends AppCompatActivity {
         // add few more layouts if you want
         layouts = new int[]{
                 R.layout.tutorial_slide1,
-                R.layout.tutorial_slide_masterpassword,
                 R.layout.tutorial_slide2,
+                R.layout.tutorial_slide_masterpassword,
                 R.layout.tutorial_slide3,
                 R.layout.tutorial_slide4};
 
