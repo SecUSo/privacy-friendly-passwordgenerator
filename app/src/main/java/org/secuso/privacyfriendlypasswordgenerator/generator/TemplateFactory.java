@@ -1,8 +1,5 @@
 package org.secuso.privacyfriendlypasswordgenerator.generator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by karo on 12.12.16.
  */

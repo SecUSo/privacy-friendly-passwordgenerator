@@ -119,8 +119,10 @@ public class PasswordGenerator {
 
 
         if (characterSet.size() > 0) {
-            String template = TemplateFactory.createTemplateFromParameters(specialCharacters, lowerCaseLetters, upperCaseLetters,
-            numbers, length);
+            String template = shuffleTemplate(TemplateFactory.createTemplateFromParameters(specialCharacters, lowerCaseLetters, upperCaseLetters,
+            numbers, length));
+
+
 
             if (characterSet.size() > 0) {
                 for (int i = 0; i < template.length(); i++) {
@@ -148,6 +150,27 @@ public class PasswordGenerator {
 
         }
         return password;
+    }
+
+
+    public String shuffleTemplate(String s){
+
+        BigInteger bigInt = new BigInteger(hashValue);
+
+        int index;
+        char temp;
+        char[] array = s.toCharArray();
+        for (int i = array.length - 1; i > 0; i--)
+        {
+            BigInteger tempInt = BigInteger.valueOf(i);
+            BigInteger[] divAndMod = bigInt.divideAndRemainder(tempInt);
+            bigInt = divAndMod[0];
+            index = divAndMod[1].intValue();
+            temp = array[index];
+            array[index] = array[i];
+            array[i] = temp;
+        }
+        return String.valueOf(array);
     }
 
 
