@@ -76,7 +76,7 @@
 
     <!--###ABOUT###-->
     <string name="about">About</string>
-    <string name="version_number">Version 1.0</string>
+    <string name="version_number">Version 0.9</string>
     <string name="about_author">Authors: </string>
     <string name="about_author_names" translatable="false">Karola Marky</string>
     <string name="about_author_contributors">and contributors.</string>
@@ -145,6 +145,20 @@
         <item>SHA512</item>
     </string-array>
     <string name="default_hash_algorithm" translatable="false">SHA256</string>
+
+    <string-array name="pref_iterations" translatable="false">
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>6000</item>
+        <item>7000</item>
+        <item>8000</item>
+        <item>9000</item>
+        <item>10000</item>
+    </string-array>
+    <string name="default_iterations" translatable="false">2000</string>
 
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>

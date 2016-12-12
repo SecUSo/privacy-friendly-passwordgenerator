@@ -48,7 +48,7 @@ public class BenchmarkDialog extends DialogFragment {
         Bundle bundle = getArguments();
 
         hashAlgorithm = bundle.getString("hash_algorithm");
-        //iterations = bundle.getInt("number_iterations");
+        iterations = bundle.getInt("number_iterations");
 
         builder.setView(rootView);
         builder.setIcon(R.mipmap.ic_drawer);
@@ -83,8 +83,7 @@ public class BenchmarkDialog extends DialogFragment {
         params[2] = "masterpassword";
         params[3] = "deviceID";
         params[4] = "4242";
-        params[5] = String.valueOf(4000);
-        //params[5] = String.valueOf(iterations);
+        params[5] = String.valueOf(iterations);
         params[6] = hashFunction;
         params[7] = String.valueOf(1);
         params[8] = String.valueOf(1);

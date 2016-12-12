@@ -77,7 +77,7 @@ public class UpdatePasswordDialog extends DialogFragment {
         hashAlgorithm = bundle.getString("hash_algorithm");
         Log.d("UPDATER HASH", hashAlgorithm);
         setOldMetaData(bundle);
-        //number_iterations = bundle.getInt("number_iterations");
+        number_iterations = bundle.getInt("number_iterations");
 
         this.database = new MetaDataSQLiteHelper(getActivity());
 
@@ -179,8 +179,7 @@ public class UpdatePasswordDialog extends DialogFragment {
             paramsOld[2] = masterpassword;
             paramsOld[3] = deviceID;
             paramsOld[4] = String.valueOf(oldMetaData.getITERATION());
-            paramsOld[5] = String.valueOf(4000);
-            //paramsOld[5] = String.valueOf(number_iterations);
+            paramsOld[5] = String.valueOf(number_iterations);
             paramsOld[6] = hashAlgorithm;
             paramsOld[7] = String.valueOf(oldMetaData.getHAS_SYMBOLS());
             paramsOld[8] = String.valueOf(oldMetaData.getHAS_LETTERS_LOW());
@@ -215,8 +214,7 @@ public class UpdatePasswordDialog extends DialogFragment {
             paramsNew[2] = masterpassword;
             paramsNew[3] = deviceID;
             paramsNew[4] = String.valueOf(metaData.getITERATION());
-            paramsNew[5] = String.valueOf(4000);
-            //paramsNew[5] = String.valueOf(number_iterations);
+            paramsNew[5] = String.valueOf(number_iterations);
             paramsNew[6] = hashAlgorithm;
             paramsNew[7] = String.valueOf(metaData.getHAS_SYMBOLS());
             paramsNew[8] = String.valueOf(metaData.getHAS_LETTERS_LOW());

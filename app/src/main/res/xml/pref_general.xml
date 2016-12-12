@@ -31,11 +31,13 @@
             android:defaultValue="@string/default_hash_algorithm"
             android:summary="@string/default_hash_algorithm">
         </ListPreference>
-        <!--<EditTextPreference-->
-            <!--android:title="@string/title_hash_iterations"-->
-            <!--android:key="hash_iterations"-->
-            <!--android:defaultValue="1000"-->
-            <!--android:summary="1000"/>-->
+        <ListPreference
+            android:title="@string/title_hash_iterations"
+            android:key="hash_iterations"
+            android:entries="@array/pref_iterations"
+            android:entryValues="@array/pref_iterations"
+            android:defaultValue="@string/default_iterations"
+            android:summary="@string/default_iterations"/>
         <Preference
             android:key="benchmark"
             android:title="@string/title_benchmark"
