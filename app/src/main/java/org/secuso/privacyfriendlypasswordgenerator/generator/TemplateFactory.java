@@ -13,19 +13,19 @@ public class TemplateFactory {
         String template = "";
         if (specialCharacters == 1) {
             template += "s";
-            length ++;
+            lengthCount ++;
         }
         if (lowerCaseLetters == 1) {
             template += "a";
-            length ++;
+            lengthCount ++;
         }
         if (upperCaseLetters == 1) {
             template += "A";
-            length ++;
+            lengthCount ++;
         }
         if (numbers == 1) {
             template += "n";
-            length ++;
+            lengthCount ++;
         }
 
         for (int i=lengthCount; i<length; i++){
