@@ -18,11 +18,6 @@ import java.util.List;
 public class PasswordGenerator {
 
     private byte[] hashValue;
-    private String upperInitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private String lowerInitial = "abcdefghijklmnopqrstuvwxyz";
-    private String characters = "#!\"~|@^°$%&/()[]{}=-_+*<>;:.";
-    private String numbersInitial = "0123456789";
-
 
     public PasswordGenerator(String domain,
                              String username,
@@ -69,6 +64,11 @@ public class PasswordGenerator {
         BigInteger hashNumber = new BigInteger(positiveHashValue);
         Clearer.zero(positiveHashValue);
         String password = "";
+
+        String upperInitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowerInitial = "abcdefghijklmnopqrstuvwxyz";
+        String characters = "#!\"~|@^°$%&/()[]{}=-_+*<>;:.";
+        String numbersInitial = "0123456789";
 
         List<String> characterSet = new ArrayList<>();
 
@@ -153,7 +153,7 @@ public class PasswordGenerator {
     }
 
 
-    public String shuffleTemplate(String s){
+    private String shuffleTemplate(String s){
 
         BigInteger bigInt = new BigInteger(hashValue);
 
