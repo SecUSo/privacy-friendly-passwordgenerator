@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by yonjuni on 17.06.16.
+ *
+ * @author Karola Marky
+ * @version 20160617
  * Structure based on http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/
  * accessed at 16th June 2016
  */

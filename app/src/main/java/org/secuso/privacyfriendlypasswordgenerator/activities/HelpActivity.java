@@ -6,7 +6,8 @@ import android.preference.PreferenceFragment;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 
 /**
- * Created by yonjuni on 17.06.16.
+ * @author Karola Marky
+ * @version 20160617
  */
 public class HelpActivity extends BaseActivity {
 

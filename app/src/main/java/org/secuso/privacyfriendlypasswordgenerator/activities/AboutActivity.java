@@ -10,7 +10,8 @@ import android.widget.TextView;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 
 /**
- * Created by yonjuni on 15.06.16.
+ * @author Karola Marky
+ * @version 20160615
  */
 public class AboutActivity extends AppCompatActivity {
 

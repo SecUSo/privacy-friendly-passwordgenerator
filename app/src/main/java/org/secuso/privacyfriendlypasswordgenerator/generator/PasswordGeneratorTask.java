@@ -3,7 +3,8 @@ package org.secuso.privacyfriendlypasswordgenerator.generator;
 import android.os.AsyncTask;
 
 /**
- * Created by karo on 26.11.16.
+ * @author Karola Marky
+ * @version 20161126
  */
 
 public class PasswordGeneratorTask extends AsyncTask<String, Void, String> {

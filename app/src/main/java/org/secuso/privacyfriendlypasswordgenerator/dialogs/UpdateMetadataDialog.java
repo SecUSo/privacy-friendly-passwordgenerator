@@ -1,9 +1,5 @@
 package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
-/**
- * Created by karo on 14.11.16.
- */
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -25,7 +21,8 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 
 /**
- * Created by karo on 13.11.16.
+ * @author Karola Marky
+ * @version 20161116
  */
 
 public class UpdateMetadataDialog extends DialogFragment {

@@ -33,8 +33,10 @@ import java.util.List;
 
 /**
  * Code for displaying cards according to the tutorial from https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465
- * accessed on 20th June 2016
+ * @author Karola Marky
+ * @version 20161116
  */
+
 
 public class MainActivity extends BaseActivity {
 

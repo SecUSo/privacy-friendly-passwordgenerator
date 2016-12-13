@@ -1,7 +1,8 @@
 package org.secuso.privacyfriendlypasswordgenerator.database;
 
 /**
- * Created by yonjuni on on 17.06.16.
+ * @author Karola Marky
+ * @version 20160617
  */
 
 public class MetaData {

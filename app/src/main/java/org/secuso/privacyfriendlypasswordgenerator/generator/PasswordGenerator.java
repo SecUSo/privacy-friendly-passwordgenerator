@@ -14,6 +14,8 @@ import java.util.List;
  * Basic class structure and idea taken from https://github.com/pinae/ctSESAM-android/
  * last access 1st November 2016
  * Added the BCrypt component an
+ * @author Karola Marky
+ * @version 20161116
  */
 public class PasswordGenerator {
 

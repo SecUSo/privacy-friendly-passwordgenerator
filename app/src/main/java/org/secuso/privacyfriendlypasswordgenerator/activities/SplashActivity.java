@@ -7,7 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.TutorialActivity;
 
 /**
- * Created by yonjuni on 22.10.16.
+ * @author Karola Marky
+ * @version 20161022
  */
 
 public class SplashActivity extends AppCompatActivity {

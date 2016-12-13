@@ -29,7 +29,8 @@ import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTa
 import static android.content.Context.CLIPBOARD_SERVICE;
 
 /**
- * Created by yonjuni on 14.11.16.
+ * @author Karola Marky
+ * @version 20161116
  */
 
 public class UpdatePasswordDialog extends DialogFragment {

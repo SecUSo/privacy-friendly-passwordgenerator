@@ -1,7 +1,8 @@
 package org.secuso.privacyfriendlypasswordgenerator.generator;
 
 /**
- * Created by karo on 12.12.16.
+ * @author Karola Marky
+ * @version 20161212
  */
 
 public class TemplateFactory {

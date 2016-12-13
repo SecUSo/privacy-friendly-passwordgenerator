@@ -1,5 +1,10 @@
 package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
+/**
+ * @author Karola Marky
+ * @version 20161116
+ */
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
