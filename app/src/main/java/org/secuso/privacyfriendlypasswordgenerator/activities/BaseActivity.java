@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
@@ -19,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
+import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
+import org.secuso.privacyfriendlypasswordgenerator.tutorial.TutorialActivity;
 
 /**
  * Created by Chris on 04.07.2016.
@@ -43,7 +46,6 @@ public class BaseActivity extends AppCompatActivity implements OnNavigationItemS
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mHandler = new Handler();
@@ -137,6 +139,13 @@ public class BaseActivity extends AppCompatActivity implements OnNavigationItemS
         switch(itemId) {
             case R.id.nav_example:
                 intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                break;
+            case R.id.nav_tutorial:
+                PrefManager prefManager = new PrefManager(this);
+                prefManager.setFirstTimeLaunch(true);
+                intent = new Intent(this, TutorialActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 break;

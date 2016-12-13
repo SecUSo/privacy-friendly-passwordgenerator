@@ -21,4 +21,31 @@
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/plus"/>
 
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/insert_alert"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/fab_margin"
+        android:paddingRight="70sp"
+        android:gravity="center_vertical"
+        app:layout_anchor="@id/add_fab"
+        app:layout_anchorGravity="bottom|left"
+        android:layout_width="wrap_content"
+        android:layout_height="50sp">
+
+        <TextView
+            android:text="ADD PARAMETERS"
+            android:gravity="center_vertical"
+            android:textStyle="bold|italic"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:tint="@color/colorPrimary"
+            android:src="@drawable/ic_keyboard_arrow_right_black_24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
 </android.support.design.widget.CoordinatorLayout>

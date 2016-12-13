@@ -1,5 +1,6 @@
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="main_preferences">
 
     <PreferenceCategory
         android:title="@string/title_password_settings">
@@ -18,28 +19,29 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="Metadata">
-    </PreferenceCategory>
+        android:title="@string/title_expert_mode">
+        <Preference
+            android:summary="@string/expert_mode_summary"/>
 
-    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
-    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
-    <!-- <EditTextPreference
-        android:capitalize="words"
-        android:defaultValue="@string/pref_default_display_name"
-        android:inputType="textCapWords"
-        android:key="example_text"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="@string/pref_title_display_name" />
-    <ListPreference
-        android:defaultValue="-1"
-        android:entries="@array/pref_example_list_titles"
-        android:entryValues="@array/pref_example_list_values"
-        android:key="example_list"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null"
-        android:title="@string/pref_title_add_friends_to_messages" />
-        -->
+        <ListPreference
+            android:title="@string/title_hash_algorithms"
+            android:key="hash_algorithm"
+            android:entries="@array/pref_hash_algorithms"
+            android:entryValues="@array/pref_hash_algorithms"
+            android:defaultValue="@string/default_hash_algorithm"
+            android:summary="@string/default_hash_algorithm">
+        </ListPreference>
+        <ListPreference
+            android:title="@string/title_hash_iterations"
+            android:key="hash_iterations"
+            android:entries="@array/pref_iterations"
+            android:entryValues="@array/pref_iterations"
+            android:defaultValue="@string/default_iterations"
+            android:summary="@string/default_iterations"/>
+        <Preference
+            android:key="benchmark"
+            android:title="@string/title_benchmark"
+            android:summary="@string/summary_benchmark"/>
+    </PreferenceCategory>
 
 </PreferenceScreen>

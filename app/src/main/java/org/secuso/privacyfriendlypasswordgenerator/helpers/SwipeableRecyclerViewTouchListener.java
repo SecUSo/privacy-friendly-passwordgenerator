@@ -17,8 +17,6 @@ package org.secuso.privacyfriendlypasswordgenerator.helpers;
  * limitations under the License.
  */
 
-import android.support.v7.widget.RecyclerView;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
@@ -29,6 +27,7 @@ import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
+import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;

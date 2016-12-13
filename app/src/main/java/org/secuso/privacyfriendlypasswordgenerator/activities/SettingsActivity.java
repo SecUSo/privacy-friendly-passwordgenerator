@@ -1,8 +1,15 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,9 +18,14 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.NumberPicker;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
+import org.secuso.privacyfriendlypasswordgenerator.dialogs.BenchmarkDialog;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -31,6 +43,7 @@ public class SettingsActivity extends BaseActivity {
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
      */
+
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
@@ -91,63 +104,14 @@ public class SettingsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_settings);
-
-        //setupActionBar();
-
-
         overridePendingTransition(0, 0);
     }
+
 
     @Override
     protected int getNavigationDrawerID() {
         return R.id.nav_settings;
     }
-
-    /**
-     * Set up the {@link android.app.ActionBar}, if the API is available.
-     */
-    /*private void setupActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            // Show the Up button in the action bar.
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-    }*/
-
-    /*@Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            //finish();
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-            return true;
-            // (!super.onMenuItemSelected(featureId, item)) {
-            //    NavUtils.navigateUpFromSameTask(this);
-            //}
-            //return true;
-        }
-        return super.onMenuItemSelected(featureId, item);
-    }*/
-
-    /**
-     * {@inheritDoc}
-     */
-    /*@Override
-    public boolean onIsMultiPane() {
-        return isXLargeTablet(this);
-    }*/
-
-    /**
-     * {@inheritDoc}
-     */
-    /*@Override
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void onBuildHeaders(List<Header> target) {
-        loadHeadersFromResource(R.xml.pref_headers, target);
-    }*/
 
     /**
      * This method stops fragment injection in malicious applications.
@@ -164,18 +128,43 @@ public class SettingsActivity extends BaseActivity {
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class GeneralPreferenceFragment extends PreferenceFragment {
+
+        Activity activity;
+
+        @Override
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
+            this.activity = activity;
+        }
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
-            //setHasOptionsMenu(true);
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-            //bindPreferenceSummaryToValue(findPreference("example_text"));
-            //bindPreferenceSummaryToValue(findPreference("example_list"));
+            bindPreferenceSummaryToValue(findPreference("hash_iterations"));
+            bindPreferenceSummaryToValue(findPreference("hash_algorithm"));
+
+            Preference benchmark = findPreference("benchmark");
+            benchmark.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+
+                    Bundle bundle = new Bundle();
+
+                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+                    bundle.putInt("number_iterations", Integer.parseInt(preferences.getString("hash_iterations", "1000")));
+                    bundle.putString("hash_algorithm", preferences.getString("hash_algorithm", "SHA256"));
+
+                    FragmentManager fragmentManager = getActivity().getFragmentManager();
+                    BenchmarkDialog benchmarkDialog = new BenchmarkDialog();
+                    benchmarkDialog.setArguments(bundle);
+                    benchmarkDialog.show(fragmentManager, "BenchmarkDialog");
+
+                    return true;
+                }
+            });
         }
 
         @Override
@@ -188,6 +177,7 @@ public class SettingsActivity extends BaseActivity {
             }
             return super.onOptionsItemSelected(item);
         }
+
     }
 }
 

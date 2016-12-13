@@ -10,20 +10,40 @@
     <string name="action_about">About</string>
     <string name="action_settings">Settings</string>
     <string name="action_main">Main</string>
+    <string name="action_tutorial">Show Tutorial</string>
+    <string name="action_delete">Delete all parameters</string>
+
+    <string name="delete_dialog">Do you really wish to delete all parameters?</string>
+    <string name="delete_dialog_success">All parameters deleted.</string>
 
     <!--###METADATA_LIST###-->
     <string name="undo">Undo</string>
     <string name="item_deleted">deleted.</string>
 
+    <!--###METADATA_CARD###-->
+    <string name="numbers_123">123</string>
+    <string name="letters_lower_abc">abc</string>
+    <string name="letters_upper_abc">ABC</string>
+    <string name="Symbols">!+#</string>
+    <string name="checked">✔</string>
+    <string name="not_checked">✘</string>
+
     <!--###ADD_METADATA###-->
-    <string name="add_metadata_heading">Add new meta data</string>
+    <string name="placeholder_no_data" translatable="false">-</string>
+    <string name="add_metadata_heading">Add new parameters</string>
     <string name="domain">Domain:</string>
-    <string name="special_characters">Special Characters</string>
-    <string name="letters">Letters</string>
-    <string name="numbers">Numbers</string>
+    <string name="username">Username:</string>
+    <string name="username_optional">Username (optional):</string>
+    <string name="characterset">Character set:</string>
+    <string name="special_characters">Special (+!#)</string>
+    <string name="letters_upper">Uppercase (ABC)</string>
+    <string name="letters_lower">Lowercase (abc)</string>
+    <string name="numbers">Numbers (123)</string>
     <string name="length">Length: </string>
-    <string name="iteration">Iteration: </string>
+    <string name="iteration">Password Counter: </string>
     <string name="add_domain_message">Please add a domain.</string>
+    <string name="add_character_message">Please choose at least one character type.</string>
+    <string name="hint_iteration">(1 if left blank)</string>
 
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
@@ -34,11 +54,15 @@
     <string name="new_password">New password:</string>
     <string name="master_password_description">The master password is required to generate the old and new password.</string>
     <string name="next">Next</string>
-    <string name="added_message">Metadata updated.</string>
+    <string name="save">Save</string>
+    <string name="added_message">Parameters updated.</string>
     <string name="canceled_message">Update canceled.</string>
 
-    <string name="add_new_metadata_heading">1. New meta data</string>
+    <string name="add_new_metadata_heading">1. New parameters</string>
     <string name="passwords_heading">2. Your passwords</string>
+
+    <string name="copy_clipboar_old">Old password copied.</string>
+    <string name="copy_clipboar_new">New password copied.</string>
 
     <!--###GENERATOR###-->
     <string name="generate_heading">Generate Password</string>
@@ -48,10 +72,11 @@
     <string name="password">Your password:</string>
     <string name="init_password"></string>
     <string name="done">Done</string>
+    <string name="password_copied">Password copied.</string>
 
     <!--###ABOUT###-->
     <string name="about">About</string>
-    <string name="version_number">Version 1.0</string>
+    <string name="version_number">Version 0.9</string>
     <string name="about_author">Authors: </string>
     <string name="about_author_names" translatable="false">Karola Marky</string>
     <string name="about_author_contributors">and contributors.</string>
@@ -63,19 +88,124 @@
 
     <!--###HELP###-->
     <string name="help">Help</string>
+    <string name="help_overview_heading">Overview</string>
+    <string name="help_overview">Privacy Friendly Password Generator deterministically generates passwords out of pre-chosen parameters and a master password. </string>
+    <string name="help_parameters_heading">Explanation of parameters</string>
+    <string name="help_parameters_domain_heading">Domain</string>
+    <string name="help_parameters_domain_description">The domain is reference to the website or item the password is used for.</string>
+    <string name="help_parameters_username_heading">Username</string>
+    <string name="help_parameters_username_description">The optional username can be used to distinguish between different users for the same domain.</string>
+    <string name="help_parameters_characterset_heading">Character set</string>
+    <string name="help_parameters_characterset_description">The character set describes which types of characters should be included into the password. Websites often have recommendations regarding the character set of a password.</string>
+    <string name="help_parameters_length_heading">Length</string>
+    <string name="help_parameters_length_description">Length of the password.</string>
+    <string name="help_parameters_iteration_heading">Password counter</string>
+    <string name="help_parameters_iteration_description">Value that is required to generate different passwords with the same parameters in case of an update. The default value is 1. The counter is incremented by one on every update.</string>
+    <string name="help_manage_heading">Manage parameters</string>
+    <string name="help_manage_add_heading">Add</string>
+    <string name="help_manage_add_description">Add new parameters by pressing the plus button.</string>
+    <string name="help_manage_delete_heading">Delete</string>
+    <string name="help_manage_delete_description">Delete parameters by swiping to one side.</string>
+    <string name="help_manage_update_heading">Update</string>
+    <string name="help_manage_update_description">Update parameters by a long press on the list item.</string>
+
+    <string name="help_generation_heading">Password generation</string>
+    <string name="help_generation_description">The password is generated by a combination of two hashing algorithms: PBKDF2 and BCrypt. The master password serves as seed for both algorithms. The seeds are compited from the parameters.</string>
+
+    <string name="help_privacy_heading">Privacy info</string>
+    <string name="help_pin_storage_heading">Password storage</string>
+    <string name="help_pin_storage_description">The password is always generated and not stored on the device.</string>
+    <string name="help_permissions_heading">Permissions</string>
+    <string name="help_permissions_description">Privacy Friendly Password Generator does not use any permissions</string>
+
 
     <!-- ###SETTINGS### -->
     <string name="title_activity_settings">Settings</string>
     <string name="title_password_settings">Password settings</string>
-    <string name="title_bind_password">Bind passwords to device</string>
+    <string name="title_bind_password">Bind to device</string>
     <string name="summary_bind_password">Create unique passwords per device.</string>
-    <string name="title_clipboard">Copy passwords to clipboard</string>
+    <string name="title_clipboard">Copy to clipboard</string>
     <string name="summary_clipboard">Passwords will automatically copied after generation.</string>
+
+    <string name="title_metadata">Parameter</string>
+    <string name="title_delete_metadata">Delete all parameters.</string>
+
+    <string name="title_expert_mode">Expert mode</string>
+    <string name="expert_mode_summary">The hash algorithms and number of iterations have a high influence on the time needed for generating the password.</string>
+    <string name="title_hash_iterations">Number of hash iterations</string>
+
+    <string name="title_benchmark">Benchmark: generation</string>
+    <string name="summary_benchmark">Test the duration of generating the password on the given algorithm and iteration.</string>
+    <string name="toast_benchmark_started">Benchmark started.</string>
+
+    <string name="title_hash_algorithms">Hash algorithm</string>
+    <string-array name="pref_hash_algorithms" translatable="false">
+        <item>SHA256</item>
+        <item>SHA384</item>
+        <item>SHA512</item>
+    </string-array>
+    <string name="default_hash_algorithm" translatable="false">SHA256</string>
+
+    <string-array name="pref_iterations" translatable="false">
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>6000</item>
+        <item>7000</item>
+        <item>8000</item>
+        <item>9000</item>
+        <item>10000</item>
+    </string-array>
+    <string name="default_iterations" translatable="false">2000</string>
 
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>
+    <string name="dialog_welcome_heading">Welcome</string>
+    <string name="dialog_welcome">Welcome to Privacy Friendly Password Generator!</string>
+    <string name="dialog_add_heading">1. Add parameters</string>
+    <string name="dialog_add_description">Choose the parameters for your password.</string>
+    <string name="dialog_generate_heading">2. Generate passwords</string>
+    <string name="dialog_generate_description">Choose one item in the list and open the generator by a click. Enter a masterpasswort and generate your password.</string>
+
+    <!-- ###BENCHMARK### -->
+    <string name="dialog_start_benchmark">Start</string>
+    <string name="dialog_start_benchmark_hint">Please start the benchmark.</string>
+    <string name="dialog_benchmark_title">Benchmark</string>
+    <string name="dialog_benchmark_seconds">seconds</string>
+    <string name="dialog_benchmark_time">The generation will take approximately</string>
 
     <!-- ##WELCOME### -->
     <string name="viewhelp">View help</string>
 
+    <!-- ##TUTORIAL_DIALOG-->
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Welcome!</string>
+    <string name="slide_1_desc">With Privacy Friendly Password Generator you can generate passwords based on previously saved parameters.</string>
+
+    <string name="slide_2_title">Add Parameters</string>
+    <string name="slide_2_desc">Add parameters that describe properties of your password.</string>
+
+    <string name="slide_3_title">Generate Passwords</string>
+    <string name="slide_3_desc_one">1. Tap on a parameter</string>
+    <string name="slide_3_desc_two">2. Enter a master password</string>
+    <string name="slide_3_desc_three">3. Generate</string>
+
+    <string name="slide_4_title">Manage Parameters</string>
+    <string name="slide_4_action_one">Update</string>
+    <string name="slide_4_action_one_desc">Start updating by a long press.</string>
+    <string name="slide_4_action_two">Delete</string>
+    <string name="slide_4_action_two_desc">Delete by swiping to left or right.</string>
+
+    <string name="slide_master_password_heading">Master Password</string>
+    <string name="slide_master_password_secret">The master password is a secret by you.</string>
+    <string name="slide_master_password_generation">With its help all passwords are generated.</string>
+    <string name="slide_master_password_tips">Use a strong master password:</string>
+    <string name="slide_master_password_characters">- Combination of different character types</string>
+    <string name="slide_master_password_chain">- Chain of words</string>
+    <string name="slide_master_password_eight">- at least 8 characters</string>
 </resources>

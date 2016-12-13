@@ -1,16 +1,23 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
@@ -31,12 +38,16 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
-    private RecyclerView recyclerView;
     private MetaDataAdapter adapter;
     private List<MetaData> metadatalist;
     MetaDataSQLiteHelper database;
-    SharedPreferences sharedPreferences;
-    boolean clipboard_enabled, bindToDevice_enabled;
+
+    boolean clipboard_enabled;
+    boolean bindToDevice_enabled;
+    String hash_algorithm;
+    int number_iterations;
+
+    LinearLayout initialAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +55,20 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         database = new MetaDataSQLiteHelper(this);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         metadatalist = database.getAllmetaData();
+
+        initialAlert = (LinearLayout) findViewById(R.id.insert_alert);
+        hints(metadatalist.size());
+
+        //doFirstRun();
 
         adapter = new MetaDataAdapter(metadatalist);
         recyclerView.setAdapter(adapter);
 
         //Preferences
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        loadPreferences();
 
         int current = 0;
         for (MetaData data : metadatalist) {
@@ -61,8 +77,8 @@ public class MainActivity extends BaseActivity {
         }
 
         //No screenshot
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-                WindowManager.LayoutParams.FLAG_SECURE);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+        //        WindowManager.LayoutParams.FLAG_SECURE);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -73,15 +89,21 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public void onItemClick(View view, int position) {
 
-                        Log.d("Main Activity", Integer.toString(position));
+                        Log.d("Main Activity position", Integer.toString(position));
+                        Log.d("Main Activity", metadatalist.get(position).getDOMAIN());
                         Bundle bundle = new Bundle();
 
                         //Gets ID for look up in DB
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
-                        bundle.putBoolean("clipboard", clipboard_enabled);
-                        bundle.putBoolean("bind", bindToDevice_enabled);
+                        bundle.putString("hash_algorithm", hash_algorithm);
+                        bundle.putBoolean("clipboard_enabled", clipboard_enabled);
+                        bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
+                        //bundle.putInt("number_iterations", number_iterations);
+
+                        Log.d("Main Activity ID", Integer.toString(temp.getID()));
+
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
                         generatePasswordDialog.setArguments(bundle);
@@ -97,7 +119,10 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = metadatalist.get(position);
 
                         bundle.putInt("position", temp.getID());
-                        bundle.putBoolean("bind", bindToDevice_enabled);
+                        bundle.putString("hash_algorithm", hash_algorithm);
+                        //bundle.putInt("number_iterations", number_iterations);
+                        Log.d("MAINACTIVITY HASH", hash_algorithm);
+                        bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
                         updateMetadataDialog.setArguments(bundle);
@@ -124,16 +149,13 @@ public class MainActivity extends BaseActivity {
                                 for (int position : reverseSortedPositions) {
                                     deleteItem(position);
                                 }
-                                adapter.notifyDataSetChanged();
                             }
 
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     deleteItem(position);
-                                    adapter.notifyItemRemoved(position);
                                 }
-                                adapter.notifyDataSetChanged();
                             }
                         });
 
@@ -157,11 +179,6 @@ public class MainActivity extends BaseActivity {
         overridePendingTransition(0, 0);
     }
 
-    @Override
-    protected int getNavigationDrawerID() {
-        return R.id.nav_example;
-    }
-
     public void deleteItem(int position) {
 
         MetaData toDeleteMetaData = metadatalist.get(position);
@@ -175,15 +192,19 @@ public class MainActivity extends BaseActivity {
 
         final int finalPosition = position;
 
+        initialAlert.setVisibility(View.VISIBLE);
+        hints(position);
+
         Snackbar.make(findViewById(android.R.id.content), getString(R.string.domain) + " " + toDeleteMetaData.getDOMAIN() + " " + getString(R.string.item_deleted), Snackbar.LENGTH_LONG)
                 .setAction(getString(R.string.undo), new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        database.addMetaData(toDeleteMetaDataFinal);
+                        database.addMetaDataWithID(toDeleteMetaDataFinal);
                         metadatalist.add(finalPosition, toDeleteMetaDataFinal);
-
                         adapter.notifyItemInserted(finalPosition);
                         adapter.notifyDataSetChanged();
+                        initialAlert.setVisibility(View.GONE);
+                        hints(1);
                     }
                 }).show();
 
@@ -191,17 +212,103 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    public void applySettings() {
-        clipboard_enabled = sharedPreferences.getBoolean("", true);
-        bindToDevice_enabled = sharedPreferences.getBoolean("", true);
+    @Override
+    protected int getNavigationDrawerID() {
+        return R.id.nav_example;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        if (database.getAllmetaData().size() > 0) {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id == R.id.menu_delete) {
+
+            new AlertDialog.Builder(this)
+                    //.setTitle("Title")
+                    .setMessage(getString(R.string.delete_dialog))
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            database.deleteAllMetaData();
+                            Toast.makeText(MainActivity.this, getString(R.string.delete_dialog_success), Toast.LENGTH_SHORT).show();
+                            MainActivity.this.recreate();
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel, null).show();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        applySettings();
+        loadPreferences();
+    }
+
+    public void loadPreferences() {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        clipboard_enabled = sharedPreferences.getBoolean("clipboard_enabled", false);
+        bindToDevice_enabled = sharedPreferences.getBoolean("bindToDevice_enabled", false);
+        hash_algorithm = sharedPreferences.getString("hash_algorithm", "SHA256");
+        String tempIterations = sharedPreferences.getString("hash_iterations", "1000");
+        number_iterations = Integer.parseInt(tempIterations);
+    }
+
+    public void hints(int position) {
+
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+
+        Log.d("LIST SIZE", String.valueOf(metadatalist.size()));
+
+        if (metadatalist.size() == 0 || position == 0) {
+
+            initialAlert.setVisibility(View.VISIBLE);
+            anim.setDuration(1500);
+            anim.setStartOffset(20);
+            anim.setRepeatMode(Animation.REVERSE);
+            anim.setRepeatCount(Animation.INFINITE);
+            initialAlert.startAnimation(anim);
+
+        } else {
+            initialAlert.setVisibility(View.GONE);
+            initialAlert.clearAnimation();
+        }
 
     }
+
+    //private void doFirstRun() {
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        sharedPreferences.edit().putString("firstShow", "").apply();
+//        SharedPreferences settings = getSharedPreferences("firstShow", getBaseContext().MODE_PRIVATE);
+//        if (settings.getBoolean("isFirstRun", true)) {
+//            WelcomeDialog welcomeDialog = new WelcomeDialog();
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            welcomeDialog.show(fragmentManager, "WelcomeDialog");
+//
+//            SharedPreferences.Editor editor = settings.edit();
+//            editor.putBoolean("isFirstRun", false);
+//            editor.apply();
+//        }
+//    }
 
 //    public static class WelcomeDialog extends DialogFragment {
 //
@@ -215,9 +322,9 @@ public class MainActivity extends BaseActivity {
 //
 //            LayoutInflater i = getActivity().getLayoutInflater();
 //            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//            builder.setView(i.inflate(R.layout.welcome_dialog, null));
-//            builder.setIcon(R.mipmap.icon);
-//            builder.setTitle(getActivity().getString(R.string.welcome));
+//            builder.setView(i.inflate(R.layout.dialog_welcome, null));
+//            builder.setIcon(R.mipmap.ic_drawer);
+//            builder.setTitle(getActivity().getString(R.string.dialog_welcome_heading));
 //            builder.setPositiveButton(getActivity().getString(R.string.okay), null);
 //            builder.setNegativeButton(getActivity().getString(R.string.viewhelp), new DialogInterface.OnClickListener() {
 //                @Override

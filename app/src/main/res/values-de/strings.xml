@@ -1,0 +1,188 @@
+<resources>
+    <string name="app_name">Passwort Generator</string>
+    <string name="app_name_long">Privacy Friendly Passwort Generator</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- ###DRAWER###-->
+    <string name="action_help">Hilfe</string>
+    <string name="action_about">Über</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_main">Hauptmenü</string>
+    <string name="action_tutorial">Tutorial anzeigen</string>
+    <string name="action_delete">Alle Parameter löschen</string>
+
+    <string name="delete_dialog">Möchten Sie wirklich alle Parameter löschen?</string>
+    <string name="delete_dialog_success">Alle Parameter gelöscht.</string>
+
+    <!--###METADATA_LIST###-->
+    <string name="undo">Rückgängig</string>
+    <string name="item_deleted">gelöscht.</string>
+
+    <!--###METADATA_CARD###-->
+    <string name="numbers_123">123</string>
+    <string name="letters_lower_abc">abc</string>
+    <string name="letters_upper_abc">ABC</string>
+    <string name="Symbols">!+#</string>
+    <string name="checked">✔</string>
+    <string name="not_checked">✘</string>
+
+    <!--###ADD_METADATA###-->
+    <string name="add_metadata_heading">Neuen Parameter hinzufügen</string>
+    <string name="domain">Domain:</string>
+    <string name="username">Benutzername:</string>
+    <string name="username_optional">Benutzername (optional):</string>
+    <string name="characterset">Zeichensatz:</string>
+    <string name="special_characters">Sonderzeichen (+!#)</string>
+    <string name="letters_upper">Groß (ABC)</string>
+    <string name="letters_lower">Klein (abc)</string>
+    <string name="numbers">Zahlen (123)</string>
+    <string name="length">Länge: </string>
+    <string name="iteration">Passwortzähler: </string>
+    <string name="add_domain_message">Bitte geben Sie eine Domain an.</string>
+    <string name="add_character_message">Bitte suchen Sie mindestens einen Zeichensatz aus.</string>
+    <string name="hint_iteration">(1 falls leer)</string>
+
+    <string name="add">Hinzufügen</string>
+    <string name="cancel">Abbrechen</string>
+
+    <!--###UPDATE_METADATA###-->
+    <string name="update">Update</string>
+    <string name="old_password">Altes Passwort:</string>
+    <string name="new_password">Neues Passwort:</string>
+    <string name="master_password_description">Das Master-Passwort wird zum Generien benötigt.</string>
+    <string name="next">Weiter</string>
+    <string name="save">Speichern</string>
+    <string name="added_message">Parameter updated.</string>
+    <string name="canceled_message">Update abgebrochen.</string>
+
+    <string name="add_new_metadata_heading">1. Neue Parameter</string>
+    <string name="passwords_heading">2. Passworte</string>
+
+    <string name="copy_clipboar_old">Altes Passwort kopiert.</string>
+    <string name="copy_clipboar_new">Neues Passwort kopiert.</string>
+
+    <!--###GENERATOR###-->
+    <string name="generate_heading">Passwort generieren</string>
+    <string name="generate">Generieren</string>
+    <string name="master_password_heading">Master-Passwort:</string>
+    <string name="enter_masterpassword">Bitte geben Sie ein Masterpasswort ein.</string>
+    <string name="password">Passwort:</string>
+    <string name="init_password"></string>
+    <string name="done">Fertig</string>
+    <string name="password_copied">Passwort kopiert.</string>
+
+    <!--###ABOUT###-->
+    <string name="about">Über</string>
+    <string name="version_number">Version 0.9</string>
+    <string name="about_author">Authors: </string>
+    <string name="about_affiliation">In Zusammenarbeit mit</string>
+    <string name="privacy_friendly">Diese App gehört zur Gruppe der Privacy Friendly Apps entwickelt von der Technischen Universität Darmstadt. Quellcode lizenziert unter GPLv3. Bilder copyright TU Darmstadt und Google Inc.</string>
+    <string name="more_info">Mehr Informationen unter:</string>
+    <string name="about_author_contributors">und Mitwirkende.</string>
+
+    <!--###HELP###-->
+    <string name="help">Hilfe</string>
+    <string name="help_overview_heading">Übersicht</string>
+    <string name="help_overview">Privacy Friendly Passwort Generator generiert Passworte eindeutig aus vorher festgelegten Parametern.</string>
+    <string name="help_parameters_heading">Erklärung der Parameter</string>
+    <string name="help_parameters_domain_heading">Domain</string>
+    <string name="help_parameters_domain_description">Die Domain ist eine Referenz zur Webseite oder sonstigem, wofür das Passwort verwendet wird.</string>
+    <string name="help_parameters_username_heading">Benutzername</string>
+    <string name="help_parameters_username_description">Der optionale Benutzername kann verwendet werden um verschiedene Nutzer bei gleicher Domain zu unterscheiden.</string>
+    <string name="help_parameters_characterset_heading">Zeichensatz</string>
+    <string name="help_parameters_characterset_description">Der Zeichensatz beschreibt welche Arten von Zeichen das Passwort haben soll. Manche Webseiten empfehlen bestimmte Kombinationen.</string>
+    <string name="help_parameters_length_heading">Länge</string>
+    <string name="help_parameters_length_description">Länge des Passworts.</string>
+    <string name="help_parameters_iteration_heading">Passwortzähler</string>
+    <string name="help_parameters_iteration_description">Dieser Wert wird verwendet, um im Falle eines Update verschiedene Passworte mit denselbe Parametern zu generieren. Der Standardwert ist 1. Der Passwortzähler wird bei jedem Update um 1 erhöht.</string>
+    <string name="help_manage_heading">Parameter verwalten</string>
+    <string name="help_manage_add_heading">Hinzufügen</string>
+    <string name="help_manage_add_description">Neue Parameter können über den Plus-Button hinzugefügt werden.</string>
+    <string name="help_manage_delete_heading">Löschen</string>
+    <string name="help_manage_delete_description">Parameter können durch eine Wischgeste nach rechts oder links gelöscht werden.</string>
+    <string name="help_manage_update_heading">Update</string>
+    <string name="help_manage_update_description">Parameter können durch ein längeres Drücken geupdated werden.</string>
+
+    <string name="help_generation_heading">Passwortgenerierung</string>
+    <string name="help_generation_description">Die Passwörter werden durch eine Kombination der Hashalgorithmen BCrypt und PBKDF2 generiert. Dabei ist das Master-Passwort der Startwert für beide Algorithmen.
+        Die Satze werden aus der Parametern gewonnen.</string>
+
+    <string name="help_privacy_heading">Datenschutzinfo</string>
+    <string name="help_pin_storage_heading">Speicherung von Passworten</string>
+    <string name="help_pin_storage_description">Weder Passwort noch Master-Passwort weden auf dem Gerät gespeichert.</string>
+    <string name="help_permissions_heading">Berechtigungen</string>
+    <string name="help_permissions_description">Privacy Friendly Passwort Generator verwendet keine Berechtigungen.</string>
+
+
+    <!-- ###SETTINGS### -->
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="title_password_settings">Passworteinstellungen</string>
+    <string name="title_bind_password">An Gerät binden</string>
+    <string name="summary_bind_password">Eindeutige Passworte abhängig von Gerät.</string>
+    <string name="title_clipboard">In Zwischenablage kopieren</string>
+    <string name="summary_clipboard">Passwords will automatically copied after generation.</string>
+
+    <string name="title_metadata">Parameter</string>
+    <string name="title_delete_metadata">Alle Parameter löschen.</string>
+
+    <string name="title_expert_mode">Expertenmodus</string>
+    <string name="expert_mode_summary">Hash-Algorithmus und Hash-Iterationen haben einen großen Einfluss auf die Dauer der Generierung.</string>
+    <string name="title_hash_iterations">Anzahl Hash-Iterationen</string>
+
+    <string name="title_benchmark">Benchmark: Generierung</string>
+    <string name="summary_benchmark">Ermittlung der Generierungsdauer basierend auf Hash-Algorithmus und Hash-Iterationen.</string>
+    <string name="toast_benchmark_started">Benchmark started.</string>
+
+    <string name="title_hash_algorithms">Hash-Algorithmus</string>
+
+    <!-- ###DIALOGS### -->
+    <string name="okay">OKAY</string>
+    <string name="dialog_welcome_heading">Willkommen</string>
+    <string name="dialog_welcome">Willkommen zu Privacy Friendly Passwort Generator!</string>
+    <string name="dialog_add_heading">1. Parameter hinzufügen</string>
+    <string name="dialog_add_description">Wählen Sie die Parameter für Ihre Passwort.</string>
+    <string name="dialog_generate_heading">2. Passwort generieren</string>
+    <string name="dialog_generate_description">Wählen Sie einen Listeneintrag. Per Klick öffnet sich der Generator. Geben Sie ein Master-Passwort ein.</string>
+
+    <!-- ###BENCHMARK### -->
+    <string name="dialog_start_benchmark">Start</string>
+    <string name="dialog_start_benchmark_hint">Bitte starten Sie das Benchmark.</string>
+    <string name="dialog_benchmark_title">Benchmark</string>
+    <string name="dialog_benchmark_seconds">Sekunden</string>
+    <string name="dialog_benchmark_time">Das Generieren dauert etwa</string>
+
+    <!-- ##WELCOME### -->
+    <string name="viewhelp">Hilfe anzeigen</string>
+
+    <!-- ##TUTORIAL_DIALOG-->
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="skip">Überspringen</string>
+    <string name="start">FERTIG</string>
+
+    <string name="slide_1_title">Willkommen!</string>
+    <string name="slide_1_desc">Mit Privacy Friendly Passwort Generator können Passworte auf Basis von Parametern generiert werden.</string>
+
+    <string name="slide_2_title">Parameter hinzufügen</string>
+    <string name="slide_2_desc">Parameter beschreiben .</string>
+
+    <string name="slide_3_title">Passworte generien</string>
+    <string name="slide_3_desc_one">1. Klick auf einen Parameter</string>
+    <string name="slide_3_desc_two">2. Master-Passwort eingeben</string>
+    <string name="slide_3_desc_three">3. Generieren</string>
+
+    <string name="slide_4_title">Parameter verwalten</string>
+    <string name="slide_4_action_one">Update</string>
+    <string name="slide_4_action_one_desc">Update durch langes Drück starten.</string>
+    <string name="slide_4_action_two">Löschen</string>
+    <string name="slide_4_action_two_desc">Löschen durch eine Wischgeste nach rechts oder links.</string>
+
+    <string name="slide_master_password_heading">Master-Password</string>
+    <string name="slide_master_password_secret">Das Master-Passwort ist ihr Geheimnis.</string>
+    <string name="slide_master_password_generation">Aus ihm werden alle Passworte generiert.</string>
+    <string name="slide_master_password_tips">Verwenden Sie ein starkes Master-Passwort:</string>
+    <string name="slide_master_password_characters">- Verschiedene Zeichen/Symbole</string>
+    <string name="slide_master_password_chain">- Wortketten</string>
+    <string name="slide_master_password_eight">- mindestens Zeichen</string>
+</resources>

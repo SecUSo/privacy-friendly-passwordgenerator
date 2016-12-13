@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    >
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
         android:id="@+id/textViewDomainHeading"
@@ -18,29 +18,67 @@
         android:id="@+id/editTextDomain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLength="42" />
+        android:inputType="text"
+        android:maxLength="42"
+        android:maxLines="1" />
 
-    <CheckBox
-        android:id="@+id/checkBoxSpecialCharacter"
+    <TextView
+        android:id="@+id/textViewUsernameHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/username_optional" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLength="42"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/textViewSetHeading"
         android:layout_marginTop="16dp"
-        android:checked="true"
-        android:text="@string/special_characters" />
-
-    <CheckBox
-        android:id="@+id/checkBoxLetters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/letters" />
-
-    <CheckBox
-        android:id="@+id/checkBoxNumbers"
-        android:layout_width="wrap_content"
+        android:text="@string/characterset" />
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/numbers" />
+        android:columnCount="2"
+        android:rowCount="2"
+        android:layout_gravity="center">
+
+        <CheckBox
+            android:id="@+id/checkBoxLettersLow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/letters_lower" />
+
+        <CheckBox
+            android:id="@+id/checkBoxLettersUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/letters_upper" />
+
+        <CheckBox
+            android:id="@+id/checkBoxNumbers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/numbers" />
+
+        <CheckBox
+            android:id="@+id/checkBoxSpecialCharacter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/special_characters" />
+
+    </GridLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -69,28 +107,36 @@
         android:id="@+id/seekBarLength"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="12"
+        android:max="16"
         android:progress="6" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textViewIterationHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/iteration" />
+        <TextView
+            android:id="@+id/textViewIterationHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/iteration" />
 
-    <EditText
-        android:id="@+id/EditTextIteration"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:maxLength="4"
-        android:inputType="number"
-        android:layout_toEndOf="@+id/textViewIterationHeading"/>
+        <EditText
+            android:id="@+id/EditTextIteration"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/textViewIterationHeading"
+            android:inputType="number"
+            android:maxLength="4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hint_iteration"
+            android:textSize="12sp"
+            android:layout_toEndOf="@+id/EditTextIteration"
+            android:layout_marginTop="16dp"/>
 
     </RelativeLayout>
 

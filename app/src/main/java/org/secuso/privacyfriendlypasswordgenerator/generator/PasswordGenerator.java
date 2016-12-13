@@ -1,126 +1,181 @@
 package org.secuso.privacyfriendlypasswordgenerator.generator;
 
-        import java.io.UnsupportedEncodingException;
-        import java.math.BigInteger;
-        import java.security.MessageDigest;
-        import java.security.NoSuchAlgorithmException;
-        import java.util.ArrayList;
-        import java.util.List;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * This class handles the hashing and the creation of passwords. Please initialize first.
+ * Do not forget to hash at least once with PBKDF2 because otherwise the password might look not very
+ * random. It is safe to hash often because an attacker has to hash as often as you did for
+ * every try of a brute-force attack. getPassword creates a password string out of the hash
+ * digest.
+ * <p>
+ * Basic class structure and idea taken from https://github.com/pinae/ctSESAM-android/
+ * last access 1st November 2016
+ * Added the BCrypt component an
+ */
 public class PasswordGenerator {
 
     private byte[] hashValue;
 
-    public void setRandom(String random) {
-        this.random = random;
+    public PasswordGenerator(String domain,
+                             String username,
+                             String masterpassword,
+                             String deviceID,
+                             int iteration,
+                             int hashIterations,
+                             String hashAlgorithm) {
+
+        String temp = Base64.encode_base64(
+                PBKDF2.hmac(
+                        hashAlgorithm,
+                        UTF8.encode(masterpassword),
+                        UTF8.encode(String.valueOf(iteration * 100) + domain + username + deviceID),
+                        hashIterations),
+                22);
+
+        this.hashValue = transformPassword(BCrypt.hashpw(masterpassword, "$2a$10$" + temp));
     }
 
-    private String random = "secuso ist toll";
+    //cuts the salt from the password
+    private byte[] transformPassword(String password) {
+        byte[] passwordChar = UTF8.encode(password);
+        byte[] transformedPassword = new byte[31];
 
-    public void initialize(String domain, String masterPassword, int length) {
-        try {
-            hashValue = (domain + masterPassword + random).getBytes("UTF-8");
-            hash(length);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        //Log.d("GENERATOR", "Password after bcrypt " + password);
+
+        for (int i = 29; i < passwordChar.length; i++) {
+            transformedPassword[i - 29] = passwordChar[i];
         }
+
+        //Log.d("GENERATOR", "Password after bcrypt short " + new String(transformedPassword));
+
+        return transformedPassword;
+
     }
 
-    public void hash(int iterations) {
-        for (int i = 0; i < iterations; i++) {
-            try {
-                MessageDigest hasher = MessageDigest.getInstance("SHA-256");
-                hasher.update(hashValue);
-                hashValue = hasher.digest();
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public String getPassword(int specialCharacters, int letters,
+    public String getPassword(int specialCharacters, int lowerCaseLetters, int upperCaseLetters,
                               int numbers, int length) {
-        BigInteger hashNumber = BigInteger.valueOf(0);
-        for (int i = 0; i < hashValue.length; i++) {
-            hashNumber = hashNumber.multiply(BigInteger.valueOf(8)).
-                    add(BigInteger.valueOf(hashValue[i] & 0xFF));
-        }
+
+        byte[] positiveHashValue = new byte[hashValue.length + 1];
+        positiveHashValue[0] = 0;
+        System.arraycopy(hashValue, 0, positiveHashValue, 1, hashValue.length);
+        BigInteger hashNumber = new BigInteger(positiveHashValue);
+        Clearer.zero(positiveHashValue);
         String password = "";
-        if (specialCharacters == 1 || letters  == 1|| numbers == 1) {
-            List<String> characterSet = new ArrayList<String>();
-            if (specialCharacters == 1) {
-                characterSet.add("#");
-                characterSet.add("$");
-                characterSet.add("|");
-                characterSet.add(";");
-                characterSet.add("&");
-                characterSet.add("!");
-                characterSet.add("{");
-                characterSet.add("}");
-                characterSet.add("(");
-                characterSet.add(")");
-                characterSet.add("§");
-                characterSet.add("<");
-                characterSet.add(">");
-                characterSet.add("=");
-                characterSet.add("*");
-                characterSet.add("?");
-                characterSet.add("-");
-                characterSet.add(":");
-                characterSet.add("@");
-                characterSet.add("%");
-                characterSet.add("+");
+
+        String upperInitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowerInitial = "abcdefghijklmnopqrstuvwxyz";
+        String characters = "#!\"~|@^°$%&/()[]{}=-_+*<>;:.";
+        String numbersInitial = "0123456789";
+
+        List<String> characterSet = new ArrayList<>();
+
+        if (specialCharacters == 1) {
+            for (int i = 0; i < characters.length(); i++) {
+                characterSet.add(Character.toString(characters.charAt(i)));
             }
-            if (letters == 1) {
-                characterSet.add("a"); characterSet.add("A");
-                characterSet.add("b"); characterSet.add("B");
-                characterSet.add("c"); characterSet.add("C");
-                characterSet.add("d"); characterSet.add("D");
-                characterSet.add("e"); characterSet.add("E");
-                characterSet.add("f"); characterSet.add("F");
-                characterSet.add("g"); characterSet.add("G");
-                characterSet.add("h"); characterSet.add("H");
-                characterSet.add("i");
-                characterSet.add("j"); characterSet.add("J");
-                characterSet.add("k"); characterSet.add("K");
-                characterSet.add("L");
-                characterSet.add("m"); characterSet.add("M");
-                characterSet.add("n"); characterSet.add("N");
-                characterSet.add("o");
-                characterSet.add("p"); characterSet.add("P");
-                characterSet.add("q"); characterSet.add("Q");
-                characterSet.add("r"); characterSet.add("R");
-                characterSet.add("s");
-                characterSet.add("t"); characterSet.add("T");
-                characterSet.add("u"); characterSet.add("U");
-                characterSet.add("v"); characterSet.add("V");
-                characterSet.add("w"); characterSet.add("W");
-                characterSet.add("x"); characterSet.add("X");
-                characterSet.add("y"); characterSet.add("Y");
-                characterSet.add("z"); characterSet.add("Z");
-            }
-            if (numbers == 1) {
-                characterSet.add("0");
-                characterSet.add("1");
-                characterSet.add("2");
-                characterSet.add("3");
-                characterSet.add("4");
-                characterSet.add("5");
-                characterSet.add("6");
-                characterSet.add("7");
-                characterSet.add("8");
-                characterSet.add("9");
-            }
-            BigInteger setSize = BigInteger.valueOf(characterSet.size());
-            while (hashNumber.compareTo(setSize) >= 0) {
-                BigInteger[] divAndMod = hashNumber.divideAndRemainder(setSize);
-                hashNumber = divAndMod[0].add(BigInteger.valueOf(1));
-                int mod = divAndMod[1].intValue();
-                password = password + characterSet.get(mod);
-            }
-            password = password + characterSet.get(hashNumber.intValue());
         }
-        return password.substring(0, Math.min(length, password.length()));
+
+        if (lowerCaseLetters == 1) {
+            for (int i = 0; i < lowerInitial.length(); i++) {
+                characterSet.add(Character.toString(lowerInitial.charAt(i)));
+            }
+        }
+
+        if (upperCaseLetters == 1) {
+            for (int i = 0; i < upperInitals.length(); i++) {
+                characterSet.add(Character.toString(upperInitals.charAt(i)));
+            }
+
+        }
+
+        if (numbers == 1) {
+            for (int i = 0; i < numbersInitial.length(); i++) {
+                characterSet.add(Character.toString(numbersInitial.charAt(i)));
+            }
+        }
+
+        List<String> digitsSet = new ArrayList<>();
+        for (int i = 0; i < numbersInitial.length(); i++) {
+            digitsSet.add(Character.toString(numbersInitial.charAt(i)));
+        }
+
+        List<String> lowerSet = new ArrayList<>();
+        for (int i = 0; i < lowerInitial.length(); i++) {
+            lowerSet.add(Character.toString(lowerInitial.charAt(i)));
+        }
+
+        List<String> upperSet = new ArrayList<>();
+        for (int i = 0; i < upperInitals.length(); i++) {
+            upperSet.add(Character.toString(upperInitals.charAt(i)));
+        }
+
+        List<String> extraSet = new ArrayList<>();
+        for (int i = 0; i < characters.length(); i++) {
+            extraSet.add(Character.toString(characters.charAt(i)));
+        }
+
+
+        if (characterSet.size() > 0) {
+            String template = shuffleTemplate(TemplateFactory.createTemplateFromParameters(specialCharacters, lowerCaseLetters, upperCaseLetters,
+            numbers, length));
+
+
+
+            if (characterSet.size() > 0) {
+                for (int i = 0; i < template.length(); i++) {
+                    if (hashNumber.compareTo(BigInteger.ZERO) > 0) {
+                        List<String> set = characterSet;
+                        if (template.charAt(i) == 'a') {
+                            set = lowerSet;
+                        } else if (template.charAt(i) == 'A') {
+                            set = upperSet;
+                        } else if (template.charAt(i) == 'n') {
+                            set = digitsSet;
+                        } else if (template.charAt(i) == 's') {
+                            set = extraSet;
+                        } else if (template.charAt(i) == 'x') {
+                            set = characterSet;
+                        }
+                        BigInteger setSize = BigInteger.valueOf(set.size());
+                        BigInteger[] divAndMod = hashNumber.divideAndRemainder(setSize);
+                        hashNumber = divAndMod[0];
+                        int mod = divAndMod[1].intValue();
+                        password += set.get(mod);
+                    }
+                }
+            }
+
+        }
+        return password;
     }
 
+
+    private String shuffleTemplate(String s){
+
+        BigInteger bigInt = new BigInteger(hashValue);
+
+        int index;
+        char temp;
+        char[] array = s.toCharArray();
+        for (int i = array.length - 1; i > 0; i--)
+        {
+            BigInteger tempInt = BigInteger.valueOf(i);
+            BigInteger[] divAndMod = bigInt.divideAndRemainder(tempInt);
+            bigInt = divAndMod[0];
+            index = divAndMod[1].intValue();
+            temp = array[index];
+            array[index] = array[i];
+            array[i] = temp;
+        }
+        return String.valueOf(array);
+    }
+
+
+    protected void deleteFinalize() throws Throwable {
+        Clearer.zero(this.hashValue);
+        super.finalize();
+    }
 }
