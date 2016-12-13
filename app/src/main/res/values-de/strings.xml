@@ -106,7 +106,8 @@
     <string name="help_manage_update_description">Parameter können durch ein längeres Drücken geupdated werden.</string>
 
     <string name="help_generation_heading">Passwortgenerierung</string>
-    <string name="help_generation_description">Passwörter werden über den PBKDF2-Algorithmus generiert. Domain, Benutzername, Master-Passwort, Gerätenummer (optional) und Passwortzähler sind dabei Startwert für den Hash-Algorithm.</string>
+    <string name="help_generation_description">Die Passwörter werden durch eine Kombination der Hashalgorithmen BCrypt und PBKDF2 generiert. Dabei ist das Master-Passwort der Startwert für beide Algorithmen.
+        Die Satze werden aus der Parametern gewonnen.</string>
 
     <string name="help_privacy_heading">Datenschutzinfo</string>
     <string name="help_pin_storage_heading">Speicherung von Passworten</string>
