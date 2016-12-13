@@ -62,6 +62,7 @@
 
     <string name="copy_clipboar_old">Altes Passwort kopiert.</string>
     <string name="copy_clipboar_new">Neues Passwort kopiert.</string>
+    <string name="counter_update">Der Passwortzähler wird automatisch um 1 erhöht.</string>
 
     <!--###GENERATOR###-->
     <string name="generate_heading">Passwort generieren</string>

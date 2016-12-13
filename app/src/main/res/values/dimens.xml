@@ -19,4 +19,13 @@
     <dimen name="slide_desc">16dp</dimen>
     <dimen name="slide_actions">20dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
+
+    <dimen name="dots_height_large">40dp</dimen>
+    <dimen name="dots_margin_bottom_large">30dp</dimen>
+    <dimen name="img_width_height_large">120dp</dimen>
+    <dimen name="slide_title_large">40dp</dimen>
+    <dimen name="slide_desc_large">25dp</dimen>
+    <dimen name="slide_desc_mp_large">20dp</dimen>
+    <dimen name="slide_actions_large">30dp</dimen>
+    <dimen name="desc_padding_large">100dp</dimen>
 </resources>

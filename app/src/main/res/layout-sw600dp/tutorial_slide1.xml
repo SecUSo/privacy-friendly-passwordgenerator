@@ -17,19 +17,19 @@
             android:layout_height="wrap_content"
             android:text="@string/slide_1_title"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_title"
+            android:textSize="@dimen/slide_title_large"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:paddingLeft="@dimen/desc_padding"
-            android:paddingRight="@dimen/desc_padding"
+            android:paddingLeft="@dimen/desc_padding_large"
+            android:paddingRight="@dimen/desc_padding_large"
             android:text="@string/slide_1_desc"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_desc" />
+            android:textSize="@dimen/slide_desc_large" />
 
         <ImageView
             android:layout_width="@dimen/img_width_height"
