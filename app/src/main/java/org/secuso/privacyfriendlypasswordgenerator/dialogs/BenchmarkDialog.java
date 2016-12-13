@@ -64,6 +64,9 @@ public class BenchmarkDialog extends DialogFragment {
                 TextView executionTextView = (TextView) rootView.findViewById(R.id.benchmark_execution);
                 executionTextView.setText(getString(R.string.dialog_benchmark_time));
 
+                TextView benchmarkTextView = (TextView) rootView.findViewById(R.id.benchmarkTextView);
+                benchmarkTextView.setText("");
+
                 spinner.setVisibility(View.VISIBLE);
 
                 generatePassword(iterations, hashAlgorithm);

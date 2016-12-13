@@ -146,6 +146,11 @@ public class UpdatePasswordDialog extends DialogFragment {
 
     public void displayPasswords() {
         EditText editTextUpdateMasterpassword = (EditText) rootView.findViewById(R.id.editTextUpdateMasterpassword);
+        TextView textViewOld = (TextView) rootView.findViewById(R.id.textViewOldPassword);
+        TextView textViewNew = (TextView) rootView.findViewById(R.id.textViewNewPassword);
+
+        textViewOld.setText("");
+        textViewNew.setText("");
 
         if (editTextUpdateMasterpassword.getText().toString().length() == 0) {
             Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
