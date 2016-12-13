@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:paddingLeft="@dimen/desc_padding_large"
             android:paddingRight="@dimen/desc_padding_large"
             android:text="@string/slide_4_action_one"
