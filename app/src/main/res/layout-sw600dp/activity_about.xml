@@ -95,7 +95,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:text="@string/about_affiliation"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <ImageView
@@ -112,7 +112,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:text="@string/privacy_friendly"
-            android:textSize="20sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -121,7 +121,7 @@
             android:layout_marginTop="25dp"
             android:gravity="center"
             android:text="@string/more_info"
-            android:textSize="20sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/secusoWebsite"
@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/url"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <TextView
@@ -139,7 +139,7 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:text="@string/github"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
     </LinearLayout>

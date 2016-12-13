@@ -20,7 +20,7 @@
     <dimen name="slide_actions">20dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
 
-    <dimen name="about_large">20sp</dimen>
+    <dimen name="about_large">20dp</dimen>
 
     <dimen name="dots_height_large">40dp</dimen>
     <dimen name="dots_margin_bottom_large">30dp</dimen>
