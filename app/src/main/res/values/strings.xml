@@ -206,7 +206,7 @@
     <string name="slide_master_password_secret">The master password is a secret by you.</string>
     <string name="slide_master_password_generation">With its help all passwords are generated.</string>
     <string name="slide_master_password_tips">Use a strong master password:</string>
-    <string name="slide_master_password_characters">- Combination of different character types</string>
-    <string name="slide_master_password_chain">- Chain of words</string>
+    <string name="slide_master_password_characters">be a combination of different character types</string>
+    <string name="slide_master_password_chain">be a chain of words</string>
     <string name="slide_master_password_eight">- at least 8 characters</string>
 </resources>

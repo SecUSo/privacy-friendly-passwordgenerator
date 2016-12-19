@@ -1,7 +1,6 @@
 package org.secuso.privacyfriendlypasswordgenerator.tutorial;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,13 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
-import org.secuso.privacyfriendlypasswordgenerator.activities.MainActivity;
 
 /**
- * Class structure taken from tutorial at http://www.androidhive.info/2016/05/android-build-intro-slider-app/
+ * Created by karo on 14.12.16.
  */
 
-public class TutorialActivity extends AppCompatActivity {
+public class GeneratorTutorialActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -33,25 +31,17 @@ public class TutorialActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Checking for first time launch - before calling setContentView()
-        prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
-            launchHomeScreen();
-            finish();
-        }
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
-        setContentView(R.layout.activity_tutorial);
+        setContentView(R.layout.activity_generator_tutorial);
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
@@ -62,11 +52,8 @@ public class TutorialActivity extends AppCompatActivity {
         // layouts of all welcome sliders
         // add few more layouts if you want
         layouts = new int[]{
-                R.layout.tutorial_slide1,
-                R.layout.tutorial_slide2,
-                //R.layout.tutorial_slide_masterpassword,
-                R.layout.tutorial_slide3,
-                R.layout.tutorial_slide4};
+                R.layout.generator_tutorial_slide1,
+                R.layout.generator_tutorial_slide2,};
 
         // adding bottom dots
         addBottomDots(0);
@@ -81,7 +68,7 @@ public class TutorialActivity extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchHomeScreen();
+                finish();
             }
         });
 
@@ -95,7 +82,7 @@ public class TutorialActivity extends AppCompatActivity {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
-                    launchHomeScreen();
+                    finish();
                 }
             }
         });
@@ -122,12 +109,6 @@ public class TutorialActivity extends AppCompatActivity {
 
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;
-    }
-
-    private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(TutorialActivity.this, MainActivity.class));
-        finish();
     }
 
     //  viewpager change listener
@@ -207,4 +188,5 @@ public class TutorialActivity extends AppCompatActivity {
             container.removeView(view);
         }
     }
+
 }

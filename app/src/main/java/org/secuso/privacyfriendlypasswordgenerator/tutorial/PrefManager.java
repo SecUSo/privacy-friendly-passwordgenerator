@@ -18,6 +18,7 @@ public class PrefManager {
     private static final String PREF_NAME = "androidhive-welcome";
 
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+    private static final String IS_FIRST_GENERATION = "IsFirstGeneration";
 
     public PrefManager(Context context) {
         this._context = context;
@@ -28,6 +29,15 @@ public class PrefManager {
     public void setFirstTimeLaunch(boolean isFirstTime) {
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
         editor.commit();
+    }
+
+    public void setFirstGeneration(boolean isFirstGeneration) {
+        editor.putBoolean(IS_FIRST_GENERATION, isFirstGeneration);
+        editor.commit();
+    }
+
+    public boolean isFirstGeneration() {
+        return pref.getBoolean(IS_FIRST_GENERATION, true);
     }
 
     public boolean isFirstTimeLaunch() {

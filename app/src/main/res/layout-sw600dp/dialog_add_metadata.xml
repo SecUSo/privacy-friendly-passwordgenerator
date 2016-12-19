@@ -16,7 +16,8 @@
             android:id="@+id/editTextDomain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/domain"/>
+            android:hint="@string/domain"
+            android:maxLines="1" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -28,22 +29,24 @@
             android:id="@+id/editTextUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username_optional"/>
+            android:hint="@string/username_optional"
+            android:maxLines="1" />
 
     </android.support.design.widget.TextInputLayout>
 
     <TextView
         android:id="@+id/textViewSetHeading"
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/characterset" />
+
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:columnCount="2"
-        android:rowCount="2"
-        android:layout_gravity="center">
+        android:rowCount="2">
 
         <CheckBox
             android:id="@+id/checkBoxLettersLow"
@@ -129,10 +132,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hint_iteration"
-            android:textSize="12sp"
+            android:layout_marginTop="16dp"
             android:layout_toEndOf="@+id/EditTextIteration"
-            android:layout_marginTop="16dp"/>
+            android:text="@string/hint_iteration"
+            android:textSize="12sp" />
 
     </RelativeLayout>
 

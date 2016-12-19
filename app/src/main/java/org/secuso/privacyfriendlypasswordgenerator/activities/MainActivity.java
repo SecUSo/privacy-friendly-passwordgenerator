@@ -1,6 +1,7 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -28,6 +29,8 @@ import org.secuso.privacyfriendlypasswordgenerator.dialogs.UpdateMetadataDialog;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.SwipeableRecyclerViewTouchListener;
+import org.secuso.privacyfriendlypasswordgenerator.tutorial.GeneratorTutorialActivity;
+import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
 
 import java.util.List;
 
@@ -43,6 +46,7 @@ public class MainActivity extends BaseActivity {
     private MetaDataAdapter adapter;
     private List<MetaData> metadatalist;
     MetaDataSQLiteHelper database;
+    private PrefManager prefManager;
 
     boolean clipboard_enabled;
     boolean bindToDevice_enabled;
@@ -63,8 +67,6 @@ public class MainActivity extends BaseActivity {
 
         initialAlert = (LinearLayout) findViewById(R.id.insert_alert);
         hints(metadatalist.size());
-
-        //doFirstRun();
 
         adapter = new MetaDataAdapter(metadatalist);
         recyclerView.setAdapter(adapter);
@@ -110,6 +112,14 @@ public class MainActivity extends BaseActivity {
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
                         generatePasswordDialog.setArguments(bundle);
                         generatePasswordDialog.show(fragmentManager, "GeneratePasswordDialog");
+
+                        prefManager = new PrefManager(getBaseContext());
+                        if (prefManager.isFirstGeneration()) {
+                            prefManager.setFirstGeneration(false);
+                            Intent intent = new Intent(MainActivity.this, GeneratorTutorialActivity.class);
+                            startActivity(intent);
+                        }
+
                     }
 
                     @Override
