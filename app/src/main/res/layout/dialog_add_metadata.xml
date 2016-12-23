@@ -20,8 +20,9 @@
                 android:id="@+id/editTextDomain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text|textCapSentences"
                 android:hint="@string/domain"
-                android:singleLine="true" />
+                android:imeOptions="actionNext" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -33,8 +34,9 @@
                 android:id="@+id/editTextUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text|textCapSentences"
                 android:hint="@string/username_optional"
-                android:singleLine="true" />
+                android:imeOptions="actionNext" />
 
         </android.support.design.widget.TextInputLayout>
 
