@@ -85,35 +85,33 @@
 
     <!--###HELP###-->
     <string name="help">Hilfe</string>
-    <string name="help_overview_heading">Übersicht</string>
-    <string name="help_overview">Privacy Friendly Passwort Generator generiert Passworte eindeutig aus vorher festgelegten Parametern.</string>
-    <string name="help_parameters_heading">Erklärung der Parameter</string>
-    <string name="help_parameters_domain_heading">Domain</string>
-    <string name="help_parameters_domain_description">Die Domain ist eine Referenz zur Webseite oder sonstigem, wofür das Passwort verwendet wird.</string>
-    <string name="help_parameters_username_heading">Benutzername</string>
-    <string name="help_parameters_username_description">Der optionale Benutzername kann verwendet werden um verschiedene Nutzer bei gleicher Domain zu unterscheiden.</string>
-    <string name="help_parameters_characterset_heading">Zeichensatz</string>
-    <string name="help_parameters_characterset_description">Der Zeichensatz beschreibt welche Arten von Zeichen das Passwort haben soll. Manche Webseiten empfehlen bestimmte Kombinationen.</string>
-    <string name="help_parameters_length_heading">Länge</string>
-    <string name="help_parameters_length_description">Länge des Passworts.</string>
-    <string name="help_parameters_iteration_heading">Passwortzähler</string>
-    <string name="help_parameters_iteration_description">Dieser Wert wird verwendet, um im Falle eines Update verschiedene Passworte mit denselbe Parametern zu generieren. Der Standardwert ist 1. Der Passwortzähler wird bei jedem Update um 1 erhöht.</string>
-    <string name="help_manage_heading">Parameter verwalten</string>
-    <string name="help_manage_add_heading">Hinzufügen</string>
-    <string name="help_manage_add_description">Neue Parameter können über den Plus-Button hinzugefügt werden.</string>
-    <string name="help_manage_delete_heading">Löschen</string>
-    <string name="help_manage_delete_description">Parameter können durch eine Wischgeste nach rechts oder links gelöscht werden.</string>
-    <string name="help_manage_update_heading">Update</string>
-    <string name="help_manage_update_description">Parameter können durch ein längeres Drücken geupdated werden.</string>
+    <string name="help_overview">Was ist Privacy Friendly Passwort Generator?</string>
+    <string name="help_overview_answer">Privacy Friendly Passwort Generator generiert Passworte eindeutig aus vorher festgelegten Parametern.</string>
 
-    <string name="help_generation_heading">Passwortgenerierung</string>
-    <string name="help_generation_description">Die Passwörter werden durch eine Kombination der Hashalgorithmen BCrypt und PBKDF2 generiert. Dabei ist das Master-Passwort der Startwert für beide Algorithmen.
-        Die Satze werden aus der Parametern gewonnen.</string>
+    <string name="help_parameter_set_heading">Was ist ein Parameter?</string>
+    <string name="help_parameter_set_answer">Parameter beschreiben Eigenschaften des Passworts.</string>
+    <string name="help_which_parameters_heading">Welche Parameter können gewählt werden?</string>
+    <string name="help_which_parameters_domain">Die Domain ist eine Referenz zur Webseite oder sonstigem, wofür das Passwort verwendet wird.</string>
+    <string name="help_which_parameters_username">Der optionale Benutzername kann verwendet werden um verschiedene Nutzer bei gleicher Domain zu unterscheiden.</string>
+    <string name="help_which_parameters_characterset">Der Zeichensatz beschreibt welche Arten von Zeichen das Passwort haben soll. Manche Webseiten empfehlen bestimmte Kombinationen von Zeichen.</string>
+    <string name="help_which_parameters_length">Die Länge des Passworts kann gewählt werden.</string>
+    <string name="help_which_parameters_password_counter">Der Passwortzähler wird verwendet, um im Falle einer Änderung verschiedene Passworte mit selben Parametern zu generieren. Der Standardwert ist 1. Der Passwortzähler wird bei jedem Update um 1 erhöht.</string>
 
-    <string name="help_privacy_heading">Datenschutzinfo</string>
-    <string name="help_pin_storage_heading">Speicherung von Passworten</string>
-    <string name="help_pin_storage_description">Weder Passwort noch Master-Passwort weden auf dem Gerät gespeichert.</string>
-    <string name="help_permissions_heading">Berechtigungen</string>
+    <string name="help_manage_add_heading">Wie kann ich Parameter hinzufügen?</string>
+    <string name="help_manage_add_description">Hüge neue Parameter über den Plus-Knopf hinzu.</string>
+    <string name="help_manage_update_heading">Wie kann ich Parameter abändern?</string>
+    <string name="help_manage_update_description">Ändere Parameter durch ein langes Drücken.</string>
+    <string name="help_manage_delete_heading">Wie kann ich Parameter löschen?</string>
+    <string name="help_manage_delete_description">Lösche Parameter durch eine Wischgeste.</string>
+
+    <string name="help_generation_heading">Wie werden die Passworte generiert?</string>
+    <string name="help_generation_description">Die Passworte werden durch eine Kombination der Hashalgorithmen BCrypt und PBKDF2 generiert. Dabei ist das Master-Passwort der Startwert für beide Algorithmen.
+Die Satze werden aus der Parametern gewonnen</string>
+
+    <string name="help_password_storage_heading">Werden die Passworte auf dem Gerät gespeichert?</string>
+    <string name="help_password_storage_description">Nein. Weder die generierten Passworte, noch das Master-Passwort werden auf dem Gerät gespeichert.</string>
+
+    <string name="help_permissions_heading">Welche Berechtigungen verwendet Privacy Friendly Passwort Generator?</string>
     <string name="help_permissions_description">Privacy Friendly Passwort Generator verwendet keine Berechtigungen.</string>
 
 
