@@ -34,7 +34,7 @@
         android:layout_height="50sp">
 
         <TextView
-            android:text="ADD PARAMETERS"
+            android:text="@string/initial_alert"
             android:gravity="center_vertical"
             android:textStyle="bold|italic"
             android:textColor="@color/colorPrimaryDark"

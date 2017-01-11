@@ -20,6 +20,12 @@
             android:textSize="@dimen/slide_title_large"
             android:textStyle="bold" />
 
+        <ImageView
+            android:layout_width="@dimen/img_width_height"
+            android:layout_height="@dimen/img_width_height"
+            android:background="@drawable/ic_splash"
+            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,12 +36,6 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc_large" />
-
-        <ImageView
-            android:layout_width="@dimen/img_width_height"
-            android:layout_height="@dimen/img_width_height"
-            android:background="@drawable/ic_splash"
-            />
 
     </LinearLayout>
 </RelativeLayout>

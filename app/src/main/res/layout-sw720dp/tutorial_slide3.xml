@@ -20,23 +20,21 @@
             android:textSize="@dimen/slide_title_large"
             android:textStyle="bold" />
 
+        <ImageView
+            android:layout_width="@dimen/img_width_height"
+            android:layout_height="@dimen/img_width_height"
+            android:background="@drawable/ic_splash" />
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:paddingLeft="@dimen/desc_padding_large"
             android:paddingRight="@dimen/desc_padding_large"
             android:text="@string/slide_3_desc_one"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc_large" />
-
-        <ImageView
-            android:layout_width="215dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:background="@drawable/tutorial_update"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,13 +46,6 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc_large" />
-
-        <ImageView
-            android:layout_width="215dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:background="@drawable/tutorial_master"/>
 
         <TextView
             android:layout_width="wrap_content"
