@@ -21,12 +21,6 @@
     <string name="item_deleted">gelöscht.</string>
 
     <!--###METADATA_CARD###-->
-    <string name="numbers_123">123</string>
-    <string name="letters_lower_abc">abc</string>
-    <string name="letters_upper_abc">ABC</string>
-    <string name="Symbols">!+#</string>
-    <string name="checked">✔</string>
-    <string name="not_checked">✘</string>
 
     <!--###ADD_METADATA###-->
     <string name="add_metadata_heading">Neuen Parameter hinzufügen</string>
@@ -48,7 +42,6 @@
     <string name="cancel">Abbrechen</string>
 
     <!--###UPDATE_METADATA###-->
-    <string name="update">Update</string>
     <string name="old_password">Altes Passwort:</string>
     <string name="new_password">Neues Passwort:</string>
     <string name="master_password_description">Das Master-Passwort wird zum Generien benötigt.</string>
@@ -121,10 +114,7 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="title_bind_password">An Gerät binden</string>
     <string name="summary_bind_password">Eindeutige Passworte abhängig von Gerät.</string>
     <string name="title_clipboard">In Zwischenablage kopieren</string>
-    <string name="summary_clipboard">Passwords will automatically copied after generation.</string>
-
-    <string name="title_metadata">Parameter</string>
-    <string name="title_delete_metadata">Alle Parameter löschen.</string>
+    <string name="summary_clipboard">Automatisches Kopieren in die Zwischenablage nach dem Generieren.</string>
 
     <string name="title_expert_mode">Expertenmodus</string>
     <string name="expert_mode_summary">Hash-Algorithmus und Hash-Iterationen haben einen großen Einfluss auf die Dauer der Generierung.</string>
@@ -132,18 +122,8 @@ Die Satze werden aus der Parametern gewonnen</string>
 
     <string name="title_benchmark">Benchmark: Generierung</string>
     <string name="summary_benchmark">Ermittlung der Generierungsdauer basierend auf Hash-Algorithmus und Hash-Iterationen.</string>
-    <string name="toast_benchmark_started">Benchmark started.</string>
 
     <string name="title_hash_algorithms">Hash-Algorithmus</string>
-
-    <!-- ###DIALOGS### -->
-    <string name="okay">OKAY</string>
-    <string name="dialog_welcome_heading">Willkommen</string>
-    <string name="dialog_welcome">Willkommen zu Privacy Friendly Passwort Generator!</string>
-    <string name="dialog_add_heading">1. Parameter hinzufügen</string>
-    <string name="dialog_add_description">Wählen Sie die Parameter für Ihre Passwort.</string>
-    <string name="dialog_generate_heading">2. Passwort generieren</string>
-    <string name="dialog_generate_description">Wählen Sie einen Listeneintrag. Per Klick öffnet sich der Generator. Geben Sie ein Master-Passwort ein.</string>
 
     <!-- ###BENCHMARK### -->
     <string name="dialog_start_benchmark">Start</string>
@@ -152,19 +132,12 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="dialog_benchmark_seconds">Sekunden</string>
     <string name="dialog_benchmark_time">Das Generieren dauert etwa</string>
 
-    <!-- ##WELCOME### -->
-    <string name="viewhelp">Hilfe anzeigen</string>
-
     <!-- ##TUTORIAL_DIALOG-->
-    <string name="title_activity_welcome">Home Screen</string>
     <string name="skip">Überspringen</string>
     <string name="start">FERTIG</string>
 
     <string name="slide_1_title">Willkommen!</string>
     <string name="slide_1_desc">Mit Privacy Friendly Passwort Generator können Passworte auf Basis von Parametern generiert werden.</string>
-
-    <string name="slide_2_title">Parameter hinzufügen</string>
-    <string name="slide_2_desc">Parameter beschreiben .</string>
 
     <string name="slide_3_title">Passworte generien</string>
     <string name="slide_3_desc_one">1. Klick auf einen Parameter</string>
@@ -177,11 +150,4 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="slide_4_action_two">Löschen</string>
     <string name="slide_4_action_two_desc">Löschen durch eine Wischgeste nach rechts oder links.</string>
 
-    <string name="slide_master_password_heading">Master-Password</string>
-    <string name="slide_master_password_secret">Das Master-Passwort ist ihr Geheimnis.</string>
-    <string name="slide_master_password_generation">Aus ihm werden alle Passworte generiert.</string>
-    <string name="slide_master_password_tips">Verwenden Sie ein starkes Master-Passwort:</string>
-    <string name="slide_master_password_characters">- Verschiedene Zeichen/Symbole</string>
-    <string name="slide_master_password_chain">- Wortketten</string>
-    <string name="slide_master_password_eight">- mindestens Zeichen</string>
 </resources>

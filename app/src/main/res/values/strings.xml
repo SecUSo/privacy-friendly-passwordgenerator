@@ -22,12 +22,6 @@
     <string name="initial_alert">ADD PARAMETER SET</string>
 
     <!--###METADATA_CARD###-->
-    <string name="numbers_123">123</string>
-    <string name="letters_lower_abc">abc</string>
-    <string name="letters_upper_abc">ABC</string>
-    <string name="Symbols">!+#</string>
-    <string name="checked">✔</string>
-    <string name="not_checked">✘</string>
 
     <!--###ADD_METADATA###-->
     <string name="placeholder_no_data" translatable="false">-</string>
@@ -50,7 +44,6 @@
     <string name="cancel">Cancel</string>
 
     <!--###UPDATE_METADATA###-->
-    <string name="update">Update</string>
     <string name="old_password">Old password:</string>
     <string name="new_password">New password:</string>
     <string name="master_password_description">The master password is required to generate the old and new password.</string>
@@ -127,16 +120,12 @@
     <string name="title_clipboard">Copy to clipboard</string>
     <string name="summary_clipboard">Passwords will automatically copied after generation.</string>
 
-    <string name="title_metadata">Parameter</string>
-    <string name="title_delete_metadata">Delete all parameters.</string>
-
     <string name="title_expert_mode">Expert mode</string>
     <string name="expert_mode_summary">The hash algorithms and number of iterations have a high influence on the time needed for generating the password.</string>
     <string name="title_hash_iterations">Number of hash iterations</string>
 
     <string name="title_benchmark">Benchmark: generation</string>
     <string name="summary_benchmark">Test the duration of generating the password on the given algorithm and iteration.</string>
-    <string name="toast_benchmark_started">Benchmark started.</string>
 
     <string name="title_hash_algorithms">Hash algorithm</string>
     <string-array name="pref_hash_algorithms" translatable="false">
@@ -162,12 +151,6 @@
 
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>
-    <string name="dialog_welcome_heading">Welcome</string>
-    <string name="dialog_welcome">Welcome to Privacy Friendly Password Generator!</string>
-    <string name="dialog_add_heading">1. Add parameters</string>
-    <string name="dialog_add_description">Choose the parameters for your password.</string>
-    <string name="dialog_generate_heading">2. Generate passwords</string>
-    <string name="dialog_generate_description">Choose one item in the list and open the generator by a click. Enter a masterpasswort and generate your password.</string>
 
     <!-- ###BENCHMARK### -->
     <string name="dialog_start_benchmark">Start</string>
@@ -176,19 +159,12 @@
     <string name="dialog_benchmark_seconds">seconds</string>
     <string name="dialog_benchmark_time">The generation will take approximately</string>
 
-    <!-- ##WELCOME### -->
-    <string name="viewhelp">View help</string>
-
     <!-- ##TUTORIAL_DIALOG-->
-    <string name="title_activity_welcome">Home Screen</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
     <string name="slide_1_title">Welcome!</string>
     <string name="slide_1_desc">With Privacy Friendly Password Generator you can generate passwords based on previously saved parameter sets and a secret master password.</string>
-
-    <string name="slide_2_title">Add Parameters</string>
-    <string name="slide_2_desc">Add parameters that describe properties of your password (e.g. length).</string>
 
     <string name="slide_3_title">Parameter Sets</string>
     <string name="slide_3_desc_one">Parameter sets describe properties of your password like the length.</string>
@@ -200,14 +176,6 @@
     <string name="slide_4_action_one_desc">Start updating by a long press.</string>
     <string name="slide_4_action_two">Delete</string>
     <string name="slide_4_action_two_desc">Delete by swiping to left or right.</string>
-
-    <string name="slide_master_password_heading">Master Password</string>
-    <string name="slide_master_password_secret">The master password is a secret by you.</string>
-    <string name="slide_master_password_generation">With its help all passwords are generated.</string>
-    <string name="slide_master_password_tips">Use a strong master password:</string>
-    <string name="slide_master_password_characters">be a combination of different character types</string>
-    <string name="slide_master_password_chain">be a chain of words</string>
-    <string name="slide_master_password_eight">- at least 8 characters</string>
 
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">Application Logo</string>
