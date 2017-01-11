@@ -102,7 +102,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
 
     public List<MetaData> getAllMetaData() {
         List<MetaData> metaDataList = new ArrayList<MetaData>();
-        
+
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT  * FROM " + TABLE_METADATA, new String[]{});
 
