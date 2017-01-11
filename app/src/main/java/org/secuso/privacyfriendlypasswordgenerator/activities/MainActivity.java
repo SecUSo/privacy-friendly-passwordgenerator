@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity {
         database = new MetaDataSQLiteHelper(this);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        metadatalist = database.getAllmetaData();
+        metadatalist = database.getAllMetaData();
 
         initialAlert = (LinearLayout) findViewById(R.id.insert_alert);
         hints(metadatalist.size());
@@ -233,7 +233,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        if (database.getAllmetaData().size() > 0) {
+        if (database.getAllMetaData().size() > 0) {
             getMenuInflater().inflate(R.menu.menu_main, menu);
         }
 

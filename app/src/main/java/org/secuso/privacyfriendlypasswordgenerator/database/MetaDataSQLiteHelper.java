@@ -100,13 +100,11 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         database.close();
     }
 
-    public List<MetaData> getAllmetaData() {
+    public List<MetaData> getAllMetaData() {
         List<MetaData> metaDataList = new ArrayList<MetaData>();
-
-        String selectQuery = "SELECT  * FROM " + TABLE_METADATA;
-
+        
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery(selectQuery, null);
+        Cursor cursor = database.rawQuery("SELECT  * FROM " + TABLE_METADATA, new String[]{});
 
         MetaData metaData = null;
 
