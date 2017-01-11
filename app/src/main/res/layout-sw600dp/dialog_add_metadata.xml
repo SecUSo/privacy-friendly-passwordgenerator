@@ -16,7 +16,7 @@
             android:id="@+id/editTextDomain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text|textCapSentences"
+            android:inputType="text|textEmailAddress"
             android:hint="@string/domain"
             android:imeOptions="actionNext"  />
 
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/username_optional"
-            android:inputType="text|textCapSentences"
+            android:inputType="text|textEmailAddress"
             android:imeOptions="actionNext" />
 
     </android.support.design.widget.TextInputLayout>
