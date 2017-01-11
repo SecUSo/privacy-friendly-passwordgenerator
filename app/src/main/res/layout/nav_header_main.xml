@@ -13,27 +13,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
+        android:orientation="horizontal"
         android:paddingBottom="7dp"
-        android:paddingTop="7dp"
-        android:orientation="horizontal">
+        android:paddingTop="7dp">
 
         <ImageView
             android:id="@+id/imageView"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/app_logo"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:src="@mipmap/ic_drawer" />
 
-            android:src="@mipmap/ic_drawer"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:text="@string/app_name"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/imageView" />
+            android:layout_toEndOf="@+id/imageView"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
