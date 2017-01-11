@@ -77,7 +77,7 @@
 
     <!--###ABOUT###-->
     <string name="about">About</string>
-    <string name="version_number">Version 0.9</string>
+    <string name="version_number">Version</string>
     <string name="about_author">Authors: </string>
     <string name="about_author_names" translatable="false">Karola Marky</string>
     <string name="about_author_contributors">and contributors.</string>
