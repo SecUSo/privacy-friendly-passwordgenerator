@@ -45,7 +45,6 @@ public class MainActivity extends BaseActivity {
     private MetaDataAdapter adapter;
     private List<MetaData> metadatalist;
     MetaDataSQLiteHelper database;
-    private PrefManager prefManager;
 
     boolean clipboard_enabled;
     boolean bindToDevice_enabled;
@@ -70,7 +69,6 @@ public class MainActivity extends BaseActivity {
         adapter = new MetaDataAdapter(metadatalist);
         recyclerView.setAdapter(adapter);
 
-        //Preferences
         loadPreferences();
 
         int current = 0;
@@ -92,8 +90,6 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public void onItemClick(View view, int position) {
 
-                        Log.d("Main Activity position", Integer.toString(position));
-                        Log.d("Main Activity", metadatalist.get(position).getDOMAIN());
                         Bundle bundle = new Bundle();
 
                         //Gets ID for look up in DB
@@ -103,9 +99,7 @@ public class MainActivity extends BaseActivity {
                         bundle.putString("hash_algorithm", hash_algorithm);
                         bundle.putBoolean("clipboard_enabled", clipboard_enabled);
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
-                        //bundle.putInt("number_iterations", number_iterations);
-
-                        Log.d("Main Activity ID", Integer.toString(temp.getID()));
+                        bundle.putInt("number_iterations", number_iterations);
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
@@ -124,9 +118,9 @@ public class MainActivity extends BaseActivity {
 
                         bundle.putInt("position", temp.getID());
                         bundle.putString("hash_algorithm", hash_algorithm);
-                        //bundle.putInt("number_iterations", number_iterations);
-                        Log.d("MAINACTIVITY HASH", hash_algorithm);
+                        bundle.putInt("number_iterations", number_iterations);
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
+
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
                         updateMetadataDialog.setArguments(bundle);
@@ -241,7 +235,6 @@ public class MainActivity extends BaseActivity {
         if (id == R.id.menu_delete) {
 
             new AlertDialog.Builder(this)
-                    //.setTitle("Title")
                     .setMessage(getString(R.string.delete_dialog))
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
@@ -280,8 +273,6 @@ public class MainActivity extends BaseActivity {
     public void hints(int position) {
 
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
-
-        //Log.d("LIST SIZE", String.valueOf(metadatalist.size()));
 
         if (metadatalist.size() == 0 || position == 0) {
 
