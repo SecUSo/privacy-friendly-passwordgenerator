@@ -1,7 +1,6 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -30,7 +29,6 @@ import org.secuso.privacyfriendlypasswordgenerator.dialogs.UpdateMetadataDialog;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.SwipeableRecyclerViewTouchListener;
-import org.secuso.privacyfriendlypasswordgenerator.tutorial.GeneratorTutorialActivity;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
 
 import java.util.List;
@@ -113,13 +111,6 @@ public class MainActivity extends BaseActivity {
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
                         generatePasswordDialog.setArguments(bundle);
                         generatePasswordDialog.show(fragmentManager, "GeneratePasswordDialog");
-
-                        prefManager = new PrefManager(getBaseContext());
-                        if (prefManager.isFirstGeneration()) {
-                            prefManager.setFirstGeneration(false);
-                            Intent intent = new Intent(MainActivity.this, GeneratorTutorialActivity.class);
-                            startActivity(intent);
-                        }
 
                     }
 
