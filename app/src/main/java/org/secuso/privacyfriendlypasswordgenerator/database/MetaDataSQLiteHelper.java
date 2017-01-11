@@ -13,7 +13,7 @@ import java.util.List;
 /**
  *
  * @author Karola Marky
- * @version 20160617
+ * @version 20170112
  * Structure based on http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/
  * accessed at 16th June 2016
  */
@@ -160,7 +160,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
     public MetaData getMetaData(int id) {
         SQLiteDatabase database = this.getWritableDatabase();
 
-        Log.d("DATABASE", Integer.toString(id));
+        //Log.d("DATABASE", Integer.toString(id));
 
         Cursor cursor = database.query(TABLE_METADATA, new String[]{KEY_ID,
                         KEY_DOMAIN, KEY_USERNAME, KEY_LENGTH, KEY_HAS_NUMBERS, KEY_HAS_SYMBOLS, KEY_HAS_LETTERS_UP, KEY_HAS_LETTERS_LOW, ITERATION}, KEY_ID + "=?",
@@ -179,7 +179,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
             metaData.setHAS_LETTERS_LOW(Integer.parseInt(cursor.getString(7)));
             metaData.setITERATION(Integer.parseInt(cursor.getString(8)));
 
-            Log.d("DATABASE", "Read " + cursor.getString(1) + " from DB");
+            //Log.d("DATABASE", "Read " + cursor.getString(1) + " from DB");
 
             cursor.close();
         }

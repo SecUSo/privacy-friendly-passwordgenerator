@@ -36,7 +36,7 @@ import java.util.List;
 /**
  * Code for displaying cards according to the tutorial from https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465
  * @author Karola Marky
- * @version 20161116
+ * @version 20170112
  */
 
 
