@@ -1,7 +1,6 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 import android.widget.ExpandableListView;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;

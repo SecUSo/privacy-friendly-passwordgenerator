@@ -29,7 +29,6 @@ import org.secuso.privacyfriendlypasswordgenerator.dialogs.UpdateMetadataDialog;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.SwipeableRecyclerViewTouchListener;
-import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
 
 import java.util.List;
 

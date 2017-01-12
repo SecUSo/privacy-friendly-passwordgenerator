@@ -13,13 +13,11 @@
     <dimen name="img_width_height">120dp</dimen>
     <dimen name="slide_title">30dp</dimen>
     <dimen name="slide_desc">16dp</dimen>
-    <dimen name="slide_actions">20dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
 
     <dimen name="about_large">20dp</dimen>
 
     <dimen name="slide_title_large">40dp</dimen>
     <dimen name="slide_desc_large">25dp</dimen>
-    <dimen name="slide_actions_large">30dp</dimen>
     <dimen name="desc_padding_large">100dp</dimen>
 </resources>

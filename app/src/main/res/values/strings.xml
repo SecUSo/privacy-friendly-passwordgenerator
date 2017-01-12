@@ -171,12 +171,6 @@
     <string name="slide_3_desc_two">They are stored on the device and displayed as a list. </string>
     <string name="slide_3_desc_three">The generation of a password is started by choosing a parameter set from the list.</string>
 
-    <string name="slide_4_title">Manage Parameters</string>
-    <string name="slide_4_action_one">Update</string>
-    <string name="slide_4_action_one_desc">Start updating by a long press.</string>
-    <string name="slide_4_action_two">Delete</string>
-    <string name="slide_4_action_two_desc">Delete by swiping to left or right.</string>
-
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">Application Logo</string>
 </resources>

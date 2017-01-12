@@ -19,6 +19,7 @@
     <!--###METADATA_LIST###-->
     <string name="undo">Rückgängig</string>
     <string name="item_deleted">gelöscht.</string>
+    <string name="initial_alert">PARAMETER HINZUFÜGEN</string>
 
     <!--###METADATA_CARD###-->
 
@@ -125,6 +126,9 @@ Die Satze werden aus der Parametern gewonnen</string>
 
     <string name="title_hash_algorithms">Hash-Algorithmus</string>
 
+    <!-- ###DIALOGS### -->
+    <string name="okay">OKAY</string>
+
     <!-- ###BENCHMARK### -->
     <string name="dialog_start_benchmark">Start</string>
     <string name="dialog_start_benchmark_hint">Bitte starten Sie das Benchmark.</string>
@@ -144,10 +148,7 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="slide_3_desc_two">2. Master-Passwort eingeben</string>
     <string name="slide_3_desc_three">3. Generieren</string>
 
-    <string name="slide_4_title">Parameter verwalten</string>
-    <string name="slide_4_action_one">Update</string>
-    <string name="slide_4_action_one_desc">Update durch langes Drück starten.</string>
-    <string name="slide_4_action_two">Löschen</string>
-    <string name="slide_4_action_two_desc">Löschen durch eine Wischgeste nach rechts oder links.</string>
+    <!-- ##IMAGE_DESCRIPTIONS-->
+    <string name="app_logo">App Logo</string>
 
 </resources>
