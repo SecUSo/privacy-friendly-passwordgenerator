@@ -35,7 +35,8 @@
         <activity
             android:name="org.secuso.privacyfriendlypasswordgenerator.activities.AboutActivity"
             android:label="@string/about"
-            android:parentActivityName="org.secuso.privacyfriendlypasswordgenerator.activities.MainActivity">
+            android:parentActivityName="org.secuso.privacyfriendlypasswordgenerator.activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.secuso.privacyfriendlypasswordgenerator.activities.MainActivity" />

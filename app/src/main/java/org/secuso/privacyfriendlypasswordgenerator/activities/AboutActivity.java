@@ -2,7 +2,6 @@ package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.TextView;
@@ -12,9 +11,9 @@ import org.secuso.privacyfriendlypasswordgenerator.R;
 
 /**
  * @author Karola Marky
- * @version 20160615
+ * @version 20170113
  */
-public class AboutActivity extends AppCompatActivity {
+public class AboutActivity extends BaseActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +35,11 @@ public class AboutActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.secusoWebsite)).setMovementMethod(LinkMovementMethod.getInstance());
         ((TextView)findViewById(R.id.githubURL)).setMovementMethod(LinkMovementMethod.getInstance());
         ((TextView)findViewById(R.id.textFieldVersionName)).setText(BuildConfig.VERSION_NAME);
+    }
+
+    @Override
+    protected int getNavigationDrawerID() {
+        return R.id.nav_about;
     }
 
 }

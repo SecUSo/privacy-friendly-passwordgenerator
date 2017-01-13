@@ -25,7 +25,7 @@ import org.secuso.privacyfriendlypasswordgenerator.tutorial.TutorialActivity;
 /**
  * Created by Chris on 04.07.2016.
  */
-public class BaseActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
+public abstract class BaseActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
 
     // delay to launch nav drawer item, to allow close animation to play
     static final int NAVDRAWER_LAUNCH_DELAY = 250;
@@ -68,9 +68,7 @@ public class BaseActivity extends AppCompatActivity implements OnNavigationItemS
         }
     }
 
-    protected int getNavigationDrawerID() {
-        return 0;
-    }
+    protected abstract int getNavigationDrawerID();
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
