@@ -22,6 +22,7 @@
         android:title="@string/title_reset_all">
         <PreferenceScreen
             android:title="@string/title_reset_list"
+            android:icon="@drawable/ic_menu_delete"
             android:id="@+id/pref_reset_list"
             android:key="pref_reset_list" />
     </PreferenceCategory>
