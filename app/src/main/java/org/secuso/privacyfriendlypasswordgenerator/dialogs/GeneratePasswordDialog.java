@@ -36,7 +36,6 @@ import static android.content.Context.CLIPBOARD_SERVICE;
 
 public class GeneratePasswordDialog extends DialogFragment {
 
-    Activity activity;
     View rootView;
     MetaDataSQLiteHelper database;
     int position;
@@ -50,12 +49,6 @@ public class GeneratePasswordDialog extends DialogFragment {
     EditText editTextMasterpassword;
 
     ProgressBar spinner;
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
-    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -103,7 +96,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                 textViewPassword.setText("");
 
                 InputMethodManager inputManager = (InputMethodManager)
-                        activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(),
                         InputMethodManager.RESULT_UNCHANGED_SHOWN);
@@ -111,7 +104,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                 editTextMasterpassword = (EditText) rootView.findViewById(R.id.editTextMasterpassword);
 
                 if (editTextMasterpassword.getText().toString().length() == 0) {
-                    Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
 
@@ -130,10 +123,10 @@ public class GeneratePasswordDialog extends DialogFragment {
                 TextView password = (TextView) rootView.findViewById(R.id.textViewPassword);
 
                 if (password.getText().toString().length() > 0) {
-                    ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
+                    ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newPlainText("", password.getText());
                     clipboard.setPrimaryClip(clip);
-                    Toast.makeText(activity, activity.getString(R.string.password_copied), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getActivity().getString(R.string.password_copied), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -214,10 +207,10 @@ public class GeneratePasswordDialog extends DialogFragment {
 
     public void passwordToClipboard(boolean clipboardEnabled, String password) {
         if (clipboardEnabled) {
-            ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
+            ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("Password", password);
             clipboard.setPrimaryClip(clip);
-            Toast.makeText(activity, activity.getString(R.string.password_copied), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getActivity().getString(R.string.password_copied), Toast.LENGTH_SHORT).show();
         }
     }
 

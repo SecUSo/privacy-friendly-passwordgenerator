@@ -22,19 +22,12 @@ import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTa
 
 public class BenchmarkDialog extends DialogFragment {
 
-    Activity activity;
     View rootView;
 
     int iterations;
     String hashAlgorithm;
 
     ProgressBar spinner;
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
-    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

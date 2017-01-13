@@ -36,7 +36,6 @@ import static android.content.Context.CLIPBOARD_SERVICE;
 
 public class UpdatePasswordDialog extends DialogFragment {
 
-    Activity activity;
     View rootView;
 
     MetaDataSQLiteHelper database;
@@ -55,12 +54,6 @@ public class UpdatePasswordDialog extends DialogFragment {
     boolean visibility;
 
     EditText editTextUpdateMasterpassword;
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
-    }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -100,7 +93,7 @@ public class UpdatePasswordDialog extends DialogFragment {
             @Override
             public void onClick(View view) {
                 InputMethodManager inputManager = (InputMethodManager)
-                        activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(),
                         InputMethodManager.RESULT_UNCHANGED_SHOWN);
@@ -117,10 +110,10 @@ public class UpdatePasswordDialog extends DialogFragment {
             @Override
             public void onClick(View view) {
                 TextView oldPassword = (TextView) rootView.findViewById(R.id.textViewOldPassword);
-                ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
+                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("", oldPassword.getText());
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(activity, activity.getString(R.string.copy_clipboar_old), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getActivity().getString(R.string.copy_clipboar_old), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -128,10 +121,10 @@ public class UpdatePasswordDialog extends DialogFragment {
             @Override
             public void onClick(View view) {
                 TextView newPassword = (TextView) rootView.findViewById(R.id.textViewNewPassword);
-                ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
+                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("", newPassword.getText());
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(activity, activity.getString(R.string.copy_clipboar_new), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getActivity().getString(R.string.copy_clipboar_new), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -171,7 +164,7 @@ public class UpdatePasswordDialog extends DialogFragment {
     }
 
     public void onClickDone() {
-        activity.recreate();
+        getActivity().recreate();
         this.dismiss();
     }
 
@@ -184,7 +177,7 @@ public class UpdatePasswordDialog extends DialogFragment {
         textViewNew.setText("");
 
         if (editTextUpdateMasterpassword.getText().toString().length() == 0) {
-            Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
             toast.show();
         } else {
 

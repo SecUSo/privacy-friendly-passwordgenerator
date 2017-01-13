@@ -26,16 +26,9 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper
 
 public class AddMetaDataDialog extends DialogFragment {
 
-    Activity activity;
     View rootView;
     MetaDataSQLiteHelper database;
     boolean closeDialog;
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
-    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -103,11 +96,11 @@ public class AddMetaDataDialog extends DialogFragment {
             iterationToAdd = Integer.parseInt(iterations.getText().toString());
         }
         if (domain.getText().toString().length() == 0) {
-            Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_domain_message), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.add_domain_message), Toast.LENGTH_SHORT);
             toast.show();
             closeDialog = false;
         } else if (!(hasNumbersCheckBox.isChecked() || hasSymbolsCheckBox.isChecked() || hasLettersUpCheckBox.isChecked() || hasLettersLowCheckBox.isChecked())) {
-            Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_character_message), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.add_character_message), Toast.LENGTH_SHORT);
             toast.show();
         } else {
 
@@ -123,7 +116,7 @@ public class AddMetaDataDialog extends DialogFragment {
 
             database.addMetaData(metaDataToAdd);
 
-            activity.recreate();
+            getActivity().recreate();
 
             closeDialog = true;
 

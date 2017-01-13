@@ -27,7 +27,6 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper
 
 public class UpdateMetadataDialog extends DialogFragment {
 
-    Activity activity;
     View rootView;
     MetaDataSQLiteHelper database;
     int position;
@@ -37,12 +36,6 @@ public class UpdateMetadataDialog extends DialogFragment {
     boolean bindToDevice_enabled;
     int number_iterations;
     boolean closeDialog;
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
-    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -153,11 +146,11 @@ public class UpdateMetadataDialog extends DialogFragment {
         EditText username = (EditText) rootView.findViewById(R.id.editTextUsernameUpdate);
 
         if (domain.getText().toString().length() == 0) {
-            Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_domain_message), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.add_domain_message), Toast.LENGTH_SHORT);
             toast.show();
             closeDialog = false;
         } else if (!(hasNumbersCheckBox.isChecked() || hasSymbolsCheckBox.isChecked() || checkBoxLettersUpUpdate.isChecked() || checkBoxLettersLowUpdate.isChecked())) {
-            Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.add_character_message), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.add_character_message), Toast.LENGTH_SHORT);
             toast.show();
         } else {
             database.updateMetaData(
@@ -171,7 +164,7 @@ public class UpdateMetadataDialog extends DialogFragment {
                             boolToInt(checkBoxLettersLowUpdate.isChecked()),
                             oldIteration + 1));
 
-            Toast.makeText(activity, getString(R.string.added_message), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.added_message), Toast.LENGTH_SHORT).show();
 
             Bundle bundle = new Bundle();
             bundle.putInt("position", position);
@@ -198,7 +191,7 @@ public class UpdateMetadataDialog extends DialogFragment {
 
     public void cancelUpdate() {
 
-        Toast.makeText(activity, getString(R.string.canceled_message), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), getString(R.string.canceled_message), Toast.LENGTH_SHORT).show();
         this.dismiss();
     }
 
