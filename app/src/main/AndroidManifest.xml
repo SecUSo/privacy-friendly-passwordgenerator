@@ -7,7 +7,7 @@
         android:normalScreens="true"
         android:resizeable="true"
         android:smallScreens="true"
-        android:xlargeScreens="true"/>
+        android:xlargeScreens="true" />
 
     <application
         android:allowBackup="true"
@@ -24,14 +24,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".tutorial.TutorialActivity"
+        <activity
+            android:name=".tutorial.TutorialActivity"
+            android:parentActivityName="org.secuso.privacyfriendlypasswordgenerator.activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.secuso.privacyfriendlypasswordgenerator.activities.MainActivity" />
         </activity>
         <activity
             android:name="org.secuso.privacyfriendlypasswordgenerator.activities.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name="org.secuso.privacyfriendlypasswordgenerator.activities.AboutActivity"
             android:label="@string/about"
