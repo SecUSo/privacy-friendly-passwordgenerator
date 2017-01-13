@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,9 @@ public class GeneratePasswordDialog extends DialogFragment {
     Boolean clipboard_enabled;
     String hashAlgorithm;
     int number_iterations;
+    boolean visibility;
+    ImageButton visibilityButton;
+    EditText editTextMasterpassword;
 
     ProgressBar spinner;
 
@@ -67,6 +71,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
         hashAlgorithm = bundle.getString("hash_algorithm");
         number_iterations = bundle.getInt("number_iterations");
+        visibility = false;
 
         spinner = (ProgressBar) rootView.findViewById(R.id.progressBar);
         spinner.setVisibility(View.GONE);
@@ -103,7 +108,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(),
                         InputMethodManager.RESULT_UNCHANGED_SHOWN);
 
-                EditText editTextMasterpassword = (EditText) rootView.findViewById(R.id.editTextMasterpassword);
+                editTextMasterpassword = (EditText) rootView.findViewById(R.id.editTextMasterpassword);
 
                 if (editTextMasterpassword.getText().toString().length() == 0) {
                     Toast toast = Toast.makeText(activity.getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
@@ -131,6 +136,30 @@ public class GeneratePasswordDialog extends DialogFragment {
                     Toast.makeText(activity, activity.getString(R.string.password_copied), Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        visibilityButton = (ImageButton) rootView.findViewById(R.id.visibilityButton);
+
+        visibilityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editTextMasterpassword = (EditText) rootView.findViewById(R.id.editTextMasterpassword);
+
+                if (!visibility) {
+                    visibilityButton.setImageResource(R.drawable.ic_visibility_off);
+                    editTextMasterpassword.setInputType(
+                            InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    editTextMasterpassword.setSelection(editTextMasterpassword.getText().length());
+                    visibility = true;
+                } else {
+                    visibilityButton.setImageResource(R.drawable.ic_visibility);
+                    editTextMasterpassword.setInputType(InputType.TYPE_CLASS_TEXT |
+                            InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    editTextMasterpassword.setSelection(editTextMasterpassword.getText().length());
+                    visibility = false;
+                }
             }
         });
 
