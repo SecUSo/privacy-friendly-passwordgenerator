@@ -90,9 +90,7 @@ public class UpdatePasswordDialog extends DialogFragment {
 
         position = bundle.getInt("position");
         bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
-        //Log.d("UPDATER BIND", Boolean.toString(bindToDevice_enabled));
         hashAlgorithm = bundle.getString("hash_algorithm");
-        //Log.d("UPDATER HASH", hashAlgorithm);
         setOldMetaData(bundle);
         number_iterations = bundle.getInt("number_iterations");
 

@@ -180,9 +180,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         EditText editTextMasterpassword = (EditText) rootView.findViewById(R.id.editTextMasterpassword);
 
         metaData = database.getMetaData(position);
-
-        Log.d("BINDING", Boolean.toString(bindToDevice_enabled));
-
+        
         String deviceID;
         if (bindToDevice_enabled) {
             deviceID = Settings.Secure.getString(getContext().getContentResolver(),
