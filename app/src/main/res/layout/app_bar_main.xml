@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context="org.secuso.privacyfriendlypasswordgenerator.activities.MainActivity">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
     <include layout="@layout/content_main" />
 
@@ -17,35 +15,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        app:layout_behavior="org.secuso.privacyfriendlypasswordgenerator.helpers.ScrollAwareFABBehavior"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/plus"/>
+        android:src="@drawable/plus"
+        app:layout_behavior="org.secuso.privacyfriendlypasswordgenerator.helpers.ScrollAwareFABBehavior" />
 
     <LinearLayout
-        android:visibility="gone"
         android:id="@+id/insert_alert"
-        android:orientation="horizontal"
-        android:layout_margin="@dimen/fab_margin"
-        android:paddingRight="70sp"
-        android:gravity="center_vertical"
-        app:layout_anchor="@id/add_fab"
-        app:layout_anchorGravity="bottom|left"
         android:layout_width="wrap_content"
-        android:layout_height="50sp">
+        android:layout_height="50sp"
+        android:layout_margin="@dimen/fab_margin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="70sp"
+        android:visibility="gone"
+        app:layout_anchor="@id/add_fab"
+        app:layout_anchorGravity="bottom|left">
 
         <TextView
-            android:text="@string/initial_alert"
-            android:gravity="center_vertical"
-            android:textStyle="bold|italic"
-            android:textColor="@color/colorPrimaryDark"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/initial_alert"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold|italic" />
 
         <ImageView
-            android:tint="@color/colorPrimary"
-            android:src="@drawable/ic_keyboard_arrow_right_black_24sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_right_black_24sp"
+            android:tint="@color/colorPrimary" />
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
