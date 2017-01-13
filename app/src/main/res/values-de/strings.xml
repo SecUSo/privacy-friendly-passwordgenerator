@@ -141,7 +141,12 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="start">FERTIG</string>
 
     <string name="slide_1_title">Willkommen!</string>
-    <string name="slide_1_desc">Mit Privacy Friendly Passwort Generator können Passworte auf Basis von Parametern generiert werden.</string>
+    <string name="slide_1_desc">Privacy Friendly Passwort Generator generiert unterschiedliche Passworte auf alle deine Accounts, du musst dir lediglich ein Master-Passwort merken.</string>
+
+    <string name="slide_2_title">Wie funktioniert generieren</string>
+    <string name="slide_2_desc_one">Wähle ein Master-Passwort als Geheimnis.</string>
+    <string name="slide_2_desc_two">Alle anderen Passwörter werden aus dem Master-Passwort generiert.</string>
+    <string name="slide_2_desc_three">Das Master-Passwort wird nicht gespeichert. Wenn es verloren geht, sind alle Passwörter ebenfalls verloren.</string>
 
     <string name="slide_3_title">Passworte generien</string>
     <string name="slide_3_desc_one">1. Klick auf einen Parameter</string>

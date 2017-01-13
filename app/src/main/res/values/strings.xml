@@ -88,7 +88,8 @@
     <string name="help_overview_answer">Privacy Friendly Password Generator deterministically generates passwords out of a saved parameter set and a master password. </string>
 
     <string name="help_parameter_set_heading">What is a parameter set?</string>
-    <string name="help_parameter_set_answer">A parameter set describes properties of the generated password.</string>
+    <string name="help_parameter_set_answer">Website providers often use password composition policies. A parameter set describes properties of the generated password.
+    These policies should direct our password choices and might force us to create passwords with special characteristics like a minimum length. In this app those policies are represented by parameters which are grouped into a set for each password.</string>
     <string name="help_which_parameters_heading">Which parameters can be chosen?</string>
     <string name="help_which_parameters_domain">The domain is reference to the website or item the password is used for.</string>
     <string name="help_which_parameters_username">The optional username can be used to distinguish between different users for the same domain.</string>
