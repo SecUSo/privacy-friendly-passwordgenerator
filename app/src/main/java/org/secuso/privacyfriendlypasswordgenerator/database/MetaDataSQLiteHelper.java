@@ -21,9 +21,9 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
 
-    private static final String DATABASE_NAME = "MetadataDB";
+    private static final String DATABASE_NAME = "PF_PASSWORD_GENERATOR_DB";
 
-    private static final String TABLE_METADATA = "metadata";
+    private static final String TABLE_METADATA = "META_DATA";
 
     private static final String KEY_ID = "id";
     private static final String KEY_DOMAIN = "domain";
