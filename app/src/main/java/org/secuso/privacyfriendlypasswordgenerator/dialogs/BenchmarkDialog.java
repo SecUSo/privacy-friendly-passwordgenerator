@@ -17,7 +17,7 @@ import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTa
 
 /**
  * @author Karola Marky
- * @version 20161116
+ * @version 20170113
  */
 
 public class BenchmarkDialog extends DialogFragment {

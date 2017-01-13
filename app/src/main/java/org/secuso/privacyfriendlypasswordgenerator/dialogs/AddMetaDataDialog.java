@@ -2,7 +2,7 @@ package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
 /**
  * @author Karola Marky
- * @version 20161116
+ * @version 20170113
  */
 
 import android.app.Activity;

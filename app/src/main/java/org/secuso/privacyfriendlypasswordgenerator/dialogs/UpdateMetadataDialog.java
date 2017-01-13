@@ -22,7 +22,7 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper
 
 /**
  * @author Karola Marky
- * @version 20161116
+ * @version 20170113
  */
 
 public class UpdateMetadataDialog extends DialogFragment {
