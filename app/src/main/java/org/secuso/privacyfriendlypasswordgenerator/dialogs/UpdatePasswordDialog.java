@@ -87,7 +87,7 @@ public class UpdatePasswordDialog extends DialogFragment {
         setOldMetaData(bundle);
         number_iterations = bundle.getInt("number_iterations");
 
-        this.database = new MetaDataSQLiteHelper(getActivity());
+        database = MetaDataSQLiteHelper.getInstance(getActivity());
 
         builder.setView(rootView);
 

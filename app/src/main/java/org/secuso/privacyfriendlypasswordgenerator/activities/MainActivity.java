@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        database = new MetaDataSQLiteHelper(this);
+        database = MetaDataSQLiteHelper.getInstance(this);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         metadatalist = database.getAllMetaData();

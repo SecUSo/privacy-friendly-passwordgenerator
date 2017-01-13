@@ -50,7 +50,7 @@ public class AddMetaDataDialog extends DialogFragment {
         builder.setIcon(R.mipmap.ic_drawer);
         builder.setTitle(getActivity().getString(R.string.add_metadata_heading));
 
-        this.database = new MetaDataSQLiteHelper(getActivity());
+        database = MetaDataSQLiteHelper.getInstance(getActivity());
 
         //Seekbar
         SeekBar seekBarLength = (SeekBar) view.findViewById(R.id.seekBarLength);

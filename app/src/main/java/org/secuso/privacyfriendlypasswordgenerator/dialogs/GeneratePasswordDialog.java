@@ -76,7 +76,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         spinner = (ProgressBar) rootView.findViewById(R.id.progressBar);
         spinner.setVisibility(View.GONE);
 
-        this.database = new MetaDataSQLiteHelper(getActivity());
+        database = MetaDataSQLiteHelper.getInstance(getActivity());
         metaData = database.getMetaData(position);
 
         TextView domain = (TextView) rootView.findViewById(R.id.domainHeadingTextView);

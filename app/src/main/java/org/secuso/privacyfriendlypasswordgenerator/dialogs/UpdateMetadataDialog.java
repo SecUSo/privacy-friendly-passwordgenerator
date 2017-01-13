@@ -59,7 +59,7 @@ public class UpdateMetadataDialog extends DialogFragment {
         bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
 
 
-        this.database = new MetaDataSQLiteHelper(getActivity());
+        database = MetaDataSQLiteHelper.getInstance(getActivity());
         metaData = database.getMetaData(position);
         oldMetaData = database.getMetaData(position);
         number_iterations = bundle.getInt("number_iterations");
@@ -180,13 +180,6 @@ public class UpdateMetadataDialog extends DialogFragment {
             bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
             bundle.putString("olddomain", oldMetaData.getDOMAIN());
             bundle.putString("oldusername", oldMetaData.getUSERNAME());
-
-//        Log.d("Update Metadata", "olddomain: " + oldMetaData.getDOMAIN());
-//        Log.d("Update Metadata", "oldlength: " + oldMetaData.getLENGTH());
-//        Log.d("Update Metadata", "oldletters: " + oldMetaData.getHAS_LETTERS());
-//        Log.d("Update Metadata", "oldsymbols: " + oldMetaData.getHAS_SYMBOLS());
-//        Log.d("Update Metadata", "oldnumbers: " + oldMetaData.getHAS_NUMBERS());
-//        Log.d("Update Metadata", "olditeration: " + oldMetaData.getITERATION());
 
             bundle.putInt("oldlength", oldMetaData.getLENGTH());
             bundle.putInt("oldlettersup", oldMetaData.getHAS_LETTERS_UP());

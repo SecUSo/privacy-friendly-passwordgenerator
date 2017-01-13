@@ -36,8 +36,17 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
 
     private static final String ITERATION = "iteration";
 
+    private static MetaDataSQLiteHelper instance = null;
+
     public MetaDataSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static MetaDataSQLiteHelper getInstance(Context context) {
+        if (instance == null && context != null) {
+            instance = new MetaDataSQLiteHelper(context.getApplicationContext());
+        }
+        return instance;
     }
 
     @Override
