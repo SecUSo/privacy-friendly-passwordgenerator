@@ -164,12 +164,17 @@
     <string name="start">GOT IT</string>
 
     <string name="slide_1_title">Welcome!</string>
-    <string name="slide_1_desc">With Privacy Friendly Password Generator you can generate passwords based on previously saved parameter sets and a secret master password.</string>
+    <string name="slide_1_desc">With Privacy Friendly Password Generator you can generate different passwords for all your accounts while remembering only one master password.</string>
 
-    <string name="slide_3_title">Parameter Sets</string>
-    <string name="slide_3_desc_one">Parameter sets describe properties of your password like the length.</string>
-    <string name="slide_3_desc_two">They are stored on the device and displayed as a list. </string>
-    <string name="slide_3_desc_three">The generation of a password is started by choosing a parameter set from the list.</string>
+    <string name="slide_2_title">How to generate</string>
+    <string name="slide_2_desc_one">Choose a master password as your initial secret.</string>
+    <string name="slide_2_desc_two">Based on this master password all other passwords are generated.</string>
+    <string name="slide_2_desc_three">The master password is not stored in the application. If you loose it all passwords will be lost.</string>
+
+    <string name="slide_3_title">Parameters</string>
+    <string name="slide_3_desc_one">Website providers often use password composition policies.</string>
+    <string name="slide_3_desc_two">These policies should direct our password choices and might force us to create passwords with special characteristics like a minimum length. </string>
+    <string name="slide_3_desc_three">In this app those policies are represented by parameters.</string>
 
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">Application Logo</string>

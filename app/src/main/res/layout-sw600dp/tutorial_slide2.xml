@@ -19,7 +19,7 @@
             android:layout_gravity="center"
             android:text="@string/slide_2_title"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_title"
+            android:textSize="@dimen/slide_title_large"
             android:textStyle="bold" />
 
         <ImageView
@@ -36,7 +36,7 @@
             android:text="@string/slide_2_desc_one"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_desc" />
+            android:textSize="@dimen/slide_desc_large" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
             android:text="@string/slide_2_desc_two"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_desc" />
+            android:textSize="@dimen/slide_desc_large" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
             android:text="@string/slide_2_desc_three"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_desc" />
+            android:textSize="@dimen/slide_desc_large" />
 
     </LinearLayout>
 </RelativeLayout>
