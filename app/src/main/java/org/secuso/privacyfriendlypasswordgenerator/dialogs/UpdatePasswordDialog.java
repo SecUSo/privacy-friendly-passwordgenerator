@@ -31,7 +31,7 @@ import static android.content.Context.CLIPBOARD_SERVICE;
 
 /**
  * @author Karola Marky
- * @version 20161116
+ * @version 20170113
  */
 
 public class UpdatePasswordDialog extends DialogFragment {
@@ -194,11 +194,7 @@ public class UpdatePasswordDialog extends DialogFragment {
             final TextView textViewOldPassword = (TextView) rootView.findViewById(R.id.textViewOldPassword);
             final TextView textViewNewPassword = (TextView) rootView.findViewById(R.id.textViewNewPassword);
 
-            String masterpassword = editTextUpdateMasterpassword.getText().toString();
-
             String deviceID;
-
-            Log.d("BINDING", Boolean.toString(bindToDevice_enabled));
 
             if (bindToDevice_enabled) {
                 deviceID = Settings.Secure.getString(getContext().getContentResolver(),
@@ -213,7 +209,7 @@ public class UpdatePasswordDialog extends DialogFragment {
             String[] paramsOld = new String[12];
             paramsOld[0] = oldMetaData.getDOMAIN();
             paramsOld[1] = oldMetaData.getUSERNAME();
-            paramsOld[2] = masterpassword;
+            paramsOld[2] = editTextUpdateMasterpassword.getText().toString();
             paramsOld[3] = deviceID;
             paramsOld[4] = String.valueOf(oldMetaData.getITERATION());
             paramsOld[5] = String.valueOf(number_iterations);
@@ -232,15 +228,6 @@ public class UpdatePasswordDialog extends DialogFragment {
                 }
             }.execute(paramsOld);
 
-//            Log.d("Generator Update Old", "Length: " + Integer.toString(oldMetaData.getLENGTH()));
-//            Log.d("Generator Update Old", "Domain: " + oldMetaData.getDOMAIN());
-//            Log.d("Generator Update Old", "Username: " + oldMetaData.getUSERNAME());
-//            Log.d("Generator Update Old", "Symbols: " + Integer.toString(oldMetaData.getHAS_SYMBOLS()));
-//            Log.d("Generator Update Old", "Lower: " + Integer.toString(oldMetaData.getHAS_LETTERS_LOW()));
-//            Log.d("Generator Update Old", "Upper: " + Integer.toString(oldMetaData.getHAS_LETTERS_UP()));
-//            Log.d("Generator Update Old", "Numbers: " + Integer.toString(oldMetaData.getHAS_NUMBERS()));
-//            Log.d("Generator Update Old", "Iterations: " + Integer.toString(oldMetaData.getITERATION()));
-
             //generate new password
             metaData = database.getMetaData(position);
 
@@ -248,7 +235,7 @@ public class UpdatePasswordDialog extends DialogFragment {
             String[] paramsNew = new String[12];
             paramsNew[0] = metaData.getDOMAIN();
             paramsNew[1] = metaData.getUSERNAME();
-            paramsNew[2] = masterpassword;
+            paramsNew[2] = editTextUpdateMasterpassword.getText().toString();
             paramsNew[3] = deviceID;
             paramsNew[4] = String.valueOf(metaData.getITERATION());
             paramsNew[5] = String.valueOf(number_iterations);
@@ -267,15 +254,6 @@ public class UpdatePasswordDialog extends DialogFragment {
                 }
             }.execute(paramsNew);
 
-//            Log.d("Generator Update", "Length: " + Integer.toString(metaData.getLENGTH()));
-//            Log.d("Generator Update", "Domain: " + metaData.getDOMAIN());
-//            Log.d("Generator Update", "Username: " + metaData.getUSERNAME());
-//            Log.d("Generator Update", "Symbols: " + Integer.toString(metaData.getHAS_SYMBOLS()));
-//            Log.d("Generator Update", "Numbers: " + Integer.toString(metaData.getHAS_NUMBERS()));
-//            Log.d("Generator Update", "Lower: " + Integer.toString(metaData.getHAS_LETTERS_LOW()));
-//            Log.d("Generator Update", "Upper: " + Integer.toString(metaData.getHAS_LETTERS_UP()));
-//            Log.d("Generator Update", "Iterations: " + Integer.toString(metaData.getITERATION()));
-
         }
     }
 
@@ -290,12 +268,6 @@ public class UpdatePasswordDialog extends DialogFragment {
                 bundle.getInt("oldletterslow"),
                 bundle.getInt("olditeration")
         );
-
-//        Log.d("Update Passwords", "olddomain: " + oldMetaData.getDOMAIN());
-//        Log.d("Update Passwords", "oldlength: " + oldMetaData.getLENGTH());
-//        Log.d("Update Passwords", "oldsymbols: " + oldMetaData.getHAS_SYMBOLS());
-//        Log.d("Update Passwords", "oldnumbers: " + oldMetaData.getHAS_NUMBERS());
-//        Log.d("Update Passwords", "olditeration: " + oldMetaData.getITERATION());
 
     }
 

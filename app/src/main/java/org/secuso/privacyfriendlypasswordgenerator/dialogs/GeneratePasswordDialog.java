@@ -31,7 +31,7 @@ import static android.content.Context.CLIPBOARD_SERVICE;
 
 /**
  * @author Karola Marky
- * @version 20161116
+ * @version 20170113
  */
 
 public class GeneratePasswordDialog extends DialogFragment {
