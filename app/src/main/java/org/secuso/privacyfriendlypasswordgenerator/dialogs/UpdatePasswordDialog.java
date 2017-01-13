@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,11 @@ public class UpdatePasswordDialog extends DialogFragment {
     ProgressBar spinnerOld;
     ProgressBar spinnerNew;
 
+    ImageButton visibilityButton;
+    boolean visibility;
+
+    EditText editTextUpdateMasterpassword;
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -63,6 +69,7 @@ public class UpdatePasswordDialog extends DialogFragment {
 
         rootView = inflater.inflate(R.layout.dialog_update_passwords, null);
 
+        visibility = false;
 
         spinnerOld = (ProgressBar) rootView.findViewById(R.id.oldProgressBar);
         spinnerOld.setVisibility(View.GONE);
@@ -136,6 +143,30 @@ public class UpdatePasswordDialog extends DialogFragment {
             }
         });
 
+        visibilityButton = (ImageButton) rootView.findViewById(R.id.visibilityButton);
+
+        visibilityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editTextUpdateMasterpassword = (EditText) rootView.findViewById(R.id.editTextUpdateMasterpassword);
+
+                if (!visibility) {
+                    visibilityButton.setImageResource(R.drawable.ic_visibility_off);
+                    editTextUpdateMasterpassword.setInputType(
+                            InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    editTextUpdateMasterpassword.setSelection(editTextUpdateMasterpassword.getText().length());
+                    visibility = true;
+                } else {
+                    visibilityButton.setImageResource(R.drawable.ic_visibility);
+                    editTextUpdateMasterpassword.setInputType(InputType.TYPE_CLASS_TEXT |
+                            InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    editTextUpdateMasterpassword.setSelection(editTextUpdateMasterpassword.getText().length());
+                    visibility = false;
+                }
+            }
+        });
+
         return builder.create();
     }
 
@@ -145,7 +176,7 @@ public class UpdatePasswordDialog extends DialogFragment {
     }
 
     public void displayPasswords() {
-        EditText editTextUpdateMasterpassword = (EditText) rootView.findViewById(R.id.editTextUpdateMasterpassword);
+        editTextUpdateMasterpassword = (EditText) rootView.findViewById(R.id.editTextUpdateMasterpassword);
         TextView textViewOld = (TextView) rootView.findViewById(R.id.textViewOldPassword);
         TextView textViewNew = (TextView) rootView.findViewById(R.id.textViewNewPassword);
 
