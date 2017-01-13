@@ -247,24 +247,6 @@ public class MainActivity extends BaseActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.menu_delete) {
-
-            new AlertDialog.Builder(this)
-                    .setMessage(getString(R.string.delete_dialog))
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
-
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            database.deleteAllMetaData();
-                            Toast.makeText(MainActivity.this, getString(R.string.delete_dialog_success), Toast.LENGTH_SHORT).show();
-                            MainActivity.this.recreate();
-                        }
-                    })
-                    .setNegativeButton(R.string.cancel, null).show();
-
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 

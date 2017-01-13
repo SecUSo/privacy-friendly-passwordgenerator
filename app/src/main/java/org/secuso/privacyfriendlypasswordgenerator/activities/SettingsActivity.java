@@ -21,6 +21,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -31,9 +32,12 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
+import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.BenchmarkDialog;
 
 /**
@@ -170,6 +174,29 @@ public class SettingsActivity extends BaseActivity {
                     BenchmarkDialog benchmarkDialog = new BenchmarkDialog();
                     benchmarkDialog.setArguments(bundle);
                     benchmarkDialog.show(fragmentManager, "BenchmarkDialog");
+
+                    return true;
+                }
+            });
+
+            Preference reset = findPreference("pref_reset_list");
+            reset.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+
+                    new AlertDialog.Builder(getActivity())
+                            .setMessage(getString(R.string.delete_dialog))
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    MetaDataSQLiteHelper database = MetaDataSQLiteHelper.getInstance(getActivity());
+                                    database.deleteAllMetaData();
+                                    Toast.makeText(getActivity(), getString(R.string.delete_dialog_success), Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .setNegativeButton(R.string.cancel, null).show();
+
 
                     return true;
                 }

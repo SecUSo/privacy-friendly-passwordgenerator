@@ -19,6 +19,15 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/title_reset_all">
+        <PreferenceScreen
+            android:title="@string/title_reset_list"
+            android:id="@+id/pref_reset_list"
+            android:key="pref_reset_list" />
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
         android:title="@string/title_expert_mode">
         <Preference
             android:summary="@string/expert_mode_summary"/>
