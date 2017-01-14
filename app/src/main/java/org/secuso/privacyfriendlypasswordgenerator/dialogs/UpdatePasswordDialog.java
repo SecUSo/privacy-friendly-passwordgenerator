@@ -52,24 +52,24 @@ import static android.content.Context.CLIPBOARD_SERVICE;
 
 public class UpdatePasswordDialog extends DialogFragment {
 
-    View rootView;
+    private View rootView;
 
-    MetaDataSQLiteHelper database;
-    int position;
-    MetaData metaData;
-    MetaData oldMetaData;
+    private MetaDataSQLiteHelper database;
+    private int position;
+    private MetaData metaData;
+    private MetaData oldMetaData;
 
-    boolean bindToDevice_enabled;
-    String hashAlgorithm;
-    int number_iterations;
+    private boolean bindToDevice_enabled;
+    private String hashAlgorithm;
+    private int number_iterations;
 
-    ProgressBar spinnerOld;
-    ProgressBar spinnerNew;
+    private ProgressBar spinnerOld;
+    private ProgressBar spinnerNew;
 
-    ImageButton visibilityButton;
-    boolean visibility;
+    private ImageButton visibilityButton;
+    private boolean visibility;
 
-    EditText editTextUpdateMasterpassword;
+    private EditText editTextUpdateMasterpassword;
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 

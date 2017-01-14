@@ -59,18 +59,18 @@ public class MainActivity extends BaseActivity {
 
     private MetaDataAdapter adapter;
     private List<MetaData> metadatalist;
-    MetaDataSQLiteHelper database;
+    private MetaDataSQLiteHelper database;
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
-    boolean clipboard_enabled;
-    boolean bindToDevice_enabled;
-    String hash_algorithm;
-    int number_iterations;
+    private boolean clipboard_enabled;
+    private boolean bindToDevice_enabled;
+    private String hash_algorithm;
+    private int number_iterations;
 
-    List<MetaData> filteredMetaDataList;
+    private List<MetaData> filteredMetaDataList;
 
-    LinearLayout initialAlert;
+    private LinearLayout initialAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -52,17 +52,22 @@ import static android.content.Context.CLIPBOARD_SERVICE;
 
 public class GeneratePasswordDialog extends DialogFragment {
 
-    View rootView;
-    MetaDataSQLiteHelper database;
-    int position;
-    MetaData metaData;
-    Boolean bindToDevice_enabled;
-    Boolean clipboard_enabled;
-    String hashAlgorithm;
-    int number_iterations;
-    boolean visibility;
-    ImageButton visibilityButton;
-    EditText editTextMasterpassword;
+    private View rootView;
+
+    private MetaDataSQLiteHelper database;
+
+    private int position;
+    private MetaData metaData;
+
+    private Boolean bindToDevice_enabled;
+    private Boolean clipboard_enabled;
+    private String hashAlgorithm;
+    private int number_iterations;
+
+    private boolean visibility;
+    private ImageButton visibilityButton;
+
+    private EditText editTextMasterpassword;
 
     ProgressBar spinner;
 

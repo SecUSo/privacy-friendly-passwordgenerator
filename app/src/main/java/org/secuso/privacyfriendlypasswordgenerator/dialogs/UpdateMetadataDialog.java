@@ -43,15 +43,20 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper
 
 public class UpdateMetadataDialog extends DialogFragment {
 
-    View rootView;
-    MetaDataSQLiteHelper database;
-    int position;
-    MetaData metaData;
-    MetaData oldMetaData;
-    String hash_algorithm;
-    boolean bindToDevice_enabled;
-    int number_iterations;
-    boolean closeDialog;
+    private View rootView;
+
+    private MetaDataSQLiteHelper database;
+
+    private int position;
+
+    private MetaData metaData;
+    private MetaData oldMetaData;
+
+    private String hash_algorithm;
+    private boolean bindToDevice_enabled;
+    private int number_iterations;
+
+    private boolean closeDialog;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

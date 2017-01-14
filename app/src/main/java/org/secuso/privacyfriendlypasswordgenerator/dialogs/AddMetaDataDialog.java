@@ -42,9 +42,9 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper
 
 public class AddMetaDataDialog extends DialogFragment {
 
-    View rootView;
-    MetaDataSQLiteHelper database;
-    boolean closeDialog;
+    private View rootView;
+    private MetaDataSQLiteHelper database;
+    private boolean closeDialog;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
