@@ -27,7 +27,6 @@
             android:key="pref_reset_list" />
     </PreferenceCategory>
 
-
     <PreferenceCategory
         android:title="@string/title_expert_mode">
         <Preference
