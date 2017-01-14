@@ -2,9 +2,6 @@
     <string name="app_name">Passwort Generator</string>
     <string name="app_name_long">Privacy Friendly Passwort Generator</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <!-- ###DRAWER###-->
     <string name="action_help">Hilfe</string>
     <string name="action_about">Über</string>
@@ -20,8 +17,6 @@
     <string name="undo">Rückgängig</string>
     <string name="item_deleted">gelöscht.</string>
     <string name="initial_alert">PARAMETER HINZUFÜGEN</string>
-
-    <!--###METADATA_CARD###-->
 
     <!--###ADD_METADATA###-->
     <string name="add_metadata_heading">Neuen Parameter hinzufügen</string>
@@ -148,10 +143,10 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="slide_2_desc_two">Alle anderen Passwörter werden aus dem Master-Passwort generiert.</string>
     <string name="slide_2_desc_three">Das Master-Passwort wird nicht gespeichert. Wenn es verloren geht, sind alle Passwörter ebenfalls verloren.</string>
 
-    <string name="slide_3_title">Passworte generien</string>
-    <string name="slide_3_desc_one">1. Klick auf einen Parameter</string>
-    <string name="slide_3_desc_two">2. Master-Passwort eingeben</string>
-    <string name="slide_3_desc_three">3. Generieren</string>
+    <string name="slide_3_title">Parameter</string>
+    <string name="slide_3_desc_one">Webseitenbetreiber verwenden häufig Passwordrichtlinien.</string>
+    <string name="slide_3_desc_two">Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen. </string>
+    <string name="slide_3_desc_three">Diese Richtlinien werden in dieser App durch Parameter dargestellt.</string>
 
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">App Logo</string>

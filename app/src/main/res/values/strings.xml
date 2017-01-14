@@ -2,8 +2,8 @@
     <string name="app_name">Password Generator</string>
     <string name="app_name_long">Privacy Friendly Password Generator</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
     <!-- ###DRAWER###-->
     <string name="action_help">Help</string>
@@ -17,8 +17,6 @@
     <string name="undo">Undo</string>
     <string name="item_deleted">deleted.</string>
     <string name="initial_alert">ADD PARAMETER SET</string>
-
-    <!--###METADATA_CARD###-->
 
     <!--###ADD_METADATA###-->
     <string name="placeholder_no_data" translatable="false">-</string>
