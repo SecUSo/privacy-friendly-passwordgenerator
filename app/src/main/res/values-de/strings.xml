@@ -98,19 +98,17 @@ Die Satze werden aus der Parametern gewonnen</string>
 
     <string name="help_permissions_heading">Welche Berechtigungen verwendet Privacy Friendly Passwort Generator?</string>
     <string name="help_permissions_description">Privacy Friendly Passwort Generator verwendet keine Berechtigungen.</string>
-    
+
     <!-- ###SETTINGS### -->
-    <string name="title_reset_all">Zurücksetzen</string>
-    <string name="title_reset_list">Gesamte Liste löschen</string>
-    <string name="delete_dialog">Möchten Sie wirklich die Liste aller Parameter löschen?</string>
-    <string name="delete_dialog_success">Liste gelöscht.</string>
+    <string name="title_reset_list">Alle Parameter löschen</string>
+    <string name="delete_dialog">Möchten Sie wirklich alle Parameter löschen?</string>
+    <string name="delete_dialog_success">Alle Parameter gelöscht.</string>
 
     <string name="title_activity_settings">Einstellungen</string>
-    <string name="title_password_settings">Passworteinstellungen</string>
-    <string name="title_bind_password">An Gerät binden</string>
-    <string name="summary_bind_password">Eindeutige Passworte abhängig von Gerät.</string>
+    <string name="title_bind_password">Passworte an Gerät binden</string>
+    <string name="summary_bind_password">Generieren eindeutiger Passworte abhängig vom Gerät.</string>
     <string name="title_clipboard">In Zwischenablage kopieren</string>
-    <string name="summary_clipboard">Automatisches Kopieren in die Zwischenablage nach dem Generieren.</string>
+    <string name="summary_clipboard">Automatisches Kopieren der Passworte in die Zwischenablage nach dem Generieren.</string>
 
     <string name="title_expert_mode">Expertenmodus</string>
     <string name="expert_mode_summary">Hash-Algorithmus und Hash-Iterationen haben einen großen Einfluss auf die Dauer der Generierung.</string>
@@ -153,6 +151,5 @@ Die Satze werden aus der Parametern gewonnen</string>
 
     <!-- ##SEARCH-->
     <string name="search_parameter_label">Suche</string>
-    <string name="search_parameter_hint">Domain</string>
 
 </resources>

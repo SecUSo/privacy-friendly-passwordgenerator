@@ -2,8 +2,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:key="main_preferences">
 
-    <PreferenceCategory
-        android:title="@string/title_password_settings">
         <SwitchPreference
             android:title="@string/title_bind_password"
             android:id="@+id/pref_binding_switch"
@@ -16,16 +14,10 @@
             android:key="clipboard_enabled"
             android:summary="@string/summary_clipboard"
             android:defaultValue="false"/>
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/title_reset_all">
-        <PreferenceScreen
+        <Preference
             android:title="@string/title_reset_list"
-            android:icon="@drawable/ic_menu_delete"
             android:id="@+id/pref_reset_list"
             android:key="pref_reset_list" />
-    </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/title_expert_mode">
