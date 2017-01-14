@@ -113,7 +113,6 @@
     <!-- ###SETTINGS### -->
     <string name="title_reset_all">Reset</string>
     <string name="title_reset_list">Delete complete list</string>
-
     <string name="delete_dialog">Do you really wish to delete all parameter sets?</string>
     <string name="delete_dialog_success">Complete list deleted.</string>
 
@@ -182,4 +181,9 @@
 
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">Application Logo</string>
+
+    <!-- ##SEARCH-->
+    <string name="search_parameter_label">Search</string>
+    <string name="search_parameter_hint">Domain</string>
+
 </resources>

@@ -1,32 +1,32 @@
 /**
  * This file is part of Privacy Friendly Password Generator.
-
- Privacy Friendly Password Generator is free software:
- you can redistribute it and/or modify it under the terms of the
- GNU General Public License as published by the Free Software Foundation,
- either version 3 of the License, or any later version.
-
- Privacy Friendly Password Generator is distributed in the hope
- that it will be useful, but WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- See the GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with Privacy Friendly Password Generator. If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * Privacy Friendly Password Generator is free software:
+ * you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or any later version.
+ * <p>
+ * Privacy Friendly Password Generator is distributed in the hope
+ * that it will be useful, but WITHOUT ANY WARRANTY; without even
+ * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with Privacy Friendly Password Generator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,7 +34,6 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
@@ -46,6 +45,7 @@ import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.SwipeableRecyclerViewTouchListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,10 +61,14 @@ public class MainActivity extends BaseActivity {
     private List<MetaData> metadatalist;
     MetaDataSQLiteHelper database;
 
+    RecyclerView recyclerView;
+
     boolean clipboard_enabled;
     boolean bindToDevice_enabled;
     String hash_algorithm;
     int number_iterations;
+
+    List<MetaData> filteredMetaDataList;
 
     LinearLayout initialAlert;
 
@@ -74,7 +78,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         database = MetaDataSQLiteHelper.getInstance(this);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         metadatalist = database.getAllMetaData();
 
@@ -235,19 +239,40 @@ public class MainActivity extends BaseActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         if (database.getAllMetaData().size() > 0) {
             getMenuInflater().inflate(R.menu.menu_main, menu);
+
+            final MenuItem item = menu.findItem(R.id.action_search);
+            final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+                @Override
+                public boolean onQueryTextChange(String query) {
+
+                    filteredMetaDataList = new ArrayList<>();
+                    for (MetaData metaData : metadatalist) {
+                        final String text = metaData.getDOMAIN().toLowerCase();
+                        if (text.contains(query.toLowerCase())) {
+                            filteredMetaDataList.add(metaData);
+                        }
+                    }
+
+                    adapter.setMetaDataList(filteredMetaDataList);
+                    adapter.notifyDataSetChanged();
+                    adapter.animateTo(filteredMetaDataList);
+                    recyclerView.scrollToPosition(0);
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+
+                }
+            });
+
+
         }
 
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
