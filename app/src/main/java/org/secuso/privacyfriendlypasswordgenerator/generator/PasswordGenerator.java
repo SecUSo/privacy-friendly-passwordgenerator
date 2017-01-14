@@ -62,13 +62,10 @@ public class PasswordGenerator {
         byte[] passwordChar = UTF8.encode(password);
         byte[] transformedPassword = new byte[31];
 
-        //Log.d("GENERATOR", "Password after bcrypt " + password);
 
         for (int i = 29; i < passwordChar.length; i++) {
             transformedPassword[i - 29] = passwordChar[i];
         }
-
-        //Log.d("GENERATOR", "Password after bcrypt short " + new String(transformedPassword));
 
         return transformedPassword;
 
@@ -141,8 +138,6 @@ public class PasswordGenerator {
             String template = shuffleTemplate(TemplateFactory.createTemplateFromParameters(specialCharacters, lowerCaseLetters, upperCaseLetters,
             numbers, length));
 
-
-
             if (characterSet.size() > 0) {
                 for (int i = 0; i < template.length(); i++) {
                     if (hashNumber.compareTo(BigInteger.ZERO) > 0) {
@@ -171,7 +166,7 @@ public class PasswordGenerator {
         return password;
     }
 
-
+    
     private String shuffleTemplate(String s){
 
         BigInteger bigInt = new BigInteger(hashValue);
