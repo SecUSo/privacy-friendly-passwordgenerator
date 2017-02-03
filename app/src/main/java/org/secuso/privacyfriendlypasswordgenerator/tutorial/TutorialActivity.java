@@ -139,6 +139,11 @@ public class TutorialActivity extends AppCompatActivity {
         finish();
     }
 
+    public void onBackPressed() {
+        super.onBackPressed();
+        launchHomeScreen();
+    }
+
     //  viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
@@ -205,7 +210,6 @@ public class TutorialActivity extends AppCompatActivity {
         public boolean isViewFromObject(View view, Object obj) {
             return view == obj;
         }
-
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
