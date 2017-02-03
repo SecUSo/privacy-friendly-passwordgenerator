@@ -66,12 +66,6 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mHandler = new Handler();
 
-        //ActionBar ab = getSupportActionBar();
-        //if (ab != null) {
-        //    mActionBar = ab;
-        //    ab.setDisplayHomeAsUpEnabled(true);
-        //}
-
         overridePendingTransition(0, 0);
     }
 
@@ -158,7 +152,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnNaviga
                 break;
             case R.id.nav_tutorial:
                 PrefManager prefManager = new PrefManager(this);
-                prefManager.setFirstTimeLaunch(true);
+                prefManager.setTutorialLaunch(true);
                 intent = new Intent(this, TutorialActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
