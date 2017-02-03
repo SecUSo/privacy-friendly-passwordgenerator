@@ -44,6 +44,7 @@ import org.secuso.privacyfriendlypasswordgenerator.dialogs.UpdateMetadataDialog;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.SwipeableRecyclerViewTouchListener;
+import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,6 +79,13 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         database = MetaDataSQLiteHelper.getInstance(this);
+
+        PrefManager prefManager = new PrefManager(this);
+        if (prefManager.isFirstTimeLaunch()) {
+            addSampleData();
+            prefManager.setFirstTimeLaunch(false);
+        }
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         metadatalist = database.getAllMetaData();
@@ -310,6 +318,12 @@ public class MainActivity extends BaseActivity {
             initialAlert.clearAnimation();
         }
 
+    }
+
+    public void addSampleData() {
+        database.addMetaData(new MetaData(1, 1, "Email", "Sample Username", 15, 1, 1, 1, 1, 1));
+        database.addMetaData(new MetaData(2, 2, "abc.de", "Sample Username", 20, 1, 1, 1, 1, 1));
+        database.addMetaData(new MetaData(3, 3, "PIN", "Sample Username", 4, 1, 0, 0, 0, 1));
     }
 
 }
