@@ -15,8 +15,8 @@
     <string name="initial_alert">PARAMETER HINZUFÜGEN</string>
 
     <!--###ADD_METADATA###-->
-    <string name="add_metadata_heading">Neuen Parameter hinzufügen</string>
-    <string name="domain">Domain:</string>
+    <string name="add_metadata_heading">Neues Konto hinzufügen</string>
+    <string name="domain">Kontoname:</string>
     <string name="username">Benutzername:</string>
     <string name="username_optional">Benutzername (optional):</string>
     <string name="characterset">Zeichensatz:</string>
@@ -26,7 +26,7 @@
     <string name="numbers">Zahlen (123)</string>
     <string name="length">Länge: </string>
     <string name="iteration">Passwortzähler: </string>
-    <string name="add_domain_message">Bitte geben Sie eine Domain an.</string>
+    <string name="add_domain_message">Bitte geben Sie einen Kontonamen an.</string>
     <string name="add_character_message">Bitte suchen Sie mindestens einen Zeichensatz aus.</string>
     <string name="hint_iteration">(1 falls leer)</string>
 
@@ -76,8 +76,8 @@
     <string name="help_parameter_set_heading">Was ist ein Parameter?</string>
     <string name="help_parameter_set_answer">Parameter beschreiben Eigenschaften des Passworts.</string>
     <string name="help_which_parameters_heading">Welche Parameter können gewählt werden?</string>
-    <string name="help_which_parameters_domain">Die Domain ist eine Referenz zur Webseite oder sonstigem, wofür das Passwort verwendet wird.</string>
-    <string name="help_which_parameters_username">Der optionale Benutzername kann verwendet werden um verschiedene Nutzer bei gleicher Domain zu unterscheiden.</string>
+    <string name="help_which_parameters_domain">Der Kontoname ist eine Referenz zur Webseite oder sonstigem, wofür das Passwort verwendet wird.</string>
+    <string name="help_which_parameters_username">Der optionale Benutzername kann verwendet werden um verschiedene Nutzer bei gleichem Kontonamen zu unterscheiden.</string>
     <string name="help_which_parameters_characterset">Der Zeichensatz beschreibt welche Arten von Zeichen das Passwort haben soll. Manche Webseiten empfehlen bestimmte Kombinationen von Zeichen.</string>
     <string name="help_which_parameters_length">Die Länge des Passworts kann gewählt werden.</string>
     <string name="help_which_parameters_password_counter">Der Passwortzähler wird verwendet, um im Falle einer Änderung verschiedene Passworte mit selben Parametern zu generieren. Der Standardwert ist 1. Der Passwortzähler wird bei jedem Update um 1 erhöht.</string>

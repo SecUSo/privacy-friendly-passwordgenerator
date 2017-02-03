@@ -19,8 +19,8 @@
 
     <!--###ADD_METADATA###-->
     <string name="placeholder_no_data" translatable="false">-</string>
-    <string name="add_metadata_heading">Add new parameters</string>
-    <string name="domain">Domain:</string>
+    <string name="add_metadata_heading">Add new account</string>
+    <string name="domain">Account name:</string>
     <string name="username">Username:</string>
     <string name="username_optional">Username (optional):</string>
     <string name="characterset">Character set:</string>
@@ -30,7 +30,7 @@
     <string name="numbers">Numbers (123)</string>
     <string name="length">Length: </string>
     <string name="iteration">Password Counter: </string>
-    <string name="add_domain_message">Please add a domain.</string>
+    <string name="add_domain_message">Please add an account name.</string>
     <string name="add_character_message">Please choose at least one character type.</string>
     <string name="hint_iteration">(1 if left blank)</string>
 
@@ -85,8 +85,8 @@
     <string name="help_parameter_set_answer">Website providers often use password composition policies. A parameter set describes properties of the generated password.
     These policies should direct our password choices and might force us to create passwords with special characteristics like a minimum length. In this app those policies are represented by parameters which are grouped into a set for each password.</string>
     <string name="help_which_parameters_heading">Which parameters can be chosen?</string>
-    <string name="help_which_parameters_domain">The domain is reference to the website or item the password is used for.</string>
-    <string name="help_which_parameters_username">The optional username can be used to distinguish between different users for the same domain.</string>
+    <string name="help_which_parameters_domain">The account name is reference to the website or item the password is used for.</string>
+    <string name="help_which_parameters_username">The optional username can be used to distinguish between different users for the same account name.</string>
     <string name="help_which_parameters_characterset">The character set describes which types of characters should be included into the password. Websites often have recommendations regarding the character set of a password.</string>
     <string name="help_which_parameters_length">The length of the password can be chosen as parameter.</string>
     <string name="help_which_parameters_password_counter">The password counter is required to generate different passwords with the same parameter sets in case of an update. The default value is 1. The counter is incremented by one on every update.</string>
