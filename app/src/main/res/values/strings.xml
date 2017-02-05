@@ -23,7 +23,7 @@
     <string name="domain">Account name:</string>
     <string name="username">Username:</string>
     <string name="username_optional">Username (optional):</string>
-    <string name="characterset">Character set:</string>
+    <string name="characterset_add">The password will consist of:</string>
     <string name="special_characters">Special (+!#)</string>
     <string name="letters_upper">Uppercase (ABC)</string>
     <string name="letters_lower">Lowercase (abc)</string>
@@ -40,6 +40,7 @@
     <string name="cancel">Cancel</string>
 
     <!--###UPDATE_METADATA###-->
+    <string name="characterset">Character set:</string>
     <string name="old_password">Old password:</string>
     <string name="new_password">New password:</string>
     <string name="master_password_description">The master password is required to generate the old and new password.</string>
@@ -93,14 +94,14 @@
     <string name="help_generation_answer">To generate a password choose an account out of the list and click on it. Enter your master password and then press the "generate" button. The password can than
     be copied to website or service by writing or the using the clipboard.</string>
     <string name="help_parameter_set_heading">What is an account?</string>
-    <string name="help_parameter_set_answer">Website providers often use password composition policies. A parameter set describes properties of the generated password.
-    These policies should direct our password choices and might force us to create passwords with special characteristics like a minimum length. In this app those policies are represented by parameters which are grouped into a set for each password.</string>
-    <string name="help_which_parameters_heading">Which parameters can be chosen?</string>
+    <string name="help_parameter_set_answer">Website providers often use password composition policies. An account describes properties of the generated password.
+    These policies should direct our password choices and might force us to create passwords with special characteristics like a minimum length. </string>
+    <string name="help_which_parameters_heading">Which properties of a password can be chosen?</string>
     <string name="help_which_parameters_domain">The account name is reference to the website or item the password is used for.</string>
     <string name="help_which_parameters_username">The optional username can be used to distinguish between different users for the same account name.</string>
     <string name="help_which_parameters_characterset">The character set describes which types of characters should be included into the password. Websites often have recommendations regarding the character set of a password.</string>
     <string name="help_which_parameters_length">The length of the password can be chosen as parameter.</string>
-    <string name="help_which_parameters_password_counter">The password counter is required to generate different passwords with the same parameter sets in case of an update. The default value is 1. The counter is incremented by one on every update.</string>
+    <string name="help_which_parameters_password_counter">The password version is required to generate different passwords with the same parameter sets in case of an update. The default value is 1. The counter is incremented by one on every update, but can also be changed manually.</string>
 
     <string name="help_manage_add_heading">How can I add an account?</string>
     <string name="help_manage_add_description">Add a new account by pressing the plus button.</string>
