@@ -32,7 +32,9 @@
     <string name="iteration">Version: </string>
     <string name="add_domain_message">Please add an account name.</string>
     <string name="add_character_message">Please choose at least one character type.</string>
-    <string name="hint_iteration">(1 if left blank)</string>
+    <string name="change_version_closed">▶ Change Version</string>
+    <string name="change_version_opened">▼ Change Version</string>
+    <string name="current_version">Current password version: </string>
 
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>

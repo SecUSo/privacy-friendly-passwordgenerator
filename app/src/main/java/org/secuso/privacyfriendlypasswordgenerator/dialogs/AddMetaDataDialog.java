@@ -100,12 +100,12 @@ public class AddMetaDataDialog extends DialogFragment {
                 TextView versionTextView = (TextView) rootView.findViewById(R.id.versionButton);
                 if (!versionVisible) {
                     versionDataLayout.setVisibility(View.VISIBLE);
-                    versionTextView.setText("▼ Change Version");
+                    versionTextView.setText(getString(R.string.change_version_opened));
                     versionTextView.setTextColor(Color.BLACK);
                     versionVisible = true;
                 } else {
                     versionDataLayout.setVisibility(View.GONE);
-                    versionTextView.setText("▶ Change Version");
+                    versionTextView.setText(getString(R.string.change_version_closed));
                     versionTextView.setTextColor(Color.parseColor("#d3d3d3"));
                     versionVisible = false;
                 }

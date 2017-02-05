@@ -122,13 +122,13 @@ public class UpdateMetadataDialog extends DialogFragment {
                 if (!versionVisible) {
                     versionDataLayout.setVisibility(View.VISIBLE);
                     textViewIteration.setVisibility(View.VISIBLE);
-                    versionTextView.setText("▼ Change Version");
+                    versionTextView.setText(getString(R.string.change_version_opened));
                     versionTextView.setTextColor(Color.BLACK);
                     versionVisible = true;
                 } else {
                     versionDataLayout.setVisibility(View.GONE);
                     textViewIteration.setVisibility(View.GONE);
-                    versionTextView.setText("▶ Change Version");
+                    versionTextView.setText(getString(R.string.change_version_closed));
                     versionTextView.setTextColor(Color.parseColor("#d3d3d3"));
                     versionVisible = false;
                 }
