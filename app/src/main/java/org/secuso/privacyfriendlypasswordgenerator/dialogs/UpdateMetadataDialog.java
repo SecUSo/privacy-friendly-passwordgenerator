@@ -142,8 +142,8 @@ public class UpdateMetadataDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder infoBbuilder = new AlertDialog.Builder(getActivity());
-                infoBbuilder.setTitle("What is a password version?");
-                infoBbuilder.setMessage("INFO");
+                infoBbuilder.setTitle(getString(R.string.dialog_version_title));
+                infoBbuilder.setMessage(R.string.dialog_version);
                 infoBbuilder.show();
             }
 

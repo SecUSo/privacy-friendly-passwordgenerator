@@ -57,6 +57,11 @@
     <string name="copy_clipboar_old">Old password copied.</string>
     <string name="copy_clipboar_new">New password copied.</string>
 
+    <!--####VERSION_INFO####-->
+    <string name="dialog_version_title">What is a password version?</string>
+    <string name="dialog_version">The version of a password is a number that indicates how many passwords an account has had. It is used to generate a different password even if neither the master password
+        nor any other data regarding the account is changed.  </string>
+
     <!--###GENERATOR###-->
     <string name="generate_heading">Generate Password</string>
     <string name="generate">Generate</string>
