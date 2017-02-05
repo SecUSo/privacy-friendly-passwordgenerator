@@ -104,14 +104,79 @@
             android:id="@+id/seekBarLengthUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="21"/>
+            android:max="21" />
 
-        <TextView
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="#d3d3d3" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/versionButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="▶ Change Version"
+                android:textColor="#d3d3d3"
+                android:textAllCaps="false" />
+
+            <ImageButton
+                android:id="@+id/versionInfoImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_menu_info" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/updateVersionLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/counter_update"
-            android:textSize="12sp" />
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textViewIterationHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Old VERSION" />
+
+            <TextView
+                android:id="@+id/textViewIterationOld"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/textViewIterationHeading"
+                android:text="1" />
+
+            <TextView
+                android:id="@+id/textViewIterationNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/textViewIterationOld"
+                android:text="new VERSION" />
+
+
+            <EditText
+                android:id="@+id/EditTextIteration"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@+id/textViewIterationNew"
+                android:inputType="number"
+                android:maxLength="4" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 

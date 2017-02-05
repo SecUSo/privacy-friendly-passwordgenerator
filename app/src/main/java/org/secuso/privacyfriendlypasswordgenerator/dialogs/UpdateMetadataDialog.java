@@ -19,6 +19,7 @@ package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -28,6 +29,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,6 +61,7 @@ public class UpdateMetadataDialog extends DialogFragment {
     private int number_iterations;
 
     private boolean closeDialog;
+    private boolean versionVisible;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -65,6 +70,8 @@ public class UpdateMetadataDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         rootView = inflater.inflate(R.layout.dialog_update_metadata, null);
+
+        versionVisible = false;
 
         Bundle bundle = getArguments();
 
@@ -103,6 +110,40 @@ public class UpdateMetadataDialog extends DialogFragment {
                 cancelUpdate();
 
             }
+        });
+
+        Button versionButton = (Button) rootView.findViewById(R.id.versionButton);
+        versionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RelativeLayout versionDataLayout = (RelativeLayout) rootView.findViewById(R.id.updateVersionLayout);
+                TextView versionTextView = (TextView) rootView.findViewById(R.id.versionButton);
+                if (!versionVisible) {
+                    versionDataLayout.setVisibility(View.VISIBLE);
+                    versionTextView.setText("▼ Change Version");
+                    versionTextView.setTextColor(Color.BLACK);
+                    versionVisible = true;
+                } else {
+                    versionDataLayout.setVisibility(View.GONE);
+                    versionTextView.setText("▶ Change Version");
+                    versionTextView.setTextColor(Color.parseColor("#d3d3d3"));
+                    versionVisible = false;
+                }
+
+            }
+
+        });
+
+        ImageButton versionInfoImageButton = (ImageButton) rootView.findViewById(R.id.versionInfoImageButton);
+        versionInfoImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder infoBbuilder = new AlertDialog.Builder(getActivity());
+                infoBbuilder.setTitle("What is a password version?");
+                infoBbuilder.setMessage("INFO");
+                infoBbuilder.show();
+            }
+
         });
 
         return builder.create();

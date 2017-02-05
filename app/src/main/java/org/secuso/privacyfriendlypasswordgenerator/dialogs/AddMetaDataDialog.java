@@ -24,6 +24,7 @@ package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -32,6 +33,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,25 +48,26 @@ public class AddMetaDataDialog extends DialogFragment {
     private View rootView;
     private MetaDataSQLiteHelper database;
     private boolean closeDialog;
+    private boolean versionVisible;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        View view = inflater.inflate(R.layout.dialog_add_metadata, null);
+        rootView = inflater.inflate(R.layout.dialog_add_metadata, null);
 
-        rootView = view;
+        versionVisible = false;
 
-        builder.setView(view);
+        builder.setView(rootView);
         builder.setIcon(R.mipmap.ic_drawer);
         builder.setTitle(getActivity().getString(R.string.add_metadata_heading));
 
         database = MetaDataSQLiteHelper.getInstance(getActivity());
 
         //Seekbar
-        SeekBar seekBarLength = (SeekBar) view.findViewById(R.id.seekBarLength);
-        final TextView textViewLengthDisplayFinal = (TextView) view.findViewById(R.id.textViewLengthDisplay);
+        SeekBar seekBarLength = (SeekBar) rootView.findViewById(R.id.seekBarLength);
+        final TextView textViewLengthDisplayFinal = (TextView) rootView.findViewById(R.id.textViewLengthDisplay);
         seekBarLength.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 textViewLengthDisplayFinal.setText(Integer.toString(progress + 4));
@@ -75,6 +79,43 @@ public class AddMetaDataDialog extends DialogFragment {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
+
+        ImageButton versionInfoImageButton = (ImageButton) rootView.findViewById(R.id.versionInfoImageButton);
+        versionInfoImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder infoBbuilder = new AlertDialog.Builder(getActivity());
+                infoBbuilder.setTitle("What is a password version?");
+                infoBbuilder.setMessage("INFO");
+                infoBbuilder.show();
+            }
+
+        });
+
+        Button versionButton = (Button) rootView.findViewById(R.id.versionButton);
+        versionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout versionDataLayout = (LinearLayout) rootView.findViewById(R.id.versionDataLayout);
+                TextView versionTextView = (TextView) rootView.findViewById(R.id.versionButton);
+                if (!versionVisible) {
+                    versionDataLayout.setVisibility(View.VISIBLE);
+                    versionTextView.setText("▼ Change Version");
+                    versionTextView.setTextColor(Color.BLACK);
+                    versionVisible = true;
+                } else {
+                    versionDataLayout.setVisibility(View.GONE);
+                    versionTextView.setText("▶ Change Version");
+                    versionTextView.setTextColor(Color.parseColor("#d3d3d3"));
+                    versionVisible = false;
+                }
+
+            }
+
+        });
+
+        EditText iterations = (EditText) rootView.findViewById(R.id.EditTextIteration);
+        iterations.setText("1");
 
         builder.setPositiveButton(getActivity().getString(R.string.add), new DialogInterface.OnClickListener() {
 
