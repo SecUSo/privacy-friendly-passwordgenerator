@@ -45,6 +45,10 @@ public class HelpDataDump {
         overview.add(context.getResources().getString(R.string.help_overview_answer));
         expandableListDetail.put(context.getResources().getString(R.string.help_overview), overview);
 
+        List<String> generate = new ArrayList<String>();
+        generate.add(context.getResources().getString(R.string.help_generation_answer));
+        expandableListDetail.put(context.getResources().getString(R.string.help_generation), generate);
+
         List<String> general = new ArrayList<String>();
         general.add(context.getResources().getString(R.string.help_parameter_set_answer));
         expandableListDetail.put(context.getResources().getString(R.string.help_parameter_set_heading), general);

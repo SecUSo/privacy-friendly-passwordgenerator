@@ -15,7 +15,7 @@
     <!--###METADATA_LIST###-->
     <string name="undo">Undo</string>
     <string name="item_deleted">deleted.</string>
-    <string name="initial_alert">ADD PARAMETER SET</string>
+    <string name="initial_alert">ADD ACCOUNT</string>
 
     <!--###ADD_METADATA###-->
     <string name="placeholder_no_data" translatable="false">-</string>
@@ -88,8 +88,10 @@
     <string name="help">Help</string>
 
     <string name="help_overview">What is Privacy Friendly Password Generator?</string>
-    <string name="help_overview_answer">Privacy Friendly Password Generator deterministically generates passwords out of a saved parameter set and a master password. </string>
-
+    <string name="help_overview_answer">Privacy Friendly Password Generator generates unique passwords for all your accounts. After generation you have to enter the password manually to the website or service.</string>
+    <string name="help_generation">How do I generate a password?</string>
+    <string name="help_generation_answer">To generate a password choose an account out of the list and click on it. Enter your master password and then press the "generate" button. The password can than
+    be copied to website or service by writing or the using the clipboard.</string>
     <string name="help_parameter_set_heading">What is an account?</string>
     <string name="help_parameter_set_answer">Website providers often use password composition policies. A parameter set describes properties of the generated password.
     These policies should direct our password choices and might force us to create passwords with special characteristics like a minimum length. In this app those policies are represented by parameters which are grouped into a set for each password.</string>
