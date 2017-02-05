@@ -110,35 +110,55 @@
         android:layout_height="wrap_content"
         android:max="21"
         android:progress="6" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="#d3d3d3" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <Button
+            android:id="@+id/versionButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_version_closed"
+            android:textColor="#d3d3d3"
+            android:textAllCaps="false" />
+
+        <ImageButton
+            android:id="@+id/versionInfoImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_menu_info" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/versionDataLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
         <TextView
             android:id="@+id/textViewIterationHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/iteration" />
+            android:text="@string/current_version" />
 
         <EditText
             android:id="@+id/EditTextIteration"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_toEndOf="@+id/textViewIterationHeading"
             android:inputType="number"
             android:maxLength="4" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_toEndOf="@+id/EditTextIteration"
-            android:text="@string/hint_iteration"
-            android:textSize="12sp" />
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>
