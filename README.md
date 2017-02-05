@@ -1,20 +1,20 @@
 ## Privacy Friendly Password Generator
 
-Privacy Friendly Password Generator is an Android application that generates passwords based on previously saved parameter sets and a master password.
+Privacy Friendly Password Generator is an Android application that generates passwords based on previously saved accounts and a master password. The generated passwords can than be copied into the password or PIN field by the user.
 This app belongs to the Privacy Friendly Apps group developed by the SECUSO research group at the Technische Universität Darmstadt, Germany. Further information can be found on [secuso.org/pfa](https://secuso.org/pfa)<br />
 
-Users can save the following parameters: <br />
-* Domain: e.g. a website or account name 
+Users can save the following properties of a password: <br />
+* Account name: e.g. a website or account name 
 * Username (optional) 
 * Character set: at least one of uppercase, lowercase, special, numbers
 * Password length
-* Password Counter: used to create different passwords if an update with the same parameter set and no change of master password is intended.  <br />
+* Password version: used to create different passwords if an update without changing of the master password and account data is intended.  <br />
 
 ### Password Generation
 
 The password generation is based on the combination of two password hashing algorithms: PBKDF2 and BCrypt. PBKDF2 and can be executed with three different hash algorithms (SHA256, SHA384, SHA512). <br />
 * The master password serves as a secret for the PBKDF2 algorithm.
-* Password counter, domain, username and device ID (optional) are concatenated to a string and form the salt of PBKDF2. 
+* Password counter, account name, username and device ID (optional) are concatenated to a string and form the salt of PBKDF2. 
 * The result of the PBKDF2 hashing is encoded into a special version of Base64 which is compatible with BCrypt and not longer than 22 characters.
 * The master password serves as a secret for the BCrypt algorithm.
 * Result of the PBKDF2 hashing combined with the string "$2a$10$" the beginning forms the salt for BCrypt.
@@ -65,6 +65,7 @@ Markus Hau<br />
 
 Github-Users: <br />
 Yonjuni
+
 
 
 
