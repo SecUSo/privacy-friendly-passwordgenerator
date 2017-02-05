@@ -118,13 +118,16 @@ public class UpdateMetadataDialog extends DialogFragment {
             public void onClick(View v) {
                 RelativeLayout versionDataLayout = (RelativeLayout) rootView.findViewById(R.id.updateVersionLayout);
                 TextView versionTextView = (TextView) rootView.findViewById(R.id.versionButton);
+                TextView textViewIteration = (TextView) rootView.findViewById(R.id.textViewIteration);
                 if (!versionVisible) {
                     versionDataLayout.setVisibility(View.VISIBLE);
+                    textViewIteration.setVisibility(View.VISIBLE);
                     versionTextView.setText("▼ Change Version");
                     versionTextView.setTextColor(Color.BLACK);
                     versionVisible = true;
                 } else {
                     versionDataLayout.setVisibility(View.GONE);
+                    textViewIteration.setVisibility(View.GONE);
                     versionTextView.setText("▶ Change Version");
                     versionTextView.setTextColor(Color.parseColor("#d3d3d3"));
                     versionVisible = false;
@@ -161,7 +164,7 @@ public class UpdateMetadataDialog extends DialogFragment {
     public void setUpData() {
         EditText domain = (EditText) rootView.findViewById(R.id.editTextDomainUpdate);
         EditText username = (EditText) rootView.findViewById(R.id.editTextUsernameUpdate);
-        TextView oldVersion = (TextView) rootView.findViewById(R.id.textViewIterationOld);
+        TextView oldVersion = (TextView) rootView.findViewById(R.id.textViewIteration);
         EditText newVersion = (EditText) rootView.findViewById(R.id.EditTextIteration);
 
         CheckBox checkBoxSpecialCharacterUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxSpecialCharacterUpdate);
@@ -177,7 +180,7 @@ public class UpdateMetadataDialog extends DialogFragment {
         domain.setText(metaData.getDOMAIN());
         username.setText(metaData.getUSERNAME());
 
-        oldVersion.setText(String.valueOf(metaData.getITERATION()));
+        oldVersion.setText(getString(R.string.old_version, String.valueOf(metaData.getITERATION())));
         newVersion.setText(String.valueOf(metaData.getITERATION() + 1));
 
         TextView textViewLengthDisplayUpdate = (TextView) rootView.findViewById(R.id.textViewLengthDisplayUpdate);

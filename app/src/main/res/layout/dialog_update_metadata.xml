@@ -135,6 +135,14 @@
 
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/textViewIteration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/old_version"
+            android:visibility="gone"/>
+
         <RelativeLayout
             android:id="@+id/updateVersionLayout"
             android:layout_width="match_parent"
@@ -142,37 +150,18 @@
             android:visibility="gone">
 
             <TextView
-                android:id="@+id/textViewIterationHeading"
+                android:id="@+id/textViewNewIterationHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Old VERSION" />
-
-            <TextView
-                android:id="@+id/textViewIterationOld"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="16dp"
-                android:layout_toEndOf="@+id/textViewIterationHeading"
-                android:text="N/A"/>
-
-            <TextView
-                android:id="@+id/textViewIterationNew"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="16dp"
-                android:layout_toEndOf="@+id/textViewIterationOld"
-                android:text="new VERSION" />
-
+                android:text="@string/new_version" />
 
             <EditText
                 android:id="@+id/EditTextIteration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_toEndOf="@+id/textViewIterationNew"
+                android:layout_toEndOf="@+id/textViewNewIterationHeading"
                 android:inputType="number"
                 android:maxLength="4" />
 
