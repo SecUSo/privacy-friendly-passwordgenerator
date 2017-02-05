@@ -161,6 +161,8 @@ public class UpdateMetadataDialog extends DialogFragment {
     public void setUpData() {
         EditText domain = (EditText) rootView.findViewById(R.id.editTextDomainUpdate);
         EditText username = (EditText) rootView.findViewById(R.id.editTextUsernameUpdate);
+        TextView oldVersion = (TextView) rootView.findViewById(R.id.textViewIterationOld);
+        EditText newVersion = (EditText) rootView.findViewById(R.id.EditTextIteration);
 
         CheckBox checkBoxSpecialCharacterUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxSpecialCharacterUpdate);
         CheckBox checkBoxLettersLowUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxLettersLowUpdate);
@@ -174,6 +176,9 @@ public class UpdateMetadataDialog extends DialogFragment {
 
         domain.setText(metaData.getDOMAIN());
         username.setText(metaData.getUSERNAME());
+
+        oldVersion.setText(String.valueOf(metaData.getITERATION()));
+        newVersion.setText(String.valueOf(metaData.getITERATION() + 1));
 
         TextView textViewLengthDisplayUpdate = (TextView) rootView.findViewById(R.id.textViewLengthDisplayUpdate);
         textViewLengthDisplayUpdate.setText(Integer.toString(metaData.getLENGTH()));
@@ -206,6 +211,7 @@ public class UpdateMetadataDialog extends DialogFragment {
         CheckBox checkBoxLettersUpUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxLettersUpUpdate);
         EditText domain = (EditText) rootView.findViewById(R.id.editTextDomainUpdate);
         EditText username = (EditText) rootView.findViewById(R.id.editTextUsernameUpdate);
+        EditText iteration = (EditText) rootView.findViewById(R.id.EditTextIteration);
 
         if (domain.getText().toString().length() == 0) {
             Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.add_domain_message), Toast.LENGTH_SHORT);
@@ -215,7 +221,16 @@ public class UpdateMetadataDialog extends DialogFragment {
             Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.add_character_message), Toast.LENGTH_SHORT);
             toast.show();
         } else {
+
+            int tempIteration;
+
+            if (iteration.getText().length() == 0) {
+                tempIteration = oldIteration + 1;
+            } else {
+                tempIteration = Integer.parseInt(iteration.getText().toString());
+            }
             database.updateMetaData(
+
                     new MetaData(position, position,
                             domain.getText().toString(),
                             username.getText().toString(),
@@ -224,7 +239,7 @@ public class UpdateMetadataDialog extends DialogFragment {
                             boolToInt(hasSymbolsCheckBox.isChecked()),
                             boolToInt(checkBoxLettersUpUpdate.isChecked()),
                             boolToInt(checkBoxLettersLowUpdate.isChecked()),
-                            oldIteration + 1));
+                            tempIteration));
 
             Toast.makeText(getActivity(), getString(R.string.added_message), Toast.LENGTH_SHORT).show();
 
