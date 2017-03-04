@@ -196,11 +196,12 @@
     <string name="slide_mp_desc_one">The master password is the only password, that you have to remember.</string>
     <string name="slide_mp_desc_two">Based on it all other passwords are generated. </string>
     <string name="slide_mp_desc_three">The master password is not stored in the application. If you loose it you have to reset all your passwords.</string>
+    <string name="slide_mp_desc_four">If you wish you can write it down and keep it in a safe place.</string>
 
-    <string name="slide_mp2_title">Tips</string>
-    <string name="slide_mp2_desc_one">The master password is the only password, that you have to remember.</string>
-    <string name="slide_mp2_desc_two">Based on it all other passwords are generated. </string>
-    <string name="slide_mp2_desc_three">The master password is not stored in the application. If you loose it all passwords will be lost.</string>
+    <string name="slide_mp2_title">Master Password Tips</string>
+    <string name="slide_mp2_desc_one">Do not include personal data (like birthdays)</string>
+    <string name="slide_mp2_desc_two">Do not use character sequences from the keyboard </string>
+    <string name="slide_mp2_desc_three">Try to make it as long as possible for you.</string>
 
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">Application Logo</string>

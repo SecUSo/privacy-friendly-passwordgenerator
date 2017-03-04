@@ -162,6 +162,17 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="slide_3_desc_two">Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen. </string>
     <string name="slide_3_desc_three">Diese Richtlinien können im Konto festgelegt werden.</string>
 
+    <string name="slide_mp_title">Master-Passwort</string>
+    <string name="slide_mp_desc_one">Das Master-Passwort ist das einzige Passwort, das Sie sich merken müssen.</string>
+    <string name="slide_mp_desc_two">Auf ihm basierend welche alle anderen Passworte generiert. </string>
+    <string name="slide_mp_desc_three">Das Master-Passwort wird nicht in der App gespeichert. Falls Sie es verlieren, müssen Sie alle Passworte neu setzen.</string>
+    <string name="slide_mp_desc_four">Sie können sich das Master-Passwort auch notieren und an einem sicheren Ort verwahren.</string>
+
+    <string name="slide_mp2_title">Master-Passwort Tipps</string>
+    <string name="slide_mp2_desc_one">Nutzen Sie keine persönlichen Daten (z.B. Geburtsdaten).</string>
+    <string name="slide_mp2_desc_two">Verwenden Sie keinen Zeichenfolgen auf der Tastatur.</string>
+    <string name="slide_mp2_desc_three">Versuchen Sie ein möglichst langes Passwort zu erstellen.</string>
+
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">App Logo</string>
 
