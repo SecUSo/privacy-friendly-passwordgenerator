@@ -90,6 +90,7 @@
 
     <string name="help_overview">What is Privacy Friendly Password Generator?</string>
     <string name="help_overview_answer">Privacy Friendly Password Generator generates unique passwords for all your accounts. After generation you have to enter the password manually to the website or service.</string>
+
     <string name="help_generation">How do I generate a password?</string>
     <string name="help_generation_answer">To generate a password choose an account out of the list and click on it. Enter your master password and then press the "generate" button. The password can than
     be copied to website or service by writing or the using the clipboard.</string>
@@ -177,14 +178,29 @@
     <string name="slide_1_desc">With Privacy Friendly Password Generator you can generate different passwords for all your accounts while remembering only one master password.</string>
 
     <string name="slide_2_title">How to generate</string>
-    <string name="slide_2_desc_one">Choose a master password as your initial secret.</string>
-    <string name="slide_2_desc_two">Based on this master password all other passwords are generated.</string>
-    <string name="slide_2_desc_three">The master password is not stored in the application. If you loose it all passwords will be lost.</string>
+    <string name="slide_2_desc_one">Choose an account from the list. </string>
+    <string name="slide_2_desc_two">Invent a master password as your initial secret. Based on this master password all other passwords are generated.</string>
+    <string name="slide_2_desc_three">Copy the password to the website or service.</string>
 
-    <string name="slide_3_title">Parameters</string>
+    <string name="slide_3_title">Accounts</string>
     <string name="slide_3_desc_one">Website providers often use password composition policies.</string>
     <string name="slide_3_desc_two">These policies should direct our password choices and might force us to create passwords with special characteristics like a minimum length. </string>
-    <string name="slide_3_desc_three">In this app those policies are represented by parameters.</string>
+    <string name="slide_3_desc_three">Characteristics of a password can be set in the account.</string>
+
+    <string name="slide_4_title">Manage accounts</string>
+    <string name="slide_4_desc_one">Add a new account with the plus button.</string>
+    <string name="slide_4_desc_two">Update an account by a long press. </string>
+    <string name="slide_4_desc_three">Delete an account by a swiping gesture.</string>
+
+    <string name="slide_mp_title">Master Password</string>
+    <string name="slide_mp_desc_one">The master password is the only password, that you have to remember.</string>
+    <string name="slide_mp_desc_two">Based on it all other passwords are generated. </string>
+    <string name="slide_mp_desc_three">The master password is not stored in the application. If you loose it you have to reset all your passwords.</string>
+
+    <string name="slide_mp2_title">Tips</string>
+    <string name="slide_mp2_desc_one">The master password is the only password, that you have to remember.</string>
+    <string name="slide_mp2_desc_two">Based on it all other passwords are generated. </string>
+    <string name="slide_mp2_desc_three">The master password is not stored in the application. If you loose it all passwords will be lost.</string>
 
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">Application Logo</string>

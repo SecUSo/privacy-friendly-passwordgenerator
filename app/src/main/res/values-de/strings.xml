@@ -47,10 +47,10 @@
     <string name="old_version">Die alte Passwort-Version ist %s.</string>
     <string name="new_version">Die neue ist </string>
 
-    <string name="added_message">Parameter updated.</string>
+    <string name="added_message">Konto-Update erfolgreich.</string>
     <string name="canceled_message">Update abgebrochen.</string>
 
-    <string name="add_new_metadata_heading">1. Neue Parameter</string>
+    <string name="add_new_metadata_heading">1. Kontodaten ändern</string>
     <string name="passwords_heading">2. Passworte</string>
 
     <string name="copy_clipboar_old">Altes Passwort kopiert.</string>
@@ -87,7 +87,7 @@
      entsprechenden Website oder ähnlichem eingetragen werden.</string>
 
     <string name="help_generation">Wie generiere ich ein Passwort?</string>
-    <string name="help_generation_answer">Um ein Passwort zu generieren wähle zunächst einen Account aus der Liste aus. Gebe dann ein von dir ausgedachtes Master-Passwort ein und rücke auf "Generieren".</string>
+    <string name="help_generation_answer">Um ein Passwort zu generieren wählen Sie zunächst einen Account aus der Liste aus. Geben Sie dann Ihr (ausgedachtes) Master-Passwort ein und drücken Sie auf "Generieren".</string>
 
     <string name="help_parameter_set_heading">Was ist ein Konto?</string>
     <string name="help_parameter_set_answer">Ein Konto enthält alle Eigenschaften eines Passworts.</string>
@@ -98,12 +98,12 @@
     <string name="help_which_parameters_length">Die Länge des Passworts kann gewählt werden.</string>
     <string name="help_which_parameters_password_counter">Die Version wird verwendet, um im Falle einer Änderung verschiedene Passworte mit selben Parametern zu generieren. Der Standardwert ist 1. Der Passwortzähler wird bei jedem Update um 1 erhöht.</string>
 
-    <string name="help_manage_add_heading">Wie kann ich Parameter hinzufügen?</string>
-    <string name="help_manage_add_description">Hüge neue Parameter über den Plus-Knopf hinzu.</string>
-    <string name="help_manage_update_heading">Wie kann ich Parameter abändern?</string>
-    <string name="help_manage_update_description">Ändere Parameter durch ein langes Drücken.</string>
-    <string name="help_manage_delete_heading">Wie kann ich Parameter löschen?</string>
-    <string name="help_manage_delete_description">Lösche Parameter durch eine Wischgeste.</string>
+    <string name="help_manage_add_heading">Wie kann ich ein Konto hinzufügen?</string>
+    <string name="help_manage_add_description">Sie können ein neues Konto über den Plus-Knopf hinzufügen.</string>
+    <string name="help_manage_update_heading">Wie kann ich ein Konto ändern?</string>
+    <string name="help_manage_update_description">Durch ein langes Drücken des Kontos in der Liste können Sie den Updatevorgang starten.</string>
+    <string name="help_manage_delete_heading">Wie kann ich ein Konto löschen?</string>
+    <string name="help_manage_delete_description">Durch eine Wischgeste nach links oder rechts können Sie ein Konto löschen.</string>
 
     <string name="help_generation_heading">Wie werden die Passworte generiert?</string>
     <string name="help_generation_description">Die Passworte werden durch eine Kombination der Hashalgorithmen BCrypt und PBKDF2 generiert. Dabei ist das Master-Passwort der Startwert für beide Algorithmen.
@@ -116,18 +116,18 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="help_permissions_description">Privacy Friendly Passwort Generator verwendet keine Berechtigungen.</string>
 
     <!-- ###SETTINGS### -->
-    <string name="title_reset_list">Alle Parameter löschen</string>
-    <string name="delete_dialog">Möchten Sie wirklich alle Parameter löschen?</string>
-    <string name="delete_dialog_success">Alle Parameter gelöscht.</string>
+    <string name="title_reset_list">Alle Konten löschen</string>
+    <string name="delete_dialog">Möchten Sie wirklich alle Konten löschen?</string>
+    <string name="delete_dialog_success">Alle Konten gelöscht.</string>
 
     <string name="title_activity_settings">Einstellungen</string>
     <string name="title_bind_password">Alle Passworte an Gerät koppeln</string>
-    <string name="summary_bind_password">Erzeugt eindeutige Passworte abhängig vom Gerät. Andere Geräte können nicht diesselben Passworte bei Eingabe derselben Daten und demselben Master-Passwort erzeugen.</string>
+    <string name="summary_bind_password">Erzeugt eindeutige Passworte abhängig vom Gerät. Andere Geräte können nicht diesselben Passworte bei der Eingabe con derselben Daten und demselben Master-Passwort erzeugen.</string>
     <string name="title_clipboard">In Zwischenablage kopieren</string>
-    <string name="summary_clipboard">Achtung: Alle anderen Apps können Ihre Passworte in der Zwischenablage einsehen.</string>
+    <string name="summary_clipboard">Alle anderen Apps können Ihre Passworte in der Zwischenablage einsehen.</string>
 
     <string name="title_expert_mode">Expertenmodus</string>
-    <string name="expert_mode_summary">Hash-Algorithmus und Hash-Iterationen haben einen großen Einfluss auf die Dauer der Generierung.</string>
+    <string name="expert_mode_summary">Hash-Algorithmus und Hash-Iterationen haben einen großen Einfluss auf die Dauer der Generierung. Außerdem werden durch Ändern dieser Werte auch die Passworte beeinflusst und somit andere Passworte generiert.</string>
     <string name="title_hash_iterations">Anzahl Hash-Iterationen</string>
 
     <string name="title_benchmark">Benchmark: Generierung</string>
@@ -150,17 +150,17 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="start">FERTIG</string>
 
     <string name="slide_1_title">Willkommen!</string>
-    <string name="slide_1_desc">Privacy Friendly Passwort Generator generiert unterschiedliche Passworte auf alle deine Accounts, du musst dir lediglich ein Master-Passwort merken.</string>
+    <string name="slide_1_desc">Privacy Friendly Passwort Generator generiert unterschiedliche Passworte für alle Ihre Accounts, Sie müssen sich lediglich ein Master-Passwort merken.</string>
 
-    <string name="slide_2_title">Wie funktioniert generieren</string>
-    <string name="slide_2_desc_one">Wähle ein Master-Passwort als Geheimnis.</string>
-    <string name="slide_2_desc_two">Alle anderen Passwörter werden aus dem Master-Passwort generiert.</string>
-    <string name="slide_2_desc_three">Das Master-Passwort wird nicht gespeichert. Wenn es verloren geht, sind alle Passwörter ebenfalls verloren.</string>
+    <string name="slide_2_title">Generieren</string>
+    <string name="slide_2_desc_one">Wählen Sie ein Konto aus der Liste aus.</string>
+    <string name="slide_2_desc_two">Denken Sie sich ein Master-Passwort aus, dass Sie geheim halten. Basierend auf diesem Master-Passwort werden die anderen Passworte generiert.</string>
+    <string name="slide_2_desc_three">Geben Sie das Passwort auf der Webseite ein.</string>
 
-    <string name="slide_3_title">Parameter</string>
+    <string name="slide_3_title">Konten</string>
     <string name="slide_3_desc_one">Webseitenbetreiber verwenden häufig Passwordrichtlinien.</string>
     <string name="slide_3_desc_two">Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen. </string>
-    <string name="slide_3_desc_three">Diese Richtlinien werden in dieser App durch Parameter dargestellt.</string>
+    <string name="slide_3_desc_three">Diese Richtlinien können im Konto festgelegt werden.</string>
 
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">App Logo</string>
