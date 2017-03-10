@@ -163,6 +163,11 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="slide_3_desc_two">Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen. </string>
     <string name="slide_3_desc_three">Diese Richtlinien können im Konto festgelegt werden.</string>
 
+    <string name="slide_4_title">Konten verwalten</string>
+    <string name="slide_4_desc_one">Fügen Sie ein neues Konto mit dem Plus-Button hinzu.</string>
+    <string name="slide_4_desc_two">Starten Sie ein Update über ein langes Drücken.</string>
+    <string name="slide_4_desc_three">Löschen Sie einen Account durch eine Wischgeste.</string>
+
     <string name="slide_mp_title">Master-Passwort</string>
     <string name="slide_mp_desc_one">Das Master-Passwort ist das einzige Passwort, das Sie sich merken müssen.</string>
     <string name="slide_mp_desc_two">Auf ihm basierend welche alle anderen Passworte generiert. </string>
