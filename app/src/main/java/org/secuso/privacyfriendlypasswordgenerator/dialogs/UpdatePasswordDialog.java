@@ -1,18 +1,18 @@
 /**
  * This file is part of Privacy Friendly Password Generator.
-
- Privacy Friendly Password Generator is free software:
- you can redistribute it and/or modify it under the terms of the
- GNU General Public License as published by the Free Software Foundation,
- either version 3 of the License, or any later version.
-
- Privacy Friendly Password Generator is distributed in the hope
- that it will be useful, but WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- See the GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with Privacy Friendly Password Generator. If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * Privacy Friendly Password Generator is free software:
+ * you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or any later version.
+ * <p>
+ * Privacy Friendly Password Generator is distributed in the hope
+ * that it will be useful, but WITHOUT ANY WARRANTY; without even
+ * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with Privacy Friendly Password Generator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 package org.secuso.privacyfriendlypasswordgenerator.dialogs;
@@ -113,7 +113,7 @@ public class UpdatePasswordDialog extends DialogFragment {
                         InputMethodManager.RESULT_UNCHANGED_SHOWN);
 
 
-                    displayPasswords();
+                displayPasswords();
             }
         });
 
@@ -192,6 +192,9 @@ public class UpdatePasswordDialog extends DialogFragment {
 
         if (editTextUpdateMasterpassword.getText().toString().length() == 0) {
             Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
+            toast.show();
+        } else if (editTextUpdateMasterpassword.getText().toString().length() < 8) {
+            Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.masterpassword_length), Toast.LENGTH_SHORT);
             toast.show();
         } else {
 

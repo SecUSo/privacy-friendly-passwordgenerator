@@ -66,6 +66,7 @@
     <string name="generate">Generieren</string>
     <string name="master_password_heading">Master-Passwort:</string>
     <string name="enter_masterpassword">Bitte geben Sie ein Masterpasswort ein.</string>
+    <string name="masterpassword_length">Bitte geben Sie mindestens 8 Zeichen ein.</string>
     <string name="password">Passwort:</string>
     <string name="init_password"></string>
     <string name="done">Fertig</string>
