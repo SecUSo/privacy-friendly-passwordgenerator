@@ -34,9 +34,9 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class PBKDF2 {
 
-    private static byte[] shaHMAC(String hashFunction, byte[] key, byte[] password) throws NullKeyException {
+    private static byte[] shaHMAC(String hashFunction, byte[] key, byte[] password) throws IllegalArgumentException {
         if (key.length == 0) {
-            throw new NullKeyException("Key has a length of 0.");
+            throw new IllegalArgumentException("Empty key entered.");
         }
         try {
             Mac sha_HMAC = Mac.getInstance("Hmac" + hashFunction);
@@ -100,13 +100,6 @@ public class PBKDF2 {
             }
         }
         return dk;
-    }
-
-    public static class NullKeyException extends RuntimeException {
-
-        public NullKeyException(String message) {
-            super(message);
-        }
     }
 
 }
