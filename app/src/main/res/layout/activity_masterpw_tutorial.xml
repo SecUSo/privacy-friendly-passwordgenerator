@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_masterpw_tutorial">
 
-
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
@@ -18,13 +17,13 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/dots_margin_bottom"
         android:gravity="center"
-        android:orientation="horizontal"></LinearLayout>
+        android:orientation="horizontal" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:alpha=".5"
         android:layout_above="@id/layoutDots"
+        android:alpha=".5"
         android:background="@android:color/white" />
 
     <Button
