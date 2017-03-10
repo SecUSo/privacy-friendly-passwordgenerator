@@ -35,7 +35,14 @@ public class PasswordGeneratorTask extends AsyncTask<String, Void, String> {
                 Integer.valueOf(strings[4]),
                 Integer.parseInt(strings[5]),
                 strings[6]);
-        String password = generator.getPassword(Integer.parseInt(strings[7]), Integer.parseInt(strings[8]), Integer.parseInt(strings[9]), Integer.parseInt(strings[10]), Integer.parseInt(strings[11]));
+
+        String password =
+                generator.getPassword(
+                        Integer.parseInt(strings[7]),
+                        Integer.parseInt(strings[8]),
+                        Integer.parseInt(strings[9]),
+                        Integer.parseInt(strings[10]),
+                        Integer.parseInt(strings[11]));
         try {
             generator.deleteFinalize();
         } catch (Throwable throwable) {
