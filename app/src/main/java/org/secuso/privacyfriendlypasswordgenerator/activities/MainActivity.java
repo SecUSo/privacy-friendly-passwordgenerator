@@ -331,9 +331,9 @@ public class MainActivity extends BaseActivity {
     }
 
     public void addSampleData() {
-        database.addMetaData(new MetaData(1, 1, "Email", "Sample Username", 15, 1, 1, 1, 1, 1));
-        database.addMetaData(new MetaData(2, 2, "abc.de", "Sample Username", 20, 1, 1, 1, 1, 1));
-        database.addMetaData(new MetaData(3, 3, "PIN", "Sample Username", 4, 1, 0, 0, 0, 1));
+        database.addMetaData(new MetaData(1, 1, getString(R.string.sample_domain1), getString(R.string.sample_username1), 15, 1, 1, 1, 1, 1));
+        database.addMetaData(new MetaData(2, 2, getString(R.string.sample_domain2), getString(R.string.sample_username2), 20, 1, 1, 1, 1, 1));
+        database.addMetaData(new MetaData(3, 3, getString(R.string.sample_domain3), getString(R.string.sample_username3), 4, 1, 0, 0, 0, 1));
     }
 
 }
