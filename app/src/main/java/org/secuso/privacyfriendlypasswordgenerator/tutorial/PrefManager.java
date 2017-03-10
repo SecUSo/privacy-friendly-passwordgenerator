@@ -23,7 +23,7 @@ import android.content.SharedPreferences;
 /**
  * Class structure taken from tutorial at http://www.androidhive.info/2016/05/android-build-intro-slider-app/
  * @author Karola Marky
- * @version 20170203
+ * @version 20170304
  */
 public class PrefManager {
     private SharedPreferences pref;
@@ -37,6 +37,7 @@ public class PrefManager {
     private static final String PREF_NAME = "pfa-pw-generator";
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     private static final String IS_TUTORIAL_LAUNCH = "IsTutorialLaunch";
+    private static final String IS_FIRST_TIME_GEN = "IsFirstTimeGen";
 
     public PrefManager(Context context) {
         this.context = context;
@@ -61,6 +62,16 @@ public class PrefManager {
     public boolean isTutorialLaunch() {
         return pref.getBoolean(IS_TUTORIAL_LAUNCH, true);
     }
+
+    public void setFirstTimeGen(boolean isTutorial) {
+        editor.putBoolean(IS_FIRST_TIME_GEN, isTutorial);
+        editor.commit();
+    }
+
+    public boolean isFirstTimeGen() {
+        return pref.getBoolean(IS_FIRST_TIME_GEN, true);
+    }
+
 
 
 }

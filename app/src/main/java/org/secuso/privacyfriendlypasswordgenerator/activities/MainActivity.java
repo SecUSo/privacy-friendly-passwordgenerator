@@ -17,6 +17,7 @@
 
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -44,6 +45,7 @@ import org.secuso.privacyfriendlypasswordgenerator.dialogs.UpdateMetadataDialog;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.SwipeableRecyclerViewTouchListener;
+import org.secuso.privacyfriendlypasswordgenerator.tutorial.MasterPWTutorialActivity;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
 
 import java.util.ArrayList;
@@ -51,6 +53,7 @@ import java.util.List;
 
 /**
  * Code for displaying cards according to the tutorial from https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465
+ *
  * @author Karola Marky
  * @version 20170112
  */
@@ -132,6 +135,13 @@ public class MainActivity extends BaseActivity {
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
                         generatePasswordDialog.setArguments(bundle);
                         generatePasswordDialog.show(fragmentManager, "GeneratePasswordDialog");
+
+                        PrefManager prefManager = new PrefManager(getBaseContext());
+                        if (prefManager.isFirstTimeGen()) {
+                            prefManager.setFirstTimeGen(false);
+                            Intent intent = new Intent(MainActivity.this, MasterPWTutorialActivity.class);
+                            startActivity(intent);
+                        }
 
                     }
 
