@@ -29,7 +29,7 @@ import javax.crypto.spec.SecretKeySpec;
  * <p>
  * Class taken from https://github.com/pinae/ctSESAM-android/
  * last access 1st November 2016
- * Modification: NullKeyException has been added
+ * Modification: IllegalArgumentException has been added
  */
 
 public class PBKDF2 {
