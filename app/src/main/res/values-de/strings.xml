@@ -166,7 +166,7 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="slide_4_title">Konten verwalten</string>
     <string name="slide_4_desc_one">Fügen Sie ein neues Konto mit dem Plus-Button hinzu.</string>
     <string name="slide_4_desc_two">Starten Sie ein Update über ein langes Drücken.</string>
-    <string name="slide_4_desc_three">Löschen Sie einen Account durch eine Wischgeste.</string>
+    <string name="slide_4_desc_three">Löschen Sie einen Account durch eine Wischgeste von rechts nach links.</string>
 
     <string name="slide_mp_title">Master-Passwort</string>
     <string name="slide_mp_desc_one">Das Master-Passwort ist das einzige Passwort, das Sie sich merken müssen.</string>

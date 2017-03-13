@@ -191,7 +191,7 @@
     <string name="slide_4_title">Manage accounts</string>
     <string name="slide_4_desc_one">Add a new account with the plus button.</string>
     <string name="slide_4_desc_two">Update an account by a long press. </string>
-    <string name="slide_4_desc_three">Delete an account by a swiping gesture.</string>
+    <string name="slide_4_desc_three">Delete an account by a swiping gesture from the right to the left.</string>
 
     <string name="slide_mp_title">Master Password</string>
     <string name="slide_mp_desc_one">The master password is the only password, that you have to remember.</string>
