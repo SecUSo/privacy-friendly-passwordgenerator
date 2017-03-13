@@ -70,7 +70,7 @@ public class MasterPWTutorialActivity extends AppCompatActivity {
         // add few more layouts if you want
         layouts = new int[]{
                 R.layout.tutorial_mp1,
-                R.layout.tutorial_mp1,};
+                R.layout.tutorial_mp2,};
 
         // adding bottom dots
         addBottomDots(0);

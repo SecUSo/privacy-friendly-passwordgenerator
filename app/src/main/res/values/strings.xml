@@ -200,8 +200,8 @@
     <string name="slide_mp_desc_four">If you wish you can write it down and keep it in a safe place.</string>
 
     <string name="slide_mp2_title">Master Password Tips</string>
-    <string name="slide_mp2_desc_one">Do not include personal data (like birthdays)</string>
-    <string name="slide_mp2_desc_two">Do not use character sequences from the keyboard </string>
+    <string name="slide_mp2_desc_one">Do not include personal data (like birthdays).</string>
+    <string name="slide_mp2_desc_two">Do not use character sequences from the keyboard. </string>
     <string name="slide_mp2_desc_three">Try to make it as long as possible for you.</string>
 
     <!-- ##IMAGE_DESCRIPTIONS-->
