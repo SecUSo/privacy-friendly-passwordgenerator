@@ -25,7 +25,7 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * This class creates PBKDF2 with sha256.
+ * This class creates PBKDF2 with different SHA versions.
  * <p>
  * Class taken from https://github.com/pinae/ctSESAM-android/
  * last access 1st November 2016
