@@ -348,8 +348,8 @@ public class SwipeableRecyclerViewTouchListener implements RecyclerView.OnItemTo
 
                     if (mFinalDelta < 0) {
                         mSwipeListener.onDismissedBySwipeLeft(mRecyclerView, dismissPositions);
-                    } else {
-                        mSwipeListener.onDismissedBySwipeRight(mRecyclerView, dismissPositions);
+//                    } else {
+//                        mSwipeListener.onDismissedBySwipeRight(mRecyclerView, dismissPositions);
                     }
 
                     // Reset mDownPosition to avoid MotionEvent.ACTION_UP trying to start a dismiss
@@ -423,7 +423,7 @@ public class SwipeableRecyclerViewTouchListener implements RecyclerView.OnItemTo
          * @param reverseSortedPositions An array of positions to dismiss, sorted in descending
          *                               order for convenience.
          */
-        void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions);
+        //void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions);
     }
 
     class PendingDismissData implements Comparable<PendingDismissData> {

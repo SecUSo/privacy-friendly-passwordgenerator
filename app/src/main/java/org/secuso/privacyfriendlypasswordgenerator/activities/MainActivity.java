@@ -176,7 +176,7 @@ public class MainActivity extends BaseActivity {
 
                             @Override
                             public boolean canSwipeRight(int position) {
-                                return true;
+                                return false;
                             }
 
                             @Override
@@ -186,12 +186,12 @@ public class MainActivity extends BaseActivity {
                                 }
                             }
 
-                            @Override
-                            public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
-                                for (int position : reverseSortedPositions) {
-                                    deleteItem(position);
-                                }
-                            }
+//                            @Override
+//                            public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
+//                               for (int position : reverseSortedPositions) {
+//                                  deleteItem(position);
+//                               }
+//                            }
                         });
 
         recyclerView.addOnItemTouchListener(swipeTouchListener);
@@ -230,7 +230,7 @@ public class MainActivity extends BaseActivity {
         initialAlert.setVisibility(View.VISIBLE);
         hints(position);
 
-        Snackbar.make(findViewById(android.R.id.content), getString(R.string.domain) + " " + toDeleteMetaData.getDOMAIN() + " " + getString(R.string.item_deleted), Snackbar.LENGTH_LONG)
+        Snackbar.make(findViewById(android.R.id.content), getString(R.string.domain) + " " + toDeleteMetaData.getDOMAIN() + " " + getString(R.string.item_deleted), Snackbar.LENGTH_SHORT)
                 .setAction(getString(R.string.undo), new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
