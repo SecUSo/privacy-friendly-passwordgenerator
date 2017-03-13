@@ -134,12 +134,12 @@
 
     <string name="title_expert_mode">Expert mode</string>
     <string name="expert_mode_summary">Changing the hash algorithm and number of iterations will generate different password and has a high influence on the time needed for generating the password.</string>
-    <string name="title_hash_iterations">Number of hash iterations</string>
+    <string name="title_hash_iterations">PBKDF2: Number of hash iterations</string>
 
     <string name="title_benchmark">Benchmark: generation</string>
     <string name="summary_benchmark">Test the duration of generating based on the given algorithm and iteration.</string>
 
-    <string name="title_hash_algorithms">Hash algorithm</string>
+    <string name="title_hash_algorithms">PBKDF2: Hash algorithm</string>
     <string-array name="pref_hash_algorithms" translatable="false">
         <item>SHA256</item>
         <item>SHA384</item>

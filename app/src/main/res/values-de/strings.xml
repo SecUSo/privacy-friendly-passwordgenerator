@@ -128,13 +128,13 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="summary_clipboard">Alle anderen Apps können Ihre Passworte in der Zwischenablage einsehen.</string>
 
     <string name="title_expert_mode">Expertenmodus</string>
-    <string name="expert_mode_summary">Hash-Algorithmus und Hash-Iterationen haben einen großen Einfluss auf die Dauer der Generierung. Außerdem werden durch Ändern dieser Werte auch die Passworte beeinflusst und somit andere Passworte generiert.</string>
-    <string name="title_hash_iterations">Anzahl Hash-Iterationen</string>
+    <string name="expert_mode_summary">Hash-Algorithmus und Hash-Iterationen haben einen großen Einfluss auf die Dauer der Generierung. Außerdem werden durch Ändern dieser Werte auch ALLE Passworte beeinflusst und somit andere Passworte generiert.</string>
+    <string name="title_hash_iterations">PBKDF2: Anzahl Hash-Iterationen</string>
 
     <string name="title_benchmark">Benchmark: Generierung</string>
     <string name="summary_benchmark">Ermittlung der Generierungsdauer basierend auf Hash-Algorithmus und Hash-Iterationen.</string>
 
-    <string name="title_hash_algorithms">Hash-Algorithmus</string>
+    <string name="title_hash_algorithms">PBKDF2: Hash-Algorithmus</string>
 
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>
