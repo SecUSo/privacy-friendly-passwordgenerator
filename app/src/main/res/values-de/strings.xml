@@ -191,6 +191,6 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="sample_domain2">beispiel-domain.de</string>
     <string name="sample_username2">Martina Musterfrau</string>
     <string name="sample_domain3"> Beispiel PIN</string>
-    <string name="sample_username3"></string>
+    <string name="sample_username3">-</string>
 
 </resources>

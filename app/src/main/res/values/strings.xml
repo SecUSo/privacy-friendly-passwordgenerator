@@ -216,6 +216,6 @@
     <string name="sample_domain2">sample-domain.de</string>
     <string name="sample_username2">Sample Username</string>
     <string name="sample_domain3"> Sample PIN</string>
-    <string name="sample_username3"></string>
+    <string name="sample_username3">-</string>
 
 </resources>
