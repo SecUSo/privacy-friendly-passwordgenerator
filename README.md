@@ -5,33 +5,33 @@ This app belongs to the Privacy Friendly Apps group developed by the SECUSO rese
 
 Users can save the following properties of a password: <br />
 * Account name: e.g. a website or account name 
-* Username (optional) 
+* Username: the username in case a user has multiple accounts for one service or website
 * Character set: at least one of uppercase, lowercase, special, numbers
 * Password length
 * Password version: used to create different passwords if an update without changing of the master password and account data is intended.  <br />
 
 ### Password Generation
 
-The password generation is based on the combination of two password hashing algorithms: PBKDF2 and BCrypt. PBKDF2 and can be executed with three different hash algorithms (SHA256, SHA384, SHA512). <br />
+The password generation is based on the combination of two algorithms: the key deviation function PBKDF2 and the hash algorithm BCrypt. PBKDF2 and can be executed with three different hash algorithms (SHA256, SHA384, SHA512). <br />
 * The master password serves as a secret for the PBKDF2 algorithm.
 * Password counter, account name, username and device ID (optional) are concatenated to a string and form the salt of PBKDF2. 
 * The result of the PBKDF2 hashing is encoded into a special version of Base64 which is compatible with BCrypt and not longer than 22 characters.
 * The master password serves as a secret for the BCrypt algorithm.
 * Result of the PBKDF2 hashing combined with the string "$2a$10$" the beginning forms the salt for BCrypt.
 * The prefix and the salt is cut from the resulting byte-array.
-* The byte-array is used to choose characters out of the character set from the user's parameter set. 
+* The byte-array is used to choose characters out of the character set the user has chosen. 
 <br />
 
-The passwords as well as the master password are never stored in the device. The master password has to be entered by the user and password is always created on the fly using of the parameter set. 
+The passwords as well as the master password are never stored in the device. The master password has to be entered by the user and password is always created on the fly. 
 
 ## Motivation
 
-Nowadays users need many different passwords for all kinds of services and also websites. Remembering strong passwords can be a tough task.  <br />
-Privacy Friendly Password Generator should support users to create strong passwords without having to trust a program to store them securely and safely for them. The complexity of remembering the passwords is reduced to a single master password. 
+Nowadays users need many different passwords for all kinds of services and also websites. Remembering and generating strong passwords can be a tough task.  <br />
+Privacy Friendly Password Generator should support users in creating strong passwords without having to trust a program to store them securely and safely for them. The complexity of remembering the passwords is reduced to a single master password. 
 
 ## Download and more Information
 
-Further development requires Android Studio, we recommend to use at least version 2.2.2
+Further development requires Android Studio, we recommend to use at least version 2.3
  
 ### API Reference
 
