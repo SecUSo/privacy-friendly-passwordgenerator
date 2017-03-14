@@ -58,8 +58,8 @@
 
     <!--####VERSION_INFO####-->
     <string name="dialog_version_title">Was ist die Passwort-Version?</string>
-    <string name="dialog_version">Die Version ist eine Zahl, die anzeigt wie viele verschiedene Passworte bereits für einen Account generiert wurden. Außerdem sorgt sie im Falle eines Updates dafür, dass
-    ein anderes Passwort generiert wird, auch wenn weder das Master-Passwort, noch andere Accounteigenschaften verändert werden.</string>
+    <string name="dialog_version">Die Version ist eine Zahl, die anzeigt wie viele verschiedene Passworte bereits für ein Konto generiert wurden. Außerdem sorgt sie im Falle eines Updates dafür, dass
+    ein anderes Passwort generiert wird, auch wenn weder das Master-Passwort, noch andere Kontoeigenschaften verändert werden.</string>
 
     <!--###GENERATOR###-->
     <string name="generate_heading">Passwort generieren</string>
@@ -88,7 +88,7 @@
      entsprechenden Website oder ähnlichem eingetragen werden.</string>
 
     <string name="help_generation">Wie generiere ich ein Passwort?</string>
-    <string name="help_generation_answer">Um ein Passwort zu generieren wählen Sie zunächst einen Account aus der Liste aus. Geben Sie dann Ihr (ausgedachtes) Master-Passwort ein und drücken Sie auf "Generieren".</string>
+    <string name="help_generation_answer">Um ein Passwort zu generieren wählen Sie zunächst ein Konto aus der Liste aus. Geben Sie dann Ihr (ausgedachtes) Master-Passwort ein und drücken Sie auf "Generieren".</string>
 
     <string name="help_parameter_set_heading">Was ist ein Konto?</string>
     <string name="help_parameter_set_answer">Ein Konto enthält alle Eigenschaften eines Passworts.</string>
@@ -97,7 +97,7 @@
     <string name="help_which_parameters_username">Der optionale Benutzername kann verwendet werden um verschiedene Nutzer bei gleichem Kontonamen zu unterscheiden.</string>
     <string name="help_which_parameters_characterset">Der Zeichensatz beschreibt welche Arten von Zeichen das Passwort haben soll. Manche Webseiten empfehlen bestimmte Kombinationen von Zeichen.</string>
     <string name="help_which_parameters_length">Die Länge des Passworts kann gewählt werden.</string>
-    <string name="help_which_parameters_password_counter">Die Version wird verwendet, um im Falle einer Änderung verschiedene Passworte mit selben Parametern zu generieren. Der Standardwert ist 1. Der Passwortzähler wird bei jedem Update um 1 erhöht.</string>
+    <string name="help_which_parameters_password_counter">Die Version wird verwendet, um im Falle einer Änderung verschiedene Passworte mit selben Kontodaten zu generieren. Der Standardwert ist 1. Der Passwortzähler wird bei jedem Update um 1 erhöht.</string>
 
     <string name="help_manage_add_heading">Wie kann ich ein Konto hinzufügen?</string>
     <string name="help_manage_add_description">Sie können ein neues Konto über den Plus-Knopf hinzufügen.</string>
@@ -108,7 +108,7 @@
 
     <string name="help_generation_heading">Wie werden die Passworte generiert?</string>
     <string name="help_generation_description">Die Passworte werden durch eine Kombination der Hashalgorithmen BCrypt und PBKDF2 generiert. Dabei ist das Master-Passwort der Startwert für beide Algorithmen.
-Die Satze werden aus der Parametern gewonnen</string>
+Die Salze werden aus den Daten des Kontos gewonnen</string>
 
     <string name="help_password_storage_heading">Werden die Passworte auf dem Gerät gespeichert?</string>
     <string name="help_password_storage_description">Nein. Weder die generierten Passworte, noch das Master-Passwort werden auf dem Gerät gespeichert.</string>
@@ -166,7 +166,7 @@ Die Satze werden aus der Parametern gewonnen</string>
     <string name="slide_4_title">Konten verwalten</string>
     <string name="slide_4_desc_one">Fügen Sie ein neues Konto mit dem Plus-Button hinzu.</string>
     <string name="slide_4_desc_two">Starten Sie ein Update über ein langes Drücken.</string>
-    <string name="slide_4_desc_three">Löschen Sie einen Account durch eine Wischgeste von rechts nach links.</string>
+    <string name="slide_4_desc_three">Löschen Sie ein Konto durch eine Wischgeste von rechts nach links.</string>
 
     <string name="slide_mp_title">Master-Passwort</string>
     <string name="slide_mp_desc_one">Das Master-Passwort ist das einzige Passwort, das Sie sich merken müssen.</string>
