@@ -181,7 +181,7 @@
     <string name="slide_2_title">How to generate</string>
     <string name="slide_2_desc_one">Choose an account from the list. </string>
     <string name="slide_2_desc_two">Invent a master password as your initial secret. Based on this master password all other passwords are generated.</string>
-    <string name="slide_2_desc_three">Copy the password to the website or service.</string>
+    <string name="slide_2_desc_three">Copy the generated password to the website or service.</string>
 
     <string name="slide_3_title">Accounts</string>
     <string name="slide_3_desc_one">Website providers often use password composition policies.</string>
