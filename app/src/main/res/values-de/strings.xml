@@ -91,7 +91,8 @@
     <string name="help_generation_answer">Um ein Passwort zu generieren wählen Sie zunächst ein Konto aus der Liste aus. Geben Sie dann Ihr (ausgedachtes) Master-Passwort ein und drücken Sie auf "Generieren".</string>
 
     <string name="help_parameter_set_heading">Was ist ein Konto?</string>
-    <string name="help_parameter_set_answer">Ein Konto enthält alle Eigenschaften eines Passworts.</string>
+    <string name="help_parameter_set_answer">Webseitenbetreiber verwenden häufig Passwordrichtlinien. Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen.
+        Ein Konto enthält alle Eigenschaften eines Passworts.</string>
     <string name="help_which_parameters_heading">Welche Eigenschaften können gewählt werden?</string>
     <string name="help_which_parameters_domain">Der Kontoname ist eine Referenz zur Webseite oder sonstigem, wofür das Passwort verwendet wird.</string>
     <string name="help_which_parameters_username">Der optionale Benutzername kann verwendet werden um verschiedene Nutzer bei gleichem Kontonamen zu unterscheiden.</string>

@@ -96,8 +96,8 @@
     <string name="help_generation_answer">To generate a password choose an account out of the list and click on it. Enter your master password and then press the "generate" button. The password can than
     be copied to website or service by writing or the using the clipboard.</string>
     <string name="help_parameter_set_heading">What is an account?</string>
-    <string name="help_parameter_set_answer">Website providers often use password composition policies. An account describes properties of the generated password.
-    These policies should direct our password choices and might force us to create passwords with special characteristics like a minimum length. </string>
+    <string name="help_parameter_set_answer">Website providers often use password composition policies.
+    These policies should direct our password choices and might force us to create passwords with special characteristics like a minimum length. An account describes properties of the generated password.</string>
     <string name="help_which_parameters_heading">Which properties of a password can be chosen?</string>
     <string name="help_which_parameters_domain">The account name is reference to the website or item the password is used for.</string>
     <string name="help_which_parameters_username">The optional username can be used to distinguish between different users for the same account name.</string>
