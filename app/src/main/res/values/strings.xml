@@ -178,7 +178,7 @@
     <string name="slide_1_title">Welcome!</string>
     <string name="slide_1_desc">With Privacy Friendly Password Generator you can generate different passwords for all your accounts while remembering only one master password.</string>
 
-    <string name="slide_2_title">How to generate</string>
+    <string name="slide_2_title">Generate passwords</string>
     <string name="slide_2_desc_one">Choose an account from the list. </string>
     <string name="slide_2_desc_two">Invent a master password as your initial secret. Based on this master password all other passwords are generated.</string>
     <string name="slide_2_desc_three">Copy the generated password to the website or service.</string>

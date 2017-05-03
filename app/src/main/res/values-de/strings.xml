@@ -154,13 +154,13 @@ Die Salze werden aus den Daten des Kontos gewonnen</string>
     <string name="slide_1_title">Willkommen!</string>
     <string name="slide_1_desc">Privacy Friendly Passwort Generator generiert unterschiedliche Passworte für alle Ihre Accounts, Sie müssen sich lediglich ein Master-Passwort merken.</string>
 
-    <string name="slide_2_title">Generieren</string>
+    <string name="slide_2_title">Passwörter generieren</string>
     <string name="slide_2_desc_one">Wählen Sie ein Konto aus der Liste aus.</string>
-    <string name="slide_2_desc_two">Denken Sie sich ein Master-Passwort aus, dass Sie geheim halten. Basierend auf diesem Master-Passwort werden die anderen Passworte generiert.</string>
+    <string name="slide_2_desc_two">Denken Sie sich ein Master-Passwort aus, das Sie geheim halten. Basierend auf diesem Master-Passwort werden die anderen Passworte generiert.</string>
     <string name="slide_2_desc_three">Geben Sie das generierte Passwort auf der Webseite ein.</string>
 
     <string name="slide_3_title">Konten</string>
-    <string name="slide_3_desc_one">Webseitenbetreiber verwenden häufig Passwordrichtlinien.</string>
+    <string name="slide_3_desc_one">Webseitenbetreiber verwenden häufig Passwortrichtlinien.</string>
     <string name="slide_3_desc_two">Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen. </string>
     <string name="slide_3_desc_three">Diese Richtlinien können im Konto festgelegt werden.</string>
 
