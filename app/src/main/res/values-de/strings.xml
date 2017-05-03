@@ -25,7 +25,7 @@
     <string name="letters_lower">Klein (abc)</string>
     <string name="numbers">Zahlen (123)</string>
     <string name="length">Länge: </string>
-    <string name="iteration">Passwortzähler: </string>
+    <string name="iteration">Passwortversion: </string>
     <string name="add_domain_message">Bitte geben Sie einen Kontonamen an.</string>
     <string name="add_character_message">Bitte suchen Sie mindestens einen Zeichensatz aus.</string>
 
@@ -98,7 +98,7 @@
     <string name="help_which_parameters_username">Der optionale Benutzername kann verwendet werden um verschiedene Nutzer bei gleichem Kontonamen zu unterscheiden.</string>
     <string name="help_which_parameters_characterset">Der Zeichensatz beschreibt welche Arten von Zeichen das Passwort haben soll. Manche Webseiten empfehlen bestimmte Kombinationen von Zeichen.</string>
     <string name="help_which_parameters_length">Die Länge des Passworts kann gewählt werden.</string>
-    <string name="help_which_parameters_password_counter">Die Version wird verwendet, um im Falle einer Änderung verschiedene Passworte mit selben Kontodaten zu generieren. Der Standardwert ist 1. Der Passwortzähler wird bei jedem Update um 1 erhöht.</string>
+    <string name="help_which_parameters_password_counter">Die Version wird verwendet, um im Falle einer Änderung verschiedene Passworte mit selben Kontodaten zu generieren. Der Standardwert ist 1. Die Version wird bei jedem Update um 1 erhöht.</string>
 
     <string name="help_manage_add_heading">Wie kann ich ein Konto hinzufügen?</string>
     <string name="help_manage_add_description">Sie können ein neues Konto über den Plus-Knopf hinzufügen.</string>
