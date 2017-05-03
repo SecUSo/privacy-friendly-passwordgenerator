@@ -124,7 +124,7 @@ Die Salze werden aus den Daten des Kontos gewonnen</string>
 
     <string name="title_activity_settings">Einstellungen</string>
     <string name="title_bind_password">Alle Passworte an Gerät koppeln</string>
-    <string name="summary_bind_password">Erzeugt eindeutige Passworte abhängig vom Gerät. Andere Geräte können nicht diesselben Passworte bei der Eingabe con derselben Daten und demselben Master-Passwort erzeugen.</string>
+    <string name="summary_bind_password">Erzeugt eindeutige Passworte abhängig vom Gerät. Andere Geräte können nicht diesselben Passworte bei der Eingabe von derselben Daten und demselben Master-Passwort erzeugen.</string>
     <string name="title_clipboard">In Zwischenablage kopieren</string>
     <string name="summary_clipboard">Alle anderen Apps können Ihre Passworte in der Zwischenablage einsehen.</string>
 
@@ -152,7 +152,7 @@ Die Salze werden aus den Daten des Kontos gewonnen</string>
     <string name="start">FERTIG</string>
 
     <string name="slide_1_title">Willkommen!</string>
-    <string name="slide_1_desc">Privacy Friendly Passwort Generator generiert unterschiedliche Passworte für alle Ihre Accounts, Sie müssen sich lediglich ein Master-Passwort merken.</string>
+    <string name="slide_1_desc">Privacy Friendly Passwort Generator generiert unterschiedliche Passworte für alle Ihre Konten. Sie müssen sich lediglich ein Master-Passwort merken.</string>
 
     <string name="slide_2_title">Passwörter generieren</string>
     <string name="slide_2_desc_one">Wählen Sie ein Konto aus der Liste aus.</string>
