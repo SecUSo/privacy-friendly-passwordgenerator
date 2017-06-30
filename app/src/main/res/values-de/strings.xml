@@ -7,7 +7,7 @@
     <string name="action_about">Über</string>
     <string name="action_settings">Einstellungen</string>
     <string name="action_main">Hauptmenü</string>
-    <string name="action_tutorial">Tutorial anzeigen</string>
+    <string name="action_tutorial">Tutorial</string>
 
     <!--###METADATA_LIST###-->
     <string name="undo">Rückgängig</string>
