@@ -7,7 +7,7 @@
     <string name="action_about">アプリについて</string>
     <string name="action_settings">設定</string>
     <string name="action_main">メイン</string>
-    <string name="action_tutorial">チュートリアルを表示</string>
+    <string name="action_tutorial">チュートリアル</string>
 
     <!--###METADATA_LIST###-->
     <string name="undo">元に戻す</string>
