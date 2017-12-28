@@ -33,7 +33,8 @@ Privacy Friendly Password Generator should support users in creating strong pass
 
 ## Building
 
-Further development requires Android Studio, we recommend to use at least version 2.3
+Further development requires Android Studio, we recommend to use at least version 2.3<br />
+If you wish to contribute to this project, have a look at the contribution policy. 
  
 ### API Reference
 
@@ -66,7 +67,9 @@ App-Icon: <br />
 Markus Hau<br />
 
 Github-Users: <br />
-Yonjuni
+Yonjuni<br />
+Naofum <br />
+mohammadnaseri
 
 
 
