@@ -33,7 +33,7 @@ import java.util.List;
  * Added the BCrypt component and ShuffleString
  *
  * @author Karola Marky
- * @version 20161116
+ * @version 20180112
  */
 public class PasswordGenerator {
 
@@ -86,6 +86,10 @@ public class PasswordGenerator {
         String lowerInitial = "abcdefghijklmnopqrstuvwxyz";
         String characters = "#!\"~|@^°$%&/()[]{}=-_+*<>;:.";
         String numbersInitial = "0123456789";
+
+        String upperInitalsNoConfusable = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+        String lowerInitialNoConfusable = "abcdefghijkmnopqrstuvwxyz";
+        String numbersInitialNoConfusable = "123456789";
 
         List<String> characterSet = new ArrayList<>();
 

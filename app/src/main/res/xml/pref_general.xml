@@ -1,48 +1,50 @@
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:key="main_preferences">
 
-        <SwitchPreference
-            android:title="@string/title_bind_password"
-            android:id="@+id/pref_binding_switch"
-            android:key="bindToDevice_enabled"
-            android:summary="@string/summary_bind_password"
-            android:defaultValue="false"/>
-        <SwitchPreference
-            android:title="@string/title_clipboard"
-            android:id="@+id/pref_clipboard_switch"
-            android:key="clipboard_enabled"
-            android:summary="@string/summary_clipboard"
-            android:defaultValue="false"/>
-        <Preference
-            android:title="@string/title_reset_list"
-            android:id="@+id/pref_reset_list"
-            android:key="pref_reset_list" />
+    <SwitchPreference
+        android:id="@+id/pref_binding_switch"
+        android:defaultValue="false"
+        android:key="bindToDevice_enabled"
+        android:summary="@string/summary_bind_password"
+        android:title="@string/title_bind_password" />
+    <SwitchPreference
+        android:id="@+id/pref_clipboard_switch"
+        android:defaultValue="false"
+        android:key="clipboard_enabled"
+        android:summary="@string/summary_clipboard"
+        android:title="@string/title_clipboard" />
+    <SwitchPreference
+        android:id="@+id/pref_confusable_switch"
+        android:defaultValue="false"
+        android:key="confusable_enabled"
+        android:summary="@string/summary_confusable"
+        android:title="@string/title_confusable" />
+    <Preference
+        android:id="@+id/pref_reset_list"
+        android:key="pref_reset_list"
+        android:title="@string/title_reset_list" />
 
-    <PreferenceCategory
-        android:title="@string/title_expert_mode">
-        <Preference
-            android:summary="@string/expert_mode_summary"/>
+    <PreferenceCategory android:title="@string/title_expert_mode">
+        <Preference android:summary="@string/expert_mode_summary" />
 
         <ListPreference
-            android:title="@string/title_hash_algorithms"
-            android:key="hash_algorithm"
+            android:defaultValue="@string/default_hash_algorithm"
             android:entries="@array/pref_hash_algorithms"
             android:entryValues="@array/pref_hash_algorithms"
-            android:defaultValue="@string/default_hash_algorithm"
-            android:summary="@string/default_hash_algorithm">
-        </ListPreference>
+            android:key="hash_algorithm"
+            android:summary="@string/default_hash_algorithm"
+            android:title="@string/title_hash_algorithms"></ListPreference>
         <ListPreference
-            android:title="@string/title_hash_iterations"
-            android:key="hash_iterations"
+            android:defaultValue="@string/default_iterations"
             android:entries="@array/pref_iterations"
             android:entryValues="@array/pref_iterations"
-            android:defaultValue="@string/default_iterations"
-            android:summary="@string/default_iterations"/>
+            android:key="hash_iterations"
+            android:summary="@string/default_iterations"
+            android:title="@string/title_hash_iterations" />
         <Preference
             android:key="benchmark"
-            android:title="@string/title_benchmark"
-            android:summary="@string/summary_benchmark"/>
+            android:summary="@string/summary_benchmark"
+            android:title="@string/title_benchmark" />
     </PreferenceCategory>
 
 </PreferenceScreen>
