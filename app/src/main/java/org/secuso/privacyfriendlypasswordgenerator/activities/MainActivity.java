@@ -71,6 +71,7 @@ public class MainActivity extends BaseActivity {
     private boolean clipboard_enabled;
     private boolean bindToDevice_enabled;
     private String hash_algorithm;
+    private boolean confusables;
     private int number_iterations;
 
     private List<MetaData> filteredMetaDataList;
@@ -131,6 +132,7 @@ public class MainActivity extends BaseActivity {
                         bundle.putBoolean("clipboard_enabled", clipboard_enabled);
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
                         bundle.putInt("number_iterations", number_iterations);
+                        bundle.putBoolean("confusable_disabled", confusables);
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
@@ -158,6 +160,7 @@ public class MainActivity extends BaseActivity {
                         bundle.putString("hash_algorithm", hash_algorithm);
                         bundle.putInt("number_iterations", number_iterations);
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
+                        bundle.putBoolean("confusable_disabled", confusables);
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
@@ -308,6 +311,7 @@ public class MainActivity extends BaseActivity {
         bindToDevice_enabled = sharedPreferences.getBoolean("bindToDevice_enabled", false);
         hash_algorithm = sharedPreferences.getString("hash_algorithm", "SHA256");
         String tempIterations = sharedPreferences.getString("hash_iterations", "1000");
+        confusables = sharedPreferences.getBoolean("confusable_disabled", false);
         number_iterations = Integer.parseInt(tempIterations);
     }
 

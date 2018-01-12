@@ -41,7 +41,7 @@ import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper
 
 /**
  * @author Karola Marky
- * @version 20170113
+ * @version 20180112
  */
 
 public class UpdateMetadataDialog extends DialogFragment {
@@ -58,6 +58,7 @@ public class UpdateMetadataDialog extends DialogFragment {
     private String hash_algorithm;
     private boolean bindToDevice_enabled;
     private int number_iterations;
+    private Boolean confusables_disabled;
 
     private boolean closeDialog;
     private boolean versionVisible;
@@ -77,7 +78,7 @@ public class UpdateMetadataDialog extends DialogFragment {
         position = bundle.getInt("position");
         hash_algorithm = bundle.getString("hash_algorithm");
         bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
-
+        confusables_disabled = bundle.getBoolean("confusable_disabled");
 
         database = MetaDataSQLiteHelper.getInstance(getActivity());
         metaData = database.getMetaData(position);

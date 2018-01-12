@@ -116,6 +116,7 @@ public class BenchmarkDialog extends DialogFragment {
                         strings[3],
                         Integer.valueOf(strings[4]),
                         Integer.parseInt(strings[5]),
+                        0,
                         strings[6]);
 
                 generator.getPassword(Integer.parseInt(strings[7]), Integer.parseInt(strings[8]), Integer.parseInt(strings[9]), Integer.parseInt(strings[10]), Integer.parseInt(strings[11]));

@@ -38,6 +38,7 @@ import java.util.List;
 public class PasswordGenerator {
 
     private byte[] hashValue;
+    private int confusableDisabled;
 
     public PasswordGenerator(String domain,
                              String username,
@@ -45,6 +46,7 @@ public class PasswordGenerator {
                              String deviceID,
                              int iteration,
                              int hashIterations,
+                             int confusableDisabled,
                              String hashAlgorithm) {
 
         String temp = Base64.encode_base64(
@@ -56,6 +58,7 @@ public class PasswordGenerator {
                 22);
 
         this.hashValue = transformPassword(BCrypt.hashpw(masterpassword, "$2a$10$" + temp));
+        this.confusableDisabled = confusableDisabled;
     }
 
     //cuts the salt from the password
@@ -100,21 +103,38 @@ public class PasswordGenerator {
         }
 
         if (lowerCaseLetters == 1) {
-            for (int i = 0; i < lowerInitial.length(); i++) {
-                characterSet.add(Character.toString(lowerInitial.charAt(i)));
+            if (confusableDisabled == 1) {
+                for (int i = 0; i < lowerInitialNoConfusable.length(); i++) {
+                    characterSet.add(Character.toString(lowerInitialNoConfusable.charAt(i)));
+                }
+            } else {
+                for (int i = 0; i < lowerInitial.length(); i++) {
+                    characterSet.add(Character.toString(lowerInitial.charAt(i)));
+                }
             }
         }
 
         if (upperCaseLetters == 1) {
-            for (int i = 0; i < upperInitals.length(); i++) {
-                characterSet.add(Character.toString(upperInitals.charAt(i)));
+            if (confusableDisabled == 1) {
+                for (int i = 0; i < upperInitalsNoConfusable.length(); i++) {
+                    characterSet.add(Character.toString(upperInitalsNoConfusable.charAt(i)));
+                }
+            } else {
+                for (int i = 0; i < upperInitals.length(); i++) {
+                    characterSet.add(Character.toString(upperInitals.charAt(i)));
+                }
             }
-
         }
 
         if (numbers == 1) {
-            for (int i = 0; i < numbersInitial.length(); i++) {
-                characterSet.add(Character.toString(numbersInitial.charAt(i)));
+            if (confusableDisabled == 1) {
+                for (int i = 0; i < numbersInitialNoConfusable.length(); i++) {
+                    characterSet.add(Character.toString(numbersInitialNoConfusable.charAt(i)));
+                }
+            } else {
+                for (int i = 0; i < numbersInitial.length(); i++) {
+                    characterSet.add(Character.toString(numbersInitial.charAt(i)));
+                }
             }
         }
 

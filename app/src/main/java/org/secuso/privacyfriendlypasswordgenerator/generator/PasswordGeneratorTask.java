@@ -34,6 +34,7 @@ public class PasswordGeneratorTask extends AsyncTask<String, Void, String> {
                 strings[3],
                 Integer.valueOf(strings[4]),
                 Integer.parseInt(strings[5]),
+                Integer.parseInt(strings[12]),
                 strings[6]);
 
         String password =

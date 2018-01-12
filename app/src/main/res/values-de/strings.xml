@@ -137,6 +137,9 @@ Die Salze werden aus den Daten des Kontos gewonnen</string>
 
     <string name="title_hash_algorithms">PBKDF2: Hash-Algorithmus</string>
 
+    <string name="title_confusable">Verwechselbare Zeichen entfernen</string>
+    <string name="summary_confusable">Das Password wird keine verwechselbaren Zeichen (z.B. I und l) enthalten.</string>
+
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>
 

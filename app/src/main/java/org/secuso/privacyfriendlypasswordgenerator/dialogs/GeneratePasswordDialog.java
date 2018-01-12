@@ -47,7 +47,7 @@ import static android.content.Context.CLIPBOARD_SERVICE;
 
 /**
  * @author Karola Marky
- * @version 20170113
+ * @version 20180113
  */
 
 public class GeneratePasswordDialog extends DialogFragment {
@@ -61,6 +61,7 @@ public class GeneratePasswordDialog extends DialogFragment {
 
     private Boolean bindToDevice_enabled;
     private Boolean clipboard_enabled;
+    private Boolean confusables_disabled;
     private String hashAlgorithm;
     private int number_iterations;
 
@@ -85,22 +86,23 @@ public class GeneratePasswordDialog extends DialogFragment {
         bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
         hashAlgorithm = bundle.getString("hash_algorithm");
         number_iterations = bundle.getInt("number_iterations");
+        confusables_disabled = bundle.getBoolean("confusable_disabled");
         visibility = false;
 
-        spinner = (ProgressBar) rootView.findViewById(R.id.progressBar);
+        spinner = rootView.findViewById(R.id.progressBar);
         spinner.setVisibility(View.GONE);
 
         database = MetaDataSQLiteHelper.getInstance(getActivity());
         metaData = database.getMetaData(position);
 
-        TextView domain = (TextView) rootView.findViewById(R.id.domainHeadingTextView);
+        TextView domain = rootView.findViewById(R.id.domainHeadingTextView);
         domain.setText(metaData.getDOMAIN());
 
-        TextView username = (TextView) rootView.findViewById(R.id.domainUsernameTextView);
+        TextView username = rootView.findViewById(R.id.domainUsernameTextView);
 
         username.setText(metaData.getUSERNAME());
 
-        TextView iteration = (TextView) rootView.findViewById(R.id.textViewIteration);
+        TextView iteration = rootView.findViewById(R.id.textViewIteration);
         iteration.setText(String.valueOf(metaData.getITERATION()));
 
         builder.setView(rootView);
@@ -108,12 +110,12 @@ public class GeneratePasswordDialog extends DialogFragment {
         builder.setTitle(getActivity().getString(R.string.generate_heading));
         builder.setPositiveButton(getActivity().getString(R.string.done), null);
 
-        Button generateButton = (Button) rootView.findViewById(R.id.generatorButton);
+        Button generateButton = rootView.findViewById(R.id.generatorButton);
         generateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
+                TextView textViewPassword = rootView.findViewById(R.id.textViewPassword);
                 textViewPassword.setText("");
 
                 InputMethodManager inputManager = (InputMethodManager)
@@ -122,7 +124,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(),
                         InputMethodManager.RESULT_UNCHANGED_SHOWN);
 
-                editTextMasterpassword = (EditText) rootView.findViewById(R.id.editTextMasterpassword);
+                editTextMasterpassword = rootView.findViewById(R.id.editTextMasterpassword);
 
                 if (editTextMasterpassword.getText().toString().length() == 0) {
                     Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.enter_masterpassword), Toast.LENGTH_SHORT);
@@ -139,12 +141,12 @@ public class GeneratePasswordDialog extends DialogFragment {
             }
         });
 
-        ImageButton copyButton = (ImageButton) rootView.findViewById(R.id.copyButton);
+        ImageButton copyButton = rootView.findViewById(R.id.copyButton);
 
         copyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView password = (TextView) rootView.findViewById(R.id.textViewPassword);
+                TextView password = rootView.findViewById(R.id.textViewPassword);
 
                 if (password.getText().toString().length() > 0) {
                     ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
@@ -156,13 +158,13 @@ public class GeneratePasswordDialog extends DialogFragment {
             }
         });
 
-        visibilityButton = (ImageButton) rootView.findViewById(R.id.visibilityButton);
+        visibilityButton = rootView.findViewById(R.id.visibilityButton);
 
         visibilityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                editTextMasterpassword = (EditText) rootView.findViewById(R.id.editTextMasterpassword);
+                editTextMasterpassword = rootView.findViewById(R.id.editTextMasterpassword);
 
                 if (!visibility) {
                     visibilityButton.setImageResource(R.drawable.ic_visibility_off);
@@ -185,7 +187,7 @@ public class GeneratePasswordDialog extends DialogFragment {
 
     public void generatePassword() {
 
-        EditText editTextMasterpassword = (EditText) rootView.findViewById(R.id.editTextMasterpassword);
+        EditText editTextMasterpassword = rootView.findViewById(R.id.editTextMasterpassword);
 
         metaData = database.getMetaData(position);
 
@@ -200,7 +202,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         }
 
         //pack parameters to String-Array
-        String[] params = new String[12];
+        String[] params = new String[13];
         params[0] = metaData.getDOMAIN();
         params[1] = metaData.getUSERNAME();
         params[2] = editTextMasterpassword.getText().toString();
@@ -214,10 +216,17 @@ public class GeneratePasswordDialog extends DialogFragment {
         params[10] = String.valueOf(metaData.getHAS_NUMBERS());
         params[11] = String.valueOf(metaData.getLENGTH());
 
+        if (confusables_disabled) {
+            params[12] = String.valueOf(1);
+        } else {
+            params[12] = String.valueOf(0);
+        }
+
+
         new PasswordGeneratorTask() {
             @Override
             protected void onPostExecute(String result) {
-                TextView textViewPassword = (TextView) rootView.findViewById(R.id.textViewPassword);
+                TextView textViewPassword = rootView.findViewById(R.id.textViewPassword);
                 textViewPassword.setText(result);
 
                 passwordToClipboard(clipboard_enabled, result);

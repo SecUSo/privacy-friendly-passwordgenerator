@@ -134,6 +134,9 @@
 
     <string name="title_hash_algorithms">PBKDF2: ハッシュアルゴリズム</string>
 
+    <string name="title_confusable">Disable confusable symbols</string>
+    <string name="summary_confusable">The password will not contain confusable symbols (e.g. I and l). </string>
+
     <!-- ###DIALOGS### -->
     <string name="okay">OK</string>
 
