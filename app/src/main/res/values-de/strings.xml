@@ -148,7 +148,7 @@ Die Salze werden aus den Daten des Kontos gewonnen</string>
     <string name="dialog_benchmark_time">Das Generieren dauert etwa</string>
 
     <!-- ##TUTORIAL_DIALOG-->
-    <string name="skip">Überspringen</string>
+    <string name="skip">Skip</string>
     <string name="start">FERTIG</string>
 
     <string name="slide_1_title">Willkommen!</string>
