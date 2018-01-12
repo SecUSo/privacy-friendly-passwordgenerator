@@ -33,7 +33,7 @@
             android:entryValues="@array/pref_hash_algorithms"
             android:key="hash_algorithm"
             android:summary="@string/default_hash_algorithm"
-            android:title="@string/title_hash_algorithms"></ListPreference>
+            android:title="@string/title_hash_algorithms"/>
         <ListPreference
             android:defaultValue="@string/default_iterations"
             android:entries="@array/pref_iterations"

@@ -112,13 +112,13 @@ public class UpdateMetadataDialog extends DialogFragment {
             }
         });
 
-        Button versionButton = (Button) rootView.findViewById(R.id.versionButton);
+        Button versionButton = rootView.findViewById(R.id.versionButton);
         versionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RelativeLayout versionDataLayout = (RelativeLayout) rootView.findViewById(R.id.updateVersionLayout);
-                TextView versionTextView = (TextView) rootView.findViewById(R.id.versionButton);
-                TextView textViewIteration = (TextView) rootView.findViewById(R.id.textViewIteration);
+                RelativeLayout versionDataLayout = rootView.findViewById(R.id.updateVersionLayout);
+                TextView versionTextView = rootView.findViewById(R.id.versionButton);
+                TextView textViewIteration = rootView.findViewById(R.id.textViewIteration);
                 if (!versionVisible) {
                     versionDataLayout.setVisibility(View.VISIBLE);
                     textViewIteration.setVisibility(View.VISIBLE);
@@ -137,7 +137,7 @@ public class UpdateMetadataDialog extends DialogFragment {
 
         });
 
-        ImageButton versionInfoImageButton = (ImageButton) rootView.findViewById(R.id.versionInfoImageButton);
+        ImageButton versionInfoImageButton = rootView.findViewById(R.id.versionInfoImageButton);
         versionInfoImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,15 +162,15 @@ public class UpdateMetadataDialog extends DialogFragment {
      * Displays old metadata and lets user add new metadata
      */
     public void setUpData() {
-        EditText domain = (EditText) rootView.findViewById(R.id.editTextDomainUpdate);
-        EditText username = (EditText) rootView.findViewById(R.id.editTextUsernameUpdate);
-        TextView oldVersion = (TextView) rootView.findViewById(R.id.textViewIteration);
-        EditText newVersion = (EditText) rootView.findViewById(R.id.EditTextIteration);
+        EditText domain = rootView.findViewById(R.id.editTextDomainUpdate);
+        EditText username = rootView.findViewById(R.id.editTextUsernameUpdate);
+        TextView oldVersion = rootView.findViewById(R.id.textViewIteration);
+        EditText newVersion = rootView.findViewById(R.id.EditTextIteration);
 
-        CheckBox checkBoxSpecialCharacterUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxSpecialCharacterUpdate);
-        CheckBox checkBoxLettersLowUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxLettersLowUpdate);
-        CheckBox checkBoxLettersUpUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxLettersUpUpdate);
-        CheckBox checkBoxNumbersUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxNumbersUpdate);
+        CheckBox checkBoxSpecialCharacterUpdate = rootView.findViewById(R.id.checkBoxSpecialCharacterUpdate);
+        CheckBox checkBoxLettersLowUpdate = rootView.findViewById(R.id.checkBoxLettersLowUpdate);
+        CheckBox checkBoxLettersUpUpdate = rootView.findViewById(R.id.checkBoxLettersUpUpdate);
+        CheckBox checkBoxNumbersUpdate = rootView.findViewById(R.id.checkBoxNumbersUpdate);
 
         setCheckBox(checkBoxSpecialCharacterUpdate, metaData.getHAS_SYMBOLS());
         setCheckBox(checkBoxLettersLowUpdate, metaData.getHAS_LETTERS_LOW());
@@ -183,12 +183,12 @@ public class UpdateMetadataDialog extends DialogFragment {
         oldVersion.setText(getString(R.string.old_version, String.valueOf(metaData.getITERATION())));
         newVersion.setText(String.valueOf(metaData.getITERATION() + 1));
 
-        TextView textViewLengthDisplayUpdate = (TextView) rootView.findViewById(R.id.textViewLengthDisplayUpdate);
+        TextView textViewLengthDisplayUpdate = rootView.findViewById(R.id.textViewLengthDisplayUpdate);
         textViewLengthDisplayUpdate.setText(Integer.toString(metaData.getLENGTH()));
 
         final TextView finalTextViewLengthDisplayUpdate = textViewLengthDisplayUpdate;
 
-        SeekBar seekBarLength = (SeekBar) rootView.findViewById(R.id.seekBarLengthUpdate);
+        SeekBar seekBarLength = rootView.findViewById(R.id.seekBarLengthUpdate);
         seekBarLength.setProgress(metaData.getLENGTH() - 4);
 
         seekBarLength.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -207,14 +207,14 @@ public class UpdateMetadataDialog extends DialogFragment {
 
     public void updateMetadata(int oldIteration) {
 
-        SeekBar seekBarLength = (SeekBar) rootView.findViewById(R.id.seekBarLengthUpdate);
-        CheckBox hasNumbersCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxNumbersUpdate);
-        CheckBox hasSymbolsCheckBox = (CheckBox) rootView.findViewById(R.id.checkBoxSpecialCharacterUpdate);
-        CheckBox checkBoxLettersLowUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxLettersLowUpdate);
-        CheckBox checkBoxLettersUpUpdate = (CheckBox) rootView.findViewById(R.id.checkBoxLettersUpUpdate);
-        EditText domain = (EditText) rootView.findViewById(R.id.editTextDomainUpdate);
-        EditText username = (EditText) rootView.findViewById(R.id.editTextUsernameUpdate);
-        EditText iteration = (EditText) rootView.findViewById(R.id.EditTextIteration);
+        SeekBar seekBarLength = rootView.findViewById(R.id.seekBarLengthUpdate);
+        CheckBox hasNumbersCheckBox = rootView.findViewById(R.id.checkBoxNumbersUpdate);
+        CheckBox hasSymbolsCheckBox = rootView.findViewById(R.id.checkBoxSpecialCharacterUpdate);
+        CheckBox checkBoxLettersLowUpdate = rootView.findViewById(R.id.checkBoxLettersLowUpdate);
+        CheckBox checkBoxLettersUpUpdate = rootView.findViewById(R.id.checkBoxLettersUpUpdate);
+        EditText domain = rootView.findViewById(R.id.editTextDomainUpdate);
+        EditText username = rootView.findViewById(R.id.editTextUsernameUpdate);
+        EditText iteration = rootView.findViewById(R.id.EditTextIteration);
 
         if (domain.getText().toString().length() == 0) {
             Toast toast = Toast.makeText(getActivity().getBaseContext(), getString(R.string.add_domain_message), Toast.LENGTH_SHORT);

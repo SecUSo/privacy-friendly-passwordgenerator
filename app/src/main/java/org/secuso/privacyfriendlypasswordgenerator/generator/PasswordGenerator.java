@@ -66,13 +66,10 @@ public class PasswordGenerator {
         byte[] passwordChar = UTF8.encode(password);
         byte[] transformedPassword = new byte[31];
 
-
         for (int i = 29; i < passwordChar.length; i++) {
             transformedPassword[i - 29] = passwordChar[i];
         }
-
         return transformedPassword;
-
     }
 
     public String getPassword(int specialCharacters, int lowerCaseLetters, int upperCaseLetters,
@@ -139,25 +136,36 @@ public class PasswordGenerator {
         }
 
         List<String> digitsSet = new ArrayList<>();
-        for (int i = 0; i < numbersInitial.length(); i++) {
-            digitsSet.add(Character.toString(numbersInitial.charAt(i)));
-        }
-
-        List<String> lowerSet = new ArrayList<>();
-        for (int i = 0; i < lowerInitial.length(); i++) {
-            lowerSet.add(Character.toString(lowerInitial.charAt(i)));
-        }
-
         List<String> upperSet = new ArrayList<>();
-        for (int i = 0; i < upperInitals.length(); i++) {
-            upperSet.add(Character.toString(upperInitals.charAt(i)));
-        }
-
         List<String> extraSet = new ArrayList<>();
+        List<String> lowerSet = new ArrayList<>();
+
         for (int i = 0; i < characters.length(); i++) {
             extraSet.add(Character.toString(characters.charAt(i)));
         }
 
+        if (confusableDisabled == 1) {
+
+            for (int i = 0; i < numbersInitialNoConfusable.length(); i++) {
+                digitsSet.add(Character.toString(numbersInitialNoConfusable.charAt(i)));
+            }
+            for (int i = 0; i < upperInitalsNoConfusable.length(); i++) {
+                upperSet.add(Character.toString(upperInitalsNoConfusable.charAt(i)));
+            }
+            for (int i = 0; i < lowerInitialNoConfusable.length(); i++) {
+                lowerSet.add(Character.toString(lowerInitialNoConfusable.charAt(i)));
+            }
+        } else {
+            for (int i = 0; i < numbersInitial.length(); i++) {
+                digitsSet.add(Character.toString(numbersInitial.charAt(i)));
+            }
+            for (int i = 0; i < upperInitals.length(); i++) {
+                upperSet.add(Character.toString(upperInitals.charAt(i)));
+            }
+            for (int i = 0; i < lowerInitial.length(); i++) {
+                lowerSet.add(Character.toString(lowerInitial.charAt(i)));
+            }
+        }
 
         if (characterSet.size() > 0) {
             String template = shuffleTemplate(TemplateFactory.createTemplateFromParameters(specialCharacters, lowerCaseLetters, upperCaseLetters,
@@ -191,7 +199,6 @@ public class PasswordGenerator {
         return password;
     }
 
-    
     private String shuffleTemplate(String s){
 
         BigInteger bigInt = new BigInteger(hashValue);
