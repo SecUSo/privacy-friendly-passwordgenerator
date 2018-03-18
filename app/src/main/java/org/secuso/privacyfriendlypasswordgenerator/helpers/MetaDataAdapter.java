@@ -131,6 +131,10 @@ public class MetaDataAdapter extends RecyclerView.Adapter<MetaDataAdapter.MetaDa
         this.metaDataList = metaDataList;
     }
 
+    public MetaData getItem(int position) {
+        return metaDataList.get(position);
+    }
+
     public MetaData removeItem(int position) {
         final MetaData metaData = metaDataList.remove(position);
         notifyItemRemoved(position);
