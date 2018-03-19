@@ -66,10 +66,13 @@ The icons used in the nagivation drawer are licensed under the [CC BY 2.5](http:
 App-Icon: <br />
 Markus Hau<br />
 
+Developer: <br />
+Yonjuni (Karola Marky) <br />
+
 Github-Users: <br />
-Yonjuni<br />
 Naofum <br />
-mohammadnaseri
+mohammadnaseri <br />
+Henne1191
 
 
 
