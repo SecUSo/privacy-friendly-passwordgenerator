@@ -124,7 +124,7 @@ public class MainActivity extends BaseActivity {
                         Bundle bundle = new Bundle();
 
                         //Gets ID for look up in DB
-                        MetaData temp = metadatalist.get(position);
+                        MetaData temp = adapter.getItem(position);
 
                         bundle.putInt("position", temp.getID());
                         bundle.putString("hash_algorithm", hash_algorithm);
