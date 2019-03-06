@@ -152,7 +152,7 @@ public class MainActivity extends BaseActivity {
                         Bundle bundle = new Bundle();
 
                         //Gets ID for look up in DB
-                        MetaData temp = metadatalist.get(position);
+                        MetaData temp = adapter.get(position);
 
                         bundle.putInt("position", temp.getID());
                         bundle.putString("hash_algorithm", hash_algorithm);
@@ -186,13 +186,6 @@ public class MainActivity extends BaseActivity {
                                     deleteItem(position);
                                 }
                             }
-
-//                            @Override
-//                            public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
-//                               for (int position : reverseSortedPositions) {
-//                                  deleteItem(position);
-//                               }
-//                            }
                         });
 
         recyclerView.addOnItemTouchListener(swipeTouchListener);
