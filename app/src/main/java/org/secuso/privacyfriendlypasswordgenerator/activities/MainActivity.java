@@ -217,14 +217,16 @@ public class MainActivity extends BaseActivity {
 
     public void deleteItem(int position) {
 
-        MetaData toDeleteMetaData = metadatalist.get(position);
+        MetaData toDeleteMetaData = adapter.getItem(position);
         final MetaData toDeleteMetaDataFinal = toDeleteMetaData;
 
         //Removes MetaData from DB
         database.deleteMetaData(toDeleteMetaData);
 
         //Removes MetaData from List in View
-        metadatalist.remove(position);
+        adapter.removeItem(position);
+        metadatalist.remove(toDeleteMetaData);
+
 
         final int finalPosition = position;
 
