@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "26.0.2"
+    buildToolsVersion "26.0.3"
     defaultConfig {
         applicationId "org.secuso.privacyfriendlypasswordgenerator"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 4
+        versionName "1.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -21,7 +21,7 @@ android {
 
 repositories{
     maven {
-        url 'http://dl.bintray.com/amulyakhare/maven'
+        url 'https://dl.bintray.com/amulyakhare/maven'
     }
 }
 
