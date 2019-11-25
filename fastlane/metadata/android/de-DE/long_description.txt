@@ -1,0 +1,24 @@
+Privacy Friendly Passwort Generator generiert unterschiedliche Passworte für alle Ihre Konten. Sie müssen sich lediglich ein Master-Passwort merken. Detaillierte Informationen wie Sie mit Hilfe der App Passworte generieren erhalten Sie auf der Hilfe-Seite der App oder unter https://secuso.org/pfa.
+
+Wenn Sie ein Passwort für ein Benutzerkonto generieren möchten, so können Sie dieses Konto zu Privacy Friendly Passwort Generator hinzufügen. Dafür müssen Sie lediglich festlegen, welche Zeichen (Kleinbuchstaben, Großbuchstaben, Zahlen, Sonderzeichen) Sie im Passwort verwenden möchten und wie lange das Passwort sein soll.
+
+Die hinzugefügten Benutzerkonten werden in einer Liste angezeigt. Um ein Passwort für ein Benutzerkonto in der Liste zu generieren müssen Sie nur darauf tippen und Ihr Masterpasswort eingeben. Das Masterpasswort ist ein von Ihnen erdachtes Passwort, welches alle generierten Passworte schützt. Wie alle anderen Passworte auch, wird es nicht in der App gespeichert. Wenn Sie möchten können Sie sich das Masterpasswort notieren und an einem sicheren Ort aufbewahren.
+
+Privacy Friendly Password Generator zeigt das speziell für das ausgewählte Benutzerkonto generierte Passwort an. Dieses Passwort kann jederzeit neu generiert werden.
+
+Falls Sie herausfinden möchten, wie Privacy Friendly Passwort Generator Passworte generiert, https://secuso.org/pfa stellt Informationen und eine Erklärung des Algorithmus bereit.
+
+Was unterscheidet Privacy Friendly Passwort Generator von anderen, ähnlichen Apps?
+
+1. Keine Berechtigungen
+Privacy Friendly Passwort Generator verwendet keine Berechtigungen.
+Zum Vergleich: Die Top Ten ähnlicher Apps, die im Google Play Store erhältlich sind, benötigt durchschnittlich 3,4 Berechtigungen (Stand: November 2016). Hierzu zählen der Zugriff auf Netzwerke, das Internet oder Standortdaten.
+
+2. Schutz sensitiver Daten
+In Privacy Friendly Passwort Generator werden keine Passworte gespeichert. Weder das Master Passwort, noch generierte Passworte werden in der App gespeichert.
+Zusätzlich ist es nicht möglich Bildschirmfotos von den Passwörtern anzufertigen.
+
+3. Keine störende Werbung
+Viele andere kostenlose Apps im Google Play Store blenden störende Werbung ein, die unter anderem auch die Akkulaufzeit verkürzt und Datenvolumen verbrauchen kann.
+
+Die App gehört zur Gruppe der Privacy Friendly Apps, die von der Forschungsgruppe SECUSO der Technischen Universität Darmstadt entwickelt werden. Mehr Informationen unter: https://secuso.org/pfa
