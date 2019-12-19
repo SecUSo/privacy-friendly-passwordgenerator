@@ -1,1 +1,1 @@
-With Privacy Friendly Password Generator you can generate different passwords for all your accounts while remembering only one master password.
+Remember one master password & generate different passwords for your accounts
