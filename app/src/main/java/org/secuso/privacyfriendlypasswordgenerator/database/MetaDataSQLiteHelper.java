@@ -38,7 +38,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
 
-    private static final String DATABASE_NAME = "PF_PASSWORD_GENERATOR_DB";
+    public static final String DATABASE_NAME = "PF_PASSWORD_GENERATOR_DB";
 
     private static final String TABLE_METADATA = "META_DATA";
 
@@ -148,6 +148,8 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
                 metaDataList.add(metaData);
             } while (cursor.moveToNext());
         }
+        cursor.close();
+        database.close();
 
         return metaDataList;
     }
@@ -165,8 +167,12 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
         values.put(KEY_HAS_LETTERS_LOW, metaData.getHAS_LETTERS_LOW());
         values.put(VERSION, metaData.getITERATION());
 
-        return database.update(TABLE_METADATA, values, KEY_ID + " = ?",
+        int result = database.update(TABLE_METADATA, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(metaData.getID())});
+
+        database.close();
+
+        return result;
     }
 
     public void deleteMetaData(MetaData metaData) {
@@ -179,6 +185,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
     public void deleteAllMetaData() {
         SQLiteDatabase database = this.getWritableDatabase();
         database.execSQL("delete from " + TABLE_METADATA);
+        database.close();
     }
 
     public MetaData getMetaData(int id) {
@@ -203,6 +210,7 @@ public class MetaDataSQLiteHelper extends SQLiteOpenHelper {
 
             cursor.close();
         }
+        database.close();
 
         return metaData;
 

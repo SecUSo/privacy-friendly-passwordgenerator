@@ -19,7 +19,7 @@ package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.TutorialActivity;
 
@@ -37,7 +37,6 @@ public class SplashActivity extends AppCompatActivity {
         Intent mainIntent = new Intent(SplashActivity.this, TutorialActivity.class);
         SplashActivity.this.startActivity(mainIntent);
         SplashActivity.this.finish();
-
     }
 
 }

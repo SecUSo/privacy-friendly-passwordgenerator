@@ -18,7 +18,7 @@
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
+import androidx.appcompat.app.ActionBar;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.TextView;
