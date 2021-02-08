@@ -17,6 +17,7 @@
 
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
+import androidx.fragment.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -78,6 +79,8 @@ public class MainActivity extends BaseActivity {
 
     private LinearLayout initialAlert;
 
+    private DialogFragment activeDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,9 +137,9 @@ public class MainActivity extends BaseActivity {
                         bundle.putInt("number_iterations", number_iterations);
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
-                        GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
-                        generatePasswordDialog.setArguments(bundle);
-                        generatePasswordDialog.show(fragmentManager, "GeneratePasswordDialog");
+			activeDialog = new GeneratePasswordDialog();
+			activeDialog.setArguments(bundle);
+			activeDialog.show(fragmentManager, "GeneratePasswordDialog");
 
                         PrefManager prefManager = new PrefManager(getBaseContext());
                         if (prefManager.isFirstTimeGen()) {
@@ -161,9 +164,9 @@ public class MainActivity extends BaseActivity {
                         bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
-                        UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
-                        updateMetadataDialog.setArguments(bundle);
-                        updateMetadataDialog.show(fragmentManager, "UpdateMetadataDialog");
+                        activeDialog = new UpdateMetadataDialog();
+                        activeDialog.setArguments(bundle);
+                        activeDialog.show(fragmentManager, "UpdateMetadataDialog");
                     }
                 })
         );
@@ -206,8 +209,8 @@ public class MainActivity extends BaseActivity {
                 @Override
                 public void onClick(View view) {
                     FragmentManager fragmentManager = getSupportFragmentManager();
-                    AddMetaDataDialog addMetaDataDialog = new AddMetaDataDialog();
-                    addMetaDataDialog.show(fragmentManager, "AddMetaDataDialog");
+                    activeDialog = new AddMetaDataDialog();
+                    activeDialog.show(fragmentManager, "AddMetaDataDialog");
                 }
             });
 
@@ -303,6 +306,14 @@ public class MainActivity extends BaseActivity {
         loadPreferences();
         loadDatabase();
     }
+
+    @Override
+    public void onPause() {
+	super.onPause();
+	if (activeDialog != null) {
+	    activeDialog.dismissAllowingStateLoss();
+	    activeDialog = null;
+ 	}
 
     private void loadDatabase() {
         if(database != null) {
