@@ -17,6 +17,7 @@
 
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -313,13 +314,15 @@ public class MainActivity extends BaseActivity {
     }
 
     public void loadPreferences() {
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+	Context context = getBaseContext();
+	SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         clipboard_enabled = sharedPreferences.getBoolean("clipboard_enabled", false);
         bindToDevice_enabled = sharedPreferences.getBoolean("bindToDevice_enabled", false);
-        hash_algorithm = sharedPreferences.getString("hash_algorithm", "SHA256");
-        String tempIterations = sharedPreferences.getString("hash_iterations", "1000");
+	String default_hash_algorithm = context.getResources().getString(R.string.default_hash_algorithm);
+	hash_algorithm = sharedPreferences.getString("hash_algorithm", default_hash_algorithm);
+	String default_iterations = context.getResources().getString(R.string.default_iterations);
+	String tempIterations = sharedPreferences.getString("hash_iterations", default_iterations);
         number_iterations = Integer.parseInt(tempIterations);
     }
 
