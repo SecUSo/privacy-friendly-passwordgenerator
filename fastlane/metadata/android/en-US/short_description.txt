@@ -1,1 +1,1 @@
-Remember one master password & generate different passwords for your accounts
+(SECUSO) Generate passwords for your accounts from one master password
