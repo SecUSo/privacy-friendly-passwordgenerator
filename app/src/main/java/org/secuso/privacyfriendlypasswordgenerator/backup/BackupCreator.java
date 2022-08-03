@@ -7,6 +7,8 @@ import android.preference.PreferenceManager;
 import android.util.JsonWriter;
 import android.util.Log;
 
+import androidx.sqlite.db.SupportSQLiteDatabase;
+
 import org.jetbrains.annotations.NotNull;
 import org.secuso.privacyfriendlybackup.api.backup.DatabaseUtil;
 import org.secuso.privacyfriendlybackup.api.backup.PreferenceUtil;
@@ -17,6 +19,7 @@ import java.io.OutputStreamWriter;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper.DATABASE_NAME;
+import static org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper.DATABASE_VERSION;
 
 public class BackupCreator implements IBackupCreator {
 
@@ -29,7 +32,7 @@ public class BackupCreator implements IBackupCreator {
         try {
             writer.beginObject();
 
-            SQLiteDatabase dataBase = SQLiteDatabase.openDatabase(context.getDatabasePath(DATABASE_NAME).getPath(), null, SQLiteDatabase.OPEN_READONLY);
+            SupportSQLiteDatabase dataBase = DatabaseUtil.getSupportSQLiteOpenHelper(context, DATABASE_NAME, DATABASE_VERSION).getReadableDatabase();
 
             writer.name("database");
             DatabaseUtil.writeDatabase(writer, dataBase);
