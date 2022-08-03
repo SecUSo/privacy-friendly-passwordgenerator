@@ -52,11 +52,11 @@ If you wish to contribute to this project, have a look at the contribution polic
 ### API Reference
 
 Mininum SDK: 17<br>
-Target SDK: 25 
+Target SDK: 32 
 
 ## License
 
-Privacy Friendly Password Generator is licensed under the GPLv3.
+Privacy Friendly Password Generator is licensed under the GPLv3.<br>
 Copyright (C) 2016-2018  Karola Marky<br>
 Copyright (C) 2019-2022  Christopher Beckmann<br>
 
