@@ -80,8 +80,8 @@ The app uses icons from [Google Design Material Icons](https://design.google.com
 App-Icon: <br />
 Markus Hau<br />
 
-<a href="https://github.com/SecUSo/privacy-friendly-backup/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=SecUSo/privacy-friendly-backup&max=100&columns=20" />
+<a href="https://github.com/SecUSo/privacy-friendly-passwordgenerator/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=SecUSo/privacy-friendly-passwordgenerator&max=100&columns=20" />
 </a>
 
 
