@@ -1,1 +1,1 @@
-Password Generator (Privacy Friendly)
+Password Generator (PFA)
