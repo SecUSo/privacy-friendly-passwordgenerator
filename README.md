@@ -5,7 +5,7 @@
 [PFA]: https://secuso.org/pfa
 [Mastodon]: https://xn--baw-joa.social/@SECUSO_Research
 [Twitter]: https://twitter.com/SECUSOResearch
-<img src="https://github.com/SecUSo/privacy-friendly-passwordgenerator/raw/master/fastlane/metadata/android/en-US/images/icon.png"
+<img src="https://raw.githubusercontent.com/SecUSo/privacy-friendly-passwordgenerator/master/fastlane/metadata/android/en-US/images/icon.png"
      alt="Privacy Friendly Backup Icon"
      width="80px"
      align="right"
@@ -52,11 +52,11 @@ If you wish to contribute to this project, have a look at the contribution polic
 ### API Reference
 
 Mininum SDK: 17<br>
-Target SDK: 25 
+Target SDK: 32 
 
 ## License
 
-Privacy Friendly Password Generator is licensed under the GPLv3.
+Privacy Friendly Password Generator is licensed under the GPLv3.<br>
 Copyright (C) 2016-2018  Karola Marky<br>
 Copyright (C) 2019-2022  Christopher Beckmann<br>
 
@@ -80,8 +80,8 @@ The app uses icons from [Google Design Material Icons](https://design.google.com
 App-Icon: <br />
 Markus Hau<br />
 
-<a href="https://github.com/SecUSo/privacy-friendly-backup/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=SecUSo/privacy-friendly-backup&max=100&columns=20" />
+<a href="https://github.com/SecUSo/privacy-friendly-passwordgenerator/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=SecUSo/privacy-friendly-passwordgenerator&max=100&columns=20" />
 </a>
 
 
