@@ -43,6 +43,7 @@ import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTask;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.SeedHelper;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
 
@@ -205,16 +206,7 @@ public class UpdatePasswordDialog extends DialogFragment {
             final TextView textViewOldPassword = (TextView) rootView.findViewById(R.id.textViewOldPassword);
             final TextView textViewNewPassword = (TextView) rootView.findViewById(R.id.textViewNewPassword);
 
-            String deviceID;
-
-            if (bindToDevice_enabled) {
-                deviceID = Settings.Secure.getString(getContext().getContentResolver(),
-                        Settings.Secure.ANDROID_ID);
-                Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
-                        Settings.Secure.ANDROID_ID));
-            } else {
-                deviceID = "SECUSO";
-            }
+            String deviceID = new SeedHelper().getSeed(requireActivity().getBaseContext());
 
             //pack old parameters to String-Array
             String[] paramsOld = new String[12];

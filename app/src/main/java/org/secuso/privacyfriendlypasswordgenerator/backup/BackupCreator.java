@@ -24,7 +24,7 @@ import static org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLit
 public class BackupCreator implements IBackupCreator {
 
     @Override
-    public void writeBackup(@NotNull Context context, @NotNull OutputStream outputStream) {
+    public boolean writeBackup(@NotNull Context context, @NotNull OutputStream outputStream) {
         OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, UTF_8);
         JsonWriter writer = new JsonWriter(outputStreamWriter);
         writer.setIndent("");
@@ -47,7 +47,9 @@ public class BackupCreator implements IBackupCreator {
         } catch (Exception e) {
             Log.e("PFA BackupCreator", "Error occurred", e);
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
 

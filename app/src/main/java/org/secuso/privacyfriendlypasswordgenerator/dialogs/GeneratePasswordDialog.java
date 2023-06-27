@@ -18,17 +18,14 @@
 package org.secuso.privacyfriendlypasswordgenerator.dialogs;
 
 
+import static android.content.Context.CLIPBOARD_SERVICE;
+
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.Settings;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
-
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -39,12 +36,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTask;
-
-import static android.content.Context.CLIPBOARD_SERVICE;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.SeedHelper;
 
 /**
  * @author Karola Marky
@@ -190,15 +189,7 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         metaData = database.getMetaData(position);
 
-        String deviceID;
-        if (bindToDevice_enabled) {
-            deviceID = Settings.Secure.getString(getContext().getContentResolver(),
-                    Settings.Secure.ANDROID_ID);
-            Log.d("DEVICE ID", Settings.Secure.getString(getContext().getContentResolver(),
-                    Settings.Secure.ANDROID_ID));
-        } else {
-            deviceID = "SECUSO";
-        }
+        String deviceID = new SeedHelper().getSeed(requireActivity().getBaseContext());
 
         //pack parameters to String-Array
         String[] params = new String[12];
