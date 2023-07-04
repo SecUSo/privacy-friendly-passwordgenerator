@@ -45,6 +45,7 @@ import org.secuso.privacyfriendlypasswordgenerator.dialogs.GeneratePasswordDialo
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.UpdateMetadataDialog;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.SeedHelper;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.SwipeableRecyclerViewTouchListener;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.MasterPWTutorialActivity;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
@@ -87,6 +88,7 @@ public class MainActivity extends BaseActivity {
         PrefManager prefManager = new PrefManager(this);
         if (prefManager.isFirstTimeLaunch()) {
             addSampleData();
+            new SeedHelper().initializeSeed(getApplicationContext());
             prefManager.setFirstTimeLaunch(false);
         }
 
