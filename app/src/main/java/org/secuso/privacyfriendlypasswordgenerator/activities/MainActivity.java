@@ -54,7 +54,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Code for displaying cards according to the tutorial from https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465
+ * Code for displaying cards according to the tutorial from <a href="https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465">tutsplus.com</a>
  *
  * @author Karola Marky
  * @version 20170112
@@ -203,13 +203,10 @@ public class MainActivity extends BaseActivity {
         FloatingActionButton addFab = (FloatingActionButton) findViewById(R.id.add_fab);
         if (addFab != null) {
 
-            addFab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    AddMetaDataDialog addMetaDataDialog = new AddMetaDataDialog();
-                    addMetaDataDialog.show(fragmentManager, "AddMetaDataDialog");
-                }
+            addFab.setOnClickListener(view -> {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                AddMetaDataDialog addMetaDataDialog = new AddMetaDataDialog();
+                addMetaDataDialog.show(fragmentManager, "AddMetaDataDialog");
             });
 
         }
@@ -236,16 +233,13 @@ public class MainActivity extends BaseActivity {
         hints(position);
 
         Snackbar.make(findViewById(android.R.id.content), getString(R.string.domain) + " " + toDeleteMetaData.getDOMAIN() + " " + getString(R.string.item_deleted), Snackbar.LENGTH_SHORT)
-                .setAction(getString(R.string.undo), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        database.addMetaDataWithID(toDeleteMetaDataFinal);
-                        metadatalist.add(finalPosition, toDeleteMetaDataFinal);
-                        adapter.notifyItemInserted(finalPosition);
-                        adapter.notifyDataSetChanged();
-                        initialAlert.setVisibility(View.GONE);
-                        hints(1);
-                    }
+                .setAction(getString(R.string.undo), view -> {
+                    database.addMetaDataWithID(toDeleteMetaDataFinal);
+                    metadatalist.add(finalPosition, toDeleteMetaDataFinal);
+                    adapter.notifyItemInserted(finalPosition);
+                    adapter.notifyDataSetChanged();
+                    initialAlert.setVisibility(View.GONE);
+                    hints(1);
                 }).show();
 
         adapter.notifyItemRemoved(position);
@@ -321,7 +315,7 @@ public class MainActivity extends BaseActivity {
         clipboard_enabled = sharedPreferences.getBoolean("clipboard_enabled", false);
         bindToDevice_enabled = sharedPreferences.getBoolean("bindToDevice_enabled", false);
         hash_algorithm = sharedPreferences.getString("hash_algorithm", "SHA256");
-        String tempIterations = sharedPreferences.getString("hash_iterations", "1000");
+        String tempIterations = sharedPreferences.getString("hash_iterations", getString(R.string.default_iterations));
         number_iterations = Integer.parseInt(tempIterations);
     }
 
