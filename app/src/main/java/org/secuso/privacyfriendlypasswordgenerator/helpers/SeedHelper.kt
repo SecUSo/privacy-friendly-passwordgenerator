@@ -31,7 +31,7 @@ class SeedHelper {
     class EncryptedSeedPreference {
         val FILE_NAME = "preference_encrypted"
 
-        private fun initPreference(context: Context): SharedPreferences {
+        fun initPreference(context: Context): SharedPreferences {
             val mainKey = MasterKey.Builder(context)
                 .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
                 .build()

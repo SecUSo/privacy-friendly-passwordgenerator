@@ -1,8 +1,11 @@
 package org.secuso.privacyfriendlypasswordgenerator.backup;
 
+import static org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper.DATABASE_NAME;
+import static org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper.DATABASE_VERSION;
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.preference.PreferenceManager;
 import android.util.JsonWriter;
 import android.util.Log;
@@ -13,13 +16,10 @@ import org.jetbrains.annotations.NotNull;
 import org.secuso.privacyfriendlybackup.api.backup.DatabaseUtil;
 import org.secuso.privacyfriendlybackup.api.backup.PreferenceUtil;
 import org.secuso.privacyfriendlybackup.api.pfa.IBackupCreator;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.SeedHelper;
 
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper.DATABASE_NAME;
-import static org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper.DATABASE_VERSION;
 
 public class BackupCreator implements IBackupCreator {
 
@@ -41,6 +41,10 @@ public class BackupCreator implements IBackupCreator {
             writer.name("preferences");
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
             PreferenceUtil.writePreferences(writer, pref);
+
+            writer.name("seed_preferences");
+            SharedPreferences seed_pref = new SeedHelper.EncryptedSeedPreference().initPreference(context);
+            PreferenceUtil.writePreferences(writer, seed_pref);
 
             writer.endObject();
             writer.close();
