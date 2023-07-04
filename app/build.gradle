@@ -17,13 +17,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            def appName = "pfa-passwordgenerator"
+            outputFileName = appName + "-${variant.name}-v${variant.versionName}.apk"
+        }
+    }
     lint {
         abortOnError false
     }
     namespace 'org.secuso.privacyfriendlypasswordgenerator'
 }
 
-repositories{
+repositories {
     maven {
         url 'https://dl.bintray.com/amulyakhare/maven'
     }
