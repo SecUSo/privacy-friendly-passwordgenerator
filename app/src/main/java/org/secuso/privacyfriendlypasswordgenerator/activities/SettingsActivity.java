@@ -39,6 +39,7 @@ import android.widget.Toast;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.BenchmarkDialog;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.PreferenceKeys;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -155,8 +156,8 @@ public class SettingsActivity extends BaseActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
 
-            bindPreferenceSummaryToValue(findPreference("hash_iterations"));
-            bindPreferenceSummaryToValue(findPreference("hash_algorithm"));
+            bindPreferenceSummaryToValue(findPreference(PreferenceKeys.HASH_ITERATIONS));
+            bindPreferenceSummaryToValue(findPreference(PreferenceKeys.HASH_ALGORITHM));
 
             Preference benchmark = findPreference("benchmark");
             benchmark.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {

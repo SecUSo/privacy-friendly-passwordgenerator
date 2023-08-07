@@ -17,6 +17,7 @@ import org.secuso.privacyfriendlybackup.api.backup.DatabaseUtil;
 import org.secuso.privacyfriendlybackup.api.backup.PreferenceUtil;
 import org.secuso.privacyfriendlybackup.api.pfa.IBackupCreator;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.SeedHelper;
+import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
 
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -41,6 +42,10 @@ public class BackupCreator implements IBackupCreator {
             writer.name("preferences");
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
             PreferenceUtil.writePreferences(writer, pref);
+
+            writer.name("pfa_pw_generator_preferences");
+            SharedPreferences pfa_pref = new PrefManager(context).getPref();
+            PreferenceUtil.writePreferences(writer, pfa_pref);
 
             writer.name("seed_preferences");
             SharedPreferences seed_pref = new SeedHelper.EncryptedSeedPreference().initPreference(context);

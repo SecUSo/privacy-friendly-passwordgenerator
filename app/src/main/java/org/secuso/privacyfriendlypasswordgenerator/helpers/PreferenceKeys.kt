@@ -20,4 +20,7 @@ package org.secuso.privacyfriendlypasswordgenerator.helpers
 object PreferenceKeys {
     const val SEED_VALUE = "seed_value"
     const val BIND_TO_DEVICE_ENABLED = "bindToDevice_enabled"
+    const val CLIPBOARD_ENABLED = "clipboard_enabled"
+    const val HASH_ALGORITHM = "hash_algorithm"
+    const val HASH_ITERATIONS = "hash_iterations"
 }

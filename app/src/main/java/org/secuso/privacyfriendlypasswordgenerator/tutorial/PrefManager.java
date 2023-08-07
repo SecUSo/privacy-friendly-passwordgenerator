@@ -27,17 +27,17 @@ import android.content.SharedPreferences;
  */
 
 public class PrefManager {
-    private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
+    private final SharedPreferences pref;
+    private final SharedPreferences.Editor editor;
 
     // shared pref mode
-    private int PRIVATE_MODE = 0;
+    private final int PRIVATE_MODE = 0;
 
     // Shared preferences file name
     private static final String PREF_NAME = "pfa-pw-generator";
-    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
-    private static final String IS_TUTORIAL_LAUNCH = "IsTutorialLaunch";
-    private static final String IS_FIRST_TIME_GEN = "IsFirstTimeGen";
+    public static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+    public static final String IS_TUTORIAL_LAUNCH = "IsTutorialLaunch";
+    public static final String IS_FIRST_TIME_GEN = "IsFirstTimeGen";
 
     public PrefManager(Context context) {
         pref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
@@ -72,5 +72,11 @@ public class PrefManager {
     }
 
 
+    public SharedPreferences getPref() {
+        return pref;
+    }
 
+    public SharedPreferences.Editor getEditor() {
+        return editor;
+    }
 }

@@ -21,28 +21,33 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.provider.Settings
-import android.util.Log
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import java.security.SecureRandom
 
 class SeedHelper {
 
+    companion object {
+        private val DEFAULT_SEED_VALUE = "SECUSO"
+    }
+
+    /**
+     * Helper class for managing and accessing the values stored in the encrypted preferences.
+     */
     class EncryptedSeedPreference {
-        val FILE_NAME = "preference_encrypted"
+        private val FILE_NAME = "preference_encrypted"
 
         fun initPreference(context: Context): SharedPreferences {
             val mainKey = MasterKey.Builder(context)
                 .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
                 .build()
-            val sharedPreferences = EncryptedSharedPreferences.create(
+            return EncryptedSharedPreferences.create(
                 context,
                 FILE_NAME,
                 mainKey,
                 EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
                 EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
             )
-            return sharedPreferences
         }
 
         fun containsSeedValue(context: Context): Boolean {
@@ -50,7 +55,7 @@ class SeedHelper {
         }
 
         fun getSeedValue(context: Context): String? {
-            return initPreference(context).getString(PreferenceKeys.SEED_VALUE, "SECUSO")
+            return initPreference(context).getString(PreferenceKeys.SEED_VALUE, DEFAULT_SEED_VALUE)
         }
 
         fun setSeedValue(context: Context, newValue: String) {
@@ -60,35 +65,23 @@ class SeedHelper {
 
     fun getSeed(context: Context): String {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
-        val bindToDeviceEnabled = sharedPreferences.getBoolean("bindToDevice_enabled", false)
+        val bindToDeviceEnabled = sharedPreferences.getBoolean(PreferenceKeys.BIND_TO_DEVICE_ENABLED, false)
         val seedPreference = EncryptedSeedPreference()
 
         return if (bindToDeviceEnabled) {
             if (!seedPreference.containsSeedValue(context)) {
-                performDeviceIDMigration(context)
-                initializeSeed(context)
-            }
-            val id = seedPreference.getSeedValue(context) ?: "SECUSO"
-            Log.d("DEVICE ID", id)
-            id
-        } else {
-            "SECUSO"
-        }
-    }
-
-    private fun performDeviceIDMigration(context: Context) {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-        if (prefs.contains(PreferenceKeys.BIND_TO_DEVICE_ENABLED) && prefs.getBoolean(PreferenceKeys.BIND_TO_DEVICE_ENABLED, false)) {
-            //If BIND_TO_DEVICE_ENABLED is true we save the value of Settings.Secure.ANDROID_ID as a encrypted preference
-            val seedPreference = EncryptedSeedPreference()
-            if (seedPreference.containsSeedValue(context)) {
-                // Seed already present, nothing to do
-            } else {
+                // Store the ANDROID_ID as the seed value
                 seedPreference.setSeedValue(context, Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID))
             }
+            seedPreference.getSeedValue(context) ?: DEFAULT_SEED_VALUE
+        } else {
+            DEFAULT_SEED_VALUE
         }
     }
 
+    /**
+     * Generates a random String and saves it in the {@see [EncryptedSeedPreference]} if it is not present already.
+     */
     fun initializeSeed(context: Context) {
         val seedPreference = EncryptedSeedPreference()
 
