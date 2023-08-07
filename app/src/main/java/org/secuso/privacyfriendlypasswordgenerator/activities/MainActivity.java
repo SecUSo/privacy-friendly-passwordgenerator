@@ -91,11 +91,11 @@ public class MainActivity extends BaseActivity {
         PrefManager prefManager = new PrefManager(this);
         if (prefManager.isFirstTimeLaunch()) {
             addSampleData();
-            new SeedHelper().initializeSeed(getApplicationContext());
+            new SeedHelper().initializeSeed(getApplicationContext(), true);
             prefManager.setFirstTimeLaunch(false);
         }
-        // Fetch seed once to trigger possible migrations
-        new SeedHelper().getSeed(getApplicationContext());
+        // Make sure the seed value gets stored in the preferences
+        new SeedHelper().initializeSeed(getApplicationContext(), false);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 

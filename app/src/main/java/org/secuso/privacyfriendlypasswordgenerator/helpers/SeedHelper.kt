@@ -82,13 +82,18 @@ class SeedHelper {
     /**
      * Generates a random String and saves it in the {@see [EncryptedSeedPreference]} if it is not present already.
      */
-    fun initializeSeed(context: Context) {
+    fun initializeSeed(context: Context, isFirstTimeLaunch: Boolean) {
         val seedPreference = EncryptedSeedPreference()
 
         if (seedPreference.containsSeedValue(context)) {
             // Seed already present, nothing to do
         } else {
-            seedPreference.setSeedValue(context, generateSeed())
+            if (!isFirstTimeLaunch) {
+                // Not a new installation, so we store the ANDROID_ID as the seed value for backwards compatibility
+                seedPreference.setSeedValue(context, Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID))
+            } else {
+                seedPreference.setSeedValue(context, generateSeed())
+            }
         }
     }
 
