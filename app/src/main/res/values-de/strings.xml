@@ -109,10 +109,13 @@
 
     <string name="help_generation_heading">Wie werden die Passworte generiert?</string>
     <string name="help_generation_description">Die Passworte werden durch eine Kombination der Hashalgorithmen BCrypt und PBKDF2 generiert. Dabei ist das Master-Passwort der Startwert für beide Algorithmen.
-Die Salze werden aus den Daten des Kontos gewonnen</string>
+Die Seeds werden aus den Kontodaten und einem Zufalls-Seed (falls aktiviert) abgeleitet.</string>
 
     <string name="help_password_storage_heading">Werden die Passworte auf dem Gerät gespeichert?</string>
-    <string name="help_password_storage_description">Nein. Weder die generierten Passworte, noch das Master-Passwort werden auf dem Gerät gespeichert.</string>
+    <string name="help_password_storage_description">Nein. Weder die generierten Passworte, noch das Master-Passwort werden auf dem Gerät gespeichert. Nur die Kontodaten und der Zufalls-Seed werden auf Ihrem Gerät gespeichert.</string>
+
+    <string name="help_data_backup_heading">Gibt es eine Möglichkeit, meine Daten zu sichern?</string>
+    <string name="help_data_backup_description">Ja. Sie können die App \"Privacy Friendly Backup\" verwenden, um Ihre Kontodaten und den zufälligen Seed zu sichern. Auf diese Weise können die Daten auch auf ein anderes Gerät übertragen werden.</string>
 
     <string name="help_permissions_heading">Welche Berechtigungen verwendet Privacy Friendly Passwort Generator?</string>
     <string name="help_permissions_description">Privacy Friendly Passwort Generator verwendet keine Berechtigungen.</string>
@@ -123,8 +126,8 @@ Die Salze werden aus den Daten des Kontos gewonnen</string>
     <string name="delete_dialog_success">Alle Konten gelöscht.</string>
 
     <string name="title_activity_settings">Einstellungen</string>
-    <string name="title_bind_password">Alle Passworte an Gerät koppeln</string>
-    <string name="summary_bind_password">Erzeugt eindeutige Passworte abhängig vom Gerät. Andere Geräte können nicht diesselben Passworte bei der Eingabe von derselben Daten und demselben Master-Passwort erzeugen.</string>
+    <string name="title_bind_password">Alle Passwörter an diese Installation binden</string>
+    <string name="summary_bind_password">Erzeugt eindeutige Passwörter abhängig von einem zufälligen Seed (der beim ersten Start erzeugt wird). Bei Verwendung eines anderen Geräts oder einer Neuinstallation der App können nicht diesselben Passworte bei der Eingabe von denselben Daten und demselben Master-Passwort erzeugt werden. Wir empfehlen daher dringend, die Daten dieser App mit der Privacy Friendly Backup App zu sichern, wenn Sie diese Option verwenden. Andernfalls ist es unmöglich, die Passwörter wiederherzustellen, falls Sie Ihr Gerät verlieren.</string>
     <string name="title_clipboard">In Zwischenablage kopieren</string>
     <string name="summary_clipboard">Alle anderen Apps können Ihre Passworte in der Zwischenablage einsehen.</string>
 

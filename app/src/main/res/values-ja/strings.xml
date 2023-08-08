@@ -106,10 +106,13 @@
     <string name="help_manage_delete_description">片側にスワイプしてアカウントセットを削除します。</string>
 
     <string name="help_generation_heading">パスワードを生成する方法は?</string>
-    <string name="help_generation_description">パスワードは、PBKDF2 と BCrypt という 2 つのハッシュアルゴリズムの組み合わせによって生成されます。 マスターパスワードは、両方のアルゴリズムの秘密として機能します。 シードはアカウントデータから得られます。</string>
+    <string name="help_generation_description">パスワードは、PBKDF2 と BCrypt という 2 つのハッシュアルゴリズムの組み合わせによって生成されます。 マスターパスワードは、両方のアルゴリズムの秘密として機能します。 シードはアカウントデータとランダムシード（有効な場合）から導き出される。</string>
 
     <string name="help_password_storage_heading">パスワードはデバイスに保存されますか?</string>
-    <string name="help_password_storage_description">いいえ、パスワードもマスターパスワードもデバイスに保存されません。</string>
+    <string name="help_password_storage_description">いいえ、パスワードもマスターパスワードもデバイスに保存されません。 アカウントデータとランダムシードのみがデバイスに保存されます。</string>
+
+    <string name="help_data_backup_heading">データをバックアップする方法はありますか？</string>
+    <string name="help_data_backup_description">はい。\"Privacy Friendly Backup\"アプリを使って、アカウントデータとランダムシードをバックアップすることができます。この方法で、データを別のデバイスに転送することもできます。</string>
 
     <string name="help_permissions_heading">プライバシーに配慮したパスワードジェネレーターが必要とするアクセス許可は?</string>
     <string name="help_permissions_description">プライバシーに配慮したパスワードジェネレーターはアクセス許可を必要としません。</string>
@@ -120,8 +123,8 @@
     <string name="delete_dialog_success">すべてのアカウントを削除しました。</string>
 
     <string name="title_activity_settings">設定</string>
-    <string name="title_bind_password">すべてのパスワードをデバイスにバインド</string>
-    <string name="summary_bind_password">これにより、デバイスに基づいて一意のパスワードが作成されます。 別のデバイスと同じアカウントデータを使用してパスワードを再生成することはできません。</string>
+    <string name="title_bind_password">すべてのパスワードをこのインストールにバインドする</string>
+    <string name="summary_bind_password">これにより、ランダムなシード（初回起動時に生成される）に基づいて一意のパスワードが作成されます。このパスワードは、別のデバイスを使用したり、アプリを再インストールしたりしても再生成できません。そのため、このオプションを使用する場合は、Privacy Friendly Backupアプリを使用してこのアプリのデータをバックアップすることを強くお勧めします。そうしないと、デバイスを紛失した場合にパスワードを再生成することができなくなります。</string>
     <string name="title_clipboard">パスワードをクリップボードにコピー</string>
     <string name="summary_clipboard">すべての他のアプリは、クリップボード上のパスワードにアクセスできます。</string>
 
