@@ -59,7 +59,6 @@ public class GeneratePasswordDialog extends DialogFragment {
     private int position;
     private MetaData metaData;
 
-    private Boolean bindToDevice_enabled;
     private Boolean clipboard_enabled;
     private String hashAlgorithm;
     private int number_iterations;
@@ -82,7 +81,6 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         position = bundle.getInt("position");
         clipboard_enabled = bundle.getBoolean("clipboard_enabled");
-        bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
         hashAlgorithm = bundle.getString("hash_algorithm");
         number_iterations = bundle.getInt("number_iterations");
         visibility = false;
@@ -192,19 +190,20 @@ public class GeneratePasswordDialog extends DialogFragment {
         String deviceID = SaltHelper.getSalt(requireActivity().getBaseContext());
 
         //pack parameters to String-Array
-        String[] params = new String[12];
-        params[0] = metaData.getDOMAIN();
-        params[1] = metaData.getUSERNAME();
-        params[2] = editTextMasterpassword.getText().toString();
-        params[3] = deviceID;
-        params[4] = String.valueOf(metaData.getITERATION());
-        params[5] = String.valueOf(number_iterations);
-        params[6] = hashAlgorithm;
-        params[7] = String.valueOf(metaData.getHAS_SYMBOLS());
-        params[8] = String.valueOf(metaData.getHAS_LETTERS_LOW());
-        params[9] = String.valueOf(metaData.getHAS_LETTERS_UP());
-        params[10] = String.valueOf(metaData.getHAS_NUMBERS());
-        params[11] = String.valueOf(metaData.getLENGTH());
+        PasswordGeneratorTask.PasswordGeneratorParameter params = new PasswordGeneratorTask.PasswordGeneratorParameter(
+                metaData.getDOMAIN(),
+                metaData.getUSERNAME(),
+                editTextMasterpassword.getText().toString(),
+                deviceID,
+                metaData.getITERATION(),
+                number_iterations,
+                hashAlgorithm,
+                metaData.getHAS_SYMBOLS(),
+                metaData.getHAS_LETTERS_LOW(),
+                metaData.getHAS_LETTERS_UP(),
+                metaData.getHAS_NUMBERS(),
+                metaData.getLENGTH()
+        );
 
         new PasswordGeneratorTask() {
             @Override
