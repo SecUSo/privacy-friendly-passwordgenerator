@@ -136,7 +136,7 @@
     <string name="summary_clipboard">All other apps will have access to your password on the clipboard.</string>
 
     <string name="title_expert_mode">Expert mode</string>
-    <string name="expert_mode_summary">Changing the hash algorithm and number of iterations will generate different password and has a high influence on the time needed for generating the password.</string>
+    <string name="expert_mode_summary">Changing the Bcrypt cost parameter will generate different passwords. A higher value increases the time it takes to generate the password. This makes it more difficult for an attacker. With the benchmark function you can test how long it takes to generate a password with the current settings. The default value is 10.</string>
     <string name="title_hash_iterations">PBKDF2: Number of hash iterations</string>
 
     <string name="title_benchmark">Benchmark: generation</string>

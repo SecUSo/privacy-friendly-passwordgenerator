@@ -129,7 +129,7 @@
     <string name="summary_clipboard">すべての他のアプリは、クリップボード上のパスワードにアクセスできます。</string>
 
     <string name="title_expert_mode">エキスパートモード</string>
-    <string name="expert_mode_summary">ハッシュアルゴリズムと反復回数を変更すると、異なるパスワードが生成され、パスワードの生成に必要な時間に大きな影響を与えます。</string>
+    <string name="expert_mode_summary">Bcryptコスト・パラメータを変更すると、異なるパスワードが生成される。値を大きくすると、パスワードの生成にかかる時間が長くなる。これにより、攻撃者にとってより困難なものになります。ベンチマーク機能を使用すると、現在の設定でパスワードの生成にかかる時間をテストできます。デフォルト値は10です。</string>
     <string name="title_hash_iterations">PBKDF2: ハッシュ反復回数</string>
 
     <string name="title_benchmark">ベンチマーク: 生成</string>
