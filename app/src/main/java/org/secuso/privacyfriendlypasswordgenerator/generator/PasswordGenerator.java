@@ -1,18 +1,18 @@
 /**
  * This file is part of Privacy Friendly Password Generator.
-
- Privacy Friendly Password Generator is free software:
- you can redistribute it and/or modify it under the terms of the
- GNU General Public License as published by the Free Software Foundation,
- either version 3 of the License, or any later version.
-
- Privacy Friendly Password Generator is distributed in the hope
- that it will be useful, but WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- See the GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with Privacy Friendly Password Generator. If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * Privacy Friendly Password Generator is free software:
+ * you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or any later version.
+ * <p>
+ * Privacy Friendly Password Generator is distributed in the hope
+ * that it will be useful, but WITHOUT ANY WARRANTY; without even
+ * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with Privacy Friendly Password Generator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 package org.secuso.privacyfriendlypasswordgenerator.generator;
@@ -45,7 +45,8 @@ public class PasswordGenerator {
                              String deviceID,
                              int iteration,
                              int hashIterations,
-                             String hashAlgorithm) {
+                             String hashAlgorithm,
+                             String bcryptCost) {
 
         String temp = Base64.encode_base64(
                 PBKDF2.hmac(
@@ -55,7 +56,7 @@ public class PasswordGenerator {
                         hashIterations),
                 22);
 
-        this.hashValue = transformPassword(BCrypt.hashpw(masterpassword, "$2a$10$" + temp));
+        this.hashValue = transformPassword(BCrypt.hashpw(masterpassword, "$2a$" + bcryptCost + "$" + temp));
     }
 
     //cuts the salt from the password
@@ -137,7 +138,7 @@ public class PasswordGenerator {
 
         if (characterSet.size() > 0) {
             String template = shuffleTemplate(TemplateFactory.createTemplateFromParameters(specialCharacters, lowerCaseLetters, upperCaseLetters,
-            numbers, length));
+                    numbers, length));
 
             if (characterSet.size() > 0) {
                 for (int i = 0; i < template.length(); i++) {
@@ -167,16 +168,15 @@ public class PasswordGenerator {
         return password;
     }
 
-    
-    private String shuffleTemplate(String s){
+
+    private String shuffleTemplate(String s) {
 
         BigInteger bigInt = new BigInteger(hashValue);
 
         int index;
         char temp;
         char[] array = s.toCharArray();
-        for (int i = array.length - 1; i > 0; i--)
-        {
+        for (int i = array.length - 1; i > 0; i--) {
             BigInteger tempInt = BigInteger.valueOf(i);
             BigInteger[] divAndMod = bigInt.divideAndRemainder(tempInt);
             bigInt = divAndMod[0];

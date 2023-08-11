@@ -34,6 +34,7 @@ public class PasswordGeneratorTask extends AsyncTask<PasswordGeneratorTask.Passw
         private final int iteration;
         private final int hashIterations;
         private final String hashAlgorithm;
+        private final String bcryptCost;
         private final int specialCharacters, lowerCaseLetters, upperCaseLetters, numbers, length;
 
         public PasswordGeneratorParameter(String domain,
@@ -43,6 +44,7 @@ public class PasswordGeneratorTask extends AsyncTask<PasswordGeneratorTask.Passw
                                           int iteration,
                                           int hashIterations,
                                           String hashAlgorithm,
+                                          String bcryptCost,
                                           int specialCharacters,
                                           int lowerCaseLetters,
                                           int upperCaseLetters,
@@ -55,6 +57,7 @@ public class PasswordGeneratorTask extends AsyncTask<PasswordGeneratorTask.Passw
             this.iteration = iteration;
             this.hashIterations = hashIterations;
             this.hashAlgorithm = hashAlgorithm;
+            this.bcryptCost = bcryptCost;
             this.specialCharacters = specialCharacters;
             this.lowerCaseLetters = lowerCaseLetters;
             this.upperCaseLetters = upperCaseLetters;
@@ -74,7 +77,8 @@ public class PasswordGeneratorTask extends AsyncTask<PasswordGeneratorTask.Passw
                 parameter.deviceID,
                 parameter.iteration,
                 parameter.hashIterations,
-                parameter.hashAlgorithm);
+                parameter.hashAlgorithm,
+                parameter.bcryptCost);
 
         String password =
                 generator.getPassword(

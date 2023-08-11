@@ -62,6 +62,7 @@ public class GeneratePasswordDialog extends DialogFragment {
     private Boolean clipboard_enabled;
     private String hashAlgorithm;
     private int number_iterations;
+    private String bcryptCost;
 
     private boolean visibility;
     private ImageButton visibilityButton;
@@ -83,6 +84,7 @@ public class GeneratePasswordDialog extends DialogFragment {
         clipboard_enabled = bundle.getBoolean("clipboard_enabled");
         hashAlgorithm = bundle.getString("hash_algorithm");
         number_iterations = bundle.getInt("number_iterations");
+        bcryptCost = bundle.getString("bcrypt_cost");
         visibility = false;
 
         spinner = (ProgressBar) rootView.findViewById(R.id.progressBar);
@@ -198,6 +200,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                 metaData.getITERATION(),
                 number_iterations,
                 hashAlgorithm,
+                bcryptCost,
                 metaData.getHAS_SYMBOLS(),
                 metaData.getHAS_LETTERS_LOW(),
                 metaData.getHAS_LETTERS_UP(),

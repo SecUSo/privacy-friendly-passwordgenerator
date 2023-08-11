@@ -20,7 +20,8 @@ public class PasswordGeneratorTest {
                 "deviceID",
                 2,
                 4000,
-                "SHA512");
+                "SHA512",
+                "10");
 
         String first = generator.getPassword(1, 1, 1, 1, 12);
 
@@ -30,7 +31,8 @@ public class PasswordGeneratorTest {
                 "deviceID",
                 2,
                 4000,
-                "SHA512");
+                "SHA512",
+                "10");
 
         String second = generatorSecond.getPassword(1, 1, 1, 1, 12);
 
@@ -47,7 +49,8 @@ public class PasswordGeneratorTest {
                 "deviceID",
                 2,
                 4000,
-                "SHA512");
+                "SHA512",
+                "10");
 
         String first = generator.getPassword(1, 1, 1, 1, 12);
 
@@ -57,7 +60,8 @@ public class PasswordGeneratorTest {
                 "deviceID",
                 3,
                 4000,
-                "SHA512");
+                "SHA512",
+                "10");
 
         String second = generatorSecond.getPassword(1, 1, 1, 1, 12);
 
@@ -73,7 +77,8 @@ public class PasswordGeneratorTest {
                 "deviceID",
                 2,
                 4000,
-                "SHA512");
+                "SHA512",
+                "10");
         String toShuffle = "Aaonxxxxxxxxxxxxxxxxxxxxxx";
         //String shuffled = generator.shuffleTemplate(toShuffle);
 

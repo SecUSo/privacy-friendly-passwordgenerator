@@ -140,6 +140,8 @@ Die Salt-Werte werden aus den Kontodaten abgeleitet. Falls in den Einstellungen 
 
     <string name="title_hash_algorithms">PBKDF2: Hash-Algorithmus</string>
 
+    <string name="title_bcrypt_cost">Bcrypt: Kosten Parameter</string>
+
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>
 

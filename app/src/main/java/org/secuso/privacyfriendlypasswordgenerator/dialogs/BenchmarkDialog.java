@@ -42,6 +42,7 @@ public class BenchmarkDialog extends DialogFragment {
 
     private int iterations;
     private String hashAlgorithm;
+    private String bcryptCost;
 
     private ProgressBar spinner;
 
@@ -59,6 +60,7 @@ public class BenchmarkDialog extends DialogFragment {
 
         hashAlgorithm = bundle.getString("hash_algorithm");
         iterations = bundle.getInt("number_iterations");
+        bcryptCost = bundle.getString("bcrypt_cost");
 
         builder.setView(rootView);
         builder.setIcon(R.mipmap.ic_drawer);
@@ -78,14 +80,14 @@ public class BenchmarkDialog extends DialogFragment {
 
                 spinner.setVisibility(View.VISIBLE);
 
-                generatePassword(iterations, hashAlgorithm);
+                generatePassword(iterations, hashAlgorithm, bcryptCost);
             }
         });
 
         return builder.create();
     }
 
-    public void generatePassword(int iterations, String hashFunction) {
+    public void generatePassword(int iterations, String hashFunction, String bcryptCost) {
 
         final double startTime = System.currentTimeMillis();
 
@@ -97,6 +99,7 @@ public class BenchmarkDialog extends DialogFragment {
                 4242,
                 iterations,
                 hashFunction,
+                bcryptCost,
                 1,
                 1,
                 1,

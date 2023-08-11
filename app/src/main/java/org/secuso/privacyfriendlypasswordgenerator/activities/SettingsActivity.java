@@ -158,6 +158,7 @@ public class SettingsActivity extends BaseActivity {
 
             bindPreferenceSummaryToValue(findPreference(PreferenceKeys.HASH_ITERATIONS));
             bindPreferenceSummaryToValue(findPreference(PreferenceKeys.HASH_ALGORITHM));
+            bindPreferenceSummaryToValue(findPreference(PreferenceKeys.BCRYPT_COST));
 
             Preference benchmark = findPreference("benchmark");
             benchmark.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -168,8 +169,9 @@ public class SettingsActivity extends BaseActivity {
 
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-                    bundle.putInt("number_iterations", Integer.parseInt(preferences.getString("hash_iterations", "1000")));
-                    bundle.putString("hash_algorithm", preferences.getString("hash_algorithm", "SHA256"));
+                    bundle.putInt("number_iterations", Integer.parseInt(preferences.getString(PreferenceKeys.HASH_ITERATIONS, getString(R.string.default_iterations))));
+                    bundle.putString("hash_algorithm", preferences.getString(PreferenceKeys.HASH_ALGORITHM, getString(R.string.default_hash_algorithm)));
+                    bundle.putString("bcrypt_cost", preferences.getString(PreferenceKeys.BCRYPT_COST, getString(R.string.default_hash_algorithm)));
 
                     FragmentManager fragmentManager = getActivity().getFragmentManager();
                     BenchmarkDialog benchmarkDialog = new BenchmarkDialog();

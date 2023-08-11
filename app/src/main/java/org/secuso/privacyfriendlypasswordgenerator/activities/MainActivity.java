@@ -73,9 +73,9 @@ public class MainActivity extends BaseActivity {
     private RecyclerView recyclerView;
 
     private boolean clipboard_enabled;
-    private boolean bindToDevice_enabled;
     private String hash_algorithm;
     private int number_iterations;
+    private String bcrypt_cost;
 
     private List<MetaData> filteredMetaDataList;
 
@@ -134,10 +134,10 @@ public class MainActivity extends BaseActivity {
                         MetaData temp = adapter.getItem(position);
 
                         bundle.putInt("position", temp.getID());
-                        bundle.putString("hash_algorithm", hash_algorithm);
                         bundle.putBoolean("clipboard_enabled", clipboard_enabled);
-                        bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
+                        bundle.putString("hash_algorithm", hash_algorithm);
                         bundle.putInt("number_iterations", number_iterations);
+                        bundle.putString("bcrypt_cost", bcrypt_cost);
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         GeneratePasswordDialog generatePasswordDialog = new GeneratePasswordDialog();
@@ -164,7 +164,7 @@ public class MainActivity extends BaseActivity {
                         bundle.putInt("position", temp.getID());
                         bundle.putString("hash_algorithm", hash_algorithm);
                         bundle.putInt("number_iterations", number_iterations);
-                        bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
+                        bundle.putString("bcrypt_cost", bcrypt_cost);
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         UpdateMetadataDialog updateMetadataDialog = new UpdateMetadataDialog();
@@ -318,10 +318,10 @@ public class MainActivity extends BaseActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
         clipboard_enabled = sharedPreferences.getBoolean(PreferenceKeys.CLIPBOARD_ENABLED, false);
-        bindToDevice_enabled = sharedPreferences.getBoolean(PreferenceKeys.BIND_TO_DEVICE_ENABLED, false);
         hash_algorithm = sharedPreferences.getString(PreferenceKeys.HASH_ALGORITHM, getString(R.string.default_hash_algorithm));
         String tempIterations = sharedPreferences.getString(PreferenceKeys.HASH_ITERATIONS, getString(R.string.default_iterations));
         number_iterations = Integer.parseInt(tempIterations);
+        bcrypt_cost = sharedPreferences.getString(PreferenceKeys.BCRYPT_COST, getString(R.string.default_bcrypt_cost));
     }
 
     public void hints(int position) {

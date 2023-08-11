@@ -137,6 +137,8 @@
 
     <string name="title_hash_algorithms">PBKDF2: ハッシュアルゴリズム</string>
 
+    <string name="title_bcrypt_cost">Bcrypt： コストパラメータ</string>
+
     <!-- ###DIALOGS### -->
     <string name="okay">OK</string>
 

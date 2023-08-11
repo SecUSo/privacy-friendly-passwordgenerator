@@ -39,6 +39,13 @@
             android:entryValues="@array/pref_iterations"
             android:defaultValue="@string/default_iterations"
             android:summary="@string/default_iterations"/>
+        <ListPreference
+            android:title="@string/title_bcrypt_cost"
+            android:key="bcrypt_cost"
+            android:entries="@array/pref_bcrypt_cost"
+            android:entryValues="@array/pref_bcrypt_cost"
+            android:defaultValue="@string/default_bcrypt_cost"
+            android:summary="@string/default_bcrypt_cost"/>
         <Preference
             android:key="benchmark"
             android:title="@string/title_benchmark"

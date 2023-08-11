@@ -61,6 +61,7 @@ public class UpdatePasswordDialog extends DialogFragment {
 
     private String hashAlgorithm;
     private int number_iterations;
+    private String bcryptCost;
 
     private ProgressBar spinnerOld;
     private ProgressBar spinnerNew;
@@ -91,6 +92,7 @@ public class UpdatePasswordDialog extends DialogFragment {
         hashAlgorithm = bundle.getString("hash_algorithm");
         setOldMetaData(bundle);
         number_iterations = bundle.getInt("number_iterations");
+        bcryptCost = bundle.getString("bcrypt_cost");
 
         database = MetaDataSQLiteHelper.getInstance(getActivity());
 
@@ -212,6 +214,7 @@ public class UpdatePasswordDialog extends DialogFragment {
                     oldMetaData.getITERATION(),
                     number_iterations,
                     hashAlgorithm,
+                    bcryptCost,
                     oldMetaData.getHAS_SYMBOLS(),
                     oldMetaData.getHAS_LETTERS_LOW(),
                     oldMetaData.getHAS_LETTERS_UP(),
@@ -238,6 +241,7 @@ public class UpdatePasswordDialog extends DialogFragment {
                     metaData.getITERATION(),
                     number_iterations,
                     hashAlgorithm,
+                    bcryptCost,
                     metaData.getHAS_SYMBOLS(),
                     metaData.getHAS_LETTERS_LOW(),
                     metaData.getHAS_LETTERS_UP(),

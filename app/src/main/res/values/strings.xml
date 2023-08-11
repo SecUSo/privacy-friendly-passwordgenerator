@@ -164,6 +164,19 @@
     </string-array>
     <string name="default_iterations" translatable="false">2000</string>
 
+    <string name="title_bcrypt_cost">Bcrypt: Cost parameter</string>
+    <string-array name="pref_bcrypt_cost" translatable="false">
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+    </string-array>
+    <string name="default_bcrypt_cost" translatable="false">10</string>
+
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>
 
