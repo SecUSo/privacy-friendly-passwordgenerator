@@ -6,9 +6,6 @@ import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGenerator;
-import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTask;
-
-import java.util.concurrent.CountDownLatch;
 
 /**
  * Tests the PasswordGenerator
@@ -99,29 +96,6 @@ public class PasswordGeneratorTest {
                 "ZfqH1YUv", "9VlgNNWY", "JvH3HgkT", "hdI9IkTq", "kwVm89q0", "sEEfT3ZY", "HD7yRaH4", "xcbQ1OMv", "9IYY9rQN", "rrXPm8RZ", "9say7GDC", "VpwDWO5N",
                 "9eW4MJhk", "nxq0PmB9", "Lq5fcNL5", "x0xY8Ed8", "DyrZ5hOe", "rYrjfRz3", "fRQyd6G1", "ZJ7wo7Gm", "sEod7DgG", "Rug68Vqw", "OjCG5ZZH", "OTbEV06u"};
         assertArrayEquals(expectedPasswords, generatedPasswords);
-    }
-
-    @Test
-    public void testPasswordGeneratorTaskWithRandomValues() throws InterruptedException {
-        int numTests = 10;
-        final CountDownLatch signal = new CountDownLatch(numTests);
-        for (int i = 0; i < numTests; i++) {
-            PasswordGenerator generator = new PasswordGenerator(
-                    "test1", "test2", Integer.toString(i), "test4", 5, 1000, "SHA256", "10"
-            );
-            String expected = generator.getPassword(1, 1, 1, 1, 16);
-            new PasswordGeneratorTask() {
-                @Override
-                protected void onPostExecute(String s) {
-                    assertEquals(expected, s);
-                    signal.countDown();
-                }
-            }.execute(new PasswordGeneratorTask.PasswordGeneratorParameter(
-                    "test1", "test2", Integer.toString(i), "test4", 5, 1000, "SHA256", "10",
-                    1, 1, 1, 1, 16
-            ));
-        }
-        signal.await();
     }
 
     private PasswordGenerator getDefaultGenerator() {

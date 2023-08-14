@@ -18,7 +18,7 @@ public class UTF8Test {
         try {
             expected = "testü".getBytes("UTF-8");
         } catch (UnsupportedEncodingException e) {
-            assertTrue(false);
+            fail();
             expected = "testü".getBytes();
         }
         byte[] converted = UTF8.encode("testü");
