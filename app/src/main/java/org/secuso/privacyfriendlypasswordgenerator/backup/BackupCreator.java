@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.secuso.privacyfriendlybackup.api.backup.DatabaseUtil;
 import org.secuso.privacyfriendlybackup.api.backup.PreferenceUtil;
 import org.secuso.privacyfriendlybackup.api.pfa.IBackupCreator;
-import org.secuso.privacyfriendlypasswordgenerator.helpers.SeedHelper;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.SaltHelper;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
 
 import java.io.OutputStream;
@@ -47,9 +47,9 @@ public class BackupCreator implements IBackupCreator {
             SharedPreferences pfa_pref = new PrefManager(context).getPref();
             PreferenceUtil.writePreferences(writer, pfa_pref);
 
-            writer.name("seed_preferences");
-            SharedPreferences seed_pref = new SeedHelper.EncryptedSeedPreference().initPreference(context);
-            PreferenceUtil.writePreferences(writer, seed_pref);
+            writer.name("salt_preferences");
+            SharedPreferences salt_pref = new SaltHelper.EncryptedSaltPreference().initPreference(context);
+            PreferenceUtil.writePreferences(writer, salt_pref);
 
             writer.endObject();
             writer.close();

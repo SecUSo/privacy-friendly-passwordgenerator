@@ -15,7 +15,7 @@ import org.secuso.privacyfriendlybackup.api.backup.DatabaseUtil;
 import org.secuso.privacyfriendlybackup.api.backup.FileUtil;
 import org.secuso.privacyfriendlybackup.api.pfa.IBackupRestorer;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.PreferenceKeys;
-import org.secuso.privacyfriendlypasswordgenerator.helpers.SeedHelper;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.SaltHelper;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
 
 import java.io.File;
@@ -47,8 +47,8 @@ public class BackupRestorer implements IBackupRestorer {
                     case "pfa_pw_generator_preferences":
                         readPFAPWGeneratorPreferences(reader, context);
                         break;
-                    case "seed_preferences":
-                        readSeedPreferences(reader, context);
+                    case "salt_preferences":
+                        readSaltPreferences(reader, context);
                         break;
                     default:
                         throw new RuntimeException("Can not parse type " + type);
@@ -84,16 +84,16 @@ public class BackupRestorer implements IBackupRestorer {
         reader.endObject();
     }
 
-    private void readSeedPreferences(@NonNull JsonReader reader, @NonNull Context context) throws IOException {
+    private void readSaltPreferences(@NonNull JsonReader reader, @NonNull Context context) throws IOException {
         reader.beginObject();
 
-        SharedPreferences.Editor editor = new SeedHelper.EncryptedSeedPreference().initPreference(context).edit();
+        SharedPreferences.Editor editor = new SaltHelper.EncryptedSaltPreference().initPreference(context).edit();
 
         while (reader.hasNext()) {
             String name = reader.nextName();
 
             switch (name) {
-                case PreferenceKeys.SEED_VALUE:
+                case PreferenceKeys.SALT_VALUE:
                     editor.putString(name, reader.nextString());
                     break;
                 default:

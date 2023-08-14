@@ -25,16 +25,16 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import java.security.SecureRandom
 
-class SeedHelper {
+class SaltHelper {
 
     companion object {
-        private val DEFAULT_SEED_VALUE = "SECUSO"
+        private const val DEFAULT_SALT_VALUE = "SECUSO"
     }
 
     /**
      * Helper class for managing and accessing the values stored in the encrypted preferences.
      */
-    class EncryptedSeedPreference {
+    class EncryptedSaltPreference {
         private val FILE_NAME = "preference_encrypted"
 
         fun initPreference(context: Context): SharedPreferences {
@@ -50,54 +50,54 @@ class SeedHelper {
             )
         }
 
-        fun containsSeedValue(context: Context): Boolean {
-            return initPreference(context).contains(PreferenceKeys.SEED_VALUE)
+        fun containsSaltValue(context: Context): Boolean {
+            return initPreference(context).contains(PreferenceKeys.SALT_VALUE)
         }
 
-        fun getSeedValue(context: Context): String? {
-            return initPreference(context).getString(PreferenceKeys.SEED_VALUE, DEFAULT_SEED_VALUE)
+        fun getSaltValue(context: Context): String? {
+            return initPreference(context).getString(PreferenceKeys.SALT_VALUE, DEFAULT_SALT_VALUE)
         }
 
-        fun setSeedValue(context: Context, newValue: String) {
-            initPreference(context).edit().putString(PreferenceKeys.SEED_VALUE, newValue).commit()
+        fun setSaltValue(context: Context, newValue: String) {
+            initPreference(context).edit().putString(PreferenceKeys.SALT_VALUE, newValue).commit()
         }
     }
 
-    fun getSeed(context: Context): String {
+    fun getSalt(context: Context): String {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
         val bindToDeviceEnabled = sharedPreferences.getBoolean(PreferenceKeys.BIND_TO_DEVICE_ENABLED, false)
-        val seedPreference = EncryptedSeedPreference()
+        val saltPreference = EncryptedSaltPreference()
 
         return if (bindToDeviceEnabled) {
-            if (!seedPreference.containsSeedValue(context)) {
-                // Store the ANDROID_ID as the seed value
-                seedPreference.setSeedValue(context, Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID))
+            if (!saltPreference.containsSaltValue(context)) {
+                // Store the ANDROID_ID as the salt value
+                saltPreference.setSaltValue(context, Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID))
             }
-            seedPreference.getSeedValue(context) ?: DEFAULT_SEED_VALUE
+            saltPreference.getSaltValue(context) ?: DEFAULT_SALT_VALUE
         } else {
-            DEFAULT_SEED_VALUE
+            DEFAULT_SALT_VALUE
         }
     }
 
     /**
-     * Generates a random String and saves it in the {@see [EncryptedSeedPreference]} if it is not present already.
+     * Generates a random String and saves it in the {@see [EncryptedSaltPreference]} if it is not present already.
      */
-    fun initializeSeed(context: Context, isFirstTimeLaunch: Boolean) {
-        val seedPreference = EncryptedSeedPreference()
+    fun initializeSalt(context: Context, isFirstTimeLaunch: Boolean) {
+        val saltPreference = EncryptedSaltPreference()
 
-        if (seedPreference.containsSeedValue(context)) {
-            // Seed already present, nothing to do
+        if (saltPreference.containsSaltValue(context)) {
+            // Salt already present, nothing to do
         } else {
             if (!isFirstTimeLaunch) {
-                // Not a new installation, so we store the ANDROID_ID as the seed value for backwards compatibility
-                seedPreference.setSeedValue(context, Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID))
+                // Not a new installation, so we store the ANDROID_ID as the salt value for backwards compatibility
+                saltPreference.setSaltValue(context, Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID))
             } else {
-                seedPreference.setSeedValue(context, generateSeed())
+                saltPreference.setSaltValue(context, generateSalt())
             }
         }
     }
 
-    private fun generateSeed(): String {
+    private fun generateSalt(): String {
         val array = ByteArray(32)
         SecureRandom().nextBytes(array)
         return array.toHex()

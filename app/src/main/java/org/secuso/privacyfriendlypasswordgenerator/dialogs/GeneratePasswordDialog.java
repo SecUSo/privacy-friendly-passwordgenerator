@@ -43,7 +43,7 @@ import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
 import org.secuso.privacyfriendlypasswordgenerator.generator.PasswordGeneratorTask;
-import org.secuso.privacyfriendlypasswordgenerator.helpers.SeedHelper;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.SaltHelper;
 
 /**
  * @author Karola Marky
@@ -189,7 +189,7 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         metaData = database.getMetaData(position);
 
-        String deviceID = new SeedHelper().getSeed(requireActivity().getBaseContext());
+        String deviceID = new SaltHelper().getSalt(requireActivity().getBaseContext());
 
         //pack parameters to String-Array
         String[] params = new String[12];

@@ -48,7 +48,7 @@ import org.secuso.privacyfriendlypasswordgenerator.dialogs.UpdateMetadataDialog;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.PreferenceKeys;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
-import org.secuso.privacyfriendlypasswordgenerator.helpers.SeedHelper;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.SaltHelper;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.SwipeableRecyclerViewTouchListener;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.MasterPWTutorialActivity;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
@@ -91,11 +91,11 @@ public class MainActivity extends BaseActivity {
         PrefManager prefManager = new PrefManager(this);
         if (prefManager.isFirstTimeLaunch()) {
             addSampleData();
-            new SeedHelper().initializeSeed(getApplicationContext(), true);
+            new SaltHelper().initializeSalt(getApplicationContext(), true);
             prefManager.setFirstTimeLaunch(false);
         }
-        // Make sure the seed value gets stored in the preferences
-        new SeedHelper().initializeSeed(getApplicationContext(), false);
+        // Make sure the salt value gets stored in the preferences
+        new SaltHelper().initializeSalt(getApplicationContext(), false);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
