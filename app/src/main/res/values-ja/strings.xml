@@ -106,7 +106,7 @@
     <string name="help_manage_delete_description">片側にスワイプしてアカウントセットを削除します。</string>
 
     <string name="help_generation_heading">パスワードを生成する方法は?</string>
-    <string name="help_generation_description">パスワードは2つのハッシュ・アルゴリズムの組み合わせによって生成される： PBKDF2とBCryptである。マスターパスワードは、両方のアルゴリズムの秘密の役割を果たします。ソルトは、アカウントデータとインストールソルト（有効な場合）から生成されます。</string>
+    <string name="help_generation_description">パスワードは2つのハッシュ・アルゴリズムの組み合わせによって生成される： PBKDF2とBCryptである。マスターパスワードは、両方のアルゴリズムの秘密の役割を果たします。ソルトはアカウントデータから生成されます。設定で有効にすると、インストール・ソルト（初回起動時に生成）もソルトに追加されます。</string>
 
     <string name="help_password_storage_heading">パスワードはデバイスに保存されますか?</string>
     <string name="help_password_storage_description">いいえ、パスワードもマスターパスワードもデバイスには保存されません。アカウントデータとインストールソルトのみがデバイスに保存されます。</string>
@@ -124,7 +124,7 @@
 
     <string name="title_activity_settings">設定</string>
     <string name="title_bind_password">すべてのパスワードをこのインストールにバインドする</string>
-    <string name="summary_bind_password">これにより、インストール用のソルト（初回起動時に生成される）に基づいて一意のパスワードが作成されます。このパスワードは、別のデバイスを使用したり、アプリを再インストールしたりしても再生成できません。そのため、このオプションを使用する場合は、Privacy Friendly Backupアプリを使用してこのアプリのデータをバックアップすることを強くお勧めします。そうしないと、デバイスを紛失した場合にパスワードを再生成することができなくなります。</string>
+    <string name="summary_bind_password">これにより、このデバイスに基づいた固有のパスワードが作成されます。このパスワードは、別のデバイスを使用したり、アプリを再インストールしても再生成できません。そのため、このオプションを使用する場合は、Privacy Friendly Backupアプリを使用してこのアプリのデータをバックアップすることを強くお勧めします。そうしないと、デバイスを紛失した場合にパスワードを再生成することができなくなります。</string>
     <string name="title_clipboard">パスワードをクリップボードにコピー</string>
     <string name="summary_clipboard">すべての他のアプリは、クリップボード上のパスワードにアクセスできます。</string>
 
