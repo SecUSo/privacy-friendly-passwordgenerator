@@ -87,7 +87,7 @@ public class BackupRestorer implements IBackupRestorer {
     private void readSaltPreferences(@NonNull JsonReader reader, @NonNull Context context) throws IOException {
         reader.beginObject();
 
-        SharedPreferences.Editor editor = new SaltHelper.EncryptedSaltPreference().initPreference(context).edit();
+        SharedPreferences.Editor editor = SaltHelper.EncryptedSaltPreference.initPreference(context).edit();
 
         while (reader.hasNext()) {
             String name = reader.nextName();

@@ -204,7 +204,7 @@ public class UpdatePasswordDialog extends DialogFragment {
             final TextView textViewOldPassword = (TextView) rootView.findViewById(R.id.textViewOldPassword);
             final TextView textViewNewPassword = (TextView) rootView.findViewById(R.id.textViewNewPassword);
 
-            String deviceID = new SaltHelper().getSalt(requireActivity().getBaseContext());
+            String deviceID = SaltHelper.getSalt(requireActivity().getBaseContext());
 
             //pack old parameters to String-Array
             String[] paramsOld = new String[12];

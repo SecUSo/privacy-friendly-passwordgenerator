@@ -91,11 +91,11 @@ public class MainActivity extends BaseActivity {
         PrefManager prefManager = new PrefManager(this);
         if (prefManager.isFirstTimeLaunch()) {
             addSampleData();
-            new SaltHelper().initializeSalt(getApplicationContext(), true);
+            SaltHelper.initializeSalt(getApplicationContext(), true);
             prefManager.setFirstTimeLaunch(false);
         }
         // Make sure the salt value gets stored in the preferences
-        new SaltHelper().initializeSalt(getApplicationContext(), false);
+        SaltHelper.initializeSalt(getApplicationContext(), false);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -319,7 +319,7 @@ public class MainActivity extends BaseActivity {
 
         clipboard_enabled = sharedPreferences.getBoolean(PreferenceKeys.CLIPBOARD_ENABLED, false);
         bindToDevice_enabled = sharedPreferences.getBoolean(PreferenceKeys.BIND_TO_DEVICE_ENABLED, false);
-        hash_algorithm = sharedPreferences.getString(PreferenceKeys.HASH_ALGORITHM, "SHA256");
+        hash_algorithm = sharedPreferences.getString(PreferenceKeys.HASH_ALGORITHM, getString(R.string.default_hash_algorithm));
         String tempIterations = sharedPreferences.getString(PreferenceKeys.HASH_ITERATIONS, getString(R.string.default_iterations));
         number_iterations = Integer.parseInt(tempIterations);
     }

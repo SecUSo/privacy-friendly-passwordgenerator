@@ -189,7 +189,7 @@ public class GeneratePasswordDialog extends DialogFragment {
 
         metaData = database.getMetaData(position);
 
-        String deviceID = new SaltHelper().getSalt(requireActivity().getBaseContext());
+        String deviceID = SaltHelper.getSalt(requireActivity().getBaseContext());
 
         //pack parameters to String-Array
         String[] params = new String[12];

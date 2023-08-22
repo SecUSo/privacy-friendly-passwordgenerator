@@ -48,7 +48,7 @@ public class BackupCreator implements IBackupCreator {
             PreferenceUtil.writePreferences(writer, pfa_pref);
 
             writer.name("salt_preferences");
-            SharedPreferences salt_pref = new SaltHelper.EncryptedSaltPreference().initPreference(context);
+            SharedPreferences salt_pref = SaltHelper.EncryptedSaltPreference.initPreference(context);
             PreferenceUtil.writePreferences(writer, salt_pref);
 
             writer.endObject();
