@@ -21,13 +21,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.view.MenuItemCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +30,15 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
@@ -44,7 +46,9 @@ import org.secuso.privacyfriendlypasswordgenerator.dialogs.AddMetaDataDialog;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.GeneratePasswordDialog;
 import org.secuso.privacyfriendlypasswordgenerator.dialogs.UpdateMetadataDialog;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.MetaDataAdapter;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.PreferenceKeys;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.RecyclerItemClickListener;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.SaltHelper;
 import org.secuso.privacyfriendlypasswordgenerator.helpers.SwipeableRecyclerViewTouchListener;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.MasterPWTutorialActivity;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
@@ -53,7 +57,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Code for displaying cards according to the tutorial from https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465
+ * Code for displaying cards according to the tutorial from <a href="https://code.tutsplus.com/tutorials/getting-started-with-recyclerview-and-cardview-on-android--cms-23465">tutsplus.com</a>
  *
  * @author Karola Marky
  * @version 20170112
@@ -87,8 +91,11 @@ public class MainActivity extends BaseActivity {
         PrefManager prefManager = new PrefManager(this);
         if (prefManager.isFirstTimeLaunch()) {
             addSampleData();
+            SaltHelper.initializeSalt(getApplicationContext(), true);
             prefManager.setFirstTimeLaunch(false);
         }
+        // Make sure the salt value gets stored in the preferences
+        SaltHelper.initializeSalt(getApplicationContext(), false);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -201,13 +208,10 @@ public class MainActivity extends BaseActivity {
         FloatingActionButton addFab = (FloatingActionButton) findViewById(R.id.add_fab);
         if (addFab != null) {
 
-            addFab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    AddMetaDataDialog addMetaDataDialog = new AddMetaDataDialog();
-                    addMetaDataDialog.show(fragmentManager, "AddMetaDataDialog");
-                }
+            addFab.setOnClickListener(view -> {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                AddMetaDataDialog addMetaDataDialog = new AddMetaDataDialog();
+                addMetaDataDialog.show(fragmentManager, "AddMetaDataDialog");
             });
 
         }
@@ -234,16 +238,13 @@ public class MainActivity extends BaseActivity {
         hints(position);
 
         Snackbar.make(findViewById(android.R.id.content), getString(R.string.domain) + " " + toDeleteMetaData.getDOMAIN() + " " + getString(R.string.item_deleted), Snackbar.LENGTH_SHORT)
-                .setAction(getString(R.string.undo), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        database.addMetaDataWithID(toDeleteMetaDataFinal);
-                        metadatalist.add(finalPosition, toDeleteMetaDataFinal);
-                        adapter.notifyItemInserted(finalPosition);
-                        adapter.notifyDataSetChanged();
-                        initialAlert.setVisibility(View.GONE);
-                        hints(1);
-                    }
+                .setAction(getString(R.string.undo), view -> {
+                    database.addMetaDataWithID(toDeleteMetaDataFinal);
+                    metadatalist.add(finalPosition, toDeleteMetaDataFinal);
+                    adapter.notifyItemInserted(finalPosition);
+                    adapter.notifyDataSetChanged();
+                    initialAlert.setVisibility(View.GONE);
+                    hints(1);
                 }).show();
 
         adapter.notifyItemRemoved(position);
@@ -304,9 +305,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void loadDatabase() {
-        if(database != null) {
+        if (database != null) {
             metadatalist = database.getAllMetaData();
-            if(adapter != null) {
+            if (adapter != null) {
                 adapter.setMetaDataList(metadatalist);
             }
         }
@@ -316,10 +317,10 @@ public class MainActivity extends BaseActivity {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
-        clipboard_enabled = sharedPreferences.getBoolean("clipboard_enabled", false);
-        bindToDevice_enabled = sharedPreferences.getBoolean("bindToDevice_enabled", false);
-        hash_algorithm = sharedPreferences.getString("hash_algorithm", "SHA256");
-        String tempIterations = sharedPreferences.getString("hash_iterations", "1000");
+        clipboard_enabled = sharedPreferences.getBoolean(PreferenceKeys.CLIPBOARD_ENABLED, false);
+        bindToDevice_enabled = sharedPreferences.getBoolean(PreferenceKeys.BIND_TO_DEVICE_ENABLED, false);
+        hash_algorithm = sharedPreferences.getString(PreferenceKeys.HASH_ALGORITHM, getString(R.string.default_hash_algorithm));
+        String tempIterations = sharedPreferences.getString(PreferenceKeys.HASH_ITERATIONS, getString(R.string.default_iterations));
         number_iterations = Integer.parseInt(tempIterations);
     }
 

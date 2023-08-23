@@ -1,8 +1,9 @@
 package org.secuso.privacyfriendlypasswordgenerator.backup;
 
+import static org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper.DATABASE_NAME;
+
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.preference.PreferenceManager;
 import android.util.JsonReader;
 
@@ -13,16 +14,14 @@ import org.jetbrains.annotations.NotNull;
 import org.secuso.privacyfriendlybackup.api.backup.DatabaseUtil;
 import org.secuso.privacyfriendlybackup.api.backup.FileUtil;
 import org.secuso.privacyfriendlybackup.api.pfa.IBackupRestorer;
-import org.secuso.privacyfriendlypasswordgenerator.PassGenApplication;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.PreferenceKeys;
+import org.secuso.privacyfriendlypasswordgenerator.helpers.SaltHelper;
 import org.secuso.privacyfriendlypasswordgenerator.tutorial.PrefManager;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import static org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper.DATABASE_NAME;
-import static org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper.DATABASE_VERSION;
 
 public class BackupRestorer implements IBackupRestorer {
 
@@ -35,21 +34,26 @@ public class BackupRestorer implements IBackupRestorer {
 
             reader.beginObject();
 
-            while(reader.hasNext()) {
+            while (reader.hasNext()) {
                 String type = reader.nextName();
 
-                switch(type) {
+                switch (type) {
                     case "database":
                         readDatabase(reader, context);
                         break;
                     case "preferences":
                         readPreferences(reader, context);
                         break;
+                    case "pfa_pw_generator_preferences":
+                        readPFAPWGeneratorPreferences(reader, context);
+                        break;
+                    case "salt_preferences":
+                        readSaltPreferences(reader, context);
+                        break;
                     default:
-                        throw new RuntimeException("Can not parse type "+type);
+                        throw new RuntimeException("Can not parse type " + type);
                 }
             }
-
             reader.endObject();
             return true;
         } catch (IOException e) {
@@ -57,28 +61,71 @@ public class BackupRestorer implements IBackupRestorer {
         }
     }
 
+    private void readPFAPWGeneratorPreferences(@NonNull JsonReader reader, @NonNull Context context) throws IOException {
+        reader.beginObject();
+
+        SharedPreferences.Editor editor = new PrefManager(context).getEditor();
+
+        while (reader.hasNext()) {
+            String name = reader.nextName();
+
+            switch (name) {
+                case PrefManager.IS_FIRST_TIME_GEN:
+                case PrefManager.IS_FIRST_TIME_LAUNCH:
+                case PrefManager.IS_TUTORIAL_LAUNCH:
+                    editor.putBoolean(name, reader.nextBoolean());
+                    break;
+                default:
+                    throw new RuntimeException("Unknown preference " + name);
+            }
+        }
+
+        editor.commit();
+        reader.endObject();
+    }
+
+    private void readSaltPreferences(@NonNull JsonReader reader, @NonNull Context context) throws IOException {
+        reader.beginObject();
+
+        SharedPreferences.Editor editor = SaltHelper.EncryptedSaltPreference.initPreference(context).edit();
+
+        while (reader.hasNext()) {
+            String name = reader.nextName();
+
+            switch (name) {
+                case PreferenceKeys.SALT_VALUE:
+                    editor.putString(name, reader.nextString());
+                    break;
+                default:
+                    throw new RuntimeException("Unknown preference " + name);
+            }
+        }
+
+        editor.commit();
+        reader.endObject();
+    }
+
     private void readPreferences(@NonNull JsonReader reader, @NonNull Context context) throws IOException {
         reader.beginObject();
 
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
 
-        while(reader.hasNext()) {
+        while (reader.hasNext()) {
             String name = reader.nextName();
 
-            switch(name) {
-                case "bindToDevice_enabled":
-                case "clipboard_enabled":
+            switch (name) {
+                case PreferenceKeys.BIND_TO_DEVICE_ENABLED:
+                case PreferenceKeys.CLIPBOARD_ENABLED:
                     editor.putBoolean(name, reader.nextBoolean());
                     break;
-                case "hash_algorithm":
-                case "hash_iterations":
+                case PreferenceKeys.HASH_ALGORITHM:
+                case PreferenceKeys.HASH_ITERATIONS:
                     editor.putString(name, reader.nextString());
                     break;
                 default:
-                    throw new RuntimeException("Unknown preference "+name);
+                    throw new RuntimeException("Unknown preference " + name);
             }
         }
-
         editor.commit();
 
         PrefManager pref2 = new PrefManager(context);
@@ -91,13 +138,13 @@ public class BackupRestorer implements IBackupRestorer {
         reader.beginObject();
 
         String n1 = reader.nextName();
-        if(!n1.equals("version")) {
+        if (!n1.equals("version")) {
             throw new RuntimeException("Unknown value " + n1);
         }
         int version = reader.nextInt();
 
         String n2 = reader.nextName();
-        if(!n2.equals("content")) {
+        if (!n2.equals("content")) {
             throw new RuntimeException("Unknown value " + n2);
         }
 

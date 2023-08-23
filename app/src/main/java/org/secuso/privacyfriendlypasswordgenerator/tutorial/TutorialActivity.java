@@ -1,18 +1,18 @@
 /**
  * This file is part of Privacy Friendly Password Generator.
-
- Privacy Friendly Password Generator is free software:
- you can redistribute it and/or modify it under the terms of the
- GNU General Public License as published by the Free Software Foundation,
- either version 3 of the License, or any later version.
-
- Privacy Friendly Password Generator is distributed in the hope
- that it will be useful, but WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- See the GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with Privacy Friendly Password Generator. If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * Privacy Friendly Password Generator is free software:
+ * you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or any later version.
+ * <p>
+ * Privacy Friendly Password Generator is distributed in the hope
+ * that it will be useful, but WITHOUT ANY WARRANTY; without even
+ * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with Privacy Friendly Password Generator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 package org.secuso.privacyfriendlypasswordgenerator.tutorial;
@@ -22,10 +22,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +31,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.activities.MainActivity;
@@ -89,22 +89,14 @@ public class TutorialActivity extends AppCompatActivity {
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
-        btnSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchHomeScreen();
-            }
-        });
+        btnSkip.setOnClickListener(v -> launchHomeScreen());
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int current = getItem(+1);
-                if (current < layouts.length) {
-                    viewPager.setCurrentItem(current);
-                } else {
-                    launchHomeScreen();
-                }
+        btnNext.setOnClickListener(v -> {
+            int current = getItem(+1);
+            if (current < layouts.length) {
+                viewPager.setCurrentItem(current);
+            } else {
+                launchHomeScreen();
             }
         });
     }
