@@ -27,12 +27,12 @@ Users can save the following properties of a password: <br />
 
 ### Password Generation
 
-The password generation is based on the combination of two algorithms: the key deviation function PBKDF2 and the hash algorithm BCrypt. PBKDF2 and can be executed with three different hash algorithms (SHA256, SHA384, SHA512). <br />
+The password generation is based on the combination of two algorithms: the key deviation function PBKDF2 and the hash algorithm BCrypt. <br />
 * The master password serves as a secret for the PBKDF2 algorithm.
-* Password counter, account name, username and device ID (optional) are concatenated to a string and form the salt of PBKDF2. 
+* Password counter, account name, username and installation salt (optional) are concatenated to a string and form the salt of PBKDF2. 
 * The result of the PBKDF2 hashing is encoded into a special version of Base64 which is compatible with BCrypt and not longer than 22 characters.
 * The master password serves as a secret for the BCrypt algorithm.
-* Result of the PBKDF2 hashing combined with the string "$2a$10$" the beginning forms the salt for BCrypt.
+* Result of the PBKDF2 hashing combined with the string "$2a${bcrypt_cost}$" the beginning forms the salt for BCrypt ({bcrypt_cost} can be configured in the settings and has a default value of 10).
 * The prefix and the salt is cut from the resulting byte-array.
 * The byte-array is used to choose characters out of the character set the user has chosen. 
 <br />
@@ -52,7 +52,7 @@ If you wish to contribute to this project, have a look at the contribution polic
 ### API Reference
 
 Mininum SDK: 17<br>
-Target SDK: 32 
+Target SDK: 33 
 
 ## License
 
@@ -73,7 +73,7 @@ GNU General Public License for more details.<br>
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.<br>
 
-The app uses icons from [Google Design Material Icons](https://design.google.com/icons/index.html) licensed under Apache License Version 2.0. All other images (the logo of Privacy Friendly Apps, the SECUSO logo) copyright [SECUSO](www.secuso.org) (2022).
+The app uses icons from [Google Design Material Icons](https://design.google.com/icons/index.html) licensed under Apache License Version 2.0. All other images (the logo of Privacy Friendly Apps, the SECUSO logo) copyright [SECUSO](https://secuso.org) (2022).
 
 ## Contributors
 
