@@ -1,23 +1,22 @@
 /**
  * This file is part of Privacy Friendly Password Generator.
-
- Privacy Friendly Password Generator is free software:
- you can redistribute it and/or modify it under the terms of the
- GNU General Public License as published by the Free Software Foundation,
- either version 3 of the License, or any later version.
-
- Privacy Friendly Password Generator is distributed in the hope
- that it will be useful, but WITHOUT ANY WARRANTY; without even
- the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- See the GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with Privacy Friendly Password Generator. If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * Privacy Friendly Password Generator is free software:
+ * you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or any later version.
+ * <p>
+ * Privacy Friendly Password Generator is distributed in the hope
+ * that it will be useful, but WITHOUT ANY WARRANTY; without even
+ * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with Privacy Friendly Password Generator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 package org.secuso.privacyfriendlypasswordgenerator.activities;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Context;
@@ -25,16 +24,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import androidx.appcompat.app.AlertDialog;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
@@ -140,7 +139,6 @@ public class SettingsActivity extends BaseActivity {
      * This fragment shows general preferences only. It is used when the
      * activity is showing a two-pane settings UI.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class GeneralPreferenceFragment extends PreferenceFragment {
 
         Activity activity;
@@ -156,8 +154,7 @@ public class SettingsActivity extends BaseActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
 
-            bindPreferenceSummaryToValue(findPreference(PreferenceKeys.HASH_ITERATIONS));
-            bindPreferenceSummaryToValue(findPreference(PreferenceKeys.HASH_ALGORITHM));
+            bindPreferenceSummaryToValue(findPreference(PreferenceKeys.BCRYPT_COST));
 
             Preference benchmark = findPreference("benchmark");
             benchmark.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -168,8 +165,9 @@ public class SettingsActivity extends BaseActivity {
 
                     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-                    bundle.putInt("number_iterations", Integer.parseInt(preferences.getString("hash_iterations", "1000")));
-                    bundle.putString("hash_algorithm", preferences.getString("hash_algorithm", "SHA256"));
+                    bundle.putInt("number_iterations", Integer.parseInt(preferences.getString(PreferenceKeys.HASH_ITERATIONS, getString(R.string.default_iterations))));
+                    bundle.putString("hash_algorithm", preferences.getString(PreferenceKeys.HASH_ALGORITHM, getString(R.string.default_hash_algorithm)));
+                    bundle.putString("bcrypt_cost", preferences.getString(PreferenceKeys.BCRYPT_COST, getString(R.string.default_bcrypt_cost)));
 
                     FragmentManager fragmentManager = getActivity().getFragmentManager();
                     BenchmarkDialog benchmarkDialog = new BenchmarkDialog();

@@ -132,13 +132,15 @@ Die Salt-Werte werden aus den Kontodaten abgeleitet. Falls in den Einstellungen 
     <string name="summary_clipboard">Alle anderen Apps können Ihre Passworte in der Zwischenablage einsehen.</string>
 
     <string name="title_expert_mode">Expertenmodus</string>
-    <string name="expert_mode_summary">Hash-Algorithmus und Hash-Iterationen haben einen großen Einfluss auf die Dauer der Generierung. Außerdem werden durch Ändern dieser Werte auch ALLE Passworte beeinflusst und somit andere Passworte generiert.</string>
+    <string name="expert_mode_summary">Wenn Sie den "Bcrypt Kosten"-Parameter ändern, werden andere Passwörter erzeugt. Ein höherer Wert erhöht die Zeit, die für die Generierung des Passworts benötigt wird. Dadurch wird es für einen Angreifer schwieriger. Mit der Benchmark-Funktion können Sie testen, wie lange es dauert, ein Kennwort mit den aktuellen Einstellungen zu generieren. Der Standardwert ist 10.</string>
     <string name="title_hash_iterations">PBKDF2: Anzahl Hash-Iterationen</string>
 
     <string name="title_benchmark">Benchmark: Generierung</string>
     <string name="summary_benchmark">Ermittlung der Generierungsdauer basierend auf Hash-Algorithmus und Hash-Iterationen.</string>
 
     <string name="title_hash_algorithms">PBKDF2: Hash-Algorithmus</string>
+
+    <string name="title_bcrypt_cost">Bcrypt: Kosten Parameter</string>
 
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>

@@ -57,8 +57,8 @@ public class UpdateMetadataDialog extends DialogFragment {
     private MetaData oldMetaData;
 
     private String hash_algorithm;
-    private boolean bindToDevice_enabled;
     private int number_iterations;
+    private String bcryptCost;
 
     private boolean closeDialog;
     private boolean versionVisible;
@@ -77,13 +77,13 @@ public class UpdateMetadataDialog extends DialogFragment {
 
         position = bundle.getInt("position");
         hash_algorithm = bundle.getString("hash_algorithm");
-        bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
 
 
         database = MetaDataSQLiteHelper.getInstance(getActivity());
         metaData = database.getMetaData(position);
         oldMetaData = database.getMetaData(position);
         number_iterations = bundle.getInt("number_iterations");
+        bcryptCost = bundle.getString("bcrypt_cost");
 
         builder.setView(rootView);
         setUpData();
@@ -250,7 +250,7 @@ public class UpdateMetadataDialog extends DialogFragment {
             bundle.putInt("position", position);
             bundle.putString("hash_algorithm", hash_algorithm);
             bundle.putInt("number_iterations", number_iterations);
-            bundle.putBoolean("bindToDevice_enabled", bindToDevice_enabled);
+            bundle.putString("bcrypt_cost", bcryptCost);
             bundle.putString("olddomain", oldMetaData.getDOMAIN());
             bundle.putString("oldusername", oldMetaData.getUSERNAME());
 

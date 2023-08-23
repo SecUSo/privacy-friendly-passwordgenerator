@@ -59,9 +59,9 @@ public class UpdatePasswordDialog extends DialogFragment {
     private MetaData metaData;
     private MetaData oldMetaData;
 
-    private boolean bindToDevice_enabled;
     private String hashAlgorithm;
     private int number_iterations;
+    private String bcryptCost;
 
     private ProgressBar spinnerOld;
     private ProgressBar spinnerNew;
@@ -89,10 +89,10 @@ public class UpdatePasswordDialog extends DialogFragment {
         Bundle bundle = getArguments();
 
         position = bundle.getInt("position");
-        bindToDevice_enabled = bundle.getBoolean("bindToDevice_enabled");
         hashAlgorithm = bundle.getString("hash_algorithm");
         setOldMetaData(bundle);
         number_iterations = bundle.getInt("number_iterations");
+        bcryptCost = bundle.getString("bcrypt_cost");
 
         database = MetaDataSQLiteHelper.getInstance(getActivity());
 
@@ -206,20 +206,21 @@ public class UpdatePasswordDialog extends DialogFragment {
 
             String deviceID = SaltHelper.getSalt(requireActivity().getBaseContext());
 
-            //pack old parameters to String-Array
-            String[] paramsOld = new String[12];
-            paramsOld[0] = oldMetaData.getDOMAIN();
-            paramsOld[1] = oldMetaData.getUSERNAME();
-            paramsOld[2] = editTextUpdateMasterpassword.getText().toString();
-            paramsOld[3] = deviceID;
-            paramsOld[4] = String.valueOf(oldMetaData.getITERATION());
-            paramsOld[5] = String.valueOf(number_iterations);
-            paramsOld[6] = hashAlgorithm;
-            paramsOld[7] = String.valueOf(oldMetaData.getHAS_SYMBOLS());
-            paramsOld[8] = String.valueOf(oldMetaData.getHAS_LETTERS_LOW());
-            paramsOld[9] = String.valueOf(oldMetaData.getHAS_LETTERS_UP());
-            paramsOld[10] = String.valueOf(oldMetaData.getHAS_NUMBERS());
-            paramsOld[11] = String.valueOf(oldMetaData.getLENGTH());
+            PasswordGeneratorTask.PasswordGeneratorParameter paramsOld = new PasswordGeneratorTask.PasswordGeneratorParameter(
+                    oldMetaData.getDOMAIN(),
+                    oldMetaData.getUSERNAME(),
+                    editTextUpdateMasterpassword.getText().toString(),
+                    deviceID,
+                    oldMetaData.getITERATION(),
+                    number_iterations,
+                    hashAlgorithm,
+                    bcryptCost,
+                    oldMetaData.getHAS_SYMBOLS(),
+                    oldMetaData.getHAS_LETTERS_LOW(),
+                    oldMetaData.getHAS_LETTERS_UP(),
+                    oldMetaData.getHAS_NUMBERS(),
+                    oldMetaData.getLENGTH()
+            );
 
             new PasswordGeneratorTask() {
                 @Override
@@ -232,20 +233,21 @@ public class UpdatePasswordDialog extends DialogFragment {
             //generate new password
             metaData = database.getMetaData(position);
 
-            //pack new parameters to String-Array
-            String[] paramsNew = new String[12];
-            paramsNew[0] = metaData.getDOMAIN();
-            paramsNew[1] = metaData.getUSERNAME();
-            paramsNew[2] = editTextUpdateMasterpassword.getText().toString();
-            paramsNew[3] = deviceID;
-            paramsNew[4] = String.valueOf(metaData.getITERATION());
-            paramsNew[5] = String.valueOf(number_iterations);
-            paramsNew[6] = hashAlgorithm;
-            paramsNew[7] = String.valueOf(metaData.getHAS_SYMBOLS());
-            paramsNew[8] = String.valueOf(metaData.getHAS_LETTERS_LOW());
-            paramsNew[9] = String.valueOf(metaData.getHAS_LETTERS_UP());
-            paramsNew[10] = String.valueOf(metaData.getHAS_NUMBERS());
-            paramsNew[11] = String.valueOf(metaData.getLENGTH());
+            PasswordGeneratorTask.PasswordGeneratorParameter paramsNew = new PasswordGeneratorTask.PasswordGeneratorParameter(
+                    metaData.getDOMAIN(),
+                    metaData.getUSERNAME(),
+                    editTextUpdateMasterpassword.getText().toString(),
+                    deviceID,
+                    metaData.getITERATION(),
+                    number_iterations,
+                    hashAlgorithm,
+                    bcryptCost,
+                    metaData.getHAS_SYMBOLS(),
+                    metaData.getHAS_LETTERS_LOW(),
+                    metaData.getHAS_LETTERS_UP(),
+                    metaData.getHAS_NUMBERS(),
+                    metaData.getLENGTH()
+            );
 
             new PasswordGeneratorTask() {
                 @Override

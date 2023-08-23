@@ -23,4 +23,5 @@ object PreferenceKeys {
     const val CLIPBOARD_ENABLED = "clipboard_enabled"
     const val HASH_ALGORITHM = "hash_algorithm"
     const val HASH_ITERATIONS = "hash_iterations"
+    const val BCRYPT_COST = "bcrypt_cost"
 }

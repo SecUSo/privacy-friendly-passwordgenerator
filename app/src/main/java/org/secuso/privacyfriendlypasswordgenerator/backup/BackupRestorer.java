@@ -120,6 +120,7 @@ public class BackupRestorer implements IBackupRestorer {
                     break;
                 case PreferenceKeys.HASH_ALGORITHM:
                 case PreferenceKeys.HASH_ITERATIONS:
+                case PreferenceKeys.BCRYPT_COST:
                     editor.putString(name, reader.nextString());
                     break;
                 default:

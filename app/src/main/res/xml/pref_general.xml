@@ -25,20 +25,12 @@
             android:summary="@string/expert_mode_summary"/>
 
         <ListPreference
-            android:title="@string/title_hash_algorithms"
-            android:key="hash_algorithm"
-            android:entries="@array/pref_hash_algorithms"
-            android:entryValues="@array/pref_hash_algorithms"
-            android:defaultValue="@string/default_hash_algorithm"
-            android:summary="@string/default_hash_algorithm">
-        </ListPreference>
-        <ListPreference
-            android:title="@string/title_hash_iterations"
-            android:key="hash_iterations"
-            android:entries="@array/pref_iterations"
-            android:entryValues="@array/pref_iterations"
-            android:defaultValue="@string/default_iterations"
-            android:summary="@string/default_iterations"/>
+            android:title="@string/title_bcrypt_cost"
+            android:key="bcrypt_cost"
+            android:entries="@array/pref_bcrypt_cost"
+            android:entryValues="@array/pref_bcrypt_cost"
+            android:defaultValue="@string/default_bcrypt_cost"
+            android:summary="@string/default_bcrypt_cost"/>
         <Preference
             android:key="benchmark"
             android:title="@string/title_benchmark"
