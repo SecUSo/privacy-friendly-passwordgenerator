@@ -162,7 +162,7 @@
         <item>9000</item>
         <item>10000</item>
     </string-array>
-    <string name="default_iterations" translatable="false">2000</string>
+    <string name="default_iterations" translatable="false">10000</string>
 
     <string name="title_bcrypt_cost">Bcrypt: Cost parameter</string>
     <string-array name="pref_bcrypt_cost" translatable="false">
