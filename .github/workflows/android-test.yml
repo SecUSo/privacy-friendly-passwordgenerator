@@ -6,8 +6,8 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        api-level: [32]
-        target: [google_apis]
+        api-level: [29]
+        target: [default]
         arch: [x86_64]
     steps:
       - name: Checkout
@@ -51,6 +51,7 @@ jobs:
           api-level: ${{ matrix.api-level }}
           target: ${{ matrix.target }}
           arch: ${{ matrix.arch }}
+          profile: Nexus 6
 #          force-avd-creation: false
 #          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
