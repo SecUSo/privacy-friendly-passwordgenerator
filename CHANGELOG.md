@@ -1,7 +1,27 @@
 # Changelog
 
+<a name="v1.3.0"></a>
+## [Password Generator (Privacy Friendly) v1.3.0](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.3.0) - 30 Aug 2023
+
+## What's Changed
+* Store salt value inside the app instead of using deviceID by [@udenr](https://github.com/udenr) in https://github.com/SecUSo/privacy-friendly-passwordgenerator/pull/50
+* Add bcrypt cost setting and remove PBKDF2 settings by [@udenr](https://github.com/udenr) in https://github.com/SecUSo/privacy-friendly-passwordgenerator/pull/51
+* Update automated tests by [@udenr](https://github.com/udenr) in https://github.com/SecUSo/privacy-friendly-passwordgenerator/pull/52
+* Change default value for PBKDF2 iterations from 2000 to 10000 by [@udenr](https://github.com/udenr) in https://github.com/SecUSo/privacy-friendly-passwordgenerator/pull/54
+* Update android-test.yml by [@udenr](https://github.com/udenr) in https://github.com/SecUSo/privacy-friendly-passwordgenerator/pull/55
+* Add basic UI tests by [@udenr](https://github.com/udenr) in https://github.com/SecUSo/privacy-friendly-passwordgenerator/pull/56
+* Update to version 1.3.0 by [@udenr](https://github.com/udenr) in https://github.com/SecUSo/privacy-friendly-passwordgenerator/pull/53
+
+## New Contributors
+* [@udenr](https://github.com/udenr) made their first contribution in https://github.com/SecUSo/privacy-friendly-passwordgenerator/pull/50
+
+**Full Changelog**: https://github.com/SecUSo/privacy-friendly-passwordgenerator/compare/v1.2.0...v1.3.0
+
+[Changes][v1.3.0]
+
+
 <a name="v1.2.0"></a>
-## [Password Generator (Privacy Friendly) v1.2.0 (v1.2.0)](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.2.0) - 03 Aug 2022
+## [Password Generator (Privacy Friendly) v1.2.0](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.2.0) - 03 Aug 2022
 
 ## What's Changed
 * Added Support for our Backup App from F-Droid [@Kamuno](https://github.com/Kamuno) [#46](https://github.com/SecUSo/privacy-friendly-passwordgenerator/issues/46)
@@ -13,7 +33,7 @@
 
 
 <a name="v1.1.0"></a>
-## [Password Generator (Privacy Friendly) v1.1.0 (v1.1.0)](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.1.0) - 29 Jan 2021
+## [Password Generator (Privacy Friendly) v1.1.0](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.1.0) - 29 Jan 2021
 
 - Added integration to backup api via [backup app](https://github.com/SecUSo/privacy-friendly-backup)
 - Added adaptive icon
@@ -22,7 +42,7 @@
 
 
 <a name="v1.0.3"></a>
-## [Password Generator (Privacy Friendly) v1.0.3 (v1.0.3)](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.0.3) - 28 Mar 2019
+## [Password Generator (Privacy Friendly) v1.0.3](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.0.3) - 28 Mar 2019
 
 - bugfixing
 
@@ -30,7 +50,7 @@
 
 
 <a name="v1.0.2"></a>
-## [Privacy Friendly Password Generator v1.0.2 (v1.0.2)](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.0.2) - 19 Mar 2018
+## [Privacy Friendly Password Generator v1.0.2](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.0.2) - 19 Mar 2018
 
 Fixing of search view
 
@@ -38,7 +58,7 @@ Fixing of search view
 
 
 <a name="v1.0.1"></a>
-## [Privacy Friendly Passwordgenerator v1.0.1 (v1.0.1)](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.0.1) - 28 Dec 2017
+## [Privacy Friendly Passwordgenerator v1.0.1](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.0.1) - 28 Dec 2017
 
 * Hiding Master password from accessibility services
 
@@ -46,7 +66,7 @@ Fixing of search view
 
 
 <a name="v1.0"></a>
-## [Privacy Friendly Password Generator v1.0 (v1.0)](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.0) - 03 May 2017
+## [Privacy Friendly Password Generator v1.0](https://github.com/SecUSo/privacy-friendly-passwordgenerator/releases/tag/v1.0) - 03 May 2017
 
 With Privacy Friendly Password Generator you can generate different passwords for all your accounts while remembering only one master password. Detailed information about generating passwords can be found at the app's help page or at https://secuso.org/pfa. 
 
@@ -55,6 +75,7 @@ The app belongs to the Privacy Friendly Apps group developed by the research gro
 [Changes][v1.0]
 
 
+[v1.3.0]: https://github.com/SecUSo/privacy-friendly-passwordgenerator/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/SecUSo/privacy-friendly-passwordgenerator/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/SecUSo/privacy-friendly-passwordgenerator/compare/v1.0.3...v1.1.0
 [v1.0.3]: https://github.com/SecUSo/privacy-friendly-passwordgenerator/compare/v1.0.2...v1.0.3
@@ -62,4 +83,4 @@ The app belongs to the Privacy Friendly Apps group developed by the research gro
 [v1.0.1]: https://github.com/SecUSo/privacy-friendly-passwordgenerator/compare/v1.0...v1.0.1
 [v1.0]: https://github.com/SecUSo/privacy-friendly-passwordgenerator/tree/v1.0
 
- <!-- Generated by https://github.com/rhysd/changelog-from-release -->
+<!-- Generated by https://github.com/rhysd/changelog-from-release v3.7.1 -->
