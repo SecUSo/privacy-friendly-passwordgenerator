@@ -55,9 +55,9 @@ If you wish to contribute to this project, have a look at the contribution polic
 Mininum SDK: 17<br>
 Target SDK: 33 
 
-## Application Data Backup
+## Data Backup
 
-This application does not natively have a data backup feature. Please install and use the [SECUSO Privacy Friendly Backup](https://github.com/SecUSo/privacy-friendly-backup) to backup and restore this application's data. This feature is required when a user migrates their data to a new phone.
+You can use the [Privacy Friendly Backup app](https://github.com/SecUSo/privacy-friendly-backup) to backup and restore this application's data. This can also be used to migrate your data to a new phone.
 
 ## Translation
 
