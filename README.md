@@ -55,6 +55,10 @@ If you wish to contribute to this project, have a look at the contribution polic
 Mininum SDK: 17<br>
 Target SDK: 33 
 
+## Data Backup
+
+You can use the [Privacy Friendly Backup app](https://github.com/SecUSo/privacy-friendly-backup) to backup and restore this application's data. This can also be used to migrate your data to a new phone.
+
 ## Translation
 
 If you want to help translate this app, you can use [Weblate](https://hosted.weblate.org/projects/pfa/password-generator/password-generator-android-app/).
