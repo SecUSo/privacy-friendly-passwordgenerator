@@ -1,19 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Password Generator</string>
     <string name="app_name_long">Privacy Friendly Password Generator</string>
-
     <!-- ###DRAWER###-->
     <string name="action_help">ヘルプ</string>
     <string name="action_about">アプリについて</string>
     <string name="action_settings">設定</string>
     <string name="action_main">メイン</string>
     <string name="action_tutorial">チュートリアル</string>
-
     <!--###METADATA_LIST###-->
     <string name="undo">元に戻す</string>
     <string name="item_deleted">削除しました。</string>
     <string name="initial_alert">アカウントを追加</string>
-
     <!--###ADD_METADATA###-->
     <string name="add_metadata_heading">新しいアカウントを追加</string>
     <string name="domain">アカウント名:</string>
@@ -31,10 +29,8 @@
     <string name="change_version_closed">▶ バージョンの変更</string>
     <string name="change_version_opened">▼ バージョンの変更</string>
     <string name="current_version">現在のパスワードバージョン: </string>
-
     <string name="add">追加</string>
     <string name="cancel">キャンセル</string>
-
     <!--###UPDATE_METADATA###-->
     <string name="characterset">文字セット:</string>
     <string name="old_password">古いパスワード:</string>
@@ -42,23 +38,18 @@
     <string name="master_password_description">古いパスワードと新しいパスワードを生成するには、マスターパスワードが必要です。</string>
     <string name="next">次へ</string>
     <string name="save">保存</string>
-
     <string name="old_version">古いパスワードのバージョンは %s です。</string>
     <string name="new_version">新しいバージョンは </string>
     <string name="added_message">アカウントを更新しました。</string>
     <string name="canceled_message">更新をキャンセルしました。</string>
-
     <string name="add_new_metadata_heading">1. アカウントの更新</string>
     <string name="passwords_heading">2. あなたのパスワード</string>
-
     <string name="copy_clipboar_old">古いパスワードをコピーしました。</string>
     <string name="copy_clipboar_new">新しいパスワードをコピーしました。</string>
-
     <!--####VERSION_INFO####-->
     <string name="dialog_version_title">パスワードのバージョンとは?</string>
     <string name="dialog_version">パスワードのバージョンは、アカウントが持つパスワードの数を示す数字です。
         マスタパスワードやアカウントに関するその他のデータが変更されていない場合でも、異なるパスワードを生成するために使用されます。  </string>
-
     <!--###GENERATOR###-->
     <string name="generate_heading">パスワードを生成</string>
     <string name="generate">生成</string>
@@ -66,10 +57,8 @@
     <string name="enter_masterpassword">マスターパスワードを入力してください。</string>
     <string name="masterpassword_length">８文字以上入力してください。</string>
     <string name="password">あなたのパスワード:</string>
-    <string name="init_password"></string>
     <string name="done">完了</string>
     <string name="password_copied">パスワードをコピーしました。</string>
-
     <!--###ABOUT###-->
     <string name="about">アプリについて</string>
     <string name="version_number">バージョン</string>
@@ -78,13 +67,10 @@
     <string name="about_affiliation">提携</string>
     <string name="privacy_friendly">このアプリケーションは、ダルムシュタット工科大学 (Technische Universität Darmstadt, Germany) が開発したプライバシーフレンドリーアプリのグループに属しています。ソースコードは GPLv3 の下でライセンスされます。画像の著作権は TU Darmstadt および Google Inc.</string>
     <string name="more_info">さらに詳しい情報は以下でご覧ください:</string>
-
     <!--###HELP###-->
     <string name="help">ヘルプ</string>
-
     <string name="help_overview">Privacy Friendly Password Generator とは?</string>
     <string name="help_overview_answer">プライバシーに配慮したパスワードジェネレーターは、すべてのアカウントに固有のパスワードを生成します。 生成後、Web サイトまたはサービスに手動でパスワードを入力する必要があります。</string>
-
     <string name="help_generation">パスワードを生成する方法は?</string>
     <string name="help_generation_answer">パスワードを生成するには、リストからアカウントを選択してクリックします。 マスターパスワードを入力し、
     "生成"ボタンを押してください。 パスワードは、紙またはクリップボードを使用して Web サイトまたはサービスにコピーすることができます。</string>
@@ -97,97 +83,74 @@
     <string name="help_which_parameters_characterset">文字セットには、パスワードに含める文字の種類が記述されています。 Web サイトには、パスワードの文字セットに関する推奨事項があることがよくあります。</string>
     <string name="help_which_parameters_length">パスワードの長さは 4 ～ 25 の間で選択できます。</string>
     <string name="help_which_parameters_password_counter">パスワードのバージョンは、更新の際に同じアカウントデータで異なるパスワードを生成するために必要です。 デフォルト値は 1 です。カウンターは更新ごとに 1 ずつ増加しますが、手動で変更することもできます。</string>
-
     <string name="help_manage_add_heading">アカウントを追加する方法は?</string>
     <string name="help_manage_add_description">プラスボタンを押して新しいアカウントを追加します。</string>
     <string name="help_manage_update_heading">アカウントを更新する方法は?</string>
     <string name="help_manage_update_description">リスト項目を長押ししてアカウントを更新します。</string>
     <string name="help_manage_delete_heading">アカウントを削除する方法は?</string>
     <string name="help_manage_delete_description">片側にスワイプしてアカウントセットを削除します。</string>
-
     <string name="help_generation_heading">パスワードを生成する方法は?</string>
     <string name="help_generation_description">パスワードは2つのハッシュ・アルゴリズムの組み合わせによって生成される： PBKDF2とBCryptである。マスターパスワードは、両方のアルゴリズムの秘密の役割を果たします。ソルトはアカウントデータから生成されます。設定で有効にすると、インストール・ソルト（初回起動時に生成）もソルトに追加されます。</string>
-
     <string name="help_password_storage_heading">パスワードはデバイスに保存されますか?</string>
     <string name="help_password_storage_description">いいえ、パスワードもマスターパスワードもデバイスには保存されません。アカウントデータとインストールソルトのみがデバイスに保存されます。</string>
-
     <string name="help_data_backup_heading">データをバックアップする方法はありますか？</string>
     <string name="help_data_backup_description">はい。Privacy Friendly Backupアプリを使って、アカウントデータとインストールソルトをバックアップできます。この方法で、データを別のデバイスに転送することもできます。</string>
-
     <string name="help_permissions_heading">プライバシーに配慮したパスワードジェネレーターが必要とするアクセス許可は?</string>
     <string name="help_permissions_description">プライバシーに配慮したパスワードジェネレーターはアクセス許可を必要としません。</string>
-
     <!-- ###SETTINGS### -->
     <string name="title_reset_list">すべてのアカウントを削除</string>
     <string name="delete_dialog">すべてのアカウントを削除してもよろしいですか?</string>
     <string name="delete_dialog_success">すべてのアカウントを削除しました。</string>
-
     <string name="title_activity_settings">設定</string>
     <string name="title_bind_password">すべてのパスワードをこのインストールにバインドする</string>
     <string name="summary_bind_password">これにより、このデバイスに基づいた固有のパスワードが作成されます。このパスワードは、別のデバイスを使用したり、アプリを再インストールしても再生成できません。そのため、このオプションを使用する場合は、Privacy Friendly Backupアプリを使用してこのアプリのデータをバックアップすることを強くお勧めします。そうしないと、デバイスを紛失した場合にパスワードを再生成することができなくなります。</string>
     <string name="title_clipboard">パスワードをクリップボードにコピー</string>
     <string name="summary_clipboard">すべての他のアプリは、クリップボード上のパスワードにアクセスできます。</string>
-
     <string name="title_expert_mode">エキスパートモード</string>
     <string name="expert_mode_summary">Bcryptコスト・パラメータを変更すると、異なるパスワードが生成される。値を大きくすると、パスワードの生成にかかる時間が長くなる。これにより、攻撃者にとってより困難なものになります。ベンチマーク機能を使用すると、現在の設定でパスワードの生成にかかる時間をテストできます。デフォルト値は10です。</string>
     <string name="title_hash_iterations">PBKDF2: ハッシュ反復回数</string>
-
     <string name="title_benchmark">ベンチマーク: 生成</string>
     <string name="summary_benchmark">与えられたアルゴリズムと反復回数に基づいて、生成時間をテストします。</string>
-
     <string name="title_hash_algorithms">PBKDF2: ハッシュアルゴリズム</string>
-
     <string name="title_bcrypt_cost">Bcrypt： コストパラメータ</string>
-
     <!-- ###DIALOGS### -->
     <string name="okay">OK</string>
-
     <!-- ###BENCHMARK### -->
     <string name="dialog_start_benchmark">開始</string>
     <string name="dialog_start_benchmark_hint">ベンチマークを開始してください。</string>
     <string name="dialog_benchmark_title">ベンチマーク</string>
     <string name="dialog_benchmark_seconds">秒</string>
     <string name="dialog_benchmark_time">生成はおよそ</string>
-
     <!-- ##TUTORIAL_DIALOG-->
     <string name="skip">スキップ</string>
     <string name="start">了解</string>
-
     <string name="slide_1_title">ようこそ!</string>
     <string name="slide_1_desc">プライバシーを考慮したパスワードジェネレーターを使用すると、１つのマスターパスワードだけを覚えるだけで、すべてのアカウントに対して異なるパスワードを生成することができます。</string>
-
     <string name="slide_2_title">パスワードの生成</string>
     <string name="slide_2_desc_one">一覧からアカウントを選択します。 </string>
     <string name="slide_2_desc_two">最初の秘密としてマスターパスワードを考えます。 このマスターパスワードに基づいて、他のすべてのパスワードが生成されます。</string>
     <string name="slide_2_desc_three">生成されたパスワードを Web サイトまたはサービスにコピーします。</string>
-
     <string name="slide_3_title">アカウント</string>
     <string name="slide_3_desc_one">Web サイトのプロバイダは、パスワード構成ポリシーを使用することがよくあります。</string>
     <string name="slide_3_desc_two">これらのポリシーでは、パスワードの選択が指示され、最小長のような特殊な特性を持つパスワードを作成させることがあります。 </string>
     <string name="slide_3_desc_three">アカウントにパスワードの特性を設定することができます。</string>
-
     <string name="slide_4_title">アカウントの管理</string>
     <string name="slide_4_desc_one">プラスボタンで新しいアカウントを追加します。</string>
     <string name="slide_4_desc_two">長押ししてアカウントを更新します。 </string>
     <string name="slide_4_desc_three">右から左のスワイプジェスチャでアカウントを削除します。</string>
-
     <string name="slide_mp_title">マスターパスワード</string>
     <string name="slide_mp_desc_one">覚えておく必要があるパスワードはマスターパスワードだけです。</string>
     <string name="slide_mp_desc_two">これに基づいて、他のすべてのパスワードが生成されます。 </string>
     <string name="slide_mp_desc_three">マスターパスワードはアプリケーションには保存されません。 パスワードを忘れた場合は、すべてのパスワードをリセットする必要があります。</string>
     <string name="slide_mp_desc_four">希望する場合は、それを書き留めて、安全な場所に保管することができます。</string>
-
     <string name="slide_mp2_title">マスターパスワードのヒント</string>
     <string name="slide_mp2_desc_one">個人データを含めないでください (誕生日などの)。</string>
     <string name="slide_mp2_desc_two">キーボードの並びを使用しないでください。 </string>
     <string name="slide_mp2_desc_three">できるだけ長くしてください。</string>
-
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">アプリケーションロゴ</string>
-
     <!-- ##SEARCH-->
     <string name="search_parameter_label">検索</string>
-
     <!-- ##SAMPLE DATA-->
     <string name="sample_domain1">sample.email.com</string>
     <string name="sample_username1">sample.name@email.com</string>
@@ -195,5 +158,4 @@
     <string name="sample_username2">サンプルユーザー名</string>
     <string name="sample_domain3"> サンプル PIN</string>
     <string name="sample_username3">-</string>
-
 </resources>
