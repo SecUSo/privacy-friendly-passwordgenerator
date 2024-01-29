@@ -1,0 +1,26 @@
+Gizlilik Dostu Parola Oluşturucu ile tek bir ana parolayı hatırlarken tüm
+hesaplarınız için farklı parolalar oluşturabilirsiniz. Parola oluşturma
+hakkında ayrıntılı bilgi uygulamanın yardım sayfasında veya https://secuso.org/pfa adresinde bulunabilir. Uygulama, SECUSO araştırma grubu tarafından geliştirilen Gizlilik Dostu Uygulamalar grubuna aittir. Daha fazla bilgi https://secuso.org/pfa adresinde bulunabilir.
+
+Bir kullanıcı hesabı için parola oluşturmak isterseniz, bu hesabı Gizlilik Dostu Parola Oluşturucu'ya ekleyebilirsiniz. Bu nedenle, yalnızca parolanın hangi karakterlerden (küçük harfler, büyük harfler, sayılar, özel karakterler) oluşmasını istediğinizi ve ne kadar uzun olması gerektiğini girmeniz yeterlidir.
+Hesap bir liste halinde düzenlenmiştir. Bir parola oluşturmak için hesaba tıklayın ve ana parolanızı girin. Ana parola sizin tarafınızdan oluşturulan bir paroladır ve diğer tüm parolaları yönlendirir. Diğer parolalar gibi uygulama içinde saklanmaz. Bu yüzden dilerseniz bir yere yazabilir ve güvenli bir yerde saklayabilirsiniz.
+Son olarak, Gizlilik Dostu Parola Oluşturucu hesabınız için oluşturulan parolayı görüntüler. Bu parola istenildiği zaman yeniden oluşturulabilir.
+
+Gizlilik Dostu Parola Oluşturucu'nun parolaları nasıl oluşturduğunu öğrenmek isterseniz https://secuso.org/pfa adresine bakabilirsiniz.
+
+Gizlilik Dostu Parola Oluşturucu'nun diğer benzer uygulamalardan farkı nedir?
+
+1. İzin yok
+Gizlilik Dostu Parola Oluşturucu herhangi bir izin gerektirmez.
+Karşılaştırma için: Google Play Store'daki benzer uygulamaların İlk 10'u ortalama 3,4 izin gerektirir (Kasım 2016'da). Bunlar örneğin konum izni veya depolama alanına erişim, değiştirme veya silme izinleridir.
+
+2. Parolaların korunması
+Gizlilik Dostu Parola Oluşturucu, oluşturulan herhangi bir parolayı veya ana parolayı kaydetmez. Parola üretimi için durum bilgisi olmayan bir algoritma kullanılır. Bu, parolaların yalnızca oluşturma sırasında var olduğu ve uygulama kapatıldıktan sonra programda saklanmadığı anlamına gelir. Ayrıca, uygulama aygıtların ekran görüntüsü almasını engeller.
+
+3. Reklam yok
+Dahası, Gizlilik Dostu Parola Oluşturucu, reklamlardan tamamen vazgeçme biçimiyle diğer birçok uygulamadan ayrılır. Reklam, bir kullanıcının eylemlerini izleyebilir. Ayrıca pil ömrünü kısaltabilir veya mobil veri kullanabilir.
+
+Bize şu adreslerden ulaşabilirsiniz:
+Twitter - @SECUSOResearch https://twitter.com/secusoresearch
+Mastodon - @SECUSO_Research@bawü.social https://xn--baw-joa.social/@SECUSO_Research/
+İş ilanları - https://secuso.aifb.kit.edu/english/Job_Offers_1557.php
