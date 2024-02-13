@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       status: ${{ steps.check-androidTest.outputs.NOT_EMPTY }}
+      min-sdk-version: ${{ steps.get-sdk-version.outputs.MIN_SDK_VERSION }}
+      target-sdk-version: ${{ steps.get-sdk-version.outputs.TARGET_SDK_VERSION }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -16,13 +18,20 @@ jobs:
           echo "NOT_EMPTY=$([ "$(ls -A app/src/androidTest)" ] && echo 'true' || echo 'false')"
           echo "NOT_EMPTY=$([ "$(ls -A app/src/androidTest)" ] && echo 'true' || echo 'false')" >> $GITHUB_OUTPUT
         id: check-androidTest
+      - name: Get min and target sdk
+        if: steps.check-androidTest.outputs.NOT_EMPTY == 'true'
+        id: get-sdk-version
+        run: |
+            echo "MIN_SDK_VERSION=$(cat app/build.gradle | grep minSdkVersion | rev | cut -d' ' -f 1 | rev)" >> $GITHUB_OUTPUT
+            echo "TARGET_SDK_VERSION=$(cat app/build.gradle | grep targetSdkVersion | rev | cut -d' ' -f 1 | rev)" >> $GITHUB_OUTPUT
+      
   test:
     needs: check-if-tests-exist
     if: needs.check-if-tests-exist.outputs.status == 'true'
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        api-level: [21, 29, 34]
+        api-level: [21, 29, 34, "${{ needs.check-if-tests-exist.outputs.min-sdk-version }}", "${{ needs.check-if-tests-exist.outputs.target-sdk-version }}"]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
