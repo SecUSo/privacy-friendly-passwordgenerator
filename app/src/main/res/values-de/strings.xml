@@ -1,19 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Passwort Generator</string>
     <string name="app_name_long">Privacy Friendly Passwort Generator</string>
-
     <!-- ###DRAWER###-->
     <string name="action_help">Hilfe</string>
     <string name="action_about">Über</string>
     <string name="action_settings">Einstellungen</string>
     <string name="action_main">Hauptmenü</string>
     <string name="action_tutorial">Tutorial</string>
-
     <!--###METADATA_LIST###-->
     <string name="undo">Rückgängig</string>
     <string name="item_deleted">gelöscht.</string>
     <string name="initial_alert">KONTO HINZUFÜGEN</string>
-
     <!--###ADD_METADATA###-->
     <string name="add_metadata_heading">Neues Konto hinzufügen</string>
     <string name="domain">Kontoname:</string>
@@ -28,14 +26,11 @@
     <string name="iteration">Passwortversion: </string>
     <string name="add_domain_message">Bitte geben Sie einen Kontonamen an.</string>
     <string name="add_character_message">Bitte suchen Sie mindestens einen Zeichensatz aus.</string>
-
     <string name="change_version_closed">▶ Version ändern</string>
     <string name="change_version_opened">▼ Version ändern</string>
     <string name="current_version">Aktuelle Passwort-Version: </string>
-
     <string name="add">Hinzufügen</string>
     <string name="cancel">Abbrechen</string>
-
     <!--###UPDATE_METADATA###-->
     <string name="characterset">Zeichensatz:</string>
     <string name="old_password">Altes Passwort:</string>
@@ -43,24 +38,18 @@
     <string name="master_password_description">Das Master-Passwort wird zum Generien benötigt.</string>
     <string name="next">Weiter</string>
     <string name="save">Speichern</string>
-
     <string name="old_version">Die alte Passwort-Version ist %s.</string>
     <string name="new_version">Die neue ist </string>
-
     <string name="added_message">Konto-Update erfolgreich.</string>
     <string name="canceled_message">Update abgebrochen.</string>
-
     <string name="add_new_metadata_heading">1. Kontodaten ändern</string>
     <string name="passwords_heading">2. Passworte</string>
-
     <string name="copy_clipboar_old">Altes Passwort kopiert.</string>
     <string name="copy_clipboar_new">Neues Passwort kopiert.</string>
-
     <!--####VERSION_INFO####-->
     <string name="dialog_version_title">Was ist die Passwort-Version?</string>
     <string name="dialog_version">Die Version ist eine Zahl, die anzeigt wie viele verschiedene Passworte bereits für ein Konto generiert wurden. Außerdem sorgt sie im Falle eines Updates dafür, dass
     ein anderes Passwort generiert wird, auch wenn weder das Master-Passwort, noch andere Kontoeigenschaften verändert werden.</string>
-
     <!--###GENERATOR###-->
     <string name="generate_heading">Passwort generieren</string>
     <string name="generate">Generieren</string>
@@ -68,10 +57,8 @@
     <string name="enter_masterpassword">Bitte geben Sie ein Masterpasswort ein.</string>
     <string name="masterpassword_length">Bitte geben Sie mindestens 8 Zeichen ein.</string>
     <string name="password">Passwort:</string>
-    <string name="init_password"></string>
     <string name="done">Fertig</string>
     <string name="password_copied">Passwort kopiert.</string>
-
     <!--###ABOUT###-->
     <string name="about">Über</string>
     <string name="version_number">Version</string>
@@ -80,16 +67,13 @@
     <string name="privacy_friendly">Diese App gehört zur Gruppe der Privacy Friendly Apps entwickelt von der Technischen Universität Darmstadt. Quellcode lizenziert unter GPLv3. Bilder copyright TU Darmstadt und Google Inc.</string>
     <string name="more_info">Mehr Informationen unter:</string>
     <string name="about_author_contributors">und Mitwirkende.</string>
-
     <!--###HELP###-->
     <string name="help">Hilfe</string>
     <string name="help_overview">Was ist Privacy Friendly Passwort Generator?</string>
     <string name="help_overview_answer">Privacy Friendly Passwort Generator generiert Passworte eindeutig aus vorher festgelegten Daten. Die generierten Passworte können anschließend auf der
      entsprechenden Website oder ähnlichem eingetragen werden.</string>
-
     <string name="help_generation">Wie generiere ich ein Passwort?</string>
     <string name="help_generation_answer">Um ein Passwort zu generieren wählen Sie zunächst ein Konto aus der Liste aus. Geben Sie dann Ihr (ausgedachtes) Master-Passwort ein und drücken Sie auf "Generieren".</string>
-
     <string name="help_parameter_set_heading">Was ist ein Konto?</string>
     <string name="help_parameter_set_answer">Webseitenbetreiber verwenden häufig Passwordrichtlinien. Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen.
         Ein Konto enthält alle Eigenschaften eines Passworts.</string>
@@ -99,98 +83,75 @@
     <string name="help_which_parameters_characterset">Der Zeichensatz beschreibt welche Arten von Zeichen das Passwort haben soll. Manche Webseiten empfehlen bestimmte Kombinationen von Zeichen.</string>
     <string name="help_which_parameters_length">Die Länge des Passworts kann gewählt werden.</string>
     <string name="help_which_parameters_password_counter">Die Version wird verwendet, um im Falle einer Änderung verschiedene Passworte mit selben Kontodaten zu generieren. Der Standardwert ist 1. Die Version wird bei jedem Update um 1 erhöht.</string>
-
     <string name="help_manage_add_heading">Wie kann ich ein Konto hinzufügen?</string>
     <string name="help_manage_add_description">Sie können ein neues Konto über den Plus-Knopf hinzufügen.</string>
     <string name="help_manage_update_heading">Wie kann ich ein Konto ändern?</string>
     <string name="help_manage_update_description">Durch ein langes Drücken des Kontos in der Liste können Sie den Updatevorgang starten.</string>
     <string name="help_manage_delete_heading">Wie kann ich ein Konto löschen?</string>
     <string name="help_manage_delete_description">Durch eine Wischgeste nach links oder rechts können Sie ein Konto löschen.</string>
-
     <string name="help_generation_heading">Wie werden die Passworte generiert?</string>
     <string name="help_generation_description">Die Passworte werden durch eine Kombination der Hashalgorithmen BCrypt und PBKDF2 generiert. Dabei ist das Master-Passwort der Startwert für beide Algorithmen.
 Die Salt-Werte werden aus den Kontodaten abgeleitet. Falls in den Einstellungen aktiviert, wird auch ein Installations-Salt (das beim ersten Start erzeugt wird) zum Salt hinzugefügt.</string>
-
     <string name="help_password_storage_heading">Werden die Passworte auf dem Gerät gespeichert?</string>
     <string name="help_password_storage_description">Nein. Weder die generierten Passworte, noch das Master-Passwort werden auf dem Gerät gespeichert. Nur die Kontodaten und der Installations-Salt werden auf Ihrem Gerät gespeichert.</string>
-
     <string name="help_data_backup_heading">Gibt es eine Möglichkeit, meine Daten zu sichern?</string>
     <string name="help_data_backup_description">Ja. Sie können die App \"Privacy Friendly Backup\" verwenden, um Ihre Kontodaten und den Installations-Salt zu sichern. Auf diese Weise können die Daten auch auf ein anderes Gerät übertragen werden.</string>
-
     <string name="help_permissions_heading">Welche Berechtigungen verwendet Privacy Friendly Passwort Generator?</string>
     <string name="help_permissions_description">Privacy Friendly Passwort Generator verwendet keine Berechtigungen.</string>
-
     <!-- ###SETTINGS### -->
     <string name="title_reset_list">Alle Konten löschen</string>
     <string name="delete_dialog">Möchten Sie wirklich alle Konten löschen?</string>
     <string name="delete_dialog_success">Alle Konten gelöscht.</string>
-
     <string name="title_activity_settings">Einstellungen</string>
     <string name="title_bind_password">Alle Passwörter an diese Installation binden</string>
     <string name="summary_bind_password">Erzeugt eindeutige Passwörter auf diesem Gerät. Bei Verwendung eines anderen Geräts oder einer Neuinstallation der App können nicht diesselben Passworte bei der Eingabe von denselben Daten und demselben Master-Passwort erzeugt werden. Wir empfehlen daher dringend, die Daten dieser App mit der Privacy Friendly Backup App zu sichern, wenn Sie diese Option verwenden. Andernfalls ist es unmöglich, die Passwörter wiederherzustellen, falls Sie Ihr Gerät verlieren.</string>
     <string name="title_clipboard">In Zwischenablage kopieren</string>
     <string name="summary_clipboard">Alle anderen Apps können Ihre Passworte in der Zwischenablage einsehen.</string>
-
     <string name="title_expert_mode">Expertenmodus</string>
     <string name="expert_mode_summary">Wenn Sie den "Bcrypt Kosten"-Parameter ändern, werden andere Passwörter erzeugt. Ein höherer Wert erhöht die Zeit, die für die Generierung des Passworts benötigt wird. Dadurch wird es für einen Angreifer schwieriger. Mit der Benchmark-Funktion können Sie testen, wie lange es dauert, ein Kennwort mit den aktuellen Einstellungen zu generieren. Der Standardwert ist 10.</string>
     <string name="title_hash_iterations">PBKDF2: Anzahl Hash-Iterationen</string>
-
     <string name="title_benchmark">Benchmark: Generierung</string>
     <string name="summary_benchmark">Ermittlung der Generierungsdauer basierend auf Hash-Algorithmus und Hash-Iterationen.</string>
-
     <string name="title_hash_algorithms">PBKDF2: Hash-Algorithmus</string>
-
     <string name="title_bcrypt_cost">Bcrypt: Kosten Parameter</string>
-
     <!-- ###DIALOGS### -->
     <string name="okay">OKAY</string>
-
     <!-- ###BENCHMARK### -->
     <string name="dialog_start_benchmark">Start</string>
     <string name="dialog_start_benchmark_hint">Bitte starten Sie das Benchmark.</string>
     <string name="dialog_benchmark_title">Benchmark</string>
     <string name="dialog_benchmark_seconds">Sekunden</string>
     <string name="dialog_benchmark_time">Das Generieren dauert etwa</string>
-
     <!-- ##TUTORIAL_DIALOG-->
     <string name="skip">Überspringen</string>
     <string name="start">FERTIG</string>
-
     <string name="slide_1_title">Willkommen!</string>
     <string name="slide_1_desc">Privacy Friendly Passwort Generator generiert unterschiedliche Passworte für alle Ihre Konten. Sie müssen sich lediglich ein Master-Passwort merken.</string>
-
     <string name="slide_2_title">Passwörter generieren</string>
     <string name="slide_2_desc_one">Wählen Sie ein Konto aus der Liste aus.</string>
     <string name="slide_2_desc_two">Denken Sie sich ein Master-Passwort aus, das Sie geheim halten. Basierend auf diesem Master-Passwort werden die anderen Passworte generiert.</string>
     <string name="slide_2_desc_three">Geben Sie das generierte Passwort auf der Webseite ein.</string>
-
     <string name="slide_3_title">Konten</string>
     <string name="slide_3_desc_one">Webseitenbetreiber verwenden häufig Passwortrichtlinien.</string>
     <string name="slide_3_desc_two">Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen. </string>
     <string name="slide_3_desc_three">Diese Richtlinien können im Konto festgelegt werden.</string>
-
     <string name="slide_4_title">Konten verwalten</string>
     <string name="slide_4_desc_one">Fügen Sie ein neues Konto mit dem Plus-Button hinzu.</string>
     <string name="slide_4_desc_two">Starten Sie ein Update über ein langes Drücken.</string>
     <string name="slide_4_desc_three">Löschen Sie ein Konto durch eine Wischgeste von rechts nach links.</string>
-
     <string name="slide_mp_title">Master-Passwort</string>
     <string name="slide_mp_desc_one">Das Master-Passwort ist das einzige Passwort, das Sie sich merken müssen.</string>
     <string name="slide_mp_desc_two">Auf ihm basierend welche alle anderen Passworte generiert. </string>
     <string name="slide_mp_desc_three">Das Master-Passwort wird nicht in der App gespeichert. Falls Sie es verlieren, müssen Sie alle Passworte neu setzen.</string>
     <string name="slide_mp_desc_four">Sie können sich das Master-Passwort auch notieren und an einem sicheren Ort verwahren.</string>
-
     <string name="slide_mp2_title">Master-Passwort Tipps</string>
     <string name="slide_mp2_desc_one">Nutzen Sie keine persönlichen Daten (z.B. Geburtsdaten).</string>
     <string name="slide_mp2_desc_two">Verwenden Sie keinen Zeichenfolgen auf der Tastatur.</string>
     <string name="slide_mp2_desc_three">Versuchen Sie ein möglichst langes Passwort zu erstellen.</string>
-
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">App Logo</string>
-
     <!-- ##SEARCH-->
     <string name="search_parameter_label">Suche</string>
-
     <!-- ##SAMPLE DATA-->
     <string name="sample_domain1">beispiel.email.de</string>
     <string name="sample_username1">max.mustermann@email.de</string>
@@ -198,5 +159,4 @@ Die Salt-Werte werden aus den Kontodaten abgeleitet. Falls in den Einstellungen 
     <string name="sample_username2">Martina Musterfrau</string>
     <string name="sample_domain3"> Beispiel PIN</string>
     <string name="sample_username3">-</string>
-
 </resources>
