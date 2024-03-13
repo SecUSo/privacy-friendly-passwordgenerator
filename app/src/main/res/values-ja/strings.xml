@@ -155,14 +155,4 @@
     <string name="sample_username2">サンプルユーザー名</string>
     <string name="sample_domain3">サンプル PIN</string>
     <string name="sample_username3">-</string>
-    <string name="placeholder_no_data" translatable="false"></string>
-    <string name="init_password"></string>
-    <string name="github" translatable="false"></string>
-    <string name="about_author_names" translatable="false"></string>
-    <string name="url" translatable="false"></string>
-    <string name="default_iterations" translatable="false"></string>
-    <string name="navigation_drawer_close" translatable="false"></string>
-    <string name="navigation_drawer_open" translatable="false"></string>
-    <string name="default_bcrypt_cost" translatable="false"></string>
-    <string name="default_hash_algorithm" translatable="false"></string>
 </resources>
