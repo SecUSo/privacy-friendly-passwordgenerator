@@ -22,13 +22,13 @@
     <string name="letters_upper">大文字 (ABC)</string>
     <string name="letters_lower">小文字 (abc)</string>
     <string name="numbers">数字 (123)</string>
-    <string name="length">長さ: </string>
-    <string name="iteration">バージョン: </string>
+    <string name="length">長さ:</string>
+    <string name="iteration">バージョン:</string>
     <string name="add_domain_message">アカウント名を追加してください。</string>
     <string name="add_character_message">文字の種類を少なくとも１つ選択してください。</string>
     <string name="change_version_closed">▶ バージョンの変更</string>
     <string name="change_version_opened">▼ バージョンの変更</string>
-    <string name="current_version">現在のパスワードバージョン: </string>
+    <string name="current_version">現在のパスワードバージョン:</string>
     <string name="add">追加</string>
     <string name="cancel">キャンセル</string>
     <!--###UPDATE_METADATA###-->
@@ -39,7 +39,7 @@
     <string name="next">次へ</string>
     <string name="save">保存</string>
     <string name="old_version">古いパスワードのバージョンは %s です。</string>
-    <string name="new_version">新しいバージョンは </string>
+    <string name="new_version">新しいバージョンは</string>
     <string name="added_message">アカウントを更新しました。</string>
     <string name="canceled_message">更新をキャンセルしました。</string>
     <string name="add_new_metadata_heading">1. アカウントの更新</string>
@@ -48,8 +48,7 @@
     <string name="copy_clipboar_new">新しいパスワードをコピーしました。</string>
     <!--####VERSION_INFO####-->
     <string name="dialog_version_title">パスワードのバージョンとは?</string>
-    <string name="dialog_version">パスワードのバージョンは、アカウントが持つパスワードの数を示す数字です。
-        マスタパスワードやアカウントに関するその他のデータが変更されていない場合でも、異なるパスワードを生成するために使用されます。  </string>
+    <string name="dialog_version">パスワードのバージョンは、アカウントが持つパスワードの数を示す数字です。 マスタパスワードやアカウントに関するその他のデータが変更されていない場合でも、異なるパスワードを生成するために使用されます。</string>
     <!--###GENERATOR###-->
     <string name="generate_heading">パスワードを生成</string>
     <string name="generate">生成</string>
@@ -72,11 +71,9 @@
     <string name="help_overview">Privacy Friendly Password Generator とは?</string>
     <string name="help_overview_answer">プライバシーに配慮したパスワードジェネレーターは、すべてのアカウントに固有のパスワードを生成します。 生成後、Web サイトまたはサービスに手動でパスワードを入力する必要があります。</string>
     <string name="help_generation">パスワードを生成する方法は?</string>
-    <string name="help_generation_answer">パスワードを生成するには、リストからアカウントを選択してクリックします。 マスターパスワードを入力し、
-    "生成"ボタンを押してください。 パスワードは、紙またはクリップボードを使用して Web サイトまたはサービスにコピーすることができます。</string>
+    <string name="help_generation_answer">パスワードを生成するには、リストからアカウントを選択してクリックします。 マスターパスワードを入力し、 生成ボタンを押してください。 パスワードは、紙またはクリップボードを使用して Web サイトまたはサービスにコピーすることができます。</string>
     <string name="help_parameter_set_heading">アカウントとは?</string>
-    <string name="help_parameter_set_answer">Web サイトのプロバイダは、パスワード構成ポリシーを使用することがよくあります。
-    これらのポリシーでは、パスワードの選択が指示され、最小長のような特殊な特性を持つパスワードを作成させることがあります。 アカウントには、生成されたパスワードのプロパティが記述されています。</string>
+    <string name="help_parameter_set_answer">Web サイトのプロバイダは、パスワード構成ポリシーを使用することがよくあります。 これらのポリシーでは、パスワードの選択が指示され、最小長のような特殊な特性を持つパスワードを作成させることがあります。 アカウントには、生成されたパスワードのプロパティが記述されています。</string>
     <string name="help_which_parameters_heading">どのようなプロパティのパスワードが選択できますか?</string>
     <string name="help_which_parameters_domain">アカウント名は、パスワードが使用される Web サイトまたはアイテムへの参照です。</string>
     <string name="help_which_parameters_username">オプションのユーザー名を使用すると、同じアカウント名で異なるユーザーを区別できます。</string>
@@ -127,25 +124,25 @@
     <string name="slide_1_title">ようこそ!</string>
     <string name="slide_1_desc">プライバシーを考慮したパスワードジェネレーターを使用すると、１つのマスターパスワードだけを覚えるだけで、すべてのアカウントに対して異なるパスワードを生成することができます。</string>
     <string name="slide_2_title">パスワードの生成</string>
-    <string name="slide_2_desc_one">一覧からアカウントを選択します。 </string>
+    <string name="slide_2_desc_one">一覧からアカウントを選択します。</string>
     <string name="slide_2_desc_two">最初の秘密としてマスターパスワードを考えます。 このマスターパスワードに基づいて、他のすべてのパスワードが生成されます。</string>
     <string name="slide_2_desc_three">生成されたパスワードを Web サイトまたはサービスにコピーします。</string>
     <string name="slide_3_title">アカウント</string>
     <string name="slide_3_desc_one">Web サイトのプロバイダは、パスワード構成ポリシーを使用することがよくあります。</string>
-    <string name="slide_3_desc_two">これらのポリシーでは、パスワードの選択が指示され、最小長のような特殊な特性を持つパスワードを作成させることがあります。 </string>
+    <string name="slide_3_desc_two">これらのポリシーでは、パスワードの選択が指示され、最小長のような特殊な特性を持つパスワードを作成させることがあります。</string>
     <string name="slide_3_desc_three">アカウントにパスワードの特性を設定することができます。</string>
     <string name="slide_4_title">アカウントの管理</string>
     <string name="slide_4_desc_one">プラスボタンで新しいアカウントを追加します。</string>
-    <string name="slide_4_desc_two">長押ししてアカウントを更新します。 </string>
+    <string name="slide_4_desc_two">長押ししてアカウントを更新します。</string>
     <string name="slide_4_desc_three">右から左のスワイプジェスチャでアカウントを削除します。</string>
     <string name="slide_mp_title">マスターパスワード</string>
     <string name="slide_mp_desc_one">覚えておく必要があるパスワードはマスターパスワードだけです。</string>
-    <string name="slide_mp_desc_two">これに基づいて、他のすべてのパスワードが生成されます。 </string>
+    <string name="slide_mp_desc_two">これに基づいて、他のすべてのパスワードが生成されます。</string>
     <string name="slide_mp_desc_three">マスターパスワードはアプリケーションには保存されません。 パスワードを忘れた場合は、すべてのパスワードをリセットする必要があります。</string>
     <string name="slide_mp_desc_four">希望する場合は、それを書き留めて、安全な場所に保管することができます。</string>
     <string name="slide_mp2_title">マスターパスワードのヒント</string>
     <string name="slide_mp2_desc_one">個人データを含めないでください (誕生日などの)。</string>
-    <string name="slide_mp2_desc_two">キーボードの並びを使用しないでください。 </string>
+    <string name="slide_mp2_desc_two">キーボードの並びを使用しないでください。</string>
     <string name="slide_mp2_desc_three">できるだけ長くしてください。</string>
     <!-- ##IMAGE_DESCRIPTIONS-->
     <string name="app_logo">アプリケーションロゴ</string>
@@ -156,6 +153,16 @@
     <string name="sample_username1">sample.name@email.com</string>
     <string name="sample_domain2">sample-domain.de</string>
     <string name="sample_username2">サンプルユーザー名</string>
-    <string name="sample_domain3"> サンプル PIN</string>
+    <string name="sample_domain3">サンプル PIN</string>
     <string name="sample_username3">-</string>
+    <string name="placeholder_no_data" translatable="false"></string>
+    <string name="init_password"></string>
+    <string name="github" translatable="false"></string>
+    <string name="about_author_names" translatable="false"></string>
+    <string name="url" translatable="false"></string>
+    <string name="default_iterations" translatable="false"></string>
+    <string name="navigation_drawer_close" translatable="false"></string>
+    <string name="navigation_drawer_open" translatable="false"></string>
+    <string name="default_bcrypt_cost" translatable="false"></string>
+    <string name="default_hash_algorithm" translatable="false"></string>
 </resources>
