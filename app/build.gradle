@@ -24,7 +24,8 @@ android {
         }
     }
     lint {
-        abortOnError false
+        abortOnError true
+        warning 'MissingTranslation'
     }
     namespace 'org.secuso.privacyfriendlypasswordgenerator'
 }
