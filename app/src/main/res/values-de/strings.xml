@@ -22,13 +22,13 @@
     <string name="letters_upper">Groß (ABC)</string>
     <string name="letters_lower">Klein (abc)</string>
     <string name="numbers">Zahlen (123)</string>
-    <string name="length">Länge: </string>
-    <string name="iteration">Passwortversion: </string>
+    <string name="length">Länge:</string>
+    <string name="iteration">Passwortversion:</string>
     <string name="add_domain_message">Bitte geben Sie einen Kontonamen an.</string>
     <string name="add_character_message">Bitte suchen Sie mindestens einen Zeichensatz aus.</string>
     <string name="change_version_closed">▶ Version ändern</string>
     <string name="change_version_opened">▼ Version ändern</string>
-    <string name="current_version">Aktuelle Passwort-Version: </string>
+    <string name="current_version">Aktuelle Passwort-Version:</string>
     <string name="add">Hinzufügen</string>
     <string name="cancel">Abbrechen</string>
     <!--###UPDATE_METADATA###-->
@@ -39,7 +39,7 @@
     <string name="next">Weiter</string>
     <string name="save">Speichern</string>
     <string name="old_version">Die alte Passwort-Version ist %s.</string>
-    <string name="new_version">Die neue ist </string>
+    <string name="new_version">Die neue ist</string>
     <string name="added_message">Konto-Update erfolgreich.</string>
     <string name="canceled_message">Update abgebrochen.</string>
     <string name="add_new_metadata_heading">1. Kontodaten ändern</string>
@@ -48,8 +48,7 @@
     <string name="copy_clipboar_new">Neues Passwort kopiert.</string>
     <!--####VERSION_INFO####-->
     <string name="dialog_version_title">Was ist die Passwort-Version?</string>
-    <string name="dialog_version">Die Version ist eine Zahl, die anzeigt wie viele verschiedene Passworte bereits für ein Konto generiert wurden. Außerdem sorgt sie im Falle eines Updates dafür, dass
-    ein anderes Passwort generiert wird, auch wenn weder das Master-Passwort, noch andere Kontoeigenschaften verändert werden.</string>
+    <string name="dialog_version">Die Version ist eine Zahl, die anzeigt wie viele verschiedene Passworte bereits für ein Konto generiert wurden. Außerdem sorgt sie im Falle eines Updates dafür, dass ein anderes Passwort generiert wird, auch wenn weder das Master-Passwort, noch andere Kontoeigenschaften verändert werden.</string>
     <!--###GENERATOR###-->
     <string name="generate_heading">Passwort generieren</string>
     <string name="generate">Generieren</string>
@@ -62,7 +61,7 @@
     <!--###ABOUT###-->
     <string name="about">Über</string>
     <string name="version_number">Version</string>
-    <string name="about_author">Authors: </string>
+    <string name="about_author">Authors:</string>
     <string name="about_affiliation">In Zusammenarbeit mit</string>
     <string name="privacy_friendly">Diese App gehört zur Gruppe der Privacy Friendly Apps entwickelt vom Karlsruher Institut für Technologie. Quellcode lizenziert unter GPLv3. Bilder copyright KIT und Google Inc.</string>
     <string name="more_info">Mehr Informationen unter:</string>
@@ -70,13 +69,11 @@
     <!--###HELP###-->
     <string name="help">Hilfe</string>
     <string name="help_overview">Was ist Privacy Friendly Passwort Generator?</string>
-    <string name="help_overview_answer">Privacy Friendly Passwort Generator generiert Passworte eindeutig aus vorher festgelegten Daten. Die generierten Passworte können anschließend auf der
-     entsprechenden Website oder ähnlichem eingetragen werden.</string>
+    <string name="help_overview_answer">Privacy Friendly Passwort Generator generiert Passworte eindeutig aus vorher festgelegten Daten. Die generierten Passworte können anschließend auf der entsprechenden Website oder ähnlichem eingetragen werden.</string>
     <string name="help_generation">Wie generiere ich ein Passwort?</string>
-    <string name="help_generation_answer">Um ein Passwort zu generieren wählen Sie zunächst ein Konto aus der Liste aus. Geben Sie dann Ihr (ausgedachtes) Master-Passwort ein und drücken Sie auf "Generieren".</string>
+    <string name="help_generation_answer">Um ein Passwort zu generieren wählen Sie zunächst ein Konto aus der Liste aus. Geben Sie dann Ihr (ausgedachtes) Master-Passwort ein und drücken Sie auf Generieren.</string>
     <string name="help_parameter_set_heading">Was ist ein Konto?</string>
-    <string name="help_parameter_set_answer">Webseitenbetreiber verwenden häufig Passwordrichtlinien. Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen.
-        Ein Konto enthält alle Eigenschaften eines Passworts.</string>
+    <string name="help_parameter_set_answer">Webseitenbetreiber verwenden häufig Passwordrichtlinien. Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen. Ein Konto enthält alle Eigenschaften eines Passworts.</string>
     <string name="help_which_parameters_heading">Welche Eigenschaften können gewählt werden?</string>
     <string name="help_which_parameters_domain">Der Kontoname ist eine Referenz zur Webseite oder sonstigem, wofür das Passwort verwendet wird.</string>
     <string name="help_which_parameters_username">Der optionale Benutzername kann verwendet werden um verschiedene Nutzer bei gleichem Kontonamen zu unterscheiden.</string>
@@ -90,8 +87,7 @@
     <string name="help_manage_delete_heading">Wie kann ich ein Konto löschen?</string>
     <string name="help_manage_delete_description">Durch eine Wischgeste nach links oder rechts können Sie ein Konto löschen.</string>
     <string name="help_generation_heading">Wie werden die Passworte generiert?</string>
-    <string name="help_generation_description">Die Passworte werden durch eine Kombination der Hashalgorithmen BCrypt und PBKDF2 generiert. Dabei ist das Master-Passwort der Startwert für beide Algorithmen.
-Die Salt-Werte werden aus den Kontodaten abgeleitet. Falls in den Einstellungen aktiviert, wird auch ein Installations-Salt (das beim ersten Start erzeugt wird) zum Salt hinzugefügt.</string>
+    <string name="help_generation_description">Die Passworte werden durch eine Kombination der Hashalgorithmen BCrypt und PBKDF2 generiert. Dabei ist das Master-Passwort der Startwert für beide Algorithmen. Die Salt-Werte werden aus den Kontodaten abgeleitet. Falls in den Einstellungen aktiviert, wird auch ein Installations-Salt (das beim ersten Start erzeugt wird) zum Salt hinzugefügt.</string>
     <string name="help_password_storage_heading">Werden die Passworte auf dem Gerät gespeichert?</string>
     <string name="help_password_storage_description">Nein. Weder die generierten Passworte, noch das Master-Passwort werden auf dem Gerät gespeichert. Nur die Kontodaten und der Installations-Salt werden auf Ihrem Gerät gespeichert.</string>
     <string name="help_data_backup_heading">Gibt es eine Möglichkeit, meine Daten zu sichern?</string>
@@ -108,7 +104,7 @@ Die Salt-Werte werden aus den Kontodaten abgeleitet. Falls in den Einstellungen 
     <string name="title_clipboard">In Zwischenablage kopieren</string>
     <string name="summary_clipboard">Alle anderen Apps können Ihre Passworte in der Zwischenablage einsehen.</string>
     <string name="title_expert_mode">Expertenmodus</string>
-    <string name="expert_mode_summary">Wenn Sie den "Bcrypt Kosten"-Parameter ändern, werden andere Passwörter erzeugt. Ein höherer Wert erhöht die Zeit, die für die Generierung des Passworts benötigt wird. Dadurch wird es für einen Angreifer schwieriger. Mit der Benchmark-Funktion können Sie testen, wie lange es dauert, ein Kennwort mit den aktuellen Einstellungen zu generieren. Der Standardwert ist 10.</string>
+    <string name="expert_mode_summary">Wenn Sie den Bcrypt Kosten-Parameter ändern, werden andere Passwörter erzeugt. Ein höherer Wert erhöht die Zeit, die für die Generierung des Passworts benötigt wird. Dadurch wird es für einen Angreifer schwieriger. Mit der Benchmark-Funktion können Sie testen, wie lange es dauert, ein Kennwort mit den aktuellen Einstellungen zu generieren. Der Standardwert ist 10.</string>
     <string name="title_hash_iterations">PBKDF2: Anzahl Hash-Iterationen</string>
     <string name="title_benchmark">Benchmark: Generierung</string>
     <string name="summary_benchmark">Ermittlung der Generierungsdauer basierend auf Hash-Algorithmus und Hash-Iterationen.</string>
@@ -133,7 +129,7 @@ Die Salt-Werte werden aus den Kontodaten abgeleitet. Falls in den Einstellungen 
     <string name="slide_2_desc_three">Geben Sie das generierte Passwort auf der Webseite ein.</string>
     <string name="slide_3_title">Konten</string>
     <string name="slide_3_desc_one">Webseitenbetreiber verwenden häufig Passwortrichtlinien.</string>
-    <string name="slide_3_desc_two">Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen. </string>
+    <string name="slide_3_desc_two">Diese Richtlinien sollen die Auswahl von Passworten beeinflussen und können Eigenschaften wie z.B. eine bestimmte Zeichenanzahl erzwingen.</string>
     <string name="slide_3_desc_three">Diese Richtlinien können im Konto festgelegt werden.</string>
     <string name="slide_4_title">Konten verwalten</string>
     <string name="slide_4_desc_one">Fügen Sie ein neues Konto mit dem Plus-Button hinzu.</string>
@@ -141,7 +137,7 @@ Die Salt-Werte werden aus den Kontodaten abgeleitet. Falls in den Einstellungen 
     <string name="slide_4_desc_three">Löschen Sie ein Konto durch eine Wischgeste von rechts nach links.</string>
     <string name="slide_mp_title">Master-Passwort</string>
     <string name="slide_mp_desc_one">Das Master-Passwort ist das einzige Passwort, das Sie sich merken müssen.</string>
-    <string name="slide_mp_desc_two">Auf ihm basierend welche alle anderen Passworte generiert. </string>
+    <string name="slide_mp_desc_two">Auf ihm basierend welche alle anderen Passworte generiert.</string>
     <string name="slide_mp_desc_three">Das Master-Passwort wird nicht in der App gespeichert. Falls Sie es verlieren, müssen Sie alle Passworte neu setzen.</string>
     <string name="slide_mp_desc_four">Sie können sich das Master-Passwort auch notieren und an einem sicheren Ort verwahren.</string>
     <string name="slide_mp2_title">Master-Passwort Tipps</string>
@@ -157,6 +153,6 @@ Die Salt-Werte werden aus den Kontodaten abgeleitet. Falls in den Einstellungen 
     <string name="sample_username1">max.mustermann@email.de</string>
     <string name="sample_domain2">beispiel-domain.de</string>
     <string name="sample_username2">Martina Musterfrau</string>
-    <string name="sample_domain3"> Beispiel PIN</string>
+    <string name="sample_domain3">Beispiel PIN</string>
     <string name="sample_username3">-</string>
 </resources>
