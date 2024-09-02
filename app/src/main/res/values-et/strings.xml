@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    </resources>
+    <string name="action_help">Abiteave</string>
+    <string name="action_about">Rakenduse teave</string>
+    <string name="action_tutorial">Juhend</string>
+    <string name="action_settings">Seadistused</string>
+</resources>
