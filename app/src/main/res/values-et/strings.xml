@@ -4,4 +4,21 @@
     <string name="action_about">Rakenduse teave</string>
     <string name="action_tutorial">Juhend</string>
     <string name="action_settings">Seadistused</string>
+    <string name="username_optional">Kasutajanimi (kui soovid lisada):</string>
+    <string name="about_author">Autorid:</string>
+    <string name="app_name">Salasõnade looja</string>
+    <string name="app_name_long">Privaatsussõbralik salasõnade looja</string>
+    <string name="undo">Võta tegevus tagasi</string>
+    <string name="item_deleted">kustutatud.</string>
+    <string name="action_main">Põhimenüü</string>
+    <string name="initial_alert">LISA KASUTAJAKONTO</string>
+    <string name="add_metadata_heading">Lisa uus kasutajakonto</string>
+    <string name="domain">Kasutajakonto nimi:</string>
+    <string name="username">Kasutajanimi:</string>
+    <string name="next">Edasi</string>
+    <string name="about_affiliation">Loodud üheskoos organisatsiooniga</string>
+    <string name="more_info">Lisateavet leiad:</string>
+    <string name="help">Abiteave</string>
+    <string name="title_activity_settings">Seadistused</string>
+    <string name="about">Rakenduse teave</string>
 </resources>
