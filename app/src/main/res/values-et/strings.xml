@@ -21,4 +21,23 @@
     <string name="help">Abiteave</string>
     <string name="title_activity_settings">Seadistused</string>
     <string name="about">Rakenduse teave</string>
+    <string name="characterset_add">Salasõna saab koosnema:</string>
+    <string name="special_characters">erimärkidest (+!#)</string>
+    <string name="letters_lower">väiketähtedest (abc)</string>
+    <string name="iteration">Versioon:</string>
+    <string name="add_domain_message">Palun lisa konto nimi.</string>
+    <string name="change_version_closed">▶ Muuda versiooni</string>
+    <string name="change_version_opened">▼ Muuda versiooni</string>
+    <string name="current_version">Salasõna praegune versioon:</string>
+    <string name="characterset">Märgid:</string>
+    <string name="new_password">Uus salasõna:</string>
+    <string name="version_number">Versioon</string>
+    <string name="skip">Jäta vahele</string>
+    <string name="cancel">Katkesta</string>
+    <string name="old_password">Vana salasõna:</string>
+    <string name="letters_upper">suurtähtedest (ABC)</string>
+    <string name="add_character_message">Palun vali vähemalt üks märkide tüüp.</string>
+    <string name="numbers">numbritest (123)</string>
+    <string name="length">Pikkus:</string>
+    <string name="add">Lisa</string>
 </resources>
