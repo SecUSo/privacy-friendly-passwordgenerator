@@ -60,7 +60,7 @@
     <string name="enter_masterpassword">Lütfen bir ana parola girin.</string>
     <string name="masterpassword_length">Lütfen en az 8 karakter girin.</string>
     <string name="done">Bitti</string>
-    <string name="privacy_friendly">Bu uygulama Technische Universität Darmstadt tarafından geliştirilen Gizlilik Dostu Uygulamalar grubuna aittir. Kaynak kodu GPLv3 altında lisanslanmıştır. Görsellerin telif hakkı TU Darmstadt ve Google Inc\'e aittir.</string>
+    <string name="privacy_friendly">Bu uygulama Karlsruhe Institute of Technology tarafından geliştirilen Gizlilik Dostu Uygulamalar grubuna aittir. Kaynak kodu GPLv3 altında lisanslanmıştır. Görsellerin telif hakkı KIT ve Google Inc\'e aittir.</string>
     <string name="more_info">Daha fazla bilgi için:</string>
     <string name="help">Yardım</string>
     <string name="help_overview">Gizlilik Dostu Parola Oluşturucu nedir?</string>
