@@ -35,7 +35,7 @@ android {
 
     android.applicationVariants.configureEach { variant ->
         variant.outputs.configureEach {
-            def appName = "pfa-dame"
+            def appName = "pfa-passwordgenerator"
             outputFileName = appName + "-${variant.name}-v${variant.versionName}.apk"
         }
     }
