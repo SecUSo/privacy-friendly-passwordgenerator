@@ -21,6 +21,6 @@ Gizlilik Dostu Parola Oluşturucu, oluşturulan herhangi bir parolayı veya ana 
 Dahası, Gizlilik Dostu Parola Oluşturucu, reklamlardan tamamen vazgeçme biçimiyle diğer birçok uygulamadan ayrılır. Reklam, bir kullanıcının eylemlerini izleyebilir. Ayrıca pil ömrünü kısaltabilir veya mobil veri kullanabilir.
 
 Bize şu adreslerden ulaşabilirsiniz:
-Twitter - @SECUSOResearch https://twitter.com/secusoresearch
+Bluesky - @secusoresearch.bsky.social https://bsky.app/profile/secusoresearch.bsky.social
 Mastodon - @SECUSO_Research@bawü.social https://xn--baw-joa.social/@SECUSO_Research/
-İş ilanları - https://secuso.aifb.kit.edu/english/Job_Offers_1557.php
+İş ilanları - https://secuso.aifb.kit.edu/english/Job_Offers.php

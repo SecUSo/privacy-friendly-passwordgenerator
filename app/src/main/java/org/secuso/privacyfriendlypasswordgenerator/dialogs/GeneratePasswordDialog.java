@@ -120,7 +120,7 @@ public class GeneratePasswordDialog extends DialogFragment {
                         getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
                 inputManager.hideSoftInputFromWindow(view.getWindowToken(),
-                        InputMethodManager.RESULT_UNCHANGED_SHOWN);
+                        InputMethodManager.HIDE_IMPLICIT_ONLY);
 
                 editTextMasterpassword = (EditText) rootView.findViewById(R.id.editTextMasterpassword);
 
