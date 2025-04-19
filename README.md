@@ -53,7 +53,7 @@ If you wish to contribute to this project, have a look at the contribution polic
 ### API Reference
 
 Mininum SDK: 17<br>
-Target SDK: 33 
+Target SDK: 34 
 
 ## Data Backup
 
@@ -62,6 +62,10 @@ You can use the [Privacy Friendly Backup app](https://github.com/SecUSo/privacy-
 ## Translation
 
 If you want to help translate this app, you can use [Weblate](https://hosted.weblate.org/projects/pfa/password-generator/password-generator-android-app/).
+
+<a href="https://hosted.weblate.org/engage/pfa/">
+<img src="https://hosted.weblate.org/widget/pfa/password-generator/password-generator-android-app/multi-auto.svg" alt="Translation status" />
+</a>
 
 ## License
 
