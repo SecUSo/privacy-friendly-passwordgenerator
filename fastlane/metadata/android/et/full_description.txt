@@ -1,0 +1,22 @@
+Privaatsussõbralik salasõnade looja võimaldab sul luua erinevaid salasõnu kõikide oma kontode jaoks, meeles pidades vaid ühe üldvõtme salasõna. Üksikasjalikku teavet salasõnade loomise kohta leiad rakenduse abilehelt või aadressilt https://secuso.org/pfa. Meie rakendus kuulub privaatsussõbralike rakenduste (Privacy Friendly Apps) kogumisse, mis on välja töötatud SECUSO teadusgrupi poolt. Lisainformatsiooni leiad aadressilt https://secuso.org/pfa
+
+Kui soovite luua salasõna kasutajakonto jaoks, saad lisada selle konto Privaatsussõbralikku salasõnade loojasse. Selleks pead määratlema, millistest märkidest (väiksetähed, suurtähed, numbrid, erimärgid) salasõna peaks koosnema ja kui pikk ta peaks olema. Kasutajakontod on järjestatud loendina. Salasõna loomiseks klõpsa kontol ja sisesta oma üldvõtme salasõna, mis on sinu enda valitud salasõna, mis haldab kõiki teisi salasõnu. Nagu kõik muud salasõnad, ei salvestata seda rakendusse. Seega, kui soovid, võite ta üles kirjutada ja hoida turvalises kohas. Lõpuks kuvab Privaatsussõbralik salasõnade looja sinu konto jaoks loodud salasõna ning seda tegevust saad igal ajal uuesti korrata.
+
+Kui soovid teada, kuidas Privaatsussõbralik salasõnade looja toimib, siis vaata lisateavet siit: https://secuso.org/pfa
+
+Kuidas erineb Privaatsussõbralik salasõnade looja teistest sarnastest rakendustest?
+
+1. Ei mingeid õigusi
+Privaatsussõbralik salasõnade looja ei vaja ühtegi õigust.
+Võrdluseks: 10 populaarsemat Google Play poest leiduvat sarnast rakendust eeldavad keskmiselt 3,4 õiguse olemasolu (novembris 2016). Need on näiteks asukoha tuvastamine või õigused andmeruumi lugemiseks, muutmiseks või kustutamiseks.
+
+2. Salasõnade kaitse
+Privaatsussõbralik salasõnade looja ei salvesta ühtegi genereeritud salasõna ega ka üldvõtme salasõna. Salasõnade loomiseks kasutatakse olekuta algoritmi. See tähendab, et salasõnad eksisteerivad ainult nende loomise ajal ja neid ei salvestata programmi pärast rakenduse sulgemist. Lisaks takistab rakendus nutiseadet ekraanipiltide tegemisel.
+
+3. Ei mingeid reklaame
+Lisaks eristub Privaatsussõbralik salasõnade looja paljudest teistest rakendustest sellega, et ta ei kasuta ega kuva reklaamide. Reklaamid võivad jälgida kasutaja tegevust. Need võivad vähendada ka aku kestvust või kasutada mobiilset andmesidet.
+
+Meid võid leida:
+Bluesky - @secusoresearch.bsky.social https://bsky.app/profile/secusoresearch.bsky.social
+Mastodon - @SECUSO_Research@bawü.social https://xn--baw-joa.social/@SECUSO_Research/
+Tööpakkumised - https://secuso.aifb.kit.edu/english/Job_Offers_1557.php
