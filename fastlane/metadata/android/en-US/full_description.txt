@@ -1,6 +1,6 @@
 With the Password Generator you can generate different
 passwords for all your accounts while remembering only one master
-password. Detailed information about generating passwords can be found at the app's help page or at <a href="https://secuso.aifb.kit.edu/english/Password_Generator.php">website</a>. The app belongs to the Privacy Friendly Apps (PFA) group developed by the research group SECUSO. More information can be found on <a href="https://secuso.org/pfa">our website</a>.
+password. Detailed information about generating passwords can be found at the app's help page or at <a href="https://secuso.aifb.kit.edu/english/Password_Generator.php">website</a>.
 
 In case you wish to generate a password for a user account, you can add this account to the Password Generator. Therefore, you only have to enter which characters (lower-case letters, upper-case letters, numbers, special characters) you would like the password to consist of and how long it should be.
 The account are arranged in a list. To generate a password, click on the account and enter your master password. The master password is a password made up by you and it guides all other passwords. Like the other passwords it is not stored in the application. So if you wish you can write it down and keep it in a safe place.
@@ -19,6 +19,8 @@ The Password Generator does not store any generated password, nor does it store 
 
 3. No advertisement
 Moreover, the Password Generator distinguishes from many other applications in the way that it completely relinquishes advertisements. Advertisement might track a user's actions. It could also shorten battery life or use mobile data.
+
+The app is from group of Privacy Friendly Apps (PFA) developed by the research group SECUSO. More information on <a href="https://secuso.org/pfa">our website</a>.
 
 You can reach us via:
 Bluesky <a href="https://bsky.app/profile/secusoresearch.bsky.social">@secusoresearch.bsky.social</a>
