@@ -14,7 +14,7 @@
      
 # Privacy Friendly Password Generator
 
-[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/app/org.secuso.privacyfriendlypasswordgenerator)<a href="https://play.google.com/store/apps/details?id=org.secuso.privacyfriendlypasswordgenerator"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60"></a>
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/app/org.secuso.privacyfriendlypasswordgenerator)
 
 Privacy Friendly Password Generator is an Android application that generates passwords based on previously saved accounts and a master password. The generated passwords can than be copied into the password or PIN field by the user.
 This app belongs to the Privacy Friendly Apps group developed by the SECUSO research group. Further information can be found on [secuso.org/pfa](https://secuso.org/pfa)<br />
