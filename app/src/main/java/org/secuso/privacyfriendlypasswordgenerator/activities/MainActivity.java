@@ -39,6 +39,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import org.secuso.privacyfriendlypasswordgenerator.GoodbyeGoogleHelperKt;
 import org.secuso.privacyfriendlypasswordgenerator.R;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaData;
 import org.secuso.privacyfriendlypasswordgenerator.database.MetaDataSQLiteHelper;
@@ -217,6 +218,7 @@ public class MainActivity extends BaseActivity {
         }
 
         overridePendingTransition(0, 0);
+        GoodbyeGoogleHelperKt.checkGoodbyeGoogle(this, getLayoutInflater());
     }
 
     public void deleteItem(int position) {
