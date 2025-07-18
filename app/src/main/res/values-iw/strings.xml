@@ -14,5 +14,14 @@
     <string name="username">שם משתמש:</string>
     <string name="undo">לבטל</string>
     <string name="item_deleted">נמחק.</string>
-    <string name="initial_alert">ADD ACCOUNT</string>
+    <string name="initial_alert">הוספת חשבון</string>
+    <string name="username_optional">שם משתמש (רשות):</string>
+    <string name="characterset_add">הסיסמה תורכב מ־:</string>
+    <string name="numbers">מספרים (123)</string>
+    <string name="length">אורך:</string>
+    <string name="iteration">גרסה:</string>
+    <string name="add_domain_message">נא להוסיף שם חשבון.</string>
+    <string name="letters_lower">אותיות קטנות (abc)</string>
+    <string name="letters_upper">אותיות גדולות (ABC)</string>
+    <string name="special_characters">מיוחדים (+!#)</string>
 </resources>
