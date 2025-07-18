@@ -61,7 +61,7 @@
     <!--###ABOUT###-->
     <string name="about">Über</string>
     <string name="version_number">Version</string>
-    <string name="about_author">Authors:</string>
+    <string name="about_author">Autoren:</string>
     <string name="about_affiliation">In Zusammenarbeit mit</string>
     <string name="privacy_friendly">Diese App gehört zur Gruppe der Privacy Friendly Apps entwickelt vom Karlsruher Institut für Technologie. Quellcode lizenziert unter GPLv3. Bilder copyright KIT und Google Inc.</string>
     <string name="more_info">Mehr Informationen unter:</string>
@@ -155,4 +155,5 @@
     <string name="sample_username2">Martina Musterfrau</string>
     <string name="sample_domain3">Beispiel PIN</string>
     <string name="sample_username3">-</string>
+    <string name="init_password">Intitalpasswort</string>
 </resources>
