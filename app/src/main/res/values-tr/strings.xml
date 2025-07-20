@@ -2,7 +2,7 @@
 <resources>
     <string name="about">Hakkında</string>
     <string name="version_number">Sürüm</string>
-    <string name="about_author">Geliştiriciler:</string>
+    <string name="about_author">Yazarlar:</string>
     <string name="about_author_contributors">ve katkıda bulunanlar.</string>
     <string name="about_affiliation">ile bağlantılı olarak</string>
     <string name="help_generation_answer">Parola oluşturmak için listeden bir hesap seçin ve üzerine tıklayın. Ana parolanızı girin ve ardından oluştur düğmesine basın. Parola daha sonra yazılarak veya pano kullanılarak internet sitesine veya hizmete kopyalanabilir.</string>
@@ -43,7 +43,7 @@
     <string name="old_password">Eski parola:</string>
     <string name="new_password">Yeni parola:</string>
     <string name="master_password_description">Eski ve yeni parolayı oluşturmak için ana parola gereklidir.</string>
-    <string name="next">Sonraki</string>
+    <string name="next">İleri</string>
     <string name="save">Kaydet</string>
     <string name="old_version">Eski parola sürümü: %s.</string>
     <string name="new_version">Yeni sürüm</string>
@@ -102,7 +102,7 @@
     <string name="dialog_benchmark_time">Oluşturma işlemi yaklaşık olarak</string>
     <string name="slide_1_title">Hoş geldiniz!</string>
     <string name="slide_1_desc">Gizlilik Dostu Parola Oluşturucu ile tek bir ana parolayı hatırlarken tüm hesaplarınız için farklı parolalar oluşturabilirsiniz.</string>
-    <string name="slide_2_desc_one">Listeden bir hesap seçin.</string>
+    <string name="slide_2_desc_one">Dizelgeden bir hesap seçin.</string>
     <string name="slide_2_desc_two">İlk sırrınız olarak bir ana parola oluşturun. Bu ana parola temel alınarak diğer tüm parolalar oluşturulur.</string>
     <string name="slide_2_desc_three">Oluşturulan parolayı internet sitesine veya hizmete kopyalayın.</string>
     <string name="slide_3_desc_one">İnternet sitesi sağlayıcıları genellikle parola oluşturma politikaları kullanır.</string>
@@ -135,8 +135,8 @@
     <string name="undo">Geri al</string>
     <string name="action_about">Hakkında</string>
     <string name="action_settings">Ayarlar</string>
-    <string name="action_main">Ana</string>
-    <string name="action_tutorial">Rehber</string>
+    <string name="action_main">Başlıca</string>
+    <string name="action_tutorial">Öğretici</string>
     <string name="dialog_version">Bir parolanın sürümü, bir hesabın kaç parolaya sahip olduğunu gösteren bir sayıdır. Ana parola veya hesapla ilgili başka herhangi bir veri değiştirilmese bile farklı bir parola oluşturmak için kullanılır.</string>
     <string name="password">Parolanız:</string>
     <string name="password_copied">Parola kopyalandı.</string>

@@ -1,0 +1,1 @@
+(SECUSO) Gerar palavra-passe para as suas contas a partir de uma mestra

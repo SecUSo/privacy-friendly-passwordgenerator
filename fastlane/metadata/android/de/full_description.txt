@@ -1,29 +1,25 @@
-Privacy Friendly Passwort Generator generiert unterschiedliche Passworte für alle Ihre Konten. Sie müssen sich lediglich ein Master-Passwort merken. Detaillierte Informationen wie Sie mit Hilfe der App Passworte generieren erhalten Sie auf der Hilfe-Seite der App oder unter https://secuso.org/pfa.
+Mit dem Privacy Friendly Password Generator können Sie verschiedene
+Kennwörter für alle Ihre Konten, während Sie sich nur ein Masterpasswort merken müssen.
+Detaillierte Informationen zum Generieren von Passwörtern finden Sie auf der Hilfeseite der App oder unter https://secuso.org/pfa. Die App gehört zur Gruppe Privacy Friendly Apps, die von der Forschungsgruppe SECUSO entwickelt wurde.Weitere Informationen finden Sie unter https://secuso.org/pfa
 
-Wenn Sie ein Passwort für ein Benutzerkonto generieren möchten, so können Sie dieses Konto zu Privacy Friendly Passwort Generator hinzufügen. Dafür müssen Sie lediglich festlegen, welche Zeichen (Kleinbuchstaben, Großbuchstaben, Zahlen, Sonderzeichen) Sie im Passwort verwenden möchten und wie lange das Passwort sein soll.
+Wenn Sie ein Kennwort für ein Benutzerkonto generieren möchten, können Sie dieses Konto dem Privacy Friendly Password Generator hinzufügen. Daher müssen Sie nur eingeben, aus welchen Zeichen (Kleinbuchstaben, Großbuchstaben, Zahlen, Sonderzeichen) das Passwort bestehen soll und wie lang es sein soll.
+Die Konten werden in einer Liste angeordnet. Um ein Passwort zu generieren, klicken Sie auf das Konto und geben Sie Ihr Master-Passwort ein. Das Master-Passwort ist ein von Ihnen selbst zusammengestelltes Passwort und leitet alle anderen Passwörter. Wie die anderen Passwörter wird es nicht in der Applikation gespeichert. Wenn Sie es wünschen, können Sie es aufschreiben und an einem sicheren Ort aufbewahren. Schließlich zeigt der Privacy Friendly Password Generator das Passwort an, das für Ihr Konto generiert wurde. Dieses Passwort kann jederzeit neu generiert werden.
 
-Die hinzugefügten Benutzerkonten werden in einer Liste angezeigt. Um ein Passwort für ein Benutzerkonto in der Liste zu generieren müssen Sie nur darauf tippen und Ihr Masterpasswort eingeben. Das Masterpasswort ist ein von Ihnen erdachtes Passwort, welches alle generierten Passworte schützt. Wie alle anderen Passworte auch, wird es nicht in der App gespeichert. Wenn Sie möchten können Sie sich das Masterpasswort notieren und an einem sicheren Ort aufbewahren.
+Falls Sie herausfinden möchten, wie der Privacy Friendly Password Generator die Passwörter generiert, werfen Sie einen Blick auf https://secuso.org/pfa
 
-Privacy Friendly Password Generator zeigt das speziell für das ausgewählte Benutzerkonto generierte Passwort an. Dieses Passwort kann jederzeit neu generiert werden.
-
-Falls Sie herausfinden möchten, wie Privacy Friendly Passwort Generator Passworte generiert, https://secuso.org/pfa stellt Informationen und eine Erklärung des Algorithmus bereit.
-
-Was unterscheidet Privacy Friendly Passwort Generator von anderen, ähnlichen Apps?
+Wie unterscheidet sich der Privacy Friendly Password Generator von anderen ähnlichen Apps?
 
 1. Keine Berechtigungen
-Privacy Friendly Passwort Generator verwendet keine Berechtigungen.
-Zum Vergleich: Die Top Ten ähnlicher Apps, die im Google Play Store erhältlich sind, benötigt durchschnittlich 3,4 Berechtigungen (Stand: November 2016). Hierzu zählen der Zugriff auf Netzwerke, das Internet oder Standortdaten.
+Für den Privacy Friendly Password Generator sind keine Berechtigungen erforderlich.
+Zum Vergleich: Die Top Ten ähnlicher Apps aus dem Google Play Store benötigen durchschnittlich 3,4 Berechtigungen (Stand November 2016). Dies sind z. B. die Standortberechtigung oder die Berechtigungen für den Zugriff auf, die Änderung oder das Löschen von Speicher.
 
-2. Schutz sensitiver Daten
-In Privacy Friendly Passwort Generator werden keine Passworte gespeichert. Weder das Master Passwort, noch generierte Passworte werden in der App gespeichert.
-Zusätzlich ist es nicht möglich Bildschirmfotos von den Passwörtern anzufertigen.
+2. Schutz von Passwörtern
+Der Privacy Friendly Password Generator speichert weder ein generiertes Kennwort noch das Master-Kennwort. Für die Passwortgenerierung wird ein zustandsloser Algorithmus verwendet. Das bedeutet, dass die Passwörter nur während der Generierung existieren und nach dem Schließen der Applikation nicht im Programm gespeichert werden. Darüber hinaus verhindert die App, dass Geräte Screenshots aufnehmen.
 
-3. Keine störende Werbung
-Viele andere kostenlose Apps im Google Play Store blenden störende Werbung ein, die unter anderem auch die Akkulaufzeit verkürzt und Datenvolumen verbrauchen kann.
+3. Keine Werbung
+Darüber hinaus unterscheidet sich der Privacy Friendly Password Generator von vielen anderen Anwendungen dadurch, dass er vollständig auf Werbung verzichtet. Die Ankündigung kann die Aktionen eines Benutzers verfolgen. Zudem könnte die Akkulaufzeit verkürzt oder mobile Daten genutzt werden.
 
-Die App gehört zur Gruppe der Privacy Friendly Apps, die von der Forschungsgruppe SECUSO entwickelt werden. Mehr Informationen unter: https://secuso.org/pfa
-
-Kontaktieren Sie uns gerne über:
+Sie erreichen uns über
 Bluesky - @secusoresearch.bsky.social https://bsky.app/profile/secusoresearch.bsky.social
-Mastodon - @SECUSO_Research@bawü.social https://xn--baw-joa.social/@SECUSO_Research/
-Offene Stellen - https://secuso.aifb.kit.edu/83.php
+Mastodon – @SECUSO_Research@bawü.social https://xn--baw-joa.social/@SECUSO_Research/
+Stellenangebote - https://secuso.aifb.kit.edu/english/Job_Offers.php
