@@ -24,4 +24,7 @@
     <string name="letters_lower">אותיות קטנות (abc)</string>
     <string name="letters_upper">אותיות גדולות (ABC)</string>
     <string name="special_characters">מיוחדים (+!#)</string>
+    <string name="add_character_message">אנא בחר סוג תו אחד לפחות.</string>
+    <string name="change_version_closed">▶ שנה גרסה</string>
+    <string name="change_version_opened">▼ שנה גרסה</string>
 </resources>
