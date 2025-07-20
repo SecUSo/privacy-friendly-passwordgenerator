@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_about">אודות</string>
+    <string name="action_main">ראשי</string>
+    <string name="help">עזרה</string>
+    <string name="action_settings">הגדרות</string>
+    <string name="cancel">בטל</string>
+    <string name="app_name">מחולל סיסמאות</string>
+    <string name="app_name_long">מחולל סיסמאות ידידותית לפרטיות</string>
+    <string name="action_help">עזרה</string>
+    <string name="action_tutorial">מדריך</string>
+    <string name="add_metadata_heading">הוסף חשבון חדש</string>
+    <string name="domain">שם חשבון:</string>
+    <string name="username">שם משתמש:</string>
+    <string name="undo">לבטל</string>
+    <string name="item_deleted">נמחק.</string>
+    <string name="initial_alert">ADD ACCOUNT</string>
+</resources>
