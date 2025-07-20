@@ -43,6 +43,6 @@
     <string name="generate_heading">צור סיסמא</string>
     <string name="old_version">גרסת הסיסמה הישנה היא %s.</string>
     <string name="new_version">הגרסה החדשה תהיה</string>
-    <string name="about">אודות</string>
+    <string name="about">על אודות</string>
     <string name="copy_clipboar_old">הסיסמה הישנה הועתקה.</string>
 </resources>
