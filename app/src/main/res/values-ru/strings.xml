@@ -10,7 +10,7 @@
     <string name="delete_dialog_success">Все учётные записи удалены.</string>
     <string name="cancel">Отмена</string>
     <string name="action_about">О приложении</string>
-    <string name="action_settings">Натсройки</string>
+    <string name="action_settings">Настройки</string>
     <string name="action_main">Главная</string>
     <string name="action_tutorial">Руководство</string>
     <string name="undo">Отменить</string>
