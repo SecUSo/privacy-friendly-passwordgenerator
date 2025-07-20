@@ -4,12 +4,12 @@
     <string name="action_main">ראשי</string>
     <string name="help">עזרה</string>
     <string name="action_settings">הגדרות</string>
-    <string name="cancel">בטל</string>
+    <string name="cancel">ביטול</string>
     <string name="app_name">מחולל סיסמאות</string>
     <string name="app_name_long">מחולל סיסמאות ידידותית לפרטיות</string>
     <string name="action_help">עזרה</string>
     <string name="action_tutorial">מדריך</string>
-    <string name="add_metadata_heading">הוסף חשבון חדש</string>
+    <string name="add_metadata_heading">הוספת חשבון חדש</string>
     <string name="domain">שם חשבון:</string>
     <string name="username">שם משתמש:</string>
     <string name="undo">לבטל</string>
@@ -24,7 +24,15 @@
     <string name="letters_lower">אותיות קטנות (abc)</string>
     <string name="letters_upper">אותיות גדולות (ABC)</string>
     <string name="special_characters">מיוחדים (+!#)</string>
-    <string name="add_character_message">אנא בחר סוג תו אחד לפחות.</string>
-    <string name="change_version_closed">▶ שנה גרסה</string>
-    <string name="change_version_opened">▼ שנה גרסה</string>
+    <string name="add_character_message">נא לבחור בסוג אחד של תווים לפחות.</string>
+    <string name="change_version_closed">◀ שינוי גרסה</string>
+    <string name="change_version_opened">▼ שינוי גרסה</string>
+    <string name="current_version">גרסת הסיסמה הנוכחית:</string>
+    <string name="add">הוספה</string>
+    <string name="characterset">ערכת תווים:</string>
+    <string name="old_password">סיסמה ישנה:</string>
+    <string name="new_password">סיסמה חדשה:</string>
+    <string name="master_password_description">סיסמת העל נחוצה ליצירת הסיסמה הישנה והחדשה.</string>
+    <string name="next">הבא</string>
+    <string name="save">שמירה</string>
 </resources>
