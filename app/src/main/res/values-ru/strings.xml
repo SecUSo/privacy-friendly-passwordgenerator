@@ -3,7 +3,7 @@
     <string name="slide_1_title">Добро пожаловать!</string>
     <string name="app_name">Генератор паролей</string>
     <string name="numbers">Цифр (123)</string>
-    <string name="action_help">Справка</string>
+    <string name="action_help">Помощь</string>
     <string name="change_version_closed">▶ Сменить версию</string>
     <string name="username_optional">Имя пользователя (необязательно):</string>
     <string name="help_parameter_set_heading">Что такое профиль?</string>
@@ -31,7 +31,7 @@
     <string name="add">Добавить</string>
     <string name="characterset">Набор символов:</string>
     <string name="master_password_description">Главный пароль требуется для создания старого и нового пароля.</string>
-    <string name="next">Далее</string>
+    <string name="next">Дальше</string>
     <string name="save">Сохранить</string>
     <string name="old_version">Старая версия пароля %s.</string>
     <string name="new_version">Новая версия будет</string>
@@ -54,7 +54,7 @@
     <string name="canceled_message">Обновление отменено.</string>
     <string name="add_new_metadata_heading">1. Обновить профиль</string>
     <string name="help">Справка</string>
-    <string name="about_affiliation">В сотрудничестве с</string>
+    <string name="about_affiliation">Вместе с</string>
     <string name="help_generation">Как мне сгенерировать пароль?</string>
     <string name="title_expert_mode">Режим эксперта</string>
     <string name="dialog_benchmark_seconds">секунд</string>
@@ -67,9 +67,9 @@
     <string name="title_activity_settings">Настройки</string>
     <string name="characterset_add">Пароль будет состоять из:</string>
     <string name="new_password">Новый пароль:</string>
-    <string name="about_author_contributors">и со-авторы.</string>
+    <string name="about_author_contributors">и помощники</string>
     <string name="old_password">Старый пароль:</string>
     <string name="dialog_version">Версия пароля - это номер, который показывает сколько паролей было у учётной записи. Он используется для создания другого пароля, даже если не изменён ни главный пароль или какие-либо другие данные относительно учетной записи.</string>
-    <string name="more_info">Подробнее читайте на:</string>
+    <string name="more_info">Подробнее можно узнать на:</string>
     <string name="privacy_friendly">Это одно из приложений группы Уважающих Конфиденциальность Приложений (Privacy Friendly Apps, PFA), разработанных исследовательской группой SECUSO в Технологическом Институте Карлсруэ (KIT). Исходный код доступен по лицензии GPLv3. Авторские права на изображения принадлежат KIT и Google Inc.</string>
 </resources>
