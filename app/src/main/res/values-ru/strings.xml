@@ -8,7 +8,7 @@
     <string name="username_optional">Имя пользователя (необязательно):</string>
     <string name="help_parameter_set_heading">Что такое профиль?</string>
     <string name="delete_dialog_success">Все учётные записи удалены.</string>
-    <string name="cancel">Отмена</string>
+    <string name="cancel">Отменить</string>
     <string name="action_about">О приложении</string>
     <string name="action_settings">Настройки</string>
     <string name="action_main">Главная</string>
@@ -47,13 +47,13 @@
     <string name="password">Ваш пароль:</string>
     <string name="done">Готово</string>
     <string name="password_copied">Пароль скопирован.</string>
-    <string name="about">О приложении</string>
+    <string name="about">О программе</string>
     <string name="version_number">Версия</string>
     <string name="about_author">Авторы：</string>
     <string name="added_message">Учётная запись обновлена.</string>
     <string name="canceled_message">Обновление отменено.</string>
     <string name="add_new_metadata_heading">1. Обновить профиль</string>
-    <string name="help">Справка</string>
+    <string name="help">Помощь</string>
     <string name="about_affiliation">В сотрудничестве с</string>
     <string name="help_generation">Как мне сгенерировать пароль?</string>
     <string name="title_expert_mode">Режим эксперта</string>
