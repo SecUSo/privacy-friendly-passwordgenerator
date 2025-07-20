@@ -35,4 +35,14 @@
     <string name="master_password_description">סיסמת העל נחוצה ליצירת הסיסמה הישנה והחדשה.</string>
     <string name="next">הבא</string>
     <string name="save">שמירה</string>
+    <string name="added_message">חשבון עודכן.</string>
+    <string name="canceled_message">עידכון בוטל.</string>
+    <string name="add_new_metadata_heading">1. עידכון חשבון</string>
+    <string name="passwords_heading">2. הסיסמאות שלך</string>
+    <string name="copy_clipboar_new">סיסמא חדשה הועתקה.</string>
+    <string name="generate_heading">צור סיסמא</string>
+    <string name="old_version">גרסת הסיסמה הישנה היא %s.</string>
+    <string name="new_version">הגרסה החדשה תהיה</string>
+    <string name="about">אודות</string>
+    <string name="copy_clipboar_old">הסיסמה הישנה הועתקה.</string>
 </resources>
