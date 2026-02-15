@@ -1,1 +1,1 @@
-(SECUSO) Generiert unterschiedliche Passworte für alle Ihre Konten.
+(SECUSO) Generieren Sie Passwörter für Ihre Konten aus einem einzigen Master-Passwort
