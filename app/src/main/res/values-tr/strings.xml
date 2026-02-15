@@ -140,4 +140,5 @@
     <string name="dialog_version">Bir parolanın sürümü, bir hesabın kaç parolaya sahip olduğunu gösteren bir sayıdır. Ana parola veya hesapla ilgili başka herhangi bir veri değiştirilmese bile farklı bir parola oluşturmak için kullanılır.</string>
     <string name="password">Parolanız:</string>
     <string name="password_copied">Parola kopyalandı.</string>
+    <string name="init_password">İlk Parola</string>
 </resources>
